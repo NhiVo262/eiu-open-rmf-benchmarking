@@ -1,0 +1,27 @@
+{
+  plugins: {
+    ros2dds: {
+      namespace: "/tb3_robot1",
+      allow: {
+        publishers: [".*/tf", ".*/tf_static", ".*/battery_state"],
+        subscribers: [],
+        service_servers: [],
+        service_clients: [],
+        action_servers: [".*/navigate_to_pose"],
+        action_clients: [],
+      },
+      pub_max_frequencies: [".*/navigate_to_pose/*=1", ".*/battery_state=1"],
+    },
+  },
+  mode: "client",
+  connect: {
+    endpoints: ["tcp/127.0.0.1:7447"]
+  },
+  listen: {
+    endpoints: []
+  },
+  timestamping: {
+    enabled: { router: true, peer: true, client: true },
+  },
+  queries_default_timeout: 300000,
+}

@@ -1,0 +1,32 @@
+<?xml version='1.0' ?>
+<launch>
+  <arg name="use_sim_time" default="true" description="Use the /clock topic for time to sync with simulation"/>
+  <arg name="map_name" default="tb3_world" description="Initial map name for the visualizer"/>
+  <arg name="viz_config_file" default="$(find-pkg-share rmf_visualization_schedule)/config/rmf.rviz"/>
+  <arg name="headless" default="false" description="Do not launch rviz"/>
+
+  <group unless="$(var headless)">
+    <node pkg="rviz2" exec="rviz2" args="-d $(var viz_config_file)" output="screen">
+      <param name="use_sim_time" value="$(var use_sim_time)"/>
+    </node>
+
+    <node pkg="rmf_visualization_navgraphs" exec="navgraph_visualizer_node" output="screen">
+      <param name="use_sim_time" value="$(var use_sim_time)"/>
+      <param name="initial_map_name" value="$(var map_name)"/>
+    </node>
+
+    <node pkg="rmf_visualization_floorplans" exec="floorplan_visualizer_node" output="screen">
+      <param name="use_sim_time" value="$(var use_sim_time)"/>
+      <param name="initial_map_name" value="$(var map_name)"/>
+    </node>
+
+    <node pkg="rmf_visualization_schedule" exec="schedule_visualizer_node" output="screen">
+      <param name="use_sim_time" value="$(var use_sim_time)"/>
+      <param name="initial_map_name" value="$(var map_name)"/>
+    </node>
+
+    <node pkg="rmf_visualization_fleet_states" exec="fleetstates_visualizer_node" output="screen">
+      <param name="use_sim_time" value="$(var use_sim_time)"/>
+    </node>
+  </group>
+</launch>
