@@ -16,12 +16,6 @@ Workspace for benchmarking Open-RMF with a TurtleBot3 fleet, as part of the EIU 
 ```
 eiu_ws/src/
 ├── tb3_fleet/                  # Main project package (see below)
-├── free_fleet/                 # Zenoh bridge for Nav2 robots
-├── rmf_demos/                  # Task dispatch CLI tools
-├── rmf_traffic_editor/         # Map authoring + world/nav-graph generation
-├── rmf_visualization/          # RViz visualization plugins
-├── rmf-web/                    # Web dashboard + API server
-├── turtlebot3*/                # Upstream TurtleBot3 packages
 └── scripts/                    # Docker environment setup
 ```
 
