@@ -113,9 +113,9 @@ source install/setup.bash
 
 Key sections:
 
-- **`rmf_fleet`** — fleet-wide parameters: velocity/acceleration limits, footprint, battery model, `task_capabilities` (e.g. `loop: true`), `finishing_request` (behavior after a task completes), `recharge_threshold`.
-- **`rmf_fleet.robots.<name>`** — per-robot settings: `charger`, `navigation_stack` (1 or 2), `initial_map`, `map_frame`/`robot_frame`, `init_timeout_sec`.
-- **`reference_coordinates`** — the Gazebo↔RMF coordinate transform, defined as matching point pairs per map. **Must be accurate**, or the planner will compute incorrect costs or fail to snap the robot onto the nav graph.
+- **`rmf_fleet`** — fleet-wide parameters: velocity/acceleration limits, footprint, battery model, `task_capabilities`, `finishing_request` (behavior after a task completes), `recharge_threshold`.
+- **`rmf_fleet.robots.<name>`** — per-robot settings: `charger`, `initial_map`, `map_frame`/`robot_frame`, `init_timeout_sec`.
+- **`reference_coordinates`** — the Gazebo↔RMF coordinate transform, defined as matching point pairs per map. 
 - **`fleet_manager`** — legacy fleet manager connection info (host/port/credentials).
 
 ### Zenoh config — `tb3_fleet/config/zenoh/`
