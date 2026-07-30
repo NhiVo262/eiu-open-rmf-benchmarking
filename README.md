@@ -75,7 +75,7 @@ tb3_fleet/
 
 - Docker 
 - ROS2 **Jazzy** (provided via the pinned container image, see below)
-- The container image **must be pinned to a fixed digest**, not a mutable tag. `jazzy-20260622` is a human-readable label, but the digest is what actually guarantees the RMF/Nav2/Gazebo build is reproducible — a tag can be silently re-pushed and start resolving to a different image (effectively `latest`), while a digest cannot. The digest currently pinned is:
+- The container image **must be pinned to a fixed digest**. The digest currently pinned is:
   ```
   sha256:d1b0540be35cd81afb913d28fd4c11397f1e783ff3f1669f0343cd062cfdf202
   ```
