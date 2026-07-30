@@ -8,13 +8,7 @@ Workspace for benchmarking Open-RMF with a TurtleBot3 fleet, as part of the EIU 
 
 | Package | Role |
 |---|---|
-| **`tb3_fleet`** | Custom integration package: fleet adapter, robot adapter, world/nav-graph maps, launch files for simulation and RMF core. Project-specific — see [Architecture](#architecture) and [Configuration](#configuration) below. |
-| `free_fleet` | Zenoh-based bridge library/messages used by `tb3_fleet_adapter` to communicate with the robot's Nav2 stack (goal send/cancel/result, TF, battery state) without requiring a shared ROS domain. |
-| `rmf_demos` | Upstream Open-RMF demo package; provides the `rmf_demos_tasks` CLI tools used to dispatch tasks (`dispatch_patrol`, `dispatch_go_to_place`, `cancel_task`, etc.). |
-| `rmf_traffic_editor` | Editor and tools (`rmf_building_map_tools`) used to author the building map and generate the Gazebo world and nav graph from it. |
-| `rmf_visualization` | RViz plugins and visualizer nodes (fleet states, floorplans, nav graphs, schedule) used by `tb3_fleet/launch/rmf_visualization.launch.xml`. |
-| `rmf-web` | Open-RMF web dashboard and API server, for submitting/monitoring tasks and fleet status from a browser. |
-| `turtlebot3`, `turtlebot3_msgs`, `turtlebot3_simulations` | Upstream TurtleBot3 packages: robot description, messages, and Gazebo simulation assets. |
+| **`tb3_fleet`** | Custom integration package: fleet adapter, robot adapter, world/nav-graph maps, launch files for simulation and RMF core. Project-specific — see [Architecture](#architecture) and [Configuration](#configuration) below.
 | `scripts` | Docker build/run setup for the environment (see [Setup](#setup)). |
 
 ## Repository Layout
