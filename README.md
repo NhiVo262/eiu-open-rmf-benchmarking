@@ -58,15 +58,17 @@ tb3_fleet/
      DispatchCommand (award) ──► navigate() / stop() callbacks
               │
               ▼
-     tb3_robot_adapter  ──Zenoh──►  Nav2 action server (robot)
-              │                          │
-              ▼                          ▼
-     TF / battery_state  ◄──Zenoh──  robot / Gazebo sim
+     tb3_robot_adapter  ─────►  zenohd (router, tcp/7447)  ◄─────  zenoh-bridge-ros2dds
+     (zenoh client)                                                (zenoh client, namespace /tb3_robot1)
+                                                                          │  bridges native ROS2 topics
+                                                                          ▼
+                                                                 Nav2 action server / TF / battery_state
+                                                                 (robot or Gazebo sim)
 ```
 
 - **`rmf_task_dispatcher`** runs the bidding process: it broadcasts a `BidNotice`, fleet adapters reply with a `BidProposal` (cost), and after the bidding window closes it awards the task to the winning fleet via `DispatchCommand`.
 - **`tb3_fleet_adapter`** (`tb3_fleet_adapter.py`) registers the fleet with `rmf_adapter.easy_full_control`, computes the Gazebo↔RMF coordinate transform, and spins one `Tb3RobotAdapter` per configured robot.
-- **`tb3_robot_adapter.py`** implements the `navigate`/`stop`/`execute_action` callbacks. It talks to the robot's Nav2 action server and TF/battery topics **over Zenoh** rather than native ROS2 topics — this is what lets the fleet adapter run outside the robot's ROS domain (e.g. in a separate Docker container or over the network).
+- **`tb3_robot_adapter.py`** implements the `navigate`/`stop`/`execute_action` callbacks. It talks to the robot's Nav2 action server and TF/battery topics **over Zenoh** rather than native ROS2 topics — this is what lets the fleet adapter run outside the robot's ROS domain (e.g. in a separate Docker container or over the network). See [Zenoh setup](#zenoh--router-and-bridge) below — neither the router nor the bridge is started automatically by any launch file, they must be run manually.
 - Traffic scheduling and conflict resolution between robots is handled internally by `rmf_traffic_schedule` / `rmf_traffic_blockade` (from `rmf_traffic_ros2`), independent of the fleet adapter.
 
 ## Setup
@@ -118,27 +120,69 @@ Key sections:
 - **`reference_coordinates`** — the Gazebo↔RMF coordinate transform, defined as matching point pairs per map. 
 - **`fleet_manager`** — legacy fleet manager connection info (host/port/credentials).
 
-### Zenoh config — `tb3_fleet/config/zenoh/`
+### Zenoh — router and bridge
 
-Defines the Zenoh session used by the fleet adapter to reach the robot's Nav2 action server, TF, and battery topics without a shared ROS domain.
+`tb3_robot_adapter.py` never touches the robot's Nav2 action server or TF/battery topics through native ROS2 — everything goes through Zenoh. This requires **three** separate processes, none of which are started by any `ros2 launch` file in this repo — they must each be run manually (or wrapped in your own launch/systemd setup):
+
+| Process | Role | Started by |
+|---|---|---|
+| `zenohd` | Zenoh **router** — the rendezvous point both clients below connect to. Default listen port `tcp/7447`. | manual |
+| `zenoh-bridge-ros2dds` | Zenoh **client** on the robot side. Bridges the robot's *native* ROS2 topics/actions (`tf`, `tf_static`, `battery_state`, `navigate_to_pose` action) into Zenoh, under the namespace configured in `ros2dds.namespace` (`/tb3_robot1`). | manual |
+| `tb3_fleet_adapter.py` | Zenoh **client** on the RMF side (Python `zenoh` session, config passed via `--zenoh-config`). Subscribes to `tb3_robot1/tf`, `tb3_robot1/battery_state`, and sends nav goals as Zenoh queries under `tb3_robot1/navigate_to_pose/...`. | `tb3_world.launch.py` (automatic — see below) |
+
+Config files, in `tb3_fleet/config/zenoh/`:
+
+- **`tb3_zenoh_bridge_ros2dds_client_config.json5`** — bridge-side config. Key fields:
+  - `ros2dds.namespace: "/tb3_robot1"` — prefix applied to every bridged topic; must match the robot name used in `tb3_simulation_config.yaml` and in `dispatch_patrol -R <robot>`.
+  - `ros2dds.allow` — explicit allow-list of what gets bridged (only `tf`, `tf_static`, `battery_state` as publishers, and the `navigate_to_pose` action). Anything not listed here is invisible to the fleet adapter.
+  - `connect.endpoints: ["tcp/127.0.0.1:7447"]` — the router address. For a real robot on separate hardware, change this to the router's actual reachable IP.
+- **`tb3_fleet_adapter_zenoh_config.json5`** — fleet-adapter-side config, same router endpoint, `mode: "client"`.
+
+#### Commands
+
+Run in this order — the router must be up before either client connects, and the robot's native ROS2 topics (from `tb3_simulation_nav2.launch.py`, or the real robot's Nav2 stack) must be publishing before the bridge has anything to bridge:
+
+```bash
+# 1. Start the Zenoh router
+zenohd
+
+# 2. Start the ROS2↔Zenoh bridge (run where the robot's native ROS2 topics are visible —
+#    inside the sim container for Gazebo, or on the robot's Raspberry Pi for real hardware).
+#    The bridge binary ships locally in this repo, so run it from that directory:
+cd ~/rmf_ws/src/tb3_fleet/config/zenoh
+./zenoh-bridge-ros2dds -c tb3_zenoh_bridge_ros2dds_client_config.json5
+```
+
+`tb3_fleet_adapter.py` (the third Zenoh client) does **not** need a separate command — it's launched as part of `tb3_world.launch.py` (see [Launch procedure](#launch-procedure-2-terminals) below), which passes `tb3_fleet_adapter_zenoh_config.json5` via `--zenoh-config` automatically.
 
 ### Launch-time flags to avoid
 
 - **Do not pass `--use_sim_time`** when submitting tasks via `rmf_demos_tasks`, and **do not pass the `-sim`** flag to the fleet adapter in `tb3_world.launch.py`. The task-dispatch pipeline (`rmf_task_dispatcher`, `tb3_fleet_adapter`) is configured to run on **wall time**. If `/clock` isn't published yet when these run on sim time, the bidding timer (`bidding_time_window`) freezes and tasks silently never get dispatched, even though bidding itself appears to proceed normally in the logs.
 
-### Launch procedure (2 terminals)
+### Launch procedure (4 terminals)
 
-**Terminal 1 — Simulation + Nav2:**
+**Terminal 1 — Zenoh router:**
+```bash
+zenohd
+```
+
+**Terminal 2 — Simulation + Nav2:**
 ```bash
 ros2 launch tb3_fleet tb3_simulation_nav2.launch.py
 ```
 
-**Terminal 2 — RMF core + Fleet adapter (start after Terminal 1 is ready):**
+**Terminal 3 — Zenoh bridge (start once Terminal 2 is publishing `tf`/`battery_state`):**
+```bash
+cd ~/rmf_ws/src/tb3_fleet/config/zenoh
+./zenoh-bridge-ros2dds -c tb3_zenoh_bridge_ros2dds_client_config.json5
+```
+
+**Terminal 4 — RMF core + Fleet adapter (start after Terminal 3 is bridging):**
 ```bash
 ros2 launch tb3_fleet tb3_world.launch.py
 ```
 
-> The fleet adapter needs to read the robot's TF/pose during initialization (`init_timeout_sec`, default 30s), so Terminal 1 must be up first.
+> The fleet adapter needs to read the robot's TF/pose **through the Zenoh bridge** during initialization (`init_timeout_sec`, default 30s), so terminals 1–3 must all be up first, in that order.
 
 ### Dispatching tasks
 
