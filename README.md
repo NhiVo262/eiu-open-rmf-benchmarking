@@ -177,7 +177,7 @@ cd ~/rmf_ws/src/tb3_fleet/config/zenoh
 ./zenoh-bridge-ros2dds -c tb3_zenoh_bridge_ros2dds_client_config.json5
 ```
 
-**Terminal 4 — RMF core + Fleet adapter (start after Terminal 3 is bridging):**
+**Terminal 4 — RMF core + Fleet adapter :**
 ```bash
 ros2 launch tb3_fleet tb3_world.launch.py
 ```
