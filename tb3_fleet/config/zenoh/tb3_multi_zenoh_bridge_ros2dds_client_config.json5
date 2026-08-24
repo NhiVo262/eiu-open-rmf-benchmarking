@@ -1,0 +1,30 @@
+{
+  // Multi-robot: ca 5 robot (tb3_robot1..tb3_robot5) da namespace san trong ROS2
+  // (vd topic that la /tb3_robot1/tf, /tb3_robot2/tf, ...) nen CHI CAN 1 bridge
+  // duy nhat, khong dat "namespace" (khong them tien to nua - topic da co san
+  // ten robot trong path roi, cac pattern .*/tf... van khop moi robot).
+  plugins: {
+    ros2dds: {
+      allow: {
+        publishers: [".*/tf", ".*/tf_static", ".*/battery_state"],
+        subscribers: [],
+        service_servers: [],
+        service_clients: [],
+        action_servers: [".*/navigate_to_pose"],
+        action_clients: [],
+      },
+      pub_max_frequencies: [".*/navigate_to_pose/*=1", ".*/battery_state=1"],
+    },
+  },
+  mode: "client",
+  connect: {
+    endpoints: ["tcp/127.0.0.1:7447"]
+  },
+  listen: {
+    endpoints: []
+  },
+  timestamping: {
+    enabled: { router: true, peer: true, client: true },
+  },
+  queries_default_timeout: 300000,
+}

@@ -5,7 +5,7 @@ rmf_fleet:
     angular: [1.82, 2.0]   # TurtleBot3 Burger max: 1.82 rad/s
   profile:
     footprint: 0.178        # TurtleBot3 Burger actual radius
-    vicinity: 0.3
+    vicinity: 0.45
   reversible: True
   battery_system:
     voltage: 11.1           # 3S LiPo
@@ -34,14 +34,43 @@ rmf_fleet:
       responsive_wait: False
       navigation_stack: 2
 
-      init_timeout_sec: 30
+      init_timeout_sec: 120
       initial_map: "world_tb3"
       map_frame: "map"
       robot_frame: "base_footprint"
-      
+
       maps:
         world_tb3:
-          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml" 
+          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml"
+
+    tb3_robot2:
+      charger: "charger_2"
+      responsive_wait: False
+      navigation_stack: 2
+
+      init_timeout_sec: 120
+      initial_map: "world_tb3"
+      map_frame: "map"
+      robot_frame: "base_footprint"
+
+      maps:
+        world_tb3:
+          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml"
+
+    tb3_robot3:
+      charger: "charger_1"
+      responsive_wait: False
+      navigation_stack: 2
+
+      init_timeout_sec: 120
+      initial_map: "world_tb3"
+      map_frame: "map"
+      robot_frame: "base_footprint"
+
+      maps:
+        world_tb3:
+          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml"
+
   robot_state_update_frequency: 10.0
 
 # TRANSFORM CONFIG =============================================================

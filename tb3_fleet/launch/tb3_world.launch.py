@@ -16,12 +16,12 @@ def generate_launch_description():
     tb3_fleet_share = get_package_share_directory('tb3_fleet')
 
     default_viz_config = os.path.join(rmf_viz_sched_share, 'config', 'rmf.rviz')
-    adapter_nav_graph = os.path.join(tb3_fleet_share, 'maps', 'tb3_world', 'nav_graphs', '0.yaml')
-    adapter_config_file = os.path.join(tb3_fleet_share, 'config', 'fleet', 'tb3_simulation_config.yaml')
+    adapter_nav_graph = os.path.join(tb3_fleet_share, 'maps', 'world_tb3', 'nav_graphs', '0.yaml')
 
-    
+
     use_sim_time = LaunchConfiguration('use_sim_time')
-    config_file = LaunchConfiguration('config_file') 
+    config_file = LaunchConfiguration('config_file')
+    fleet_config_file = LaunchConfiguration('fleet_config_file')
     initial_map = LaunchConfiguration('initial_map')
     headless = LaunchConfiguration('headless')
     bidding_time_window = LaunchConfiguration('bidding_time_window')
@@ -31,8 +31,9 @@ def generate_launch_description():
 
     declare_args = [
         DeclareLaunchArgument('use_sim_time', default_value='true', description='Use the /clock topic for time to sync with simulation'),
-        DeclareLaunchArgument('config_file', default_value=os.path.join(tb3_fleet_share, 'maps', 'tb3_world', 'tb3_world.building.yaml'), description='Building description file required by rmf_building_map_tools'),
-        DeclareLaunchArgument('initial_map', default_value='tb3_world', description='Initial map name for the visualizer'),
+        DeclareLaunchArgument('config_file', default_value=os.path.join(tb3_fleet_share, 'maps', 'turtlebot3_world', 'world_tb3.building.yaml'), description='Building description file required by rmf_building_map_tools'),
+        DeclareLaunchArgument('fleet_config_file', default_value=os.path.join(tb3_fleet_share, 'config', 'fleet', 'tb3_simulation_config.yaml'), description='Fleet adapter config yaml (single or multi-robot)'),
+        DeclareLaunchArgument('initial_map', default_value='world_tb3', description='Initial map name for the visualizer'),
         DeclareLaunchArgument('headless', default_value='true', description='Do not launch rviz; launch gazebo in headless mode'),
         DeclareLaunchArgument('bidding_time_window', default_value='2.0', description='Time window in seconds for task bidding process'),
         DeclareLaunchArgument('use_unique_hex_string_with_task_id', default_value='true', description='Appends a unique hex string to the task ID'),
@@ -68,6 +69,11 @@ def generate_launch_description():
         Node(
             package='rmf_fleet_adapter',
             executable='lift_supervisor',
+            parameters=[{'use_sim_time': use_sim_time}]
+        ),
+        Node(
+            package='rmf_fleet_adapter',
+            executable='mutex_group_supervisor',
             parameters=[{'use_sim_time': use_sim_time}]
         ),
         Node(
@@ -138,7 +144,7 @@ def generate_launch_description():
     fleet_adapter_cmd = ExecuteProcess(
         cmd=[
             'python3', '-m', 'tb3_fleet.tb3_fleet_adapter',
-            '-c', adapter_config_file,
+            '-c', fleet_config_file,
             '-n', adapter_nav_graph,
             '--zenoh-config', os.path.join(tb3_fleet_share, 'config', 'zenoh', 'tb3_fleet_adapter_zenoh_config.json5'),
 

@@ -15,6 +15,7 @@
 # limitations under the License.
 
 from typing import Annotated
+import threading
 import time 
 
 from free_fleet.convert import transform_stamped_to_ros2_msg
@@ -92,13 +93,23 @@ class Nav2TfHandler:
 
 
     def get_transform(self) -> TransformStamped | None:
+        # Health-check: lookup_transform() la mot lookup LOCAL tren tf_buffer
+        # (duoc dien du lieu bat dong bo qua Zenoh subscriber _tf_callback o
+        # tren), khong phai network call -- neu do bi cham (>50ms) nghia la
+        # ban than tf_buffer/tf2 dang co van de (vd buffer qua lon, hoac
+        # thread dang tranh chap GIL), khong phai do mang.
+        t0 = time.monotonic()
         try:
             transform = self.tf_buffer.lookup_transform(
                 namespacify(self.map_frame, self.robot_name),
                 namespacify(self.robot_frame, self.robot_name),
                 rclpy.time.Time()
-            )   
-
+            )
+            dt = time.monotonic() - t0
+            if dt > 0.05:
+                self.node.get_logger().warn(
+                    f'[healthcheck] lookup_transform cham cho [{self.robot_name}]: {dt:.3f}s'
+                )
             return transform
         except Exception as err:
             self.node.get_logger().info(
@@ -139,6 +150,15 @@ class Tb3RobotAdapter(RobotAdapter):
         self.battery_soc = 1.0
         self.replan_counts = 0
         self.nav_issue_ticket = None
+
+
+        self._nav_result_lock = threading.Lock()
+        self._nav_result_goal_id = None
+        self._nav_result_status = None
+
+
+        self._pending_replan = False
+        self._latest_goal_id = None
 
         self.tf_handler = Nav2TfHandler(
             self.name,
@@ -190,7 +210,6 @@ class Tb3RobotAdapter(RobotAdapter):
             )
             return
 
-        # Đăng ký callback, riêng phần execute_action truyền hàm trống (raise lỗi) vì đã bỏ action
         self.update_handle = self.fleet_handle.add_robot(
             self.name,
             state,
@@ -232,51 +251,83 @@ class Tb3RobotAdapter(RobotAdapter):
         ]
         return robot_pose
 
+    def _await_nav_result(self, nav_goal_id):
+        req = NavigateToPose_GetResult_Request(goal_id=nav_goal_id)
+        deadline = time.time() + 300.0
+        while time.time() < deadline:
+            if self._latest_goal_id != nav_goal_id:
+                # Co goal moi hon da duoc dispatch (vd do replan) -- thoat
+                # NGAY, khong ban them Zenoh query nao cho goal da lac hau nay.
+                return
+            with self._nav_result_lock:
+                if self._nav_result_goal_id not in (None, nav_goal_id) or (
+                    self._nav_result_goal_id == nav_goal_id and self._nav_result_status is not None
+                ):
+                    return
+            try:
+                replies = self.zenoh_session.get(
+                    namespacify('navigate_to_pose/_action/get_result', self.name),
+                    payload=req.serialize(),
+                    timeout=10.0,
+                )
+                got_valid = False
+                for reply in replies:
+                    if reply.ok is None:
+                        continue
+                    try:
+                        rep = NavigateToPose_GetResult_Response.deserialize(
+                            reply.ok.payload.to_bytes()
+                        )
+                    except Exception:
+                        continue
+                    with self._nav_result_lock:
+                        self._nav_result_goal_id = nav_goal_id
+                        self._nav_result_status = rep.status
+                    got_valid = True
+                    break
+                if got_valid:
+                    return
+            except Exception as e:
+                self.node.get_logger().info(f'Error while awaiting nav result, retrying: {e}')
+            time.sleep(0.5)
+        self.node.get_logger().warn(f'Timed out awaiting nav result for goal {nav_goal_id}')
+
     def _is_navigation_done(self, nav_handle: ExecutionHandle) -> bool:
         if nav_handle.goal_id is None:
             return True
 
-        req = NavigateToPose_GetResult_Request(goal_id=nav_handle.goal_id)
-        replies = self.zenoh_session.get(
-            namespacify('navigate_to_pose/_action/get_result', self.name),
-            payload=req.serialize(),
-        )
+        with self._nav_result_lock:
+            if self._nav_result_goal_id != nav_handle.goal_id:
+                return False
+            status = self._nav_result_status
 
-        self.node.get_logger().info(f'Querying nav result for goal {nav_handle.goal_id[:4]}...')
+        if status is None:
+            return False
 
-        for reply in replies:
-            try:
-                rep = NavigateToPose_GetResult_Response.deserialize(
-                    reply.ok.payload.to_bytes()
+        match status:
+            case GoalStatus.STATUS_EXECUTING.value | \
+                 GoalStatus.STATUS_ACCEPTED.value | \
+                 GoalStatus.STATUS_CANCELING.value:
+                return False
+            case GoalStatus.STATUS_SUCCEEDED.value:
+                self.node.get_logger().info(f'Navigation goal {nav_handle.goal_id} reached')
+                if self.nav_issue_ticket is not None:
+                    msg = {}
+                    self.nav_issue_ticket.resolve(msg)
+                    self.nav_issue_ticket = None
+                return True
+            case GoalStatus.STATUS_CANCELED.value:
+                self.node.get_logger().info(f'Navigation goal {nav_handle.goal_id} was cancelled')
+                return True
+            case _:
+                self.nav_issue_ticket = self.create_nav_issue_ticket(
+                    'navigation',
+                    f'Navigate to pose result status [{status}]',
+                    nav_handle.goal_id
                 )
-                self.node.get_logger().info(f'Result: {rep.status}')
-                match rep.status:
-                    case GoalStatus.STATUS_EXECUTING.value | \
-                         GoalStatus.STATUS_ACCEPTED.value | \
-                         GoalStatus.STATUS_CANCELING.value:
-                        return False
-                    case GoalStatus.STATUS_SUCCEEDED.value:
-                        self.node.get_logger().info(f'Navigation goal {nav_handle.goal_id} reached')
-                        if self.nav_issue_ticket is not None:
-                            msg = {}
-                            self.nav_issue_ticket.resolve(msg)
-                            self.nav_issue_ticket = None
-                        return True
-                    case GoalStatus.STATUS_CANCELED.value:
-                        self.node.get_logger().info(f'Navigation goal {nav_handle.goal_id} was cancelled')
-                        return True
-                    case _:
-                        self.nav_issue_ticket = self.create_nav_issue_ticket(
-                            'navigation',
-                            f'Navigate to pose result status [{rep.status}]',
-                            nav_handle.goal_id
-                        )
-                        self.replan_counts += 1
-                        self.update_handle.more().replan()
-                        return False
-            except Exception as e:
-                self.node.get_logger().info(f'Received error during nav result check: {e}')
-                continue
+                self.replan_counts += 1
+                self.update_handle.more().replan()
+                return False
 
 
     def create_nav_issue_ticket(self, category, msg, nav_goal_id=None):
@@ -291,10 +342,13 @@ class Tb3RobotAdapter(RobotAdapter):
         if self.update_handle is None:
             return
 
+        if self._pending_replan:
+            self._pending_replan = False
+            self.update_handle.more().replan()
+
         activity_identifier = None
         exec_handle = self.exec_handle
         if exec_handle:
-            # CHỈ XỬ LÝ NAVIGATION, BỎ HOÀN TOÀN CUSTOM ACTION LOGIC
             if exec_handle.execution and exec_handle.goal_id and self._is_navigation_done(exec_handle):
                 exec_handle.execution.finished()
                 exec_handle.execution = None
@@ -328,31 +382,49 @@ class Tb3RobotAdapter(RobotAdapter):
         pose_stamped = GeometryMsgs_PoseStamped(header=header, pose=pose)
 
         nav_goal_id = np.random.randint(0, 255, size=(16)).astype('uint8').tolist()
+        self._latest_goal_id = nav_goal_id
         req = NavigateToPose_SendGoal_Request(
             goal_id=nav_goal_id,
             pose=pose_stamped,
             behavior_tree=''
         )
 
-        replies = self.zenoh_session.get(
-            namespacify('navigate_to_pose/_action/send_goal', self.name),
-            payload=req.serialize(),
-        )
+        def _dispatch():
+            _t0_send_goal = time.monotonic()
+            replies = self.zenoh_session.get(
+                namespacify('navigate_to_pose/_action/send_goal', self.name),
+                payload=req.serialize(),
+                timeout=2.0,
+            )
+            for reply in replies:
+                try:
+                    rep = NavigateToPose_SendGoal_Response.deserialize(reply.ok.payload.to_bytes())
+                    if rep.accepted:
+                        _dt_send_goal = time.monotonic() - _t0_send_goal
+                        self.node.get_logger().info(
+                            f'[healthcheck] send_goal round-trip cho [{self.name}]: '
+                            f'{_dt_send_goal:.3f}s'
+                        )
+                        self.node.get_logger().info(f'Navigation goal {nav_goal_id} accepted')
+                        with self._nav_result_lock:
+                            self._nav_result_goal_id = None
+                            self._nav_result_status = None
+                        nav_handle.set_goal_id(nav_goal_id)
+                        threading.Thread(
+                            target=self._await_nav_result,
+                            args=(nav_goal_id,),
+                            daemon=True,
+                        ).start()
+                        return
 
-        for reply in replies:
-            try:
-                rep = NavigateToPose_SendGoal_Response.deserialize(reply.ok.payload.to_bytes())
-                if rep.accepted:
-                    self.node.get_logger().info(f'Navigation goal {nav_goal_id} accepted')
-                    nav_handle.set_goal_id(nav_goal_id)
+                    self.replan_counts += 1
+                    if self.update_handle:
+                        self._pending_replan = True
                     return
+                except Exception as e:
+                    continue
 
-                self.replan_counts += 1
-                if self.update_handle:
-                    self.update_handle.more().replan()
-                return
-            except Exception as e:
-                continue
+        threading.Thread(target=_dispatch, daemon=True).start()
 
     def navigate(self, destination: rmf_easy.Destination, execution: rmf_easy.CommandExecution):
         self._request_stop(self.exec_handle)
@@ -380,6 +452,7 @@ class Tb3RobotAdapter(RobotAdapter):
         self.zenoh_session.get(
             namespacify('navigate_to_pose/_action/cancel_goal', self.name),
             payload=req.serialize(),
+            timeout=2.0,
         )
 
 

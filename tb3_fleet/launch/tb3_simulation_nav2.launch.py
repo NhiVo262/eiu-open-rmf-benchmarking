@@ -29,8 +29,8 @@ def generate_launch_description():
     use_respawn = LaunchConfiguration('use_respawn')
     use_rviz = LaunchConfiguration('use_rviz')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
-    x_pose = LaunchConfiguration('x_pose', default='13.2')
-    y_pose = LaunchConfiguration('y_pose', default='-11.5')
+    x_pose = LaunchConfiguration('x_pose', default='5.368')
+    y_pose = LaunchConfiguration('y_pose', default='-6.654')
 
     declare_slam_cmd = DeclareLaunchArgument(
         'slam', default_value='False',
@@ -39,7 +39,7 @@ def generate_launch_description():
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
         default_value=os.path.join(
-            tb3_fleet_dir, 'maps', 'tb3_world', 'map.yaml'),
+            tb3_fleet_dir, 'maps', 'turtlebot3_world', 'map.yaml'),
         description='Full path to map yaml file')
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
@@ -48,7 +48,7 @@ def generate_launch_description():
 
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
-        default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
+        default_value=os.path.join(tb3_fleet_dir, 'config', 'nav2', 'nav2_params.yaml'),
         description='Full path to nav2 params file')
 
     declare_autostart_cmd = DeclareLaunchArgument(
@@ -81,14 +81,17 @@ def generate_launch_description():
 
     set_gz_resource_path2 = AppendEnvironmentVariable(
         'GZ_SIM_RESOURCE_PATH',
-        os.path.join(tb3_fleet_dir, 'maps', 'tb3_world', 'models')
+        os.path.join(tb3_fleet_dir, 'maps', 'turtlebot3_world', 'models')
     )
     set_gz_resource_path3 = AppendEnvironmentVariable(
     'GZ_SIM_RESOURCE_PATH',
     os.path.join(os.path.expanduser('~'), '.gz', 'fuel', 'fuel.gazebosim.org', '1.0', 'openrobotics', 'models')
-    )   
+    )
+    set_gz_resource_path4 = AppendEnvironmentVariable(
+        'GZ_SIM_RESOURCE_PATH',
+        os.path.join(tb3_fleet_dir, 'maps', 'world_tb3', 'models')
+    )
 
-    # URDF từ turtlebot3_gazebo - không có namespace issue
     urdf_path = os.path.join(
         tb3_gazebo_dir, 'urdf', 'turtlebot3_burger.urdf')
     with open(urdf_path, 'r') as f:
@@ -111,7 +114,7 @@ def generate_launch_description():
             os.path.join(ros_gz_sim_dir, 'launch', 'gz_sim.launch.py')),
         launch_arguments={
             'gz_args': ['-r -s -v2 ', os.path.join(
-                tb3_fleet_dir, 'maps', 'tb3_world', 'tb3_world.world')],
+                tb3_fleet_dir, 'maps', 'world_tb3', 'world_tb3.world')],
             'on_exit_shutdown': 'True'
         }.items()
     )
@@ -175,7 +178,6 @@ def generate_launch_description():
         }],
         arguments=[
             '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
         ]
     )
@@ -186,7 +188,8 @@ def generate_launch_description():
     ld.add_action(set_gz_resource_path)
     ld.add_action(set_gz_resource_path2)
     ld.add_action(set_gz_resource_path3)
-
+    ld.add_action(set_gz_resource_path4)
+    
 
     ld.add_action(declare_slam_cmd)
     ld.add_action(declare_map_yaml_cmd)

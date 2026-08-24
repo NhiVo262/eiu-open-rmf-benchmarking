@@ -31,6 +31,10 @@ from tf2_ros import Buffer
 import yaml
 import zenoh
 import threading
+import gc
+import os
+import tracemalloc
+from concurrent.futures import ThreadPoolExecutor
 
 
 # ------------------------------------------------------------------------------
@@ -82,6 +86,56 @@ def start_fleet_adapter(
     # ROS 2 node for the command handle
     fleet_name = fleet_config.fleet_name
     node = rclpy.node.Node(f'{fleet_name}_command_handle')
+
+    _canary_state = {'last': time.monotonic()}
+
+    def _canary_tick():
+        now = time.monotonic()
+        jitter = now - _canary_state['last'] - 1.0
+        _canary_state['last'] = now
+        if jitter > 0.5:
+            node.get_logger().warn(
+                f'[healthcheck] canary heartbeat tre {jitter:.2f}s so voi ky '
+                f'vong 1.0s -- SingleThreadedExecutor dang bi block boi 1 '
+                f'callback khac (rat co the la bid/negotiation tu rmf_core).'
+            )
+        else:
+            node.get_logger().debug(f'[healthcheck] canary ok, jitter={jitter:.3f}s')
+
+    node.create_timer(1.0, _canary_tick)
+
+    tracemalloc.start(15)
+
+    def _get_rss_mb():
+        with open('/proc/self/status') as f:
+            for line in f:
+                if line.startswith('VmRSS:'):
+                    return int(line.split()[1]) / 1024.0
+        return -1.0
+
+    def _memory_health_loop():
+        while rclpy.ok():
+            time.sleep(20.0)
+            rss_mb = _get_rss_mb()
+            cur, peak = tracemalloc.get_traced_memory()
+            n_objs = len(gc.get_objects())
+            node.get_logger().warn(
+                f'[healthcheck][mem] rss={rss_mb:.1f}MiB '
+                f'tracemalloc_current={cur/1e6:.1f}MB tracemalloc_peak={peak/1e6:.1f}MB '
+                f'gc_objects={n_objs}'
+            )
+            try:
+                snap = tracemalloc.take_snapshot()
+                top = snap.statistics('lineno')[:8]
+                for i, stat in enumerate(top):
+                    node.get_logger().warn(f'[healthcheck][mem] top{i}: {stat}')
+            except Exception as e:
+                node.get_logger().warn(f'[healthcheck][mem] tracemalloc snapshot failed: {e}')
+
+    mem_thread = threading.Thread(target=_memory_health_loop, daemon=True)
+    mem_thread.start()
+
+
     adapter = Adapter.make(f'{fleet_name}_fleet_adapter')
     assert adapter, (
         'Unable to initialize fleet adapter. '
@@ -158,12 +212,33 @@ def start_fleet_adapter(
         )
     update_frequency = config_yaml['rmf_fleet'].get('robot_state_update_frequency', 10.0)
     update_period = 1.0 / update_frequency
+    _cycle_stats = {'count': 0, 'total': 0.0, 'max': 0.0}
 
     def update_loop():
         while rclpy.ok():
+            t0 = time.monotonic()
             for robot in robots.values():
                 update_robot(robot)
-            time.sleep(update_period)
+            cycle_dt = time.monotonic() - t0
+
+            _cycle_stats['count'] += 1
+            _cycle_stats['total'] += cycle_dt
+            _cycle_stats['max'] = max(_cycle_stats['max'], cycle_dt)
+            if cycle_dt > update_period * 3:
+                node.get_logger().warn(
+                    f'[healthcheck] update cycle mat {cycle_dt:.2f}s '
+                    f'(ky vong {update_period:.2f}s) -- get_pose()/Zenoh '
+                    f'query cua 1 hoac nhieu robot dang cham.'
+                )
+            if _cycle_stats['count'] % 50 == 0:
+                avg = _cycle_stats['total'] / _cycle_stats['count']
+                node.get_logger().info(
+                    f'[healthcheck] update_loop: {_cycle_stats["count"]} cycles, '
+                    f'avg={avg:.3f}s, max={_cycle_stats["max"]:.3f}s, '
+                    f'target={update_period:.3f}s'
+                )
+
+            time.sleep(max(0.0, update_period - cycle_dt))
 
     update_thread = threading.Thread(target=update_loop, daemon=True)
     update_thread.start()
