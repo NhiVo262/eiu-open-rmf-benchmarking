@@ -188,4 +188,4 @@ ros2 run rmf_demos_tasks dispatch_patrol -p charger_1 crossing_1
 ros2 run rmf_demos_tasks dispatch_patrol -p charger_1 crossing_1 -F tb3_fleet -R tb3_robot1
 ```
 
-Available waypoints (`maps/turtlebot3_world/`world_tb3.building.yaml)
+Available waypoints (`maps/turtlebot3_world/`world_tb3.building.yaml)  
