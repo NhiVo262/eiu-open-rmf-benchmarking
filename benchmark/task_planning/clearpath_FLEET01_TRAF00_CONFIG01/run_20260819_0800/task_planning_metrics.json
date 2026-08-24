@@ -1,0 +1,77 @@
+{
+  "scenario": "Clear path (baseline), N=1, TRAF_00, CONFIG_01",
+  "bag_path": "/home/eiu/rmf_ws/benchmark/task_planning/clearpath_FLEET01_TRAF00_CONFIG01/run_20260819_0800/bag",
+  "n_repeats": 5,
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-4113f29355",
+      "t_bid_notice": 1787126438.2757227,
+      "t_bid_response": 1787126438.277063,
+      "planning_latency_s": 0.0013401508331298828,
+      "dispatch_id": 0,
+      "dispatch_success": true,
+      "t_submit": 1787126438.0588677,
+      "t_end_physical": 1787126649.5552926,
+      "makespan_s": 211.49642491340637
+    },
+    {
+      "task_id": "patrol.dispatch-c5518861d7",
+      "t_bid_notice": 1787126663.2764482,
+      "t_bid_response": 1787126663.2789853,
+      "planning_latency_s": 0.0025370121002197266,
+      "dispatch_id": 1,
+      "dispatch_success": true,
+      "t_submit": 1787126663.1594744,
+      "t_end_physical": 1787126790.6545575,
+      "makespan_s": 127.49508309364319
+    },
+    {
+      "task_id": "patrol.dispatch-b4cd17d97d",
+      "t_bid_notice": 1787126888.276337,
+      "t_bid_response": 1787126888.278494,
+      "planning_latency_s": 0.002156972885131836,
+      "dispatch_id": 2,
+      "dispatch_success": true,
+      "t_submit": 1787126888.2565026,
+      "t_end_physical": 1787127058.4545426,
+      "makespan_s": 170.19804000854492
+    },
+    {
+      "task_id": "patrol.dispatch-77b66eb141",
+      "t_bid_notice": 1787127113.4772272,
+      "t_bid_response": 1787127113.47958,
+      "planning_latency_s": 0.0023527145385742188,
+      "dispatch_id": 3,
+      "dispatch_success": true,
+      "t_submit": 1787127113.3568053,
+      "t_end_physical": 1787127332.4544613,
+      "makespan_s": 219.09765601158142
+    },
+    {
+      "task_id": "patrol.dispatch-5d52db40ef",
+      "t_bid_notice": 1787127338.4757006,
+      "t_bid_response": 1787127338.4763043,
+      "planning_latency_s": 0.0006036758422851562,
+      "dispatch_id": 4,
+      "dispatch_success": true,
+      "t_submit": 1787127338.3571332,
+      "t_end_physical": 1787127588.8545294,
+      "makespan_s": 250.49739623069763
+    }
+  ],
+  "1a_task_dispatch_success_rate_pct": 100.0,
+  "1b_planning_latency_s": {
+    "n": 5,
+    "mean": 0.001798105239868164,
+    "stdev": 0.0008091267876180524,
+    "min": 0.0006036758422851562,
+    "max": 0.0025370121002197266
+  },
+  "1c_makespan_s": {
+    "n": 5,
+    "mean": 195.7569200515747,
+    "stdev": 47.70213945593193,
+    "min": 127.49508309364319,
+    "max": 250.49739623069763
+  }
+}
