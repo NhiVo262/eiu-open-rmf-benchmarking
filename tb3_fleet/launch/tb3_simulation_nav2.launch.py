@@ -84,8 +84,8 @@ def generate_launch_description():
         os.path.join(tb3_fleet_dir, 'maps', 'turtlebot3_world', 'models')
     )
     set_gz_resource_path3 = AppendEnvironmentVariable(
-    'GZ_SIM_RESOURCE_PATH',
-    os.path.join(os.path.expanduser('~'), '.gz', 'fuel', 'fuel.gazebosim.org', '1.0', 'openrobotics', 'models')
+        'GZ_SIM_RESOURCE_PATH',
+        os.path.join(os.path.expanduser('~'), '.gz', 'fuel', 'fuel.gazebosim.org', '1.0', 'openrobotics', 'models')
     )
     set_gz_resource_path4 = AppendEnvironmentVariable(
         'GZ_SIM_RESOURCE_PATH',
@@ -165,7 +165,7 @@ def generate_launch_description():
             'namespace':     '',
             'use_namespace': 'False',
             'rviz_config':   rviz_config_file,
-            'use_sim_time':  use_sim_time,  
+            'use_sim_time':  use_sim_time,
         }.items()
     )
     ros_gz_bridge_cmd = Node(

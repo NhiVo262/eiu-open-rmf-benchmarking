@@ -3,11 +3,10 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, ExecuteProcess
+from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.conditions import UnlessCondition
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch.launch_description_sources import AnyLaunchDescriptionSource
 
 
 def generate_launch_description():
@@ -58,7 +57,7 @@ def generate_launch_description():
         Node(
             package='rmf_building_map_tools',
             executable='building_map_server',
-            arguments=[config_file], 
+            arguments=[config_file],
             parameters=[{'use_sim_time': use_sim_time}]
         ),
         Node(

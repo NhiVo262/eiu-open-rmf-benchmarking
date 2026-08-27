@@ -1,22 +1,8 @@
 #!/usr/bin/env python3
 
-# Copyright 2024 Open Source Robotics Foundation, Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 from typing import Annotated
 import threading
-import time 
+import time
 
 from free_fleet.convert import transform_stamped_to_ros2_msg
 from free_fleet.ros2_types import (
@@ -48,16 +34,19 @@ from rmf_adapter.robot_update_handle import ActivityIdentifier, Tier
 from tf_transformations import euler_from_quaternion, quaternion_from_euler
 import zenoh
 
+
 def namespacify(base_name: str, namespace: str, delimiter: str = '/') -> str:
     return base_name if not namespace else f'{namespace}{delimiter}{base_name}'
+
 
 def make_nav2_cancel_all_goals_request():
     return ActionMsgs_CancelGoal_Request(
         goal_info=ActionMsgs_GoalInfo(
-            UUID(uuid=[0 for i in range(16)]),
+            UUID(uuid=[0] * 16),
             Time(sec=0, nanosec=0)
         )
     )
+
 
 class Nav2TfHandler:
 
@@ -70,34 +59,33 @@ class Nav2TfHandler:
         self.robot_frame = robot_frame
         self.map_frame = map_frame
 
-        def _tf_callback(sample: zenoh.Sample):
-            try:
-                transform = TFMessage.deserialize(sample.payload.to_bytes())
-            except Exception as e:
-                self.node.get_logger().debug(
-                    f'Failed to deserialize TF payload: {type(e)}: {e}'
-                )
-                return None
-            for zt in transform.transforms:
-                t = transform_stamped_to_ros2_msg(zt)
-                t.header.frame_id = namespacify(zt.header.frame_id, self.robot_name)
-                t.child_frame_id = namespacify(zt.child_frame_id, self.robot_name)
-
-                self.tf_buffer.set_transform(
-                    t, f'{self.robot_name}_TfListener')
-
         self.tf_sub = self.zenoh_session.declare_subscriber(
             namespacify('tf', self.robot_name),
-            _tf_callback
+            self._on_tf
         )
 
+    def _on_tf(self, sample: zenoh.Sample):
+        try:
+            transform = TFMessage.deserialize(sample.payload.to_bytes())
+        except Exception as e:
+            self.node.get_logger().debug(
+                f'Failed to deserialize TF payload: {type(e)}: {e}'
+            )
+            return
+        for zt in transform.transforms:
+            t = transform_stamped_to_ros2_msg(zt)
+            t.header.frame_id = namespacify(zt.header.frame_id, self.robot_name)
+            t.child_frame_id = namespacify(zt.child_frame_id, self.robot_name)
+
+            self.tf_buffer.set_transform(
+                t, f'{self.robot_name}_TfListener')
 
     def get_transform(self) -> TransformStamped | None:
-        # Health-check: lookup_transform() la mot lookup LOCAL tren tf_buffer
-        # (duoc dien du lieu bat dong bo qua Zenoh subscriber _tf_callback o
-        # tren), khong phai network call -- neu do bi cham (>50ms) nghia la
-        # ban than tf_buffer/tf2 dang co van de (vd buffer qua lon, hoac
-        # thread dang tranh chap GIL), khong phai do mang.
+        # lookup_transform() is a LOCAL lookup on tf_buffer (filled
+        # asynchronously by the Zenoh subscriber in _on_tf above), not a
+        # network call. If this is slow (>50ms), tf_buffer/tf2 itself has a
+        # problem (e.g. the buffer is too large, or the thread is fighting
+        # for the GIL) -- it's not a network delay.
         t0 = time.monotonic()
         try:
             transform = self.tf_buffer.lookup_transform(
@@ -108,7 +96,7 @@ class Nav2TfHandler:
             dt = time.monotonic() - t0
             if dt > 0.05:
                 self.node.get_logger().warn(
-                    f'[healthcheck] lookup_transform cham cho [{self.robot_name}]: {dt:.3f}s'
+                    f'lookup_transform took {dt:.3f}s for [{self.robot_name}].'
                 )
             return transform
         except Exception as err:
@@ -118,6 +106,7 @@ class Nav2TfHandler:
             )
         return None
 
+
 class Tb3RobotAdapter(RobotAdapter):
 
     def __init__(
@@ -125,7 +114,6 @@ class Tb3RobotAdapter(RobotAdapter):
         name: str,
         configuration,
         robot_config_yaml,
-        plugin_config: dict | None,  
         node,
         zenoh_session,
         fleet_handle,
@@ -151,14 +139,13 @@ class Tb3RobotAdapter(RobotAdapter):
         self.replan_counts = 0
         self.nav_issue_ticket = None
 
-
         self._nav_result_lock = threading.Lock()
         self._nav_result_goal_id = None
         self._nav_result_status = None
 
-
         self._pending_replan = False
         self._latest_goal_id = None
+        self._replanned_for_goal_id = None
 
         self.tf_handler = Nav2TfHandler(
             self.name,
@@ -169,15 +156,9 @@ class Tb3RobotAdapter(RobotAdapter):
             map_frame=self.map_frame
         )
 
-        def _battery_state_callback(sample: zenoh.Sample):
-            battery_state = SensorMsgs_BatteryState.deserialize(
-                sample.payload.to_bytes()
-            )
-            self.battery_soc = battery_state.percentage
-
         self.battery_state_sub = self.zenoh_session.declare_subscriber(
             namespacify('battery_state', self.name),
-            _battery_state_callback
+            self._on_battery_state
         )
         time.sleep(3)
 
@@ -225,6 +206,12 @@ class Tb3RobotAdapter(RobotAdapter):
             self.node.get_logger().error(error_message)
             raise RuntimeError(error_message)
 
+    def _on_battery_state(self, sample: zenoh.Sample):
+        battery_state = SensorMsgs_BatteryState.deserialize(
+            sample.payload.to_bytes()
+        )
+        self.battery_soc = battery_state.percentage
+
     def get_battery_soc(self) -> float:
         return self.battery_soc
 
@@ -234,8 +221,9 @@ class Tb3RobotAdapter(RobotAdapter):
     def get_pose(self) -> Annotated[list[float], 3] | None:
         transform = self.tf_handler.get_transform()
         if transform is None:
-            error_message = f'Failed to update robot [{self.name}]: Unable to get transform.'
-            self.node.get_logger().info(error_message)
+            self.node.get_logger().info(
+                f'Unable to get transform for robot [{self.name}].'
+            )
             return None
 
         orientation = euler_from_quaternion([
@@ -256,8 +244,9 @@ class Tb3RobotAdapter(RobotAdapter):
         deadline = time.time() + 300.0
         while time.time() < deadline:
             if self._latest_goal_id != nav_goal_id:
-                # Co goal moi hon da duoc dispatch (vd do replan) -- thoat
-                # NGAY, khong ban them Zenoh query nao cho goal da lac hau nay.
+                # A newer goal has already been dispatched (e.g. from a
+                # replan) -- exit immediately, don't send any more Zenoh
+                # queries for this now-stale goal.
                 return
             with self._nav_result_lock:
                 if self._nav_result_goal_id not in (None, nav_goal_id) or (
@@ -320,15 +309,26 @@ class Tb3RobotAdapter(RobotAdapter):
                 self.node.get_logger().info(f'Navigation goal {nav_handle.goal_id} was cancelled')
                 return True
             case _:
-                self.nav_issue_ticket = self.create_nav_issue_ticket(
-                    'navigation',
-                    f'Navigate to pose result status [{status}]',
-                    nav_handle.goal_id
-                )
-                self.replan_counts += 1
-                self.update_handle.more().replan()
+                # request_replan() is the one RobotUpdateHandle mutator that
+                # does not hop onto RMF's own worker thread internally
+                # (unlike update_position/update_battery_soc/etc, verified in
+                # rmf_ros2 source) -- it is called here directly from our own
+                # update_thread instead. _nav_result_status never changes on
+                # its own once _await_nav_result has exited, so without this
+                # per-goal_id guard this branch would call it every update
+                # cycle (e.g. 10Hz) indefinitely for the same stuck goal.
+                # Only issuing it once per goal_id keeps that exposure to a
+                # single call instead of an unbounded retry storm.
+                if self._replanned_for_goal_id != nav_handle.goal_id:
+                    self._replanned_for_goal_id = nav_handle.goal_id
+                    self.nav_issue_ticket = self.create_nav_issue_ticket(
+                        'navigation',
+                        f'Navigate to pose result status [{status}]',
+                        nav_handle.goal_id
+                    )
+                    self.replan_counts += 1
+                    self.update_handle.more().replan()
                 return False
-
 
     def create_nav_issue_ticket(self, category, msg, nav_goal_id=None):
         if self.update_handle is None:
@@ -352,6 +352,7 @@ class Tb3RobotAdapter(RobotAdapter):
             if exec_handle.execution and exec_handle.goal_id and self._is_navigation_done(exec_handle):
                 exec_handle.execution.finished()
                 exec_handle.execution = None
+                exec_handle.goal_id = None
                 self.replan_counts = 0
             activity_identifier = exec_handle.activity
 
@@ -390,7 +391,7 @@ class Tb3RobotAdapter(RobotAdapter):
         )
 
         def _dispatch():
-            _t0_send_goal = time.monotonic()
+            t0_send_goal = time.monotonic()
             replies = self.zenoh_session.get(
                 namespacify('navigate_to_pose/_action/send_goal', self.name),
                 payload=req.serialize(),
@@ -400,10 +401,9 @@ class Tb3RobotAdapter(RobotAdapter):
                 try:
                     rep = NavigateToPose_SendGoal_Response.deserialize(reply.ok.payload.to_bytes())
                     if rep.accepted:
-                        _dt_send_goal = time.monotonic() - _t0_send_goal
+                        dt_send_goal = time.monotonic() - t0_send_goal
                         self.node.get_logger().info(
-                            f'[healthcheck] send_goal round-trip cho [{self.name}]: '
-                            f'{_dt_send_goal:.3f}s'
+                            f'send_goal round-trip for [{self.name}]: {dt_send_goal:.3f}s.'
                         )
                         self.node.get_logger().info(f'Navigation goal {nav_goal_id} accepted')
                         with self._nav_result_lock:
@@ -417,12 +417,28 @@ class Tb3RobotAdapter(RobotAdapter):
                         ).start()
                         return
 
+                    self.node.get_logger().warn(f'send_goal for [{self.name}] was rejected.')
                     self.replan_counts += 1
                     if self.update_handle:
                         self._pending_replan = True
+                    nav_handle.set_goal_id(None)
                     return
                 except Exception as e:
+                    self.node.get_logger().debug(
+                        f'Failed to handle send_goal reply for [{self.name}]: {e}'
+                    )
                     continue
+
+            # No reply accepted the goal (Zenoh timeout with zero replies, or
+            # every reply above failed to parse). nav_handle.mutex starts
+            # pre-locked and is otherwise only released on the accepted-goal
+            # path above -- release it here too, or the next _request_stop()
+            # on this handle would block forever.
+            self.node.get_logger().warn(f'send_goal for [{self.name}] got no valid reply.')
+            self.replan_counts += 1
+            if self.update_handle:
+                self._pending_replan = True
+            nav_handle.set_goal_id(None)
 
         threading.Thread(target=_dispatch, daemon=True).start()
 
@@ -455,7 +471,6 @@ class Tb3RobotAdapter(RobotAdapter):
             timeout=2.0,
         )
 
-
     def stop(self, activity: ActivityIdentifier):
         exec_handle = self.exec_handle
         if exec_handle is None:
@@ -466,7 +481,7 @@ class Tb3RobotAdapter(RobotAdapter):
             self.exec_handle = None
 
     def execute_action(self, category, description, execution):
-        self.node.get_logger().warn (
-            f'Action [{category}] is not supported for robot [{self.name}]. '
+        self.node.get_logger().warn(
+            f'Action [{category}] is not supported for robot [{self.name}].'
         )
-        execution.finished() 
+        execution.finished()

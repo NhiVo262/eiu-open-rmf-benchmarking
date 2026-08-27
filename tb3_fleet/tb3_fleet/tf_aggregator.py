@@ -61,7 +61,7 @@ def main(argv=sys.argv):
 
     parser = argparse.ArgumentParser(
         prog='tf_aggregator',
-        description='Gop TF rieng cua 1 robot (namespace) vao /tf, /tf_static dung chung, giu frame map chung.')
+        description="Merge one robot's own TF (namespace) into the shared /tf, /tf_static, keeping the map frame shared.")
     parser.add_argument('--robot-namespace', '-n', required=True, type=str)
     args = parser.parse_args(args_without_ros[1:])
 

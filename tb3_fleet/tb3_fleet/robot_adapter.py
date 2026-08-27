@@ -63,61 +63,41 @@ class RobotAdapter(ABC):
         self.fleet_handle = fleet_handle
         self.update_handle = None
 
-    """
-    This method returns the battery state of charge as a float, with value
-    between 0 and 1.0.
-    """
     @abstractmethod
     def get_battery_soc(self) -> float:
+        """Return battery state of charge as a float between 0 and 1.0."""
         ...
 
-    """
-    This method returns the name of the current map that the robot is
-    localized on.
-    """
     @abstractmethod
     def get_map_name(self) -> str:
+        """Return the name of the map the robot is currently localized on."""
         ...
 
-    """
-    This method returns the last known 2D position in meters and orientation
-    (yaw) of the robot in radians as a list of 3 floats, in the form of
-    [x, y, yaw]. If the last known position of the robot is not available,
-    returns None.
-    """
     @abstractmethod
     def get_pose(self) -> Annotated[list[float], 3] | None:
+        """Return the last known [x, y, yaw] pose (meters, radians), or None
+        if the last known position of the robot is not available."""
         ...
 
-    """
-    This method is called to update RMF with the latest robot state.
-    """
     @abstractmethod
     def update(self, state: rmf_easy.RobotState):
+        """Update RMF with the latest robot state."""
         ...
 
-    """
-    This method is called to send a navigation command to the robot.
-    """
     @abstractmethod
     def navigate(
         self,
         destination: rmf_easy.Destination,
         execution: rmf_easy.CommandExecution
     ):
+        """Send a navigation command to the robot."""
         ...
 
-    """
-    This method is called to stop the execution/continuation of the provided
-    activity.
-    """
     @abstractmethod
     def stop(self, activity: ActivityIdentifier):
+        """Stop execution/continuation of the given activity."""
         ...
 
-    """
-    This method is called to send a custom action command to the robot.
-    """
     @abstractmethod
     def execute_action(
         self,
@@ -125,4 +105,5 @@ class RobotAdapter(ABC):
         description: dict,
         execution: ActivityIdentifier
     ):
+        """Send a custom action command to the robot."""
         ...

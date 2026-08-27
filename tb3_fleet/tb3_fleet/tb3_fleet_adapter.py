@@ -1,22 +1,11 @@
 #!/usr/bin/env python3
 
-# Copyright 2024 Open Source Robotics Foundation, Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import argparse
 import sys
 import time
+import threading
+import gc
+import tracemalloc
 
 from tb3_fleet.tb3_robot_adapter import Tb3RobotAdapter
 import nudged
@@ -30,11 +19,14 @@ import rmf_adapter.fleet_update_handle as rmf_fleet
 from tf2_ros import Buffer
 import yaml
 import zenoh
-import threading
-import gc
-import os
-import tracemalloc
-from concurrent.futures import ThreadPoolExecutor
+
+CANARY_PERIOD_S = 1.0
+CANARY_JITTER_WARN_S = 0.5
+MEMORY_CHECK_PERIOD_S = 20.0
+MEMORY_TRACE_DEPTH = 15
+MEMORY_TOP_STATS = 8
+CYCLE_LOG_INTERVAL = 50
+SLOW_CYCLE_MULTIPLIER = 3
 
 
 # ------------------------------------------------------------------------------
@@ -58,10 +50,162 @@ def compute_transforms(level, coords, node=None):
     )
 
 
+def update_robot(robot: Tb3RobotAdapter):
+    robot_pose = robot.get_pose()
+    if robot_pose is None:
+        robot.node.get_logger().info(f'Failed to get pose of robot [{robot.name}]')
+        return
+
+    state = rmf_easy.RobotState(
+        robot.get_map_name(),
+        robot_pose,
+        robot.get_battery_soc()
+    )
+    robot.update(state)
+
+
+class CanaryWatchdog:
+
+    def __init__(self, node, period_s: float = CANARY_PERIOD_S,
+                 jitter_warn_s: float = CANARY_JITTER_WARN_S):
+        self._node = node
+        self._period_s = period_s
+        self._jitter_warn_s = jitter_warn_s
+        self._last_tick = time.monotonic()
+        node.create_timer(period_s, self._on_tick)
+
+    def _on_tick(self):
+        now = time.monotonic()
+        jitter = now - self._last_tick - self._period_s
+        self._last_tick = now
+        if jitter > self._jitter_warn_s:
+            self._node.get_logger().warn(
+                f'Canary heartbeat late by {jitter:.2f}s (tick interval '
+                f'{self._period_s:.1f}s).'
+            )
+        else:
+            self._node.get_logger().debug(f'Canary heartbeat ok, jitter={jitter:.3f}s.')
+
+
+def _get_process_rss_mb() -> float:
+    with open('/proc/self/status') as f:
+        for line in f:
+            if line.startswith('VmRSS:'):
+                return int(line.split()[1]) / 1024.0
+    return -1.0
+
+
+def _run_memory_watchdog(node, period_s: float = MEMORY_CHECK_PERIOD_S):
+    while rclpy.ok():
+        time.sleep(period_s)
+        rss_mb = _get_process_rss_mb()
+        current, peak = tracemalloc.get_traced_memory()
+        n_objects = len(gc.get_objects())
+        node.get_logger().info(
+            f'Memory: rss={rss_mb:.1f}MiB, tracemalloc current='
+            f'{current/1e6:.1f}MB peak={peak/1e6:.1f}MB, gc_objects={n_objects}.'
+        )
+        try:
+            snapshot = tracemalloc.take_snapshot()
+            for i, stat in enumerate(snapshot.statistics('lineno')[:MEMORY_TOP_STATS]):
+                node.get_logger().info(f'Memory top allocation #{i}: {stat}')
+        except Exception as e:
+            node.get_logger().warn(f'Failed to take tracemalloc snapshot: {e}')
+
+
+def _start_health_checks(node):
+    tracemalloc.start(MEMORY_TRACE_DEPTH)
+    CanaryWatchdog(node)
+    threading.Thread(target=_run_memory_watchdog, args=(node,), daemon=True).start()
+
+
+class CycleStats:
+    def __init__(self, target_period_s: float, log_interval: int = CYCLE_LOG_INTERVAL,
+                 slow_multiplier: float = SLOW_CYCLE_MULTIPLIER):
+        self.target_period_s = target_period_s
+        self._log_interval = log_interval
+        self._slow_threshold_s = target_period_s * slow_multiplier
+        self.count = 0
+        self.total_s = 0.0
+        self.max_s = 0.0
+
+    def record(self, node, cycle_dt: float):
+        self.count += 1
+        self.total_s += cycle_dt
+        self.max_s = max(self.max_s, cycle_dt)
+
+        if cycle_dt > self._slow_threshold_s:
+            node.get_logger().warn(
+                f'Update cycle took {cycle_dt:.2f}s, expected {self.target_period_s:.2f}s.'
+            )
+        if self.count % self._log_interval == 0:
+            avg = self.total_s / self.count
+            node.get_logger().info(
+                f'Update loop: {self.count} cycles, avg={avg:.3f}s, '
+                f'max={self.max_s:.3f}s, target={self.target_period_s:.3f}s.'
+            )
+
+
+def _run_update_loop(robots: dict, update_period: float, node):
+    stats = CycleStats(update_period)
+    while rclpy.ok():
+        t0 = time.monotonic()
+        for robot in robots.values():
+            update_robot(robot)
+        cycle_dt = time.monotonic() - t0
+        stats.record(node, cycle_dt)
+        time.sleep(max(0.0, update_period - cycle_dt))
+
+
+# ------------------------------------------------------------------------------
+# Fleet setup
+# ------------------------------------------------------------------------------
+def _accept_action(description: dict):
+    confirm = rmf_fleet.Confirmation()
+    confirm.accept()
+    return confirm
+
+
+def _register_plugin_actions(fleet_handle, plugin_config, node):
+    if plugin_config is None:
+        return
+    for plugin_name, plugin_data in plugin_config.items():
+        plugin_actions = plugin_data.get('actions')
+        if not plugin_actions:
+            node.get_logger().warn(
+                f'No action provided for plugin [{plugin_name}]! Fleet '
+                f'[{fleet_handle.fleet_name}] will not bid on tasks submitted '
+                f'with actions associated with this plugin unless the action '
+                f'is registered as a performable action for this fleet by '
+                f'the user.'
+            )
+            continue
+        for action in plugin_actions:
+            fleet_handle.more().add_performable_action(action, _accept_action)
+
+
+def _create_robot_adapters(fleet_config, config_yaml, node, zenoh_session,
+                            fleet_handle, tf_buffer) -> dict:
+    robots = {}
+    for robot_name in fleet_config.known_robots:
+        robot_config_yaml = config_yaml['rmf_fleet']['robots'][robot_name]
+        robot_config = fleet_config.get_known_robot_configuration(robot_name)
+        robots[robot_name] = Tb3RobotAdapter(
+            robot_name,
+            robot_config,
+            robot_config_yaml,
+            node,
+            zenoh_session,
+            fleet_handle,
+            fleet_config,
+            tf_buffer
+        )
+    return robots
+
+
 # ------------------------------------------------------------------------------
 # Fleet adapter
 # ------------------------------------------------------------------------------
-# TODO(ac): End-to-end testing with fleet adapter.
 def start_fleet_adapter(
     config_path: str,
     nav_graph_path: str,
@@ -71,7 +215,6 @@ def start_fleet_adapter(
 ):
     print('Starting fleet adapter...')
 
-    # Init adapter
     rmf_adapter.init_rclcpp()
 
     fleet_config = rmf_easy.FleetConfiguration.from_config_files(
@@ -83,58 +226,9 @@ def start_fleet_adapter(
     with open(config_path, 'r') as f:
         config_yaml = yaml.safe_load(f)
 
-    # ROS 2 node for the command handle
     fleet_name = fleet_config.fleet_name
     node = rclpy.node.Node(f'{fleet_name}_command_handle')
-
-    _canary_state = {'last': time.monotonic()}
-
-    def _canary_tick():
-        now = time.monotonic()
-        jitter = now - _canary_state['last'] - 1.0
-        _canary_state['last'] = now
-        if jitter > 0.5:
-            node.get_logger().warn(
-                f'[healthcheck] canary heartbeat tre {jitter:.2f}s so voi ky '
-                f'vong 1.0s -- SingleThreadedExecutor dang bi block boi 1 '
-                f'callback khac (rat co the la bid/negotiation tu rmf_core).'
-            )
-        else:
-            node.get_logger().debug(f'[healthcheck] canary ok, jitter={jitter:.3f}s')
-
-    node.create_timer(1.0, _canary_tick)
-
-    tracemalloc.start(15)
-
-    def _get_rss_mb():
-        with open('/proc/self/status') as f:
-            for line in f:
-                if line.startswith('VmRSS:'):
-                    return int(line.split()[1]) / 1024.0
-        return -1.0
-
-    def _memory_health_loop():
-        while rclpy.ok():
-            time.sleep(20.0)
-            rss_mb = _get_rss_mb()
-            cur, peak = tracemalloc.get_traced_memory()
-            n_objs = len(gc.get_objects())
-            node.get_logger().warn(
-                f'[healthcheck][mem] rss={rss_mb:.1f}MiB '
-                f'tracemalloc_current={cur/1e6:.1f}MB tracemalloc_peak={peak/1e6:.1f}MB '
-                f'gc_objects={n_objs}'
-            )
-            try:
-                snap = tracemalloc.take_snapshot()
-                top = snap.statistics('lineno')[:8]
-                for i, stat in enumerate(top):
-                    node.get_logger().warn(f'[healthcheck][mem] top{i}: {stat}')
-            except Exception as e:
-                node.get_logger().warn(f'[healthcheck][mem] tracemalloc snapshot failed: {e}')
-
-    mem_thread = threading.Thread(target=_memory_health_loop, daemon=True)
-    mem_thread.start()
-
+    _start_health_checks(node)
 
     adapter = Adapter.make(f'{fleet_name}_fleet_adapter')
     assert adapter, (
@@ -159,90 +253,29 @@ def start_fleet_adapter(
         fleet_config.add_robot_coordinates_transformation(level, tf)
 
     fleet_handle = adapter.add_easy_fleet(fleet_config)
-    assert fleet_handle is not None, \
-        'Failed to create EasyFullControl fleet, \
-        please verify that the fleet config is valid.'
+    assert fleet_handle is not None, (
+        'Failed to create EasyFullControl fleet, please verify that the '
+        'fleet config is valid.'
+    )
 
-    # Initialize zenoh
     zenoh_config = zenoh.Config.from_file(zenoh_config_path) \
         if zenoh_config_path is not None else zenoh.Config()
     zenoh_session = zenoh.open(zenoh_config)
-
-    # Set up tf2 buffer
     tf_buffer = Buffer()
 
-    # Set up custom action plugins
-    plugin_config = config_yaml.get('plugins')
+    _register_plugin_actions(fleet_handle, config_yaml.get('plugins'), node)
 
-    def _accept_action(description: dict):
-        confirm = rmf_fleet.Confirmation()
-        confirm.accept()
-        return confirm
+    robots = _create_robot_adapters(
+        fleet_config, config_yaml, node, zenoh_session, fleet_handle, tf_buffer
+    )
 
-    if plugin_config is not None:
-        for plugin_name, plugin_data in plugin_config.items():
-            plugin_actions = plugin_data.get('actions')
-            if not plugin_actions:
-                node.get_logger().warn(
-                    f'No action provided for plugin [{plugin_name}]! Fleet '
-                    f'[{fleet_handle.fleet_name}] will not bid on tasks submitted '
-                    f'with actions associated with this plugin unless the action '
-                    f'is registered as a performable action for this fleet by '
-                    f'the user.'
-                )
-                continue
-            for action in plugin_actions:
-                fleet_handle.more().add_performable_action(action, _accept_action)
-
-    robots = {}
-    for robot_name in fleet_config.known_robots:
-        robot_config_yaml = config_yaml['rmf_fleet']['robots'][robot_name]
-        robot_config = fleet_config.get_known_robot_configuration(robot_name)
-        
-        robots[robot_name] = Tb3RobotAdapter(
-            robot_name,
-            robot_config,
-            robot_config_yaml,
-            plugin_config,
-            node,
-            zenoh_session,
-            fleet_handle,
-            fleet_config,
-            tf_buffer
-        )
     update_frequency = config_yaml['rmf_fleet'].get('robot_state_update_frequency', 10.0)
     update_period = 1.0 / update_frequency
-    _cycle_stats = {'count': 0, 'total': 0.0, 'max': 0.0}
-
-    def update_loop():
-        while rclpy.ok():
-            t0 = time.monotonic()
-            for robot in robots.values():
-                update_robot(robot)
-            cycle_dt = time.monotonic() - t0
-
-            _cycle_stats['count'] += 1
-            _cycle_stats['total'] += cycle_dt
-            _cycle_stats['max'] = max(_cycle_stats['max'], cycle_dt)
-            if cycle_dt > update_period * 3:
-                node.get_logger().warn(
-                    f'[healthcheck] update cycle mat {cycle_dt:.2f}s '
-                    f'(ky vong {update_period:.2f}s) -- get_pose()/Zenoh '
-                    f'query cua 1 hoac nhieu robot dang cham.'
-                )
-            if _cycle_stats['count'] % 50 == 0:
-                avg = _cycle_stats['total'] / _cycle_stats['count']
-                node.get_logger().info(
-                    f'[healthcheck] update_loop: {_cycle_stats["count"]} cycles, '
-                    f'avg={avg:.3f}s, max={_cycle_stats["max"]:.3f}s, '
-                    f'target={update_period:.3f}s'
-                )
-
-            time.sleep(max(0.0, update_period - cycle_dt))
-
-    update_thread = threading.Thread(target=update_loop, daemon=True)
+    update_thread = threading.Thread(
+        target=_run_update_loop, args=(robots, update_period, node), daemon=True
+    )
     update_thread.start()
-    node.get_logger().info(f'Started update thread with period {update_period} seconds')
+    node.get_logger().info(f'Started update thread with period {update_period:.3f}s')
 
     rclpy_executor = rclpy.executors.SingleThreadedExecutor()
     rclpy_executor.add_node(node)
@@ -257,29 +290,10 @@ def start_fleet_adapter(
         zenoh_session.close()
 
 
-
-# Parallel processing solution derived from
-# https://stackoverflow.com/a/59385935
-
-def update_robot(robot: Tb3RobotAdapter):
-    robot_pose = robot.get_pose()
-    if robot_pose is None:
-        robot.node.get_logger().info(f'Failed to pose of robot [{robot.name}]')
-        return None
-
-    state = rmf_easy.RobotState(
-        robot.get_map_name(),
-        robot_pose,
-        robot.get_battery_soc()
-    )
-    robot.update(state)
-
-
 # ------------------------------------------------------------------------------
 # Main
 # ------------------------------------------------------------------------------
 def main(argv=sys.argv):
-    # Init rclpy
     rclpy.init(args=argv)
     args_without_ros = rclpy.utilities.remove_ros_args(argv)
 
