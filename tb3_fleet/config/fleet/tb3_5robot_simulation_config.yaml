@@ -1,0 +1,124 @@
+rmf_fleet:
+  name: "tb3_fleet"
+  limits:
+    linear: [0.22, 0.5]    # TurtleBot3 Burger max: 0.22 m/s
+    angular: [1.82, 2.0]   # TurtleBot3 Burger max: 1.82 rad/s
+  profile:
+    footprint: 0.178        # TurtleBot3 Burger actual radius
+    vicinity: 0.45
+  reversible: True
+  battery_system:
+    voltage: 11.1           # 3S LiPo
+    capacity: 1.8           # Ahr
+    charging_current: 1.0   # A
+  mechanical_system:
+    mass: 1.5               # kg
+    moment_of_inertia: 0.1  # kgm^2
+    friction_coefficient: 0.22
+  ambient_system:
+    power: 10.0             # W
+  tool_system:
+    power: 0.0              # W
+  recharge_threshold: 0.10
+  recharge_soc: 1.0
+  publish_fleet_state: 10.0
+  account_for_battery_drain: True
+  task_capabilities:
+    loop: True
+    delivery: False
+  finishing_request: "nothing"
+  responsive_wait: True
+  robots:
+    tb3_robot1:
+      charger: "charger_1"
+      responsive_wait: False
+      navigation_stack: 2
+
+      init_timeout_sec: 120
+      initial_map: "world_tb3"
+      map_frame: "map"
+      robot_frame: "base_footprint"
+
+      maps:
+        world_tb3:
+          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml"
+
+    tb3_robot2:
+      charger: "charger_2"
+      responsive_wait: False
+      navigation_stack: 2
+
+      init_timeout_sec: 120
+      initial_map: "world_tb3"
+      map_frame: "map"
+      robot_frame: "base_footprint"
+
+      maps:
+        world_tb3:
+          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml"
+
+    tb3_robot3:
+      charger: "charger_1"
+      responsive_wait: False
+      navigation_stack: 2
+
+      init_timeout_sec: 120
+      initial_map: "world_tb3"
+      map_frame: "map"
+      robot_frame: "base_footprint"
+
+      maps:
+        world_tb3:
+          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml"
+
+    tb3_robot4:
+      charger: "charger_2"
+      responsive_wait: False
+      navigation_stack: 2
+
+      init_timeout_sec: 120
+      initial_map: "world_tb3"
+      map_frame: "map"
+      robot_frame: "base_footprint"
+
+      maps:
+        world_tb3:
+          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml"
+
+    tb3_robot5:
+      charger: "charger_1"
+      responsive_wait: False
+      navigation_stack: 2
+
+      init_timeout_sec: 120
+      initial_map: "world_tb3"
+      map_frame: "map"
+      robot_frame: "base_footprint"
+
+      maps:
+        world_tb3:
+          map_url: "/home/eiu/rmf_ws/src/tb3_fleet/maps/turtlebot3_world/map.yaml"
+
+  robot_state_update_frequency: 10.0
+
+# TRANSFORM CONFIG =============================================================
+reference_coordinates:
+  world_tb3:
+    rmf: [[0.0, 0.0],
+          [1.0, 0.0],
+          [0.0, 1.0],
+          [1.0, 1.0]]
+    robot: [[0.0, 0.0],
+            [1.0, 0.0],
+            [0.0, 1.0],
+            [1.0, 1.0]]
+
+# FLEET MANAGER ================================================================
+fleet_manager:
+  ip: "127.0.0.1"
+  port: 7001
+  user: "some_user"
+  password: "some_password"
+  robot_state_update_frequency: 10.0
+
+# PLUGINS ======================================================================

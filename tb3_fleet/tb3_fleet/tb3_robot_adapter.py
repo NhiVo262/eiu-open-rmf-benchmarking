@@ -309,16 +309,6 @@ class Tb3RobotAdapter(RobotAdapter):
                 self.node.get_logger().info(f'Navigation goal {nav_handle.goal_id} was cancelled')
                 return True
             case _:
-                # request_replan() is the one RobotUpdateHandle mutator that
-                # does not hop onto RMF's own worker thread internally
-                # (unlike update_position/update_battery_soc/etc, verified in
-                # rmf_ros2 source) -- it is called here directly from our own
-                # update_thread instead. _nav_result_status never changes on
-                # its own once _await_nav_result has exited, so without this
-                # per-goal_id guard this branch would call it every update
-                # cycle (e.g. 10Hz) indefinitely for the same stuck goal.
-                # Only issuing it once per goal_id keeps that exposure to a
-                # single call instead of an unbounded retry storm.
                 if self._replanned_for_goal_id != nav_handle.goal_id:
                     self._replanned_for_goal_id = nav_handle.goal_id
                     self.nav_issue_ticket = self.create_nav_issue_ticket(
@@ -429,11 +419,6 @@ class Tb3RobotAdapter(RobotAdapter):
                     )
                     continue
 
-            # No reply accepted the goal (Zenoh timeout with zero replies, or
-            # every reply above failed to parse). nav_handle.mutex starts
-            # pre-locked and is otherwise only released on the accepted-goal
-            # path above -- release it here too, or the next _request_stop()
-            # on this handle would block forever.
             self.node.get_logger().warn(f'send_goal for [{self.name}] got no valid reply.')
             self.replan_counts += 1
             if self.update_handle:
