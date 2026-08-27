@@ -16,7 +16,7 @@
 
 from abc import ABC, abstractmethod
 from threading import Lock
-from typing import Annotated
+from typing import Annotated  
 
 import rmf_adapter.easy_full_control as rmf_easy
 from rmf_adapter.robot_update_handle import ActivityIdentifier
