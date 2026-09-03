@@ -194,8 +194,25 @@ def generate_launch_description():
             remappings=[('/tf', 'tf'), ('/tf_static', 'tf_static')],
         )
 
+        # Only needed to give RViz a merged /tf across all robots -- pointless
+        # overhead on every headless benchmark run, where use_rviz is False.
         tf_aggregator_cmd = ExecuteProcess(
             cmd=['python3', '-m', 'tb3_fleet.tf_aggregator', '--robot-namespace', name],
+            output='screen',
+            condition=IfCondition(use_rviz),
+        )
+
+        # Seeds the same x_pose/y_pose used to spawn this robot above, so the
+        # spawn point and the AMCL initial pose can never drift apart. Retries
+        # until AMCL is actually subscribed instead of a single fire-and-forget
+        # publish (previously a manual `ros2 topic pub .../initialpose` step).
+        initial_pose_cmd = ExecuteProcess(
+            cmd=[
+                'python3', '-m', 'tb3_fleet.set_initial_pose',
+                '--robot-namespace', name,
+                '--x', robot['x_pose'],
+                '--y', robot['y_pose'],
+            ],
             output='screen',
         )
 
@@ -226,6 +243,7 @@ def generate_launch_description():
                 robot_state_publisher_cmd,
                 bringup_cmd,
                 tf_aggregator_cmd,
+                initial_pose_cmd,
             ])],
         ))
 

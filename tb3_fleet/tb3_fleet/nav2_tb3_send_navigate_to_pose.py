@@ -58,7 +58,6 @@ def main(argv=sys.argv):
     parser.add_argument('--namespace', '-n', type=str, default='', help='Robot namespace')
 
 
-    # Parse dựa trên mảng tham số đã được lọc sạch cờ ROS 2
     args = parser.parse_args(args_without_ros[1:])
 
     # Create Zenoh Config from file if provided, or a default one otherwise

@@ -82,7 +82,7 @@ def generate_launch_description():
             arguments=['--ros-args', '--log-level', 'debug'],
 
             parameters=[{
-                'use_sim_time': False,
+                'use_sim_time': use_sim_time,
                 'bidding_time_window': bidding_time_window,
                 'use_unique_hex_string_with_task_id': use_unique_hex_string_with_task_id,
                 'server_uri': server_uri
