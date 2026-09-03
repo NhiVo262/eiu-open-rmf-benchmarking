@@ -122,8 +122,16 @@ RUN chmod +x /entrypoint.sh
 # ----------------------------------------------------------
 ARG USER_UID=1000
 ARG USER_GID=1000
-RUN groupadd -g ${USER_GID} eiu \
-    && useradd -m -u ${USER_UID} -g ${USER_GID} eiu
+# The base image already ships a user/group at 1000:1000 (ubuntu:ubuntu) — if
+# USER_UID/GID collide with it (the common default case), rename that account
+# to eiu instead of failing on "UID/GID already exists"; otherwise create fresh.
+RUN if getent passwd ${USER_UID} >/dev/null 2>&1; then \
+        usermod -l eiu -d /home/eiu -m "$(getent passwd ${USER_UID} | cut -d: -f1)" && \
+        groupmod -n eiu "$(getent group ${USER_GID} | cut -d: -f1)" 2>/dev/null || true; \
+    else \
+        getent group ${USER_GID} >/dev/null 2>&1 || groupadd -g ${USER_GID} eiu; \
+        useradd -m -u ${USER_UID} -g ${USER_GID} eiu; \
+    fi
 WORKDIR /home/eiu
 USER eiu
 ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
