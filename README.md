@@ -94,18 +94,13 @@ Two containers built from the same image, defined in `scripts/docker-compose.yam
 | `vda5050` | VDA5050 adapter work (separate track) | 2 |
 
 ```bash
-export UID GID   # docker-compose.yaml builds the container's user with these,
-                  # so the bind-mounted workspace stays writable as your own user
+export UID GID   
 cd ~/eiu_ws/src/scripts
 docker compose up -d
 docker exec -it open-rmf bash
 ```
 
 ### Dependencies
-
-`tb3_fleet` imports from `free_fleet` (`from free_fleet.convert import ...`, `from free_fleet.ros2_types import ...`)
-at runtime, but it isn't vendored or fetched by any of the steps above — clone it into `src/` alongside `tb3_fleet`
-before building:
 
 ```bash
 cd ~/rmf_ws/src
