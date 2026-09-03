@@ -146,7 +146,7 @@ def generate_launch_description():
             '-c', fleet_config_file,
             '-n', adapter_nav_graph,
             '--zenoh-config', os.path.join(tb3_fleet_share, 'config', 'zenoh', 'tb3_fleet_adapter_zenoh_config.json5'),
-
+            '--use_sim_time', use_sim_time,
         ],
         output='screen',
     )

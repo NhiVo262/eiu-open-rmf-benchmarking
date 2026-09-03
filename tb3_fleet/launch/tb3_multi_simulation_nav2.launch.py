@@ -16,8 +16,8 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 
-# 5 robot, moi con spawn tai 1 waypoint da verify an toan (free + reachable + in-bounds)
-# trong world_tb3 nav_graph: charger_1, crossing_1, crossing_2, charger_2, loop_1
+# 3 robots, each spawned at a waypoint already verified safe (free + reachable
+# + in-bounds) on the world_tb3 nav_graph: charger_1, crossing_1, crossing_2.
 ROBOTS = [
     {'name': 'tb3_robot1', 'x_pose': '5.368',  'y_pose': '-6.654'},   # charger_1
     {'name': 'tb3_robot2', 'x_pose': '10.498', 'y_pose': '-6.565'},   # crossing_1
@@ -78,17 +78,17 @@ def generate_launch_description():
 
     declare_use_rviz_cmd = DeclareLaunchArgument(
         'use_rviz', default_value='False',
-        description='Whether to start global RViz view (mac dinh tat de giam tai CPU khi benchmark N=5)')
+        description='Whether to start global RViz view (off by default to reduce CPU load during multi-robot benchmarking)')
 
     declare_use_gzclient_cmd = DeclareLaunchArgument(
         'use_gzclient', default_value='False',
-        description='Whether to start Gazebo GUI client (mac dinh tat de giam tai CPU khi benchmark N=5)')
+        description='Whether to start Gazebo GUI client (off by default to reduce CPU load during multi-robot benchmarking)')
 
     declare_rviz_config_file_cmd = DeclareLaunchArgument(
         'rviz_config_file',
         default_value=os.path.join(
             tb3_fleet_dir, 'config', 'rviz2_config.rviz'),
-        description='Full path to RViz config file (custom, topic da tro ve tb3_robot1 de hien map/costmap)')
+        description='Full path to RViz config file (custom, topics point at tb3_robot1 to display its map/costmap)')
 
     set_gz_resource_path = AppendEnvironmentVariable(
         'GZ_SIM_RESOURCE_PATH',
@@ -184,10 +184,11 @@ def generate_launch_description():
                 'use_sim_time': use_sim_time,
                 'robot_description': robot_desc,
             }],
-            # tf2 broadcaster mac dinh dung topic tuyet doi /tf, /tf_static
-            # bo qua namespace neu khong remap tuong minh - can cho Nav2/AMCL
-            # rieng cua tung robot hoat dong dung (khong dung frame_prefix o day,
-            # viec gop/prefix frame cho RViz2 chung se do tf_aggregator lo rieng).
+            # tf2 broadcaster publishes to the absolute /tf, /tf_static topics by
+            # default, ignoring namespace unless explicitly remapped -- needed
+            # for each robot's own Nav2/AMCL to work correctly (not using
+            # frame_prefix here -- merging/prefixing frames for the shared
+            # RViz view is tf_aggregator's job).
             remappings=[('/tf', 'tf'), ('/tf_static', 'tf_static')],
         )
 
@@ -274,7 +275,7 @@ def generate_launch_description():
     for group in robot_groups:
         ld.add_action(group)
 
-    # Thêm node global_rviz_cmd vào cuối LaunchDescription
+    # Add the global_rviz_cmd node at the end of the LaunchDescription
     ld.add_action(global_rviz_cmd)
 
     return ld

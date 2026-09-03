@@ -73,7 +73,7 @@ def generate_launch_description():
             bringup_dir, 'rviz', 'nav2_default_view.rviz'),
         description='Full path to RViz config file')
 
-    # Append GZ_SIM_RESOURCE_PATH - dùng AppendEnvironmentVariable như mẫu
+    # Append GZ_SIM_RESOURCE_PATH using AppendEnvironmentVariable
     set_gz_resource_path = AppendEnvironmentVariable(
         'GZ_SIM_RESOURCE_PATH',
         os.path.join(tb3_gazebo_dir, 'models')

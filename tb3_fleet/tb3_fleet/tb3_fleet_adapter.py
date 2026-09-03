@@ -149,10 +149,10 @@ class CycleStats:
 def _run_update_loop(robots: dict, update_period: float, node):
     stats = CycleStats(update_period)
     while rclpy.ok():
-        t0 = time.monotonic()
+        t0 = node.get_clock().now()
         for robot in robots.values():
             update_robot(robot)
-        cycle_dt = time.monotonic() - t0
+        cycle_dt = (node.get_clock().now() - t0).nanoseconds / 1e9
         stats.record(node, cycle_dt)
         time.sleep(max(0.0, update_period - cycle_dt))
 
@@ -308,8 +308,12 @@ def main(argv=sys.argv):
                         default='',
                         help='URI of the api server to transmit state and '
                              'task information.')
-    parser.add_argument('-sim', '--use_sim_time', action='store_true',
-                        help='Use sim time, default: false')
+    parser.add_argument('-sim', '--use_sim_time',
+                        type=lambda v: str(v).lower() in ('true', '1', 'yes'),
+                        default=False,
+                        help="Use sim time ('true'/'false'), default: false. "
+                             "Takes a value so a launch file can pass its own "
+                             "use_sim_time LaunchConfiguration through directly.")
     parser.add_argument(
         '--zenoh-config',
         type=str,

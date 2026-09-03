@@ -306,8 +306,29 @@ class Tb3RobotAdapter(RobotAdapter):
                     self.nav_issue_ticket = None
                 return True
             case GoalStatus.STATUS_CANCELED.value:
-                self.node.get_logger().info(f'Navigation goal {nav_handle.goal_id} was cancelled')
-                return True
+                # CommandExecution has no "failed"/"cancelled" signal distinct
+                # from finished() -- calling finished() here would tell RMF
+                # this leg is done and advance to the next step, making it
+                # believe the robot reached a destination it did not. Every
+                # cancel WE request (navigate() sending a new goal, stop())
+                # already swaps out self.exec_handle before its result would
+                # reach here, so seeing STATUS_CANCELED for the still-current
+                # handle means an unrequested cancellation -- treat it the
+                # same as an unexpected status: don't finish, trigger replan.
+                self.node.get_logger().warn(
+                    f'Navigation goal {nav_handle.goal_id} was cancelled unexpectedly '
+                    f'-- requesting replan instead of reporting it as reached'
+                )
+                if self._replanned_for_goal_id != nav_handle.goal_id:
+                    self._replanned_for_goal_id = nav_handle.goal_id
+                    self.nav_issue_ticket = self.create_nav_issue_ticket(
+                        'navigation',
+                        f'Navigate to pose was cancelled unexpectedly',
+                        nav_handle.goal_id
+                    )
+                    self.replan_counts += 1
+                    self.update_handle.more().replan()
+                return False
             case _:
                 if self._replanned_for_goal_id != nav_handle.goal_id:
                     self._replanned_for_goal_id = nav_handle.goal_id
