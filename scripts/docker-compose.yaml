@@ -1,8 +1,12 @@
 services:
   openRMF-Benchmarking:
-    build: .
+    build:
+      context: .
+      args:
+        USER_UID: ${UID:-1000}
+        USER_GID: ${GID:-1000}
     image: eiu-artc/open-rmf:jazzy-20260622
-    tty: true 
+    tty: true
     container_name: open-rmf
     network_mode: host
     volumes:
@@ -17,7 +21,7 @@ services:
       - QT_XCB_GL_INTEGRATION=xcb_glx
       - TURTLEBOT3_MODEL=burger
       - ROS_DOMAIN_ID=1
-      - CYCLONEDDS_URI=file:///home/eiu/rmf_ws/cyclonedds_wide.xml
+      - CYCLONEDDS_URI=file:///home/eiu/rmf_ws/src/scripts/cyclonedds_wide.xml
 
     devices:
       - /dev/dri:/dev/dri
@@ -28,7 +32,11 @@ services:
     privileged: true
 
   openRMF-vda5050:
-    build: .
+    build:
+      context: .
+      args:
+        USER_UID: ${UID:-1000}
+        USER_GID: ${GID:-1000}
     image: eiu-artc/open-rmf:jazzy-20260622
     tty: true 
     container_name: vda5050

@@ -115,9 +115,15 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # ----------------------------------------------------------
-# Create non-root user
+# Create non-root user matching the host user's UID/GID, so the
+# bind-mounted workspace stays writable without manual chown/chmod.
+# Pass --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g)
+# (docker-compose.yaml already does this via ${UID}/${GID}).
 # ----------------------------------------------------------
-RUN useradd -m eiu 
+ARG USER_UID=1000
+ARG USER_GID=1000
+RUN groupadd -g ${USER_GID} eiu \
+    && useradd -m -u ${USER_UID} -g ${USER_GID} eiu
 WORKDIR /home/eiu
 USER eiu
 ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
