@@ -81,11 +81,7 @@ class Nav2TfHandler:
                 t, f'{self.robot_name}_TfListener')
 
     def get_transform(self) -> TransformStamped | None:
-        # lookup_transform() is a LOCAL lookup on tf_buffer (filled
-        # asynchronously by the Zenoh subscriber in _on_tf above), not a
-        # network call. If this is slow (>50ms), tf_buffer/tf2 itself has a
-        # problem (e.g. the buffer is too large, or the thread is fighting
-        # for the GIL) -- it's not a network delay.
+
         t0 = time.monotonic()
         try:
             transform = self.tf_buffer.lookup_transform(
@@ -244,9 +240,6 @@ class Tb3RobotAdapter(RobotAdapter):
         deadline = time.time() + 300.0
         while time.time() < deadline:
             if self._latest_goal_id != nav_goal_id:
-                # A newer goal has already been dispatched (e.g. from a
-                # replan) -- exit immediately, don't send any more Zenoh
-                # queries for this now-stale goal.
                 return
             with self._nav_result_lock:
                 if self._nav_result_goal_id not in (None, nav_goal_id) or (
@@ -306,15 +299,6 @@ class Tb3RobotAdapter(RobotAdapter):
                     self.nav_issue_ticket = None
                 return True
             case GoalStatus.STATUS_CANCELED.value:
-                # CommandExecution has no "failed"/"cancelled" signal distinct
-                # from finished() -- calling finished() here would tell RMF
-                # this leg is done and advance to the next step, making it
-                # believe the robot reached a destination it did not. Every
-                # cancel WE request (navigate() sending a new goal, stop())
-                # already swaps out self.exec_handle before its result would
-                # reach here, so seeing STATUS_CANCELED for the still-current
-                # handle means an unrequested cancellation -- treat it the
-                # same as an unexpected status: don't finish, trigger replan.
                 self.node.get_logger().warn(
                     f'Navigation goal {nav_handle.goal_id} was cancelled unexpectedly '
                     f'-- requesting replan instead of reporting it as reached'
