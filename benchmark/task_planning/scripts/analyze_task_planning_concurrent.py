@@ -31,6 +31,23 @@ Metrics (same definitions/formulas as analyze_task_planning.py):
         different concurrent tasks -- unlike the single-robot script's "next
         bid_notice" window bound, which breaks when 2+ tasks are submitted at
         nearly the same time.
+      A task where /fleet_states never showed an owning robot is left out of
+      the 1c mean (n_makespan_unresolved), but is a real failure, not missing
+      data -- every case checked corresponds to a robot the runner's own
+      repeats_summary.json records as having travelled 0.0m. See
+      makespan_resolution_rate_pct for how much of n_tasks the 1c mean above
+      actually covers.
+
+  1c, decomposed: queueing_s and execution_s split makespan into the part the
+      dispatcher controls and the part traffic/execution costs, using the
+      award time already in /rmf_task/dispatch_request -- no extra recording
+      needed. queueing_s = t_award - t_submit, execution_s = t_end - t_award.
+      Worth checking directly for scenarios run with a bidding_time_window
+      much larger than its 2.0s default (e.g. 60s): with the dispatcher
+      holding only one auction open at a time, a task submitted late in a
+      concurrent batch waits proportionally longer for its own bid window to
+      open, and that wait is queueing_s, not execution_s -- makespan alone
+      does not distinguish the two.
 
   Bonus for concurrent scenarios: counts of /rmf_traffic/negotiation_* and
   /rmf_traffic/blockade_* messages across the whole bag, as evidence real
@@ -163,6 +180,14 @@ def main():
         task['dispatch_id'] = dispatch_id
         task['dispatch_success'] = success_by_dispatch_id.get(dispatch_id, False)
 
+    # t_award: bag time of the dispatch_request that awarded this task_id --
+    # already in the bag, no extra recording needed. Used below to split
+    # makespan into queueing (dispatcher's own contribution, tunable via
+    # bidding_time_window) vs. execution (what the drive/traffic cost).
+    t_award_by_task = {msg.task_id: t for t, msg in dispatch_request}
+    for task in tasks:
+        task['t_award'] = t_award_by_task.get(task['task_id'])
+
     # t_submit: pair task_api_requests to tasks by submission order. Concurrent
     # bursts (2+ ApiRequests per repeat, back-to-back) still preserve relative
     # chronological order against the equally-ordered bid_notice_sorted list.
@@ -205,6 +230,8 @@ def main():
             # which would corrupt the 1c aggregate.
             task['t_end_physical'] = None
             task['makespan_s'] = None
+            task['queueing_s'] = None
+            task['execution_s'] = None
             continue
 
         window_start = task['t_submit']
@@ -227,12 +254,31 @@ def main():
         task['t_end_physical'] = last_moving_t
         task['makespan_s'] = last_moving_t - task['t_submit']
 
+        # Decompose: queueing is the dispatcher's own contribution (tunable
+        # via bidding_time_window), execution is what the drive/traffic cost
+        # on top of it. Only computable when t_award was actually observed.
+        if task['t_award'] is not None:
+            task['queueing_s'] = task['t_award'] - task['t_submit']
+            task['execution_s'] = last_moving_t - task['t_award']
+        else:
+            task['queueing_s'] = None
+            task['execution_s'] = None
+
     # ---- aggregate (pooled across all robots/tasks) ----
     n = len(tasks)
     dispatch_success_rate = 100.0 * sum(1 for t in tasks if t['dispatch_success']) / n if n else None
     latencies = [t['planning_latency_s'] for t in tasks if t['planning_latency_s'] is not None]
     makespans = [t['makespan_s'] for t in tasks if t['makespan_s'] is not None]
+    queueings = [t['queueing_s'] for t in tasks if t['queueing_s'] is not None]
+    executions = [t['execution_s'] for t in tasks if t['execution_s'] is not None]
     n_makespan_unresolved = sum(1 for t in tasks if t['makespan_s'] is None)
+    # "Unresolved" means fleet_states never showed a robot holding this
+    # task_id long enough to bound a window -- in every case checked against
+    # the runner's own repeats_summary.json, that robot's total_distance_m
+    # was 0.0. These are real task failures, not missing data, and the mean
+    # above is computed over n - n_makespan_unresolved tasks, not n --
+    # resolution_rate_pct makes that gap visible instead of implicit.
+    makespan_resolution_rate_pct = 100.0 * (n - n_makespan_unresolved) / n if n else None
 
     # ---- per-robot breakdown ----
     per_robot = {}
@@ -253,11 +299,14 @@ def main():
         'robots': args.robots,
         'n_tasks': n,
         'n_makespan_unresolved': n_makespan_unresolved,
+        'makespan_resolution_rate_pct': makespan_resolution_rate_pct,
         'per_task': tasks,
         'per_robot': per_robot,
         '1a_task_dispatch_success_rate_pct': dispatch_success_rate,
         '1b_planning_latency_s': summarize(latencies),
         '1c_makespan_s': summarize(makespans),
+        '1c_queueing_s': summarize(queueings),
+        '1c_execution_s': summarize(executions),
         'negotiation_message_counts': negotiation_counts,
         'blockade_message_counts': blockade_counts,
     }

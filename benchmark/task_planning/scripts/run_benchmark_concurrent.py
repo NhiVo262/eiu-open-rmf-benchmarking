@@ -40,9 +40,22 @@ class ConcurrentBenchRunner(Node):
         self.create_subscription(DispatchStates, '/dispatch_states', self._on_dispatch, 10)
         self.create_subscription(FleetState, '/fleet_states', self._on_fleet_state, 10)
         self.pending_responses = {}   # request_id -> response dict (once received)
-        self.dispatch_status = {}     # task_id -> DispatchState.status
+        self.dispatch_status = {}     # task_id -> DispatchState.status (covers auction/assignment
+                                       # only -- rmf_task_ros2's Dispatcher.cpp never publishes true
+                                       # execution completion over a recordable ROS2 topic, it goes
+                                       # out through a non-ROS2 broadcast client instead)
         self.last_xy = {name: None for name in robot_names}
         self.total_distance = {name: 0.0 for name in robot_names}
+
+        # Real completion signal, reconstructed from /fleet_states instead: a
+        # task counts as "released" once the robot that was holding its
+        # task_id moves on to something else (finished, reassigned, or idle).
+        # Until a task is released, it is still in progress as far as RMF is
+        # concerned -- distance travelled says nothing about that.
+        self.tracked_task_ids = set()
+        self.task_seen_robot = {}     # task_id -> last robot name seen holding it
+        self.task_released = {}       # task_id -> True once released
+        self._last_robot_task = {name: None for name in robot_names}
 
     def _on_response(self, msg: ApiResponse):
         if msg.request_id in self.pending_responses and self.pending_responses[msg.request_id] is None:
@@ -63,6 +76,23 @@ class ConcurrentBenchRunner(Node):
                 if d > POS_EPS:
                     self.total_distance[r.name] += d
             self.last_xy[r.name] = xy
+
+            prev_task_id = self._last_robot_task.get(r.name)
+            if (prev_task_id and prev_task_id in self.tracked_task_ids
+                    and r.task_id != prev_task_id):
+                self.task_released[prev_task_id] = True
+            if r.task_id in self.tracked_task_ids:
+                self.task_seen_robot[r.task_id] = r.name
+            self._last_robot_task[r.name] = r.task_id
+
+    def start_tracking_tasks(self, task_ids):
+        self.tracked_task_ids = set(tid for tid in task_ids if tid)
+        self.task_seen_robot = {tid: None for tid in self.tracked_task_ids}
+        self.task_released = {tid: False for tid in self.tracked_task_ids}
+        self._last_robot_task = {name: None for name in self.robot_names}
+
+    def all_tracked_tasks_released(self) -> bool:
+        return bool(self.tracked_task_ids) and all(self.task_released.values())
 
     def submit_task(self, request_id, places, rounds, requester):
         msg = ApiRequest()
@@ -156,17 +186,37 @@ def main():
             entry['tasks'].append(task_entry)
 
         node.reset_distances()
+        node.start_tracking_tasks(task_ids)
         deadline = time.time() + args.fixed_wait
         while time.time() < deadline:
             rclpy.spin_once(node, timeout_sec=0.3)
+            if node.all_tracked_tasks_released():
+                break
+        entry['fixed_wait_exceeded'] = time.time() >= deadline
 
         entry['completion_wall_time'] = time.time()
         entry['dispatch_status'] = {tid: node.dispatch_status.get(tid) for tid in task_ids}
         entry['total_distance_m'] = {name: round(d, 3) for name, d in node.total_distance.items()}
+        entry['task_released'] = dict(node.task_released)
+
+        # A robot counts as timed out if RMF never released it from one of
+        # this repeat's tasks before fixed_wait elapsed -- that is a real
+        # failure signal (the task was still in progress when the clock ran
+        # out), not an inference from how far the robot happened to travel.
+        # short_distance is now reserved for tasks RMF DID release where the
+        # robot still moved less than expected -- a genuinely short route,
+        # not a truncated one.
+        robot_released = {}
+        for tid in task_ids:
+            robot = node.task_seen_robot.get(tid)
+            if robot:
+                robot_released[robot] = node.task_released.get(tid, False)
 
         outcomes = {}
         for name, dist in node.total_distance.items():
-            if args.min_expected_distance_m is not None and dist < args.min_expected_distance_m:
+            if name in robot_released and not robot_released[name]:
+                outcomes[name] = 'timeout'
+            elif args.min_expected_distance_m is not None and dist < args.min_expected_distance_m:
                 outcomes[name] = 'short_distance'
             else:
                 outcomes[name] = 'completed'
