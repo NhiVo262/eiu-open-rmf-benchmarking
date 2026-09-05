@@ -48,14 +48,17 @@ class ConcurrentBenchRunner(Node):
         self.total_distance = {name: 0.0 for name in robot_names}
 
         # Real completion signal, reconstructed from /fleet_states instead: a
-        # task counts as "released" once the robot that was holding its
-        # task_id moves on to something else (finished, reassigned, or idle).
-        # Until a task is released, it is still in progress as far as RMF is
-        # concerned -- distance travelled says nothing about that.
+        # task counts as "released" once NO robot in this fleet is holding its
+        # task_id anymore, after at least one robot was seen holding it. This
+        # is a level check (is anyone holding it *right now*), not an edge
+        # check on one robot's own task_id changing -- a task reassigned
+        # mid-flight to a different robot (a real outcome of RMF's own
+        # replan/renegotiation, not hypothetical) still has a holder at every
+        # sample, so it is correctly never marked released while in progress.
         self.tracked_task_ids = set()
-        self.task_seen_robot = {}     # task_id -> last robot name seen holding it
-        self.task_released = {}       # task_id -> True once released
-        self._last_robot_task = {name: None for name in robot_names}
+        self.task_seen_robot = {}     # task_id -> most recent robot name seen holding it
+        self.task_ever_held = {}      # task_id -> True once any robot has held it at least once
+        self.task_released = {}       # task_id -> True once held, then held by no one
 
     def _on_response(self, msg: ApiResponse):
         if msg.request_id in self.pending_responses and self.pending_responses[msg.request_id] is None:
@@ -66,6 +69,7 @@ class ConcurrentBenchRunner(Node):
             self.dispatch_status[entry.task_id] = entry.status
 
     def _on_fleet_state(self, msg: FleetState):
+        current_holder = {}  # task_id -> robot name, for tracked tasks, from THIS message only
         for r in msg.robots:
             if r.name not in self.robot_names:
                 continue
@@ -77,19 +81,22 @@ class ConcurrentBenchRunner(Node):
                     self.total_distance[r.name] += d
             self.last_xy[r.name] = xy
 
-            prev_task_id = self._last_robot_task.get(r.name)
-            if (prev_task_id and prev_task_id in self.tracked_task_ids
-                    and r.task_id != prev_task_id):
-                self.task_released[prev_task_id] = True
             if r.task_id in self.tracked_task_ids:
+                current_holder[r.task_id] = r.name
                 self.task_seen_robot[r.task_id] = r.name
-            self._last_robot_task[r.name] = r.task_id
+
+        for tid in self.tracked_task_ids:
+            if tid in current_holder:
+                self.task_ever_held[tid] = True
+            elif self.task_ever_held.get(tid):
+                # Someone held it before, no one in this fleet holds it now.
+                self.task_released[tid] = True
 
     def start_tracking_tasks(self, task_ids):
         self.tracked_task_ids = set(tid for tid in task_ids if tid)
         self.task_seen_robot = {tid: None for tid in self.tracked_task_ids}
+        self.task_ever_held = {tid: False for tid in self.tracked_task_ids}
         self.task_released = {tid: False for tid in self.tracked_task_ids}
-        self._last_robot_task = {name: None for name in self.robot_names}
 
     def all_tracked_tasks_released(self) -> bool:
         return bool(self.tracked_task_ids) and all(self.task_released.values())
