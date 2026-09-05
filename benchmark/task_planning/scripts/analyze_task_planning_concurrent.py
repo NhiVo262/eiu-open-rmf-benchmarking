@@ -210,16 +210,27 @@ def main():
 
     for task in tasks:
         task_id = task['task_id']
-        owning_robot = None
+        # Track every (robot, t) sample holding this task_id, not just the
+        # last one seen -- a replan re-auctions a task exactly like a new
+        # one, so it can be picked up by a different robot mid-flight (never
+        # observed in the official N=3 bags checked, but the dispatcher does
+        # not rule it out). Collapsing straight to "whichever robot holds it
+        # last" and scanning that robot's position from t_submit onward would
+        # attribute movement from *before* it ever had this task to this
+        # task's makespan.
+        holder_segment_start = {}   # robot_name -> t of the first sample (in this scan) holding it
         last_seen_with_task_t = task['t_submit']
+        owning_robot = None
         for t, msg in fs_sorted:
             for name in args.robots:
                 r = robot_state(msg, name)
                 if r is not None and r.task_id == task_id:
+                    holder_segment_start.setdefault(name, t)
                     owning_robot = name
                     last_seen_with_task_t = t
                     break
         task['robot'] = owning_robot
+        task['reassigned'] = len(holder_segment_start) > 1
 
         if owning_robot is None:
             # fleet_states.task_id was observed to sometimes stay "stuck" on the
@@ -234,7 +245,12 @@ def main():
             task['execution_s'] = None
             continue
 
-        window_start = task['t_submit']
+        # Scan movement only from when the FINAL owning robot actually picked
+        # up this task_id -- not from t_submit -- so a reassignment can never
+        # pull in an earlier robot's unrelated movement. makespan_s itself
+        # still measures from t_submit (what the requester experienced end to
+        # end); only the movement scan window changes.
+        window_start = holder_segment_start[owning_robot]
         window_end = last_seen_with_task_t
         window = [(t, m) for t, m in fs_sorted if window_start <= t <= window_end]
 

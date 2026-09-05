@@ -27,7 +27,7 @@ POS_EPS = 0.01  # m, movement threshold between consecutive /fleet_states sample
 
 
 class ConcurrentBenchRunner(Node):
-    def __init__(self, robot_names):
+    def __init__(self, robot_names, release_grace_period_s: float = 5.0):
         super().__init__('bench_task_planning_concurrent_runner')
         self.robot_names = robot_names
         transient_qos = QoSProfile(
@@ -58,7 +58,19 @@ class ConcurrentBenchRunner(Node):
         self.tracked_task_ids = set()
         self.task_seen_robot = {}     # task_id -> most recent robot name seen holding it
         self.task_ever_held = {}      # task_id -> True once any robot has held it at least once
-        self.task_released = {}       # task_id -> True once held, then held by no one
+        self.task_released = {}       # task_id -> True once held, unheld for release_grace_period_s
+        self._unheld_since = {}       # task_id -> monotonic time first seen unheld (after being held)
+        # A replan re-auctions a task exactly like a new one, through the
+        # same one-auction-at-a-time dispatcher -- so a task can sit briefly
+        # unheld by anyone while reassignment is in flight, for up to roughly
+        # bidding_time_window. Confirming "released" only after this many
+        # seconds of nobody holding it avoids mistaking that gap for real
+        # completion (which would truncate measurement for the robot that
+        # picks the task back up). Set this >= the run's bidding_time_window
+        # for scenarios where replanning/renegotiation is expected (Crossing,
+        # Head-on, Shared Lane); the default is a minimal guard against
+        # single-sample /fleet_states jitter only.
+        self.release_grace_period_s = release_grace_period_s
 
     def _on_response(self, msg: ApiResponse):
         if msg.request_id in self.pending_responses and self.pending_responses[msg.request_id] is None:
@@ -85,18 +97,26 @@ class ConcurrentBenchRunner(Node):
                 current_holder[r.task_id] = r.name
                 self.task_seen_robot[r.task_id] = r.name
 
+        now = time.monotonic()
         for tid in self.tracked_task_ids:
             if tid in current_holder:
                 self.task_ever_held[tid] = True
-            elif self.task_ever_held.get(tid):
-                # Someone held it before, no one in this fleet holds it now.
-                self.task_released[tid] = True
+                self._unheld_since.pop(tid, None)
+            elif self.task_ever_held.get(tid) and not self.task_released.get(tid):
+                # Someone held it before and no one holds it in this sample --
+                # start (or continue) the grace-period clock instead of
+                # deciding immediately, in case this is a mid-flight
+                # reassignment rather than genuine completion.
+                first_unheld_t = self._unheld_since.setdefault(tid, now)
+                if now - first_unheld_t >= self.release_grace_period_s:
+                    self.task_released[tid] = True
 
     def start_tracking_tasks(self, task_ids):
         self.tracked_task_ids = set(tid for tid in task_ids if tid)
         self.task_seen_robot = {tid: None for tid in self.tracked_task_ids}
         self.task_ever_held = {tid: False for tid in self.tracked_task_ids}
         self.task_released = {tid: False for tid in self.tracked_task_ids}
+        self._unheld_since = {}
 
     def all_tracked_tasks_released(self) -> bool:
         return bool(self.tracked_task_ids) and all(self.task_released.values())
@@ -148,6 +168,11 @@ def parse_args():
     ap.add_argument('--inter-repeat-pause', type=float, default=5.0)
     ap.add_argument('--fixed-wait', type=float, default=220.0,
                      help='Fixed seconds to wait per repeat before moving to the next one')
+    ap.add_argument('--release-grace-period', type=float, default=5.0,
+                     help='Seconds a task must be held by no robot before it is trusted as genuinely '
+                          'finished (protects against mistaking an in-flight replan re-auction for '
+                          'completion). Set this >= the dispatcher\'s bidding_time_window for scenarios '
+                          'with real contention/replanning (Crossing, Head-on, Shared Lane).')
     ap.add_argument('--min-expected-distance-m', type=float, default=None,
                      help='If set, flag a robot as "short_distance" for a repeat when its '
                           'total_distance_m falls below this after the full wait')
@@ -159,7 +184,7 @@ def main():
     args = parse_args()
     routes = [parse_route(r) for r in args.routes]
     rclpy.init()
-    node = ConcurrentBenchRunner(args.robots)
+    node = ConcurrentBenchRunner(args.robots, release_grace_period_s=args.release_grace_period)
     results = []
 
     for i in range(1, args.repeats + 1):
