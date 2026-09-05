@@ -20,7 +20,7 @@ POS_EPS = 0.01       # m, movement threshold between consecutive /fleet_states s
 
 
 class BenchRunner(Node):
-    def __init__(self, robot_name):
+    def __init__(self, robot_name, release_grace_period_s: float = 5.0):
         super().__init__('bench_task_planning_runner')
         self.robot_name = robot_name
         transient_qos = QoSProfile(
@@ -39,6 +39,19 @@ class BenchRunner(Node):
         self.last_move_time = time.time()
         self.total_distance = 0.0   # cumulative distance since last reset_distance() call
 
+        # Real completion signal (see run_benchmark_concurrent.py for the full
+        # rationale): a task counts as released once no robot is holding its
+        # task_id anymore, after having been held, sustained for at least
+        # release_grace_period_s to avoid mistaking an in-flight replan
+        # re-auction for genuine completion. Distance alone can't tell a
+        # truncated task from a finished one, and Clear Path is the baseline
+        # every other scenario's percentage is computed against.
+        self.tracked_task_id = None
+        self.task_ever_held = False
+        self.task_released = False
+        self.release_grace_period_s = release_grace_period_s
+        self._unheld_since = None
+
     def _on_response(self, msg: ApiResponse):
         if msg.request_id == self.pending_request_id:
             self.pending_response = json.loads(msg.json_msg)
@@ -47,7 +60,14 @@ class BenchRunner(Node):
         for entry in list(msg.active) + list(msg.finished):
             self.dispatch_status[entry.task_id] = entry.status
 
+    def start_tracking_task(self, task_id):
+        self.tracked_task_id = task_id
+        self.task_ever_held = False
+        self.task_released = False
+        self._unheld_since = None
+
     def _on_fleet_state(self, msg: FleetState):
+        held_now = False
         for r in msg.robots:
             if r.name != self.robot_name:
                 continue
@@ -59,6 +79,17 @@ class BenchRunner(Node):
                     self.last_move_time = now
                     self.total_distance += d
             self.last_xy = xy
+            held_now = r.task_id == self.tracked_task_id and self.tracked_task_id is not None
+
+        if held_now:
+            self.task_ever_held = True
+            self._unheld_since = None
+        elif self.task_ever_held and not self.task_released:
+            now = time.monotonic()
+            if self._unheld_since is None:
+                self._unheld_since = now
+            elif now - self._unheld_since >= self.release_grace_period_s:
+                self.task_released = True
 
     def submit_task(self, repeat_idx, places, rounds, requester):
         request_id = f'bench_patrol_{repeat_idx}_' + str(uuid.uuid4())
@@ -98,6 +129,10 @@ def parse_args():
     ap.add_argument('--inter-repeat-pause', type=float, default=5.0)
     ap.add_argument('--fixed-wait', type=float, default=220.0,
                      help='Fixed seconds to wait per task before moving to the next repeat')
+    ap.add_argument('--release-grace-period', type=float, default=5.0,
+                     help='Seconds the task must be held by no robot before it is trusted as genuinely '
+                          'finished (protects against mistaking an in-flight replan re-auction for '
+                          'completion).')
     ap.add_argument('--min-expected-distance-m', type=float, default=None,
                      help='If set, flag a repeat as "short_distance" (likely a stalled/failed '
                           'task) when total_distance_m falls below this after the full wait')
@@ -108,7 +143,7 @@ def parse_args():
 def main():
     args = parse_args()
     rclpy.init()
-    node = BenchRunner(args.robot)
+    node = BenchRunner(args.robot, release_grace_period_s=args.release_grace_period)
     results = []
 
     for i in range(1, args.repeats + 1):
@@ -121,7 +156,7 @@ def main():
             'submit_wall_time': submit_wall_time,
             'response': response, 'task_id': None,
             'dispatch_status': None, 'completion_wall_time': None, 'outcome': None,
-            'total_distance_m': None,
+            'total_distance_m': None, 'task_released': None,
         }
 
         if response is None or not response.get('success', False):
@@ -137,6 +172,7 @@ def main():
 
         node.last_move_time = time.time()
         node.total_distance = 0.0
+        node.start_tracking_task(task_id)
         deadline = time.time() + args.fixed_wait
         while time.time() < deadline:
             rclpy.spin_once(node, timeout_sec=0.3)
@@ -144,12 +180,23 @@ def main():
             if task_id not in node.dispatch_status and elapsed > 10:
                 entry['outcome'] = 'dispatch_never_confirmed'
                 break
+            if node.task_released:
+                break
+        entry['fixed_wait_exceeded'] = time.time() >= deadline
 
         entry['completion_wall_time'] = time.time()
         entry['dispatch_status'] = node.dispatch_status.get(task_id)
         entry['total_distance_m'] = round(node.total_distance, 3)
+        entry['task_released'] = node.task_released
+        # A task RMF never released before fixed_wait elapsed is a real
+        # failure signal (still in progress when the clock ran out), not an
+        # inference from distance travelled. short_distance is reserved for
+        # tasks RMF DID release where the robot still moved less than
+        # expected -- a genuinely short route, not a truncated one.
         if entry['outcome'] is None:
-            if (args.min_expected_distance_m is not None
+            if node.task_ever_held and not node.task_released:
+                entry['outcome'] = 'timeout'
+            elif (args.min_expected_distance_m is not None
                     and node.total_distance < args.min_expected_distance_m):
                 entry['outcome'] = 'short_distance'
             else:

@@ -28,6 +28,7 @@ def generate_launch_description():
     use_composition = LaunchConfiguration('use_composition')
     use_respawn = LaunchConfiguration('use_respawn')
     use_rviz = LaunchConfiguration('use_rviz')
+    use_gzclient = LaunchConfiguration('use_gzclient')
     rviz_config_file = LaunchConfiguration('rviz_config_file')
     x_pose = LaunchConfiguration('x_pose', default='5.368')
     y_pose = LaunchConfiguration('y_pose', default='-6.654')
@@ -66,6 +67,11 @@ def generate_launch_description():
     declare_use_rviz_cmd = DeclareLaunchArgument(
         'use_rviz', default_value='True',
         description='Whether to start RViz')
+
+    declare_use_gzclient_cmd = DeclareLaunchArgument(
+        'use_gzclient', default_value='False',
+        description='Whether to start the Gazebo GUI client (off by default '
+                     'to reduce rendering overhead on headless benchmark runs)')
 
     declare_rviz_config_file_cmd = DeclareLaunchArgument(
         'rviz_config_file',
@@ -126,7 +132,8 @@ def generate_launch_description():
         launch_arguments={
             'gz_args': '-g -v2 ',
             'on_exit_shutdown': 'True'
-        }.items()
+        }.items(),
+        condition=IfCondition(use_gzclient),
     )
 
     spawn_turtlebot_cmd = IncludeLaunchDescription(
@@ -199,6 +206,7 @@ def generate_launch_description():
     ld.add_action(declare_use_composition_cmd)
     ld.add_action(declare_use_respawn_cmd)
     ld.add_action(declare_use_rviz_cmd)
+    ld.add_action(declare_use_gzclient_cmd)
     ld.add_action(declare_rviz_config_file_cmd)
 
     ld.add_action(gzserver_cmd)

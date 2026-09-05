@@ -14,6 +14,11 @@ def patch_world(world_file):
     if 'gz-sim-sensors-system' in content:
         print(f'Already patched: {world_file}')
         return
+    if '<plugin filename="libdoor.so"' not in content:
+        raise SystemExit(
+            f'Cannot patch {world_file}: anchor <plugin filename="libdoor.so"> '
+            'not found, so the Sensors/Imu plugins were NOT inserted.'
+        )
     content = content.replace(
         '<plugin filename="libdoor.so"',
         SENSORS_PLUGIN + '    <plugin filename="libdoor.so"'

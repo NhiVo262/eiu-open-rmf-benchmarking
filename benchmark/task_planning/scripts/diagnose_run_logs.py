@@ -1,16 +1,4 @@
 #!/usr/bin/env python3
-"""Scan tb3_fleet operator logs (fleet adapter, Nav2/Gazebo launch, Zenoh router)
-for the failure patterns already diagnosed by hand during N=5 trials, and print
-a per-robot summary instead of requiring manual log scrolling.
-
-Usage:
-    python3 diagnose_run_logs.py --fleet-adapter-log fleet_adapter.log \
-        [--nav2-log nav2.log] [--zenoh-log zenoh_router.log] \
-        --robots tb3_robot1 tb3_robot2 tb3_robot3 tb3_robot4 tb3_robot5
-
-Each log argument is optional so this also works with whichever logs happen to
-have been captured for a given run.
-"""
 
 import argparse
 import re
@@ -39,9 +27,6 @@ def scan_fleet_adapter(lines, robots):
     } for r in robots}
 
     re_added = re.compile(r'Successfully added robot\s*[\[\'"]?([\w]+)')
-    # Real fleet-adapter log lines for "accepted"/"cancelled"/"reached" carry a
-    # goal_id, not a robot name — attribution relies on `current_robot`, set
-    # from the preceding "Commanding [robotN] to navigate" line.
     re_accepted = re.compile(r'Navigation goal .* accepted')
     re_cancelled = re.compile(r'Navigation goal .* was cancelled')
     re_reached = re.compile(r'Navigation goal .* reached')
@@ -52,10 +37,16 @@ def scan_fleet_adapter(lines, robots):
     re_no_path = re.compile(r'Unable to find a path to any of the goal options .* for \[tb3_fleet/([\w]+)\]')
     re_go_to = re.compile(r'Executing go_to_place \[([\w_]+)\] for robot \[tb3_fleet/([\w]+)\]')
 
-    # commands like "Commanding [tb3_robotN] to navigate" name the robot directly;
-    # accept/cancel/reach lines from RMF core often don't, so track "current robot"
-    # per navigate command as a best-effort attribution.
     re_commanding = re.compile(r'Commanding \[([\w]+)\] to navigate')
+    # send_goal round-trip is printed immediately before accepted/rejected, by
+    # the same per-robot dispatch thread, with no blocking I/O in between --
+    # unlike the gap after "Commanding", which spans an async zenoh
+    # round-trip and can have another robot's own dispatch thread interleave
+    # its own log lines into that gap. With 5 robots' _dispatch() threads
+    # running concurrently, attribution anchored only on "Commanding" was
+    # observed to drift to the wrong robot; anchoring on this line too (as
+    # the more recent update) narrows that window substantially.
+    re_send_goal_roundtrip = re.compile(r'send_goal round-trip for \[([\w]+)\]')
     current_robot = None
 
     for line in lines:
@@ -64,6 +55,10 @@ def scan_fleet_adapter(lines, robots):
             per_robot[m.group(1)]['registered'] = True
 
         m = re_commanding.search(line)
+        if m and m.group(1) in per_robot:
+            current_robot = m.group(1)
+
+        m = re_send_goal_roundtrip.search(line)
         if m and m.group(1) in per_robot:
             current_robot = m.group(1)
 
@@ -140,8 +135,7 @@ def scan_zenoh_log(lines):
 
 
 def classify(robot_stats):
-    """Best-effort verdict per robot, matching the failure patterns already
-    root-caused by hand this session."""
+
     s = robot_stats
     if not s['registered']:
         return 'NOT REGISTERED — check bt_navigator lifecycle / TF for this robot'
