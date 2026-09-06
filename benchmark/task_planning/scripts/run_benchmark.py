@@ -99,7 +99,15 @@ class BenchRunner(Node):
         start_ms = now.sec * 1000 + round(now.nanosec / 1e6)
         request = {
             'unix_millis_request_time': start_ms,
-            'unix_millis_earliest_start_time': start_ms,
+            # 0, not "now": this node runs on wall time (never declares
+            # use_sim_time), but the fleet adapter's own node clock is
+            # sim-time-aware (per the Fleet Adapter fix). RMF compares this
+            # field against ITS OWN sim-time "now" to decide whether a
+            # queued task's deployment time has arrived -- a wall-clock
+            # epoch value (~1.7e12 ms) can never be <= a sim clock that
+            # starts near 0 when Gazebo launches, so the task would sit
+            # queued forever without 0 here.
+            'unix_millis_earliest_start_time': 0,
             'requester': requester,
             'category': 'patrol',
             'description': {'places': places, 'rounds': rounds},
