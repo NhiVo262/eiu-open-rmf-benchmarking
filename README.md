@@ -17,7 +17,8 @@ Workspace for benchmarking Open-RMF with a 3-robot TurtleBot3 fleet, as part of 
 ```
 eiu_ws/src/
 ├── tb3_fleet/                  # Main project package (see below)
-├── benchmark/task_planning/    # Task planning benchmark: scenarios, route baselines, scripts (see below)
+├── benchmark/
+│   └── task_planning/          # Task planning benchmark: scenarios, route baselines, scripts (see below)
 └── scripts/                    # Docker environment setup
 ```
 
