@@ -9,6 +9,7 @@ Workspace for benchmarking Open-RMF with a 3-robot TurtleBot3 fleet, as part of 
 | Package | Role |
 |---|---|
 | **`tb3_fleet`** | Custom integration package: fleet adapter, robot adapter, world/nav-graph maps, launch files for simulation and RMF core. See [Architecture](#architecture) and [Configuration](#configuration). |
+| `benchmark/task_planning` | Task planning benchmark: 4 traffic scenarios (N=3), route baselines (N=1), and the scripts to run/analyze them. See below. |
 | `scripts` | Docker build/run setup for the environment (see [Setup](#setup)). |
 
 ## Repository Layout
@@ -16,6 +17,7 @@ Workspace for benchmarking Open-RMF with a 3-robot TurtleBot3 fleet, as part of 
 ```
 eiu_ws/src/
 ├── tb3_fleet/                  # Main project package (see below)
+├── benchmark/task_planning/    # Task planning benchmark: scenarios, route baselines, scripts (see below)
 └── scripts/                    # Docker environment setup
 ```
 
@@ -45,6 +47,22 @@ tb3_fleet/
 │   └── tf_aggregator.py             # Republishes each robot's /tf onto the shared /tf, frame-prefixed (RViz only)
 └── scripts/patch_world.py           # Patches the sensor plugin into the generated world
 ```
+
+### `benchmark/task_planning/` layout
+
+```
+benchmark/task_planning/
+├── bottleneck_FLEET0N_TRAF03_CONFIG01/   # Bottleneck scenario, N=3
+├── crossing_FLEET02_TRAF01_CONFIG01/     # Crossing scenario, N=3
+├── headon_FLEET0N_TRAF04_CONFIG01/       # Head-on scenario, N=3
+├── sharedlane_FLEET0N_TRAF02_CONFIG01/   # Shared Lane scenario, N=3
+├── clearpath_FLEET01_TRAF00_CONFIG01/    # Clear Path scenario, N=1
+├── route_baselines/                      # Single-robot (N=1) baseline for each of the 12 routes above
+└── scripts/                              # run_benchmark[_concurrent].py, analyze_task_planning[_concurrent].py,
+                                           # run_clearpath_route.sh, check_negotiation_resolved.py
+```
+
+Each scenario folder has its own `PROCEDURE.md` (how to run) and `RESULTS.md` (what came out) — start there.
 
 ## Architecture
 
@@ -183,9 +201,6 @@ ros2 launch tb3_fleet tb3_world.launch.py \
   fleet_config_file:=$(ros2 pkg prefix tb3_fleet)/share/tb3_fleet/config/fleet/tb3_multi_simulation_config.yaml \
   bidding_time_window:=60.0
 ```
-
-> The fleet adapter reads each robot's TF/pose through the Zenoh bridge during init (`init_timeout_sec`), so terminals 1–3 must be up first, in order.
-
 ### Dispatching tasks
 
 ```bash
