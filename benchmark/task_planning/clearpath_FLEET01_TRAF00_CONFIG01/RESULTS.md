@@ -51,28 +51,6 @@ Summary of the 2 phases:
 
 ---
 
-## Note on Makespan (1c) variance
-
-Makespan varies considerably between repeats (127.5s – 250.5s, nearly 2x).
-Distance travelled varies correspondingly (25.0m – 48.8m for the same 5
-patrol rounds), indicating this is genuine physical variance in the
-robot's behaviour rather than a measurement error — even with no other
-robot to contend with (TRAF_00).
-
-**Suspected causes (not yet root-caused):**
-- The robot occasionally has to wait/replan between legs (observed in the
-  log `"Requesting replan ... command handle seems unresponsive"` during
-  manual test runs before the official benchmark).
-- AMCL/costmap may process more slowly at certain locations on the map
-  (furniture-dense areas — tables, chairs, cabinets).
-
-Does not affect the 1a/1b conclusions (both clearly pass target). This
-baseline-level variance (47.7s standard deviation at N=1, with no
-traffic at all) is part of why the N=3 scenarios that followed (see the
-comparison table in "Conclusion" below) also show fairly large stdev —
-the portion of variance caused by genuine traffic interaction cannot be
-fully separated from the system's inherent background noise on this map.
-
 ---
 
 ## Conclusion — Feature 1: Task Planning (Phase 0 baseline)
