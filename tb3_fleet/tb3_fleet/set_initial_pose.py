@@ -22,15 +22,6 @@ DEFAULT_COVARIANCE = [
 
 
 class InitialPoseSeeder(Node):
-    """Publishes /<robot_namespace>/initialpose repeatedly until AMCL is
-    subscribed, or a timeout elapses.
-
-    AMCL's own subscription only exists once its lifecycle node has finished
-    configuring, which happens some seconds after Nav2 bringup starts. A
-    single --once publish sent too early is silently dropped -- this is why
-    the per-scenario procedure docs describe re-sending the initialpose
-    command by hand when a robot ends up unlocalized.
-    """
 
     def __init__(self, robot_namespace: str, x: float, y: float, yaw: float):
         super().__init__(f'set_initial_pose_{robot_namespace}')
@@ -50,8 +41,6 @@ class InitialPoseSeeder(Node):
             self._msg.header.stamp = self.get_clock().now().to_msg()
             self._pub.publish(self._msg)
             if self._pub.get_subscription_count() > 0:
-                # AMCL is listening -- publish once more so it definitely
-                # sees a message after subscribing, then stop.
                 time.sleep(0.2)
                 self._msg.header.stamp = self.get_clock().now().to_msg()
                 self._pub.publish(self._msg)

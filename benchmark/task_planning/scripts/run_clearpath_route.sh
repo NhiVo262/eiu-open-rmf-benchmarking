@@ -1,10 +1,4 @@
 #!/bin/bash
-# Runs one single-robot Clear-Path-style replication of a scenario's own route,
-# spawned at that route's original robot's spawn point, matching the report
-# feedback's fix: "Run [Clear Path] over the same routes the other scenarios
-# use, one robot at a time."
-#
-# Usage: run_clearpath_route.sh <scenario_slug> <route_slug> <x_pose> <y_pose> <place1> <place2> <fixed_wait> <min_dist>
 set -o pipefail
 
 SCENARIO_SLUG="$1"
@@ -29,13 +23,6 @@ log() { echo "[$(date -u +%H:%M:%S)] $*" | tee -a "$LOG"; }
 source /opt/ros/jazzy/setup.bash >/dev/null 2>&1
 source $WS/install/setup.bash >/dev/null 2>&1
 
-# Each long-lived process below is started with setsid, which makes its PID
-# equal to a brand-new process group ID. Killing -PGID (negative = whole
-# group) reaches every child ros2 launch spawns, not just the launch
-# process itself -- plain `pkill -f <pattern>` was found to leave Nav2/RMF
-# child nodes (rmf_traffic_blockade, building_map_server, door_supervisor,
-# etc.) running as orphans after the parent died, which corrupted the NEXT
-# route's run via DDS/zenoh resource conflicts.
 kill_group() {
     local pid="$1"
     if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
