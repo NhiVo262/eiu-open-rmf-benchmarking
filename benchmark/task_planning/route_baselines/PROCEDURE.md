@@ -44,10 +44,6 @@
 | fixed-wait | 300s (stop criterion per repeat) |
 | min-expected-distance-m | 5 (below this threshold → flagged `short_distance`) |
 
-```bash
-bash ~/rmf_ws/src/benchmark/task_planning/scripts/run_clearpath_route.sh \
-  <scenario_slug> <route_folder> <x_pose> <y_pose> <place1> <place2> <fixed_wait> <min_dist>
-```
 
 ---
 
