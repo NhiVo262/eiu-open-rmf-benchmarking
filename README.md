@@ -27,16 +27,17 @@ eiu_ws/src/
 ```
 tb3_fleet/
 ├── config/
-│   ├── fleet/                       # tb3_simulation_config.yaml (1 robot), tb3_multi_simulation_config.yaml (3 robots)
-│   ├── nav2/nav2_params.yaml        # Shared Nav2 params for all 3 robots
-│   ├── multi_robot_bridge/          # ros_gz_bridge topic config, 1 file per robot (tb3_robotN_bridge.yaml)
-│   ├── multi_robot_models/          # Spawned robot SDF, 1 file per robot (tb3_robotN.sdf)
+│   ├── fleet/                       # tb3_simulation_config.yaml (1 robot), tb3_multi_simulation_config.yaml (3 robots), tb3_5robot_simulation_config.yaml (5 robots)
+│   ├── nav2/nav2_params.yaml        # Shared Nav2 params for all robots
+│   ├── multi_robot_bridge/          # ros_gz_bridge topic config, 1 file per robot (tb3_robotN_bridge.yaml, N=1..5)
+│   ├── multi_robot_models/          # Spawned robot SDF, 1 file per robot (tb3_robotN.sdf, N=1..5)
 │   ├── zenoh/                       # Zenoh bridge/adapter configs (single- and multi-robot)
 │   └── rviz2_config.rviz
 ├── launch/
-│   ├── tb3_simulation_nav2.launch.py       # 1-robot Gazebo + Nav2 bringup
-│   ├── tb3_multi_simulation_nav2.launch.py # 3-robot Gazebo + Nav2 + tf_aggregator
-│   └── tb3_world.launch.py                 # RMF core (dispatcher, schedule, fleet adapter)
+│   ├── tb3_simulation_nav2.launch.py        # 1-robot Gazebo + Nav2 bringup
+│   ├── tb3_multi_simulation_nav2.launch.py  # 3-robot Gazebo + Nav2 + tf_aggregator
+│   ├── tb3_5robot_simulation_nav2.launch.py # 5-robot Gazebo + Nav2 + tf_aggregator
+│   └── tb3_world.launch.py                  # RMF core (dispatcher, schedule, fleet adapter)
 ├── maps/turtlebot3_world/
 │   ├── world_tb3.building.yaml      # Building map (rmf_traffic_editor)
 │   ├── map.yaml / map.pgm           # Occupancy grid for Nav2 AMCL
@@ -45,7 +46,10 @@ tb3_fleet/
 │   ├── tb3_fleet_adapter.py         # Fleet adapter entry point
 │   ├── tb3_robot_adapter.py         # Robot adapter: nav, stop, battery, pose (via Zenoh + Nav2)
 │   ├── robot_adapter.py             # Abstract base class
-│   └── tf_aggregator.py             # Republishes each robot's /tf onto the shared /tf, frame-prefixed (RViz only)
+│   ├── tf_aggregator.py             # Republishes each robot's /tf onto the shared /tf, frame-prefixed (RViz only)
+│   ├── set_initial_pose.py          # Seeds AMCL's initial pose for one robot, retrying until AMCL is subscribed
+│   ├── nav2_tb3_get_tf.py           # Standalone Zenoh/ROS2 tf example
+│   └── nav2_tb3_send_navigate_to_pose.py  # Standalone Zenoh/ROS2 navigate_to_pose example
 └── scripts/patch_world.py           # Patches the sensor plugin into the generated world
 ```
 
