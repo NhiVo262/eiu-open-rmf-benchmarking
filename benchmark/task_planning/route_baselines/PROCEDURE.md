@@ -1,90 +1,87 @@
 # Benchmark Procedure — Feature 1: Task Planning
-## Route baselines: matched single-robot (N=1) runs for all 12 routes
+## Route baselines: single-robot (N=1) runs, all 12 routes
 
 ---
 
-## 1. What this is
+## 1. Objective
 
-The report compares each route's Actual (N=3, under traffic) makespan against that *same* route run alone (N=1, no traffic) — its "baseline". This folder holds those 12 baseline runs: every route used across Bottleneck/Crossing/Head-on/Shared Lane, run solo, 5 repeats each.
-
-Unlike the other 4 scenario folders, there is **no multi-terminal bring-up here** — one script (`run_clearpath_route.sh`) does everything for one route end-to-end: launch sim, seed AMCL, start the fleet adapter, record the bag, submit 5 repeats, run the analyzer, tear down. So reproducing all 12 routes is 12 calls to that one script, shown as a copy-paste loop in section 3.
-
-| Item | Value |
+| Item | Description |
 |---|---|
-| Feature | 1. Task planning — makespan baseline only (1c) |
-| FLEET_ID | N = 1 (`tb3_robot1` only) |
+| Feature | 1. Task planning (1c makespan baseline) |
+| Scenario | Route baselines — each of the 12 routes from Bottleneck/Crossing/Head-on/Shared Lane, run alone (N=1) |
+| ENV_ID | ENV_01 — EIU indoor lab (map `world_tb3`) |
+| FLEET_ID | N = 1 (`tb3_robot1`) |
+| CONFIG_ID | CONFIG_01 |
 | Repeats | 5 per route |
-| Routes | 12 (3 per scenario × 4 scenarios) |
 
 ---
 
-## 2. The 12 routes
+## 2. Spawn position & route conventions
 
-Spawn coordinates are the same canonical values used in the four official N=3 PROCEDURE.md files — **not** the rounded values in the report's Coordinates table.
-
-| Scenario | Route folder | Places (`place1 place2`) | Spawn (`x_pose y_pose`) |
-|---|---|---|---|
-| bottleneck | `bottleneck1_bottleneck3` | `bottleneck_1 bottleneck_3` | `10.498 -6.565` |
-| bottleneck | `sharedlane3_loop1` | `sharedlane_3 loop_1` | `10.454 -8.209` |
-| bottleneck | `bottleneck3_sharedlane3` | `bottleneck_3 sharedlane_3` | `10.498 -6.565` |
-| crossing | `charger1_bottleneck1` | `charger_1 bottleneck_1` | `5.368 -6.654` |
-| crossing | `crossing1_loop4` | `crossing_1 loop_4` | `10.498 -6.565` |
-| crossing | `crossing2_bottleneck3` | `crossing_2 bottleneck_3` | `10.454 -8.209` |
-| headon | `charger1_bottleneck3` | `charger_1 bottleneck_3` | `5.368 -6.654` |
-| headon | `crossing2_bottleneck1` | `crossing_2 bottleneck_1` | `10.454 -8.209` |
-| headon | `crossing1_bottleneck3` | `crossing_1 bottleneck_3` | `10.498 -6.565` |
-| sharedlane | `sharedlane1_sharedlane3` | `sharedlane_1 sharedlane_3` | `10.498 -6.565` |
-| sharedlane | `sharedlane3_sharedlane1` | `sharedlane_3 sharedlane_1` | `10.454 -8.209` |
-| sharedlane | `charger1_sharedlane2` | `charger_1 sharedlane_2` | `5.368 -6.654` |
+| Scenario | Route folder | Route (places) | Spawn vertex | Spawn position |
+|---|---|---|---|---|
+| Bottleneck | `bottleneck1_bottleneck3` | `bottleneck_1 → bottleneck_3` | crossing_1 | x=10.498, y=-6.565 |
+| Bottleneck | `sharedlane3_loop1` | `sharedlane_3 → loop_1` | crossing_2 | x=10.454, y=-8.209 |
+| Bottleneck | `bottleneck3_sharedlane3` | `bottleneck_3 → sharedlane_3` | crossing_1 | x=10.498, y=-6.565 |
+| Crossing | `charger1_bottleneck1` | `charger_1 → bottleneck_1` | charger_1 | x=5.368, y=-6.654 |
+| Crossing | `crossing1_loop4` | `crossing_1 → loop_4` | crossing_1 | x=10.498, y=-6.565 |
+| Crossing | `crossing2_bottleneck3` | `crossing_2 → bottleneck_3` | crossing_2 | x=10.454, y=-8.209 |
+| Head-on | `charger1_bottleneck3` | `charger_1 → bottleneck_3` | charger_1 | x=5.368, y=-6.654 |
+| Head-on | `crossing2_bottleneck1` | `crossing_2 → bottleneck_1` | crossing_2 | x=10.454, y=-8.209 |
+| Head-on | `crossing1_bottleneck3` | `crossing_1 → bottleneck_3` | crossing_1 | x=10.498, y=-6.565 |
+| Shared Lane | `sharedlane1_sharedlane3` | `sharedlane_1 → sharedlane_3` | crossing_1 | x=10.498, y=-6.565 |
+| Shared Lane | `sharedlane3_sharedlane1` | `sharedlane_3 → sharedlane_1` | crossing_2 | x=10.454, y=-8.209 |
+| Shared Lane | `charger1_sharedlane2` | `charger_1 → sharedlane_2` | charger_1 | x=5.368, y=-6.654 |
 
 ---
 
-## 3. Run all 12 — copy-paste loop
+## 3. Task / route / repeat configuration
+
+| Parameter | Value |
+|---|---|
+| Rounds (patrol loops) / repeat | 1 |
+| Repeats (independent full re-runs) | 5 |
+| fixed-wait | 300s (stop criterion per repeat) |
+| min-expected-distance-m | 5 (below this threshold → flagged `short_distance`) |
 
 ```bash
-cd ~/rmf_ws/src/benchmark/task_planning/scripts
-
-# scenario  route_folder              x_pose   y_pose   place1        place2
-ROUTES=(
-  "bottleneck bottleneck1_bottleneck3   10.498 -6.565  bottleneck_1 bottleneck_3"
-  "bottleneck sharedlane3_loop1         10.454 -8.209  sharedlane_3 loop_1"
-  "bottleneck bottleneck3_sharedlane3   10.498 -6.565  bottleneck_3 sharedlane_3"
-  "crossing   charger1_bottleneck1       5.368 -6.654  charger_1    bottleneck_1"
-  "crossing   crossing1_loop4           10.498 -6.565  crossing_1   loop_4"
-  "crossing   crossing2_bottleneck3     10.454 -8.209  crossing_2   bottleneck_3"
-  "headon     charger1_bottleneck3       5.368 -6.654  charger_1    bottleneck_3"
-  "headon     crossing2_bottleneck1     10.454 -8.209  crossing_2   bottleneck_1"
-  "headon     crossing1_bottleneck3     10.498 -6.565  crossing_1   bottleneck_3"
-  "sharedlane sharedlane1_sharedlane3   10.498 -6.565  sharedlane_1 sharedlane_3"
-  "sharedlane sharedlane3_sharedlane1   10.454 -8.209  sharedlane_3 sharedlane_1"
-  "sharedlane charger1_sharedlane2       5.368 -6.654  charger_1    sharedlane_2"
-)
-
-for r in "${ROUTES[@]}"; do
-  bash run_clearpath_route.sh $r 300 5   # 300=fixed-wait(s), 5=min-expected-distance(m)
-done
+bash ~/rmf_ws/src/benchmark/task_planning/scripts/run_clearpath_route.sh \
+  <scenario_slug> <route_folder> <x_pose> <y_pose> <place1> <place2> <fixed_wait> <min_dist>
 ```
 
-One row = one route = one full run of 5 repeats (`--repeats 5` is hardcoded inside the script). To redo a single route, copy its row out and run that one line alone.
-
-`fixed-wait 300` and `min-expected-distance-m 5` are the same convention as the four official N=3 PROCEDURE.md files, not a logged historical value (none was recorded — see note below). Both are safe against the data already collected: the longest of the 60 recorded repeats took 227.6s (< 300s), and the shortest distance was 6.69m (> 5m), so neither threshold would have reclassified any recorded run.
-
 ---
 
-## 4. One-time setup (same as the other scenarios)
+## 4. Terminal step-by-step
 
 ```bash
+# 0. One-time setup
 xhost +local: root
 cd ~/eiu_ws/src/scripts && docker compose up -d
 docker exec -it open-rmf bash
 source /opt/ros/jazzy/setup.bash
 colcon build --packages-select tb3_fleet
+
+# 1. Run each route (each call handles bring-up, 5 repeats, analysis, teardown)
+cd ~/rmf_ws/src/benchmark/task_planning/scripts
+
+bash run_clearpath_route.sh bottleneck bottleneck1_bottleneck3 10.498 -6.565 bottleneck_1 bottleneck_3 300 5
+bash run_clearpath_route.sh bottleneck sharedlane3_loop1       10.454 -8.209 sharedlane_3 loop_1        300 5
+bash run_clearpath_route.sh bottleneck bottleneck3_sharedlane3 10.498 -6.565 bottleneck_3 sharedlane_3  300 5
+bash run_clearpath_route.sh crossing   charger1_bottleneck1     5.368 -6.654 charger_1    bottleneck_1  300 5
+bash run_clearpath_route.sh crossing   crossing1_loop4         10.498 -6.565 crossing_1   loop_4        300 5
+bash run_clearpath_route.sh crossing   crossing2_bottleneck3   10.454 -8.209 crossing_2   bottleneck_3  300 5
+bash run_clearpath_route.sh headon     charger1_bottleneck3     5.368 -6.654 charger_1    bottleneck_3  300 5
+bash run_clearpath_route.sh headon     crossing2_bottleneck1   10.454 -8.209 crossing_2   bottleneck_1  300 5
+bash run_clearpath_route.sh headon     crossing1_bottleneck3   10.498 -6.565 crossing_1   bottleneck_3  300 5
+bash run_clearpath_route.sh sharedlane sharedlane1_sharedlane3 10.498 -6.565 sharedlane_1 sharedlane_3  300 5
+bash run_clearpath_route.sh sharedlane sharedlane3_sharedlane1 10.454 -8.209 sharedlane_3 sharedlane_1  300 5
+bash run_clearpath_route.sh sharedlane charger1_sharedlane2     5.368 -6.654 charger_1    sharedlane_2  300 5
 ```
 
 ---
 
 ## 5. Official results
 
-Baseline (N=1) makespan per route: see `RESULTS.md` in this folder, or the report's "Makespan by route" appendix table (full n/mean/stdev/min/max) and "Over Baseline by Route" chart (each route's baseline compared to its own Actual/N=3 makespan).
+Full n/mean/stdev/min/max per route in `RESULTS.md`.
 
-Raw data per route: `<scenario>/<route_folder>/run_<timestamp>/bag/`, `task_planning_metrics.json`, `run_benchmark.log`.
+Raw data: `<scenario>/<route_folder>/run_<timestamp>/bag/`, `task_planning_metrics.json`, `run_benchmark.log`.
