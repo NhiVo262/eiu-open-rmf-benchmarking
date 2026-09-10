@@ -17,7 +17,6 @@ Computed directly from each route's `task_planning_metrics.json` (`per_task[].ma
 | Shared Lane | sharedlane_3 → sharedlane_1 | 5 | 91.1 | 13.4 | 81.2 | 114.3 |
 | Shared Lane | charger_1 → sharedlane_2 | 5 | 116.8 | 22.8 | 76.5 | 133.1 |
 
-Note: `Crossing: crossing_2 → bottleneck_3` above is 171.9/33.3/113.8/192.7. An earlier draft of the report's Appendix table had this row duplicated from Head-on's `crossing_2 → bottleneck_1` (146.8/31.7/91.5/170.0) — a copy-paste mix-up, since both routes start at the `crossing_2` vertex. Confirmed against this route's own `task_planning_metrics.json` and cross-checked against the "Over Baseline by Route" chart, which already used the correct 171.9 (giving +52.9%, not the +79.0% the wrong baseline would produce).
 
 Pooled per scenario (3 routes × 5 repeats = 15), matches the report's "Mean makespan by scenario" table:
 
