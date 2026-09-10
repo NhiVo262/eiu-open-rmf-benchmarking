@@ -67,7 +67,7 @@ benchmark/task_planning/
                                            # run_clearpath_route.sh, check_negotiation_resolved.py
 ```
 
-Each scenario folder has its own `PROCEDURE.md` (how to run) and `RESULTS.md` (what came out) — start there.
+Each scenario folder has its own `PROCEDURE.md` (how to run) and `RESULTS.md` (what came out)
 
 ## Architecture
 
