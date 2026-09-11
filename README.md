@@ -125,9 +125,25 @@ docker exec -it open-rmf bash
 
 ### Dependencies
 
+Required to build/run `tb3_fleet` and the task planning benchmark:
+
 ```bash
 cd ~/rmf_ws/src
+
 git clone https://github.com/open-rmf/free_fleet.git
+cd free_fleet && git checkout cc5b8cd8f36880f76d25650f24bd259799f63976 && cd ..
+
+git clone https://github.com/open-rmf/rmf_ros2.git -b jazzy
+cd rmf_ros2 && git checkout 02da9198b246980bbfd6d9fbc86685dfa2212bd6 && cd ..
+
+git clone https://github.com/open-rmf/rmf_visualization.git -b jazzy
+cd rmf_visualization && git checkout db7d12afa9a52f571b00b0c2bf1a3b4ba09c9d17 && cd ..
+
+git clone https://github.com/open-rmf/rmf_traffic_editor.git -b main
+cd rmf_traffic_editor && git checkout cd6bf2b49f0f6c8fd9decbfe07a8e97be27533f9 && cd ..
+
+git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git -b jazzy
+cd turtlebot3_simulations && git checkout 45633014a14e8f438495b532a723e4ad45cbbd31 && cd ..
 ```
 
 ### Build
