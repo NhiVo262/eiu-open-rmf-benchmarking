@@ -57,6 +57,5 @@ Then pool `1c_makespan_s` (or `per_task[].makespan_s`) across a dataset's
    docker exec open-rmf bash -c "/home/eiu/rmf_ws/src/benchmark/task_planning/scripts/run_clearpath.sh"
    docker exec open-rmf bash -c "/home/eiu/rmf_ws/src/benchmark/task_planning/scripts/run_task_planning_baselines.sh"
    ```
-3. Wait (~5 min/repeat; a full 12-baseline run is hours — launch it in the background).
-4. Check `<scenario>/run_<timestamp>/repeat_<n>/task_planning_metrics.json`.
+3. Check `<scenario>/run_<timestamp>/repeat_<n>/task_planning_metrics.json`.
 
