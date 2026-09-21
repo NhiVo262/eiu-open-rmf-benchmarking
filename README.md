@@ -9,7 +9,7 @@ Workspace for benchmarking Open-RMF with a 3-robot TurtleBot3 fleet, as part of 
 | Package | Role |
 |---|---|
 | **`tb3_fleet`** | Custom integration package: fleet adapter, robot adapter, world/nav-graph maps, launch files for simulation and RMF core. See [Architecture](#architecture) and [Configuration](#configuration). |
-| `benchmark/task_planning` | Task planning benchmark: 4 traffic scenarios (N=3), route baselines (N=1), and the scripts to run/analyze them. See below. |
+| `benchmark/task_planning` | Task planning benchmark: 4 traffic scenarios (N=3), Clear Path (N=1) and 12 matched N=1 baselines, and the scripts to run/analyze them. See below. |
 | `scripts` | Docker build/run setup for the environment (see [Setup](#setup)). |
 
 ## Repository Layout
@@ -18,7 +18,7 @@ Workspace for benchmarking Open-RMF with a 3-robot TurtleBot3 fleet, as part of 
 eiu_ws/src/
 ├── tb3_fleet/                  # Main project package (see below)
 ├── benchmark/
-│   └── task_planning/          # Task planning benchmark: scenarios, route baselines, scripts (see below)
+│   └── task_planning/          # Task planning benchmark: scenarios, baselines, scripts (see below)
 └── scripts/                    # Docker environment setup
 ```
 
@@ -57,17 +57,19 @@ tb3_fleet/
 
 ```
 benchmark/task_planning/
-├── bottleneck_FLEET0N_TRAF03_CONFIG01/   # Bottleneck scenario, N=3
+├── README.md                             # Folder overview
+├── PROCEDURE.md                          # Methodology, datasets, how to reproduce the report's numbers
+├── bottleneck_FLEET0N_TRAF03_CONFIG01/   # Bottleneck scenario, N=3, 5 repeats x 3 tasks
 ├── crossing_FLEET02_TRAF01_CONFIG01/     # Crossing scenario, N=3
 ├── headon_FLEET0N_TRAF04_CONFIG01/       # Head-on scenario, N=3
 ├── sharedlane_FLEET0N_TRAF02_CONFIG01/   # Shared Lane scenario, N=3
-├── clearpath_FLEET01_TRAF00_CONFIG01/    # Clear Path scenario, N=1
-├── route_baselines/                      # Single-robot (N=1) baseline for each of the 12 routes above
-└── scripts/                              # run_benchmark[_concurrent].py, analyze_task_planning[_concurrent].py,
-                                           # run_clearpath_route.sh, check_negotiation_resolved.py
+├── clearpath_FLEET01_TRAF00_CONFIG01/    # Clear Path scenario, N=1, 5 repeats
+├── baselines_matched/                    # N=1 baseline for each of the 12 routes used across the 4 N=3 scenarios, 5 repeats each
+└── scripts/                              # Collection (run_*.py/.sh) and analysis (analyze_*.py) scripts, see PROCEDURE.md
 ```
 
-Each scenario folder has its own `PROCEDURE.md` (how to run) and `RESULTS.md` (what came out)
+See `benchmark/task_planning/README.md` and `PROCEDURE.md` for the full
+dataset list and how to reproduce or re-collect each one.
 
 ## Architecture
 
@@ -107,7 +109,7 @@ Each scenario folder has its own `PROCEDURE.md` (how to run) and `RESULTS.md` (w
 - ROS2 **Jazzy** (via the pinned container image below)
 - Base image pinned by digest in `scripts/Dockerfile`: `osrf/ros:jazzy-desktop@sha256:1d6f898b6ab77636c40f26298070ad3de5a9e06f0a71cf9ab066fd6b7838f151`
 
-### Environment (Docker)
+### Containers
 
 Two containers built from the same image, defined in `scripts/docker-compose.yaml`:
 
@@ -116,43 +118,40 @@ Two containers built from the same image, defined in `scripts/docker-compose.yam
 | `open-rmf` | Main Open-RMF benchmarking stack | 1 |
 | `vda5050` | VDA5050 adapter work (separate track) | 2 |
 
-```bash
-export UID GID   
-cd ~/eiu_ws/src/scripts
-docker compose up -d
-docker exec -it open-rmf bash
-```
+### Steps
 
-### Dependencies
+1. Bring up the Docker environment:
+   ```bash
+   export UID GID
+   cd ~/eiu_ws/src/scripts
+   docker compose up -d
+   docker exec -it open-rmf bash
+   ```
+2. Clone the pinned dependencies (inside the container, `~/rmf_ws/src`):
+   ```bash
+   cd ~/rmf_ws/src
 
-Required to build/run `tb3_fleet` and the task planning benchmark:
+   git clone https://github.com/open-rmf/free_fleet.git
+   cd free_fleet && git checkout cc5b8cd8f36880f76d25650f24bd259799f63976 && cd ..
 
-```bash
-cd ~/rmf_ws/src
+   git clone https://github.com/open-rmf/rmf_ros2.git -b jazzy
+   cd rmf_ros2 && git checkout 02da9198b246980bbfd6d9fbc86685dfa2212bd6 && cd ..
 
-git clone https://github.com/open-rmf/free_fleet.git
-cd free_fleet && git checkout cc5b8cd8f36880f76d25650f24bd259799f63976 && cd ..
+   git clone https://github.com/open-rmf/rmf_visualization.git -b jazzy
+   cd rmf_visualization && git checkout db7d12afa9a52f571b00b0c2bf1a3b4ba09c9d17 && cd ..
 
-git clone https://github.com/open-rmf/rmf_ros2.git -b jazzy
-cd rmf_ros2 && git checkout 02da9198b246980bbfd6d9fbc86685dfa2212bd6 && cd ..
+   git clone https://github.com/open-rmf/rmf_traffic_editor.git -b main
+   cd rmf_traffic_editor && git checkout cd6bf2b49f0f6c8fd9decbfe07a8e97be27533f9 && cd ..
 
-git clone https://github.com/open-rmf/rmf_visualization.git -b jazzy
-cd rmf_visualization && git checkout db7d12afa9a52f571b00b0c2bf1a3b4ba09c9d17 && cd ..
-
-git clone https://github.com/open-rmf/rmf_traffic_editor.git -b main
-cd rmf_traffic_editor && git checkout cd6bf2b49f0f6c8fd9decbfe07a8e97be27533f9 && cd ..
-
-git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git -b jazzy
-cd turtlebot3_simulations && git checkout 45633014a14e8f438495b532a723e4ad45cbbd31 && cd ..
-```
-
-### Build
-
-```bash
-cd ~/rmf_ws
-colcon build --packages-select tb3_fleet free_fleet
-source install/setup.bash
-```
+   git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git -b jazzy
+   cd turtlebot3_simulations && git checkout 45633014a14e8f438495b532a723e4ad45cbbd31 && cd ..
+   ```
+3. Build:
+   ```bash
+   cd ~/rmf_ws
+   colcon build --packages-select tb3_fleet free_fleet
+   source install/setup.bash
+   ```
 
 ## Configuration
 
@@ -232,4 +231,4 @@ ros2 run rmf_demos_tasks dispatch_patrol -p charger_1 crossing_1
 ros2 run rmf_demos_tasks dispatch_patrol -p charger_1 crossing_1 -F tb3_fleet -R tb3_robot1
 ```
 
-Available waypoints (`maps/turtlebot3_world/`world_tb3.building.yaml)  
+Available waypoints are listed in `maps/turtlebot3_world/world_tb3.building.yaml`.
