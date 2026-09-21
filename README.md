@@ -2,7 +2,7 @@
 
 ## Overview
 
-Workspace for benchmarking Open-RMF with a 3-robot TurtleBot3 fleet, as part of the EIU x ARTC project. It combines the upstream Open-RMF stack with a custom fleet integration package (`tb3_fleet`) that connects TurtleBot3 (Nav2) to Open-RMF, enabling multi-robot task dispatch and the benchmarking test plan.
+Workspace for benchmarking Open-RMF with TurtleBot3 fleet, as part of the EIU x ARTC project. It combines the upstream Open-RMF stack with a custom fleet integration package (`tb3_fleet`) that connects TurtleBot3 (Nav2) to Open-RMF, enabling multi-robot task dispatch and the benchmarking test plan.
 
 ## Packages
 
@@ -106,9 +106,7 @@ dataset list and how to reproduce or re-collect each one.
 ### Requirements
 
 - Docker
-- ROS2 **Jazzy** (via the pinned container image below)
-- Base image pinned by digest in `scripts/Dockerfile`: `osrf/ros:jazzy-desktop@sha256:1d6f898b6ab77636c40f26298070ad3de5a9e06f0a71cf9ab066fd6b7838f151`
-
+- ROS2 **Jazzy** (via the pinned container image)
 ### Containers
 
 Two containers built from the same image, defined in `scripts/docker-compose.yaml`:
@@ -186,41 +184,39 @@ cd ~/rmf_ws/src/tb3_fleet/config/zenoh
 
 ### Launch procedure (4 terminals)
 
-**Terminal 1 — Zenoh router (same for both):**
-```bash
-zenohd
-```
+1. **Terminal 1 — Zenoh router** (same command for 1- and 3-robot):
+   ```bash
+   zenohd
+   ```
+2. **Terminal 2 — Simulation + Nav2:**
+   ```bash
+   # 1 robot
+   ros2 launch tb3_fleet tb3_simulation_nav2.launch.py
 
-**Terminal 2 — Simulation + Nav2:**
-```bash
-# 1 robot
-ros2 launch tb3_fleet tb3_simulation_nav2.launch.py
+   # 3 robots
+   ros2 launch tb3_fleet tb3_multi_simulation_nav2.launch.py
+   ```
+3. **Terminal 3 — Zenoh bridge** (once Terminal 2 is publishing `tf`/`battery_state`):
+   ```bash
+   cd ~/rmf_ws/src/tb3_fleet/config/zenoh
 
-# 3 robots
-ros2 launch tb3_fleet tb3_multi_simulation_nav2.launch.py
-```
+   # 1 robot
+   ./zenoh-bridge-ros2dds -c tb3_zenoh_bridge_ros2dds_client_config.json5
 
-**Terminal 3 — Zenoh bridge (once Terminal 2 is publishing `tf`/`battery_state`):**
-```bash
-cd ~/rmf_ws/src/tb3_fleet/config/zenoh
+   # 3 robots
+   ./zenoh-bridge-ros2dds -c tb3_multi_zenoh_bridge_ros2dds_client_config.json5
+   ```
+4. **Terminal 4 — RMF core + Fleet adapter:**
+   ```bash
+   # 1 robot — fleet_config_file defaults to the 1-robot yaml, no override needed
+   ros2 launch tb3_fleet tb3_world.launch.py
 
-# 1 robot
-./zenoh-bridge-ros2dds -c tb3_zenoh_bridge_ros2dds_client_config.json5
+   # 3 robots — must override fleet_config_file
+   ros2 launch tb3_fleet tb3_world.launch.py \
+     fleet_config_file:=$(ros2 pkg prefix tb3_fleet)/share/tb3_fleet/config/fleet/tb3_multi_simulation_config.yaml \
+     bidding_time_window:=60.0
+   ```
 
-# 3 robots
-./zenoh-bridge-ros2dds -c tb3_multi_zenoh_bridge_ros2dds_client_config.json5
-```
-
-**Terminal 4 — RMF core + Fleet adapter:**
-```bash
-# 1 robot — fleet_config_file defaults to the 1-robot yaml, no override needed
-ros2 launch tb3_fleet tb3_world.launch.py
-
-# 3 robots — must override fleet_config_file
-ros2 launch tb3_fleet tb3_world.launch.py \
-  fleet_config_file:=$(ros2 pkg prefix tb3_fleet)/share/tb3_fleet/config/fleet/tb3_multi_simulation_config.yaml \
-  bidding_time_window:=60.0
-```
 ### Dispatching tasks
 
 ```bash
