@@ -51,8 +51,8 @@ Then pool `1c_makespan_s` (or `per_task[].makespan_s`) across a dataset's
 
 ## Collecting a dataset from scratch
 
-1. `docker ps --filter name=open-rmf` — if not running, `docker start open-rmf`.
-2. Run one script (don't run two at once — each takes exclusive control of Gazebo/Nav2):
+1. `docker ps --filter name=open-rmf` if not running, `docker start open-rmf`.
+2. Run one script:
    ```bash
    docker exec open-rmf bash -c "/home/eiu/rmf_ws/src/benchmark/task_planning/scripts/run_clearpath.sh"
    docker exec open-rmf bash -c "/home/eiu/rmf_ws/src/benchmark/task_planning/scripts/run_task_planning_baselines.sh"
