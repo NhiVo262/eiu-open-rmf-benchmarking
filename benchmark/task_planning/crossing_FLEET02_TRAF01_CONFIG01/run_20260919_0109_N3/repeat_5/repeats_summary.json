@@ -1,0 +1,131 @@
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_c9ecfca0-959c-40b6-b2d1-3f44c76c9267",
+        "places": [
+          "charger_1",
+          "bottleneck_1"
+        ],
+        "submit_wall_time": 1789787781.469294,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-f518940136",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1789787781469
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "charger_1",
+                "bottleneck_1"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-f518940136"
+      },
+      {
+        "request_id": "bench_patrol_1_1_338de5c5-b56b-4c3c-9fb7-f026bcad70a5",
+        "places": [
+          "crossing_1",
+          "loop_4"
+        ],
+        "submit_wall_time": 1789787781.469509,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-bac67f955e",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1789787781470
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "crossing_1",
+                "loop_4"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-bac67f955e"
+      },
+      {
+        "request_id": "bench_patrol_1_2_f2c5f4af-aaae-40e8-bbf5-30324799adf9",
+        "places": [
+          "crossing_2",
+          "bottleneck_3"
+        ],
+        "submit_wall_time": 1789787781.469593,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-e686847c22",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1789787781470
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "crossing_2",
+                "bottleneck_3"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-e686847c22"
+      }
+    ],
+    "fixed_wait_exceeded": true,
+    "completion_wall_time": 1789788081.474677,
+    "dispatch_status": {
+      "patrol.dispatch-f518940136": 3,
+      "patrol.dispatch-bac67f955e": 3,
+      "patrol.dispatch-e686847c22": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 27.696,
+      "tb3_robot2": 17.455,
+      "tb3_robot3": 21.178
+    },
+    "task_released": {
+      "patrol.dispatch-bac67f955e": false,
+      "patrol.dispatch-e686847c22": false,
+      "patrol.dispatch-f518940136": true
+    },
+    "outcome": {
+      "tb3_robot1": "completed",
+      "tb3_robot2": "timeout",
+      "tb3_robot3": "timeout"
+    }
+  }
+]

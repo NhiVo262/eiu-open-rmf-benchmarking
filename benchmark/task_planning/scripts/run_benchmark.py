@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-"""
+
 import argparse
 import json
 import math
@@ -38,14 +37,6 @@ class BenchRunner(Node):
         self.last_xy = None
         self.last_move_time = time.time()
         self.total_distance = 0.0   # cumulative distance since last reset_distance() call
-
-        # Real completion signal (see run_benchmark_concurrent.py for the full
-        # rationale): a task counts as released once no robot is holding its
-        # task_id anymore, after having been held, sustained for at least
-        # release_grace_period_s to avoid mistaking an in-flight replan
-        # re-auction for genuine completion. Distance alone can't tell a
-        # truncated task from a finished one, and Clear Path is the baseline
-        # every other scenario's percentage is computed against.
         self.tracked_task_id = None
         self.task_ever_held = False
         self.task_released = False
@@ -99,14 +90,6 @@ class BenchRunner(Node):
         start_ms = now.sec * 1000 + round(now.nanosec / 1e6)
         request = {
             'unix_millis_request_time': start_ms,
-            # 0, not "now": this node runs on wall time (never declares
-            # use_sim_time), but the fleet adapter's own node clock is
-            # sim-time-aware (per the Fleet Adapter fix). RMF compares this
-            # field against ITS OWN sim-time "now" to decide whether a
-            # queued task's deployment time has arrived -- a wall-clock
-            # epoch value (~1.7e12 ms) can never be <= a sim clock that
-            # starts near 0 when Gazebo launches, so the task would sit
-            # queued forever without 0 here.
             'unix_millis_earliest_start_time': 0,
             'requester': requester,
             'category': 'patrol',
@@ -196,11 +179,7 @@ def main():
         entry['dispatch_status'] = node.dispatch_status.get(task_id)
         entry['total_distance_m'] = round(node.total_distance, 3)
         entry['task_released'] = node.task_released
-        # A task RMF never released before fixed_wait elapsed is a real
-        # failure signal (still in progress when the clock ran out), not an
-        # inference from distance travelled. short_distance is reserved for
-        # tasks RMF DID release where the robot still moved less than
-        # expected -- a genuinely short route, not a truncated one.
+
         if entry['outcome'] is None:
             if node.task_ever_held and not node.task_released:
                 entry['outcome'] = 'timeout'

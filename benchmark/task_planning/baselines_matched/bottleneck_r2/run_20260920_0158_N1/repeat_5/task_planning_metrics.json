@@ -1,0 +1,99 @@
+{
+  "scenario": "Bottleneck sharedlane_3-loop_1 baseline repeat 5",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/task_planning/baselines_matched/bottleneck_r2/run_20260920_0158_N1/attempt_5/bag",
+  "robots": [
+    "tb3_robot1"
+  ],
+  "n_tasks": 1,
+  "n_makespan_unresolved": 0,
+  "makespan_resolution_rate_pct": 100.0,
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-2412ebdcf8",
+      "t_bid_notice": 1789870573.8856337,
+      "t_bid_response": 1789870573.8883867,
+      "planning_latency_s": 0.002753019332885742,
+      "dispatch_id": 0,
+      "dispatch_success": true,
+      "t_award": 1789870575.8856218,
+      "t_submit": 1789870573.893453,
+      "places": [
+        "sharedlane_3",
+        "loop_1"
+      ],
+      "route_start_xy": [
+        25.383560253137134,
+        -6.655601361644133
+      ],
+      "robot": "tb3_robot1",
+      "reassigned": false,
+      "t_arrival_at_route_start": 1789870634.7198606,
+      "t_end_physical": 1789870703.7198412,
+      "makespan_s": 68.99998068809509,
+      "makespan_incl_transit_s": 129.82638835906982,
+      "queueing_s": 1.99216890335083,
+      "execution_s": 68.99998068809509
+    }
+  ],
+  "per_robot": {
+    "tb3_robot1": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 68.99998068809509,
+        "stdev": 0.0,
+        "min": 68.99998068809509,
+        "max": 68.99998068809509
+      }
+    }
+  },
+  "1a_task_dispatch_success_rate_pct": 100.0,
+  "1b_planning_latency_s": {
+    "n": 1,
+    "mean": 0.002753019332885742,
+    "stdev": 0.0,
+    "min": 0.002753019332885742,
+    "max": 0.002753019332885742
+  },
+  "1c_makespan_s": {
+    "n": 1,
+    "mean": 68.99998068809509,
+    "stdev": 0.0,
+    "min": 68.99998068809509,
+    "max": 68.99998068809509
+  },
+  "1c_makespan_incl_transit_s": {
+    "n": 1,
+    "mean": 129.82638835906982,
+    "stdev": 0.0,
+    "min": 129.82638835906982,
+    "max": 129.82638835906982
+  },
+  "1c_queueing_s": {
+    "n": 1,
+    "mean": 1.99216890335083,
+    "stdev": 0.0,
+    "min": 1.99216890335083,
+    "max": 1.99216890335083
+  },
+  "1c_execution_s": {
+    "n": 1,
+    "mean": 68.99998068809509,
+    "stdev": 0.0,
+    "min": 68.99998068809509,
+    "max": 68.99998068809509
+  },
+  "negotiation_message_counts": {
+    "/rmf_traffic/negotiation_notice": 0,
+    "/rmf_traffic/negotiation_proposal": 0,
+    "/rmf_traffic/negotiation_conclusion": 0,
+    "/rmf_traffic/negotiation_rejection": 0,
+    "/rmf_traffic/negotiation_forfeit": 0
+  },
+  "blockade_message_counts": {
+    "/rmf_traffic/blockade_set": 0,
+    "/rmf_traffic/blockade_ready": 0,
+    "/rmf_traffic/blockade_reached": 0,
+    "/rmf_traffic/blockade_release": 0
+  }
+}

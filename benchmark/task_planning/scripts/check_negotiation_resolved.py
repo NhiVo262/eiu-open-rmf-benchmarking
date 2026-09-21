@@ -1,24 +1,5 @@
 #!/usr/bin/env python3
-"""
-Reads /rmf_traffic/negotiation_conclusion directly from a bag and reports how
-many of its messages have .resolved == True vs False.
 
-Why this exists separately from analyze_task_planning_concurrent.py:
-that script only counts *how many* messages arrived on each /rmf_traffic/
-negotiation_* topic (negotiation_message_counts), as a purely diagnostic
-signal that real traffic negotiation happened. It never opens the message
-body, so it can't tell a negotiation that concluded resolved from one that
-concluded abandoned -- both are just one more NegotiationConclusion message
-in that count. `.resolved` is the one field that actually says which.
-
-Forfeits (/rmf_traffic/negotiation_forfeit) are deliberately not counted as
-an outcome here -- a forfeit is a step inside an ongoing negotiation, not a
-conclusion of one; only negotiation_conclusion.resolved answers "did this
-negotiation end resolved or abandoned."
-
-Usage:
-  python3 check_negotiation_resolved.py --bag <path-to-bag-dir>
-"""
 import argparse
 
 import rosbag2_py

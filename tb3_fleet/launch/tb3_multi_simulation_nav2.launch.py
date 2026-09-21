@@ -15,9 +15,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
-
-# 3 robots, each spawned at a waypoint already verified safe (free + reachable
-# + in-bounds) on the world_tb3 nav_graph: charger_1, crossing_1, crossing_2.
 ROBOTS = [
     {'name': 'tb3_robot1', 'x_pose': '5.368',  'y_pose': '-6.654'},   # charger_1
     {'name': 'tb3_robot2', 'x_pose': '10.498', 'y_pose': '-6.565'},   # crossing_1
@@ -184,27 +181,14 @@ def generate_launch_description():
                 'use_sim_time': use_sim_time,
                 'robot_description': robot_desc,
             }],
-            # tf2 broadcaster publishes to the absolute /tf, /tf_static topics by
-            # default, ignoring namespace unless explicitly remapped -- needed
-            # for each robot's own Nav2/AMCL to work correctly (not using
-            # frame_prefix here -- merging/prefixing frames for the shared
-            # RViz view is tf_aggregator's job).
+
             remappings=[('/tf', 'tf'), ('/tf_static', 'tf_static')],
         )
-
-        # Only needed to give RViz a merged /tf across all robots -- pointless
-        # overhead on every headless benchmark run, where use_rviz is False.
         tf_aggregator_cmd = ExecuteProcess(
             cmd=['python3', '-m', 'tb3_fleet.tf_aggregator', '--robot-namespace', name],
             output='screen',
             condition=IfCondition(use_rviz),
         )
-
-        # Seeds the same x_pose/y_pose used to spawn this robot above, so the
-        # spawn point and the AMCL initial pose can never drift apart the way
-        # two independently hand-maintained copies (one here, one per
-        # scenario's PROCEDURE.md) eventually would. Retries until AMCL is
-        # actually subscribed instead of a single fire-and-forget publish.
         initial_pose_cmd = ExecuteProcess(
             cmd=[
                 'python3', '-m', 'tb3_fleet.set_initial_pose',

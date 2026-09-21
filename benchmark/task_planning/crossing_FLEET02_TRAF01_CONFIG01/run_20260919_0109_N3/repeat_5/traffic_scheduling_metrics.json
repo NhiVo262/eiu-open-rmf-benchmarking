@@ -1,0 +1,71 @@
+{
+  "scenario": "Crossing, N=3, CONFIG_01, repeat 5",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/traffic_scheduling/crossing_FLEET02_TRAF01_CONFIG01/run_20260919_0109_N3/attempt_15/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 3,
+  "n_conflicts_resolved": 3,
+  "2a_i_n_task_failed": 0,
+  "2a_i_submission_feasibility_pct": 100.0,
+  "2a_ii_negotiation_resolution_rate_pct": 100.0,
+  "2b_scheduling_time_s": {
+    "n": 21,
+    "mean": 0.005256720951625279,
+    "stdev": 0.0031656509937324135,
+    "min": 0.0004820823669433594,
+    "max": 0.009762048721313477
+  },
+  "raw_scheduling_times_s": [
+    0.009367704391479492,
+    0.0007534027099609375,
+    0.00852513313293457,
+    0.009762048721313477,
+    0.006143808364868164,
+    0.009161949157714844,
+    0.00924229621887207,
+    0.0046939849853515625,
+    0.0004820823669433594,
+    0.00703120231628418,
+    0.006744384765625,
+    0.007552146911621094,
+    0.007786273956298828,
+    0.0033876895904541016,
+    0.0028848648071289062,
+    0.004573345184326172,
+    0.004197359085083008,
+    0.0010247230529785156,
+    0.0007293224334716797,
+    0.004270792007446289,
+    0.0020766258239746094
+  ],
+  "per_conflict": [
+    {
+      "conflict_version": 0,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ]
+    },
+    {
+      "conflict_version": 1,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ]
+    },
+    {
+      "conflict_version": 2,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ]
+    }
+  ]
+}

@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Concurrent-submission variant of run_benchmark.py, for scenarios with N >= 2
-robots that must be dispatched at (near) the same time to produce genuine
-traffic interaction (Crossing, Bottleneck, Shared lane, Head-on...).
 
-Differs from run_benchmark.py only in submitting multiple ApiRequests back
-to back (not waiting for one task to finish before submitting the next) and
-tracking total_distance_m per robot instead of a single robot.
-"""
 import argparse
 import json
 import math
@@ -47,29 +39,12 @@ class ConcurrentBenchRunner(Node):
         self.last_xy = {name: None for name in robot_names}
         self.total_distance = {name: 0.0 for name in robot_names}
 
-        # Real completion signal, reconstructed from /fleet_states instead: a
-        # task counts as "released" once NO robot in this fleet is holding its
-        # task_id anymore, after at least one robot was seen holding it. This
-        # is a level check (is anyone holding it *right now*), not an edge
-        # check on one robot's own task_id changing -- a task reassigned
-        # mid-flight to a different robot (a real outcome of RMF's own
-        # replan/renegotiation, not hypothetical) still has a holder at every
-        # sample, so it is correctly never marked released while in progress.
         self.tracked_task_ids = set()
         self.task_seen_robot = {}     # task_id -> most recent robot name seen holding it
         self.task_ever_held = {}      # task_id -> True once any robot has held it at least once
         self.task_released = {}       # task_id -> True once held, unheld for release_grace_period_s
         self._unheld_since = {}       # task_id -> monotonic time first seen unheld (after being held)
-        # A replan re-auctions a task exactly like a new one, through the
-        # same one-auction-at-a-time dispatcher -- so a task can sit briefly
-        # unheld by anyone while reassignment is in flight, for up to roughly
-        # bidding_time_window. Confirming "released" only after this many
-        # seconds of nobody holding it avoids mistaking that gap for real
-        # completion (which would truncate measurement for the robot that
-        # picks the task back up). Set this >= the run's bidding_time_window
-        # for scenarios where replanning/renegotiation is expected (Crossing,
-        # Head-on, Shared Lane); the default is a minimal guard against
-        # single-sample /fleet_states jitter only.
+
         self.release_grace_period_s = release_grace_period_s
 
     def _on_response(self, msg: ApiResponse):
@@ -103,10 +78,7 @@ class ConcurrentBenchRunner(Node):
                 self.task_ever_held[tid] = True
                 self._unheld_since.pop(tid, None)
             elif self.task_ever_held.get(tid) and not self.task_released.get(tid):
-                # Someone held it before and no one holds it in this sample --
-                # start (or continue) the grace-period clock instead of
-                # deciding immediately, in case this is a mid-flight
-                # reassignment rather than genuine completion.
+
                 first_unheld_t = self._unheld_since.setdefault(tid, now)
                 if now - first_unheld_t >= self.release_grace_period_s:
                     self.task_released[tid] = True
@@ -128,14 +100,6 @@ class ConcurrentBenchRunner(Node):
         start_ms = now.sec * 1000 + round(now.nanosec / 1e6)
         request = {
             'unix_millis_request_time': start_ms,
-            # 0, not "now": this node runs on wall time (never declares
-            # use_sim_time), but the fleet adapter's own node clock is
-            # sim-time-aware (per the Fleet Adapter fix). RMF compares this
-            # field against ITS OWN sim-time "now" to decide whether a
-            # queued task's deployment time has arrived -- a wall-clock
-            # epoch value (~1.7e12 ms) can never be <= a sim clock that
-            # starts near 0 when Gazebo launches, so the task would sit
-            # queued forever without 0 here.
             'unix_millis_earliest_start_time': 0,
             'requester': requester,
             'category': 'patrol',
@@ -185,6 +149,10 @@ def parse_args():
                      help='If set, flag a robot as "short_distance" for a repeat when its '
                           'total_distance_m falls below this after the full wait')
     ap.add_argument('--output-dir', required=True, help='Directory to write repeats_summary.json into')
+    ap.add_argument('--stagger-submission-s', type=float, default=0.0,
+                     help='Seconds to wait between submitting each concurrent route within a repeat, '
+                          'instead of submitting all of them back-to-back. Default 0.0 preserves the '
+                          'original fully-concurrent behavior.')
     return ap.parse_args()
 
 
@@ -200,6 +168,8 @@ def main():
         request_ids = []
         submit_wall_times = {}
         for j, places in enumerate(routes):
+            if j > 0 and args.stagger_submission_s > 0:
+                time.sleep(args.stagger_submission_s)
             rid = f'bench_patrol_{i}_{j}_' + str(uuid.uuid4())
             submit_wall_times[rid] = time.time()
             node.submit_task(rid, places, args.rounds, args.requester)
@@ -238,14 +208,6 @@ def main():
         entry['dispatch_status'] = {tid: node.dispatch_status.get(tid) for tid in task_ids}
         entry['total_distance_m'] = {name: round(d, 3) for name, d in node.total_distance.items()}
         entry['task_released'] = dict(node.task_released)
-
-        # A robot counts as timed out if RMF never released it from one of
-        # this repeat's tasks before fixed_wait elapsed -- that is a real
-        # failure signal (the task was still in progress when the clock ran
-        # out), not an inference from how far the robot happened to travel.
-        # short_distance is now reserved for tasks RMF DID release where the
-        # robot still moved less than expected -- a genuinely short route,
-        # not a truncated one.
         robot_released = {}
         for tid in task_ids:
             robot = node.task_seen_robot.get(tid)

@@ -1,0 +1,173 @@
+{
+  "scenario": "Head-on, N=3, CONFIG_01, repeat 4",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/task_planning/headon_FLEET0N_TRAF04_CONFIG01/run_20260919_0322_N3/repeat_4/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_tasks": 3,
+  "n_makespan_unresolved": 0,
+  "makespan_resolution_rate_pct": 100.0,
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-3a654afd90",
+      "t_bid_notice": 1789789889.3936076,
+      "t_bid_response": 1789789889.3959665,
+      "planning_latency_s": 0.0023589134216308594,
+      "dispatch_id": 0,
+      "dispatch_success": true,
+      "t_award": 1789789949.3922422,
+      "t_submit": 1789789889.150865,
+      "places": [
+        "charger_1",
+        "bottleneck_3"
+      ],
+      "route_start_xy": [
+        5.368279400762283,
+        -6.6542575498156475
+      ],
+      "robot": "tb3_robot1",
+      "reassigned": false,
+      "t_arrival_at_route_start": 1789789949.4726121,
+      "t_end_physical": 1789790068.6725774,
+      "makespan_s": 119.19996523857117,
+      "makespan_incl_transit_s": 179.52171230316162,
+      "queueing_s": 60.241377115249634,
+      "execution_s": 119.19996523857117
+    },
+    {
+      "task_id": "patrol.dispatch-a0eca8ce7e",
+      "t_bid_notice": 1789789949.5922222,
+      "t_bid_response": 1789789949.5958261,
+      "planning_latency_s": 0.0036039352416992188,
+      "dispatch_id": 1,
+      "dispatch_success": true,
+      "t_award": 1789790016.7922125,
+      "t_submit": 1789789889.150913,
+      "places": [
+        "crossing_1",
+        "bottleneck_3"
+      ],
+      "route_start_xy": [
+        10.498355712223173,
+        -6.565416656710134
+      ],
+      "robot": "tb3_robot2",
+      "reassigned": false,
+      "t_arrival_at_route_start": 1789790016.8725073,
+      "t_end_physical": 1789790112.7724595,
+      "makespan_s": 95.89995217323303,
+      "makespan_incl_transit_s": 223.6215465068817,
+      "queueing_s": 127.64129948616028,
+      "execution_s": 95.89995217323303
+    },
+    {
+      "task_id": "patrol.dispatch-f0b50dd316",
+      "t_bid_notice": 1789790016.9921784,
+      "t_bid_response": 1789790016.9966118,
+      "planning_latency_s": 0.004433393478393555,
+      "dispatch_id": 2,
+      "dispatch_success": true,
+      "t_award": 1789790076.9922264,
+      "t_submit": 1789789889.1509311,
+      "places": [
+        "crossing_2",
+        "bottleneck_1"
+      ],
+      "route_start_xy": [
+        10.453960151074646,
+        -8.208848752140975
+      ],
+      "robot": "tb3_robot3",
+      "reassigned": false,
+      "t_arrival_at_route_start": 1789790077.072368,
+      "t_end_physical": 1789790172.5724611,
+      "makespan_s": 95.50009322166443,
+      "makespan_incl_transit_s": 283.42153000831604,
+      "queueing_s": 187.84129524230957,
+      "execution_s": 95.50009322166443
+    }
+  ],
+  "per_robot": {
+    "tb3_robot1": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 119.19996523857117,
+        "stdev": 0.0,
+        "min": 119.19996523857117,
+        "max": 119.19996523857117
+      }
+    },
+    "tb3_robot2": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 95.89995217323303,
+        "stdev": 0.0,
+        "min": 95.89995217323303,
+        "max": 95.89995217323303
+      }
+    },
+    "tb3_robot3": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 95.50009322166443,
+        "stdev": 0.0,
+        "min": 95.50009322166443,
+        "max": 95.50009322166443
+      }
+    }
+  },
+  "1a_task_dispatch_success_rate_pct": 100.0,
+  "1b_planning_latency_s": {
+    "n": 3,
+    "mean": 0.003465414047241211,
+    "stdev": 0.0010441541875901728,
+    "min": 0.0023589134216308594,
+    "max": 0.004433393478393555
+  },
+  "1c_makespan_s": {
+    "n": 3,
+    "mean": 103.53333687782288,
+    "stdev": 13.569171122092882,
+    "min": 95.50009322166443,
+    "max": 119.19996523857117
+  },
+  "1c_makespan_incl_transit_s": {
+    "n": 3,
+    "mean": 228.85492960611978,
+    "stdev": 52.14723630058091,
+    "min": 179.52171230316162,
+    "max": 283.42153000831604
+  },
+  "1c_queueing_s": {
+    "n": 3,
+    "mean": 125.2413239479065,
+    "stdev": 63.83380521672088,
+    "min": 60.241377115249634,
+    "max": 187.84129524230957
+  },
+  "1c_execution_s": {
+    "n": 3,
+    "mean": 103.53333687782288,
+    "stdev": 13.569171122092882,
+    "min": 95.50009322166443,
+    "max": 119.19996523857117
+  },
+  "negotiation_message_counts": {
+    "/rmf_traffic/negotiation_notice": 0,
+    "/rmf_traffic/negotiation_proposal": 0,
+    "/rmf_traffic/negotiation_conclusion": 0,
+    "/rmf_traffic/negotiation_rejection": 0,
+    "/rmf_traffic/negotiation_forfeit": 0
+  },
+  "blockade_message_counts": {
+    "/rmf_traffic/blockade_set": 0,
+    "/rmf_traffic/blockade_ready": 0,
+    "/rmf_traffic/blockade_reached": 0,
+    "/rmf_traffic/blockade_release": 0
+  }
+}
