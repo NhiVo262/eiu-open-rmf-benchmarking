@@ -23,9 +23,7 @@ All scripts live in `scripts/` (paths below are relative to this file's folder).
 
 ## scripts/
 
-**Analyze existing data / needed to run a benchmark** — re-derive metrics from
-a bag already on disk, or are called by the collection scripts below as a
-dependency:
+**Analyze existing data / needed to run a benchmark** 
 
 | File | Purpose |
 |---|---|
@@ -35,8 +33,7 @@ dependency:
 | `run_benchmark_concurrent.py` | Submits tasks — called by `run_task_planning_baselines.sh` / `run_task_planning_scenarios.sh`, not run directly |
 | `run_benchmark.py` | Submits tasks — called by `run_clearpath.sh`, not run directly |
 
-**Collect a new, independent dataset from scratch** — top-level scripts you
-run yourself; each brings up the full stack and produces fresh bags:
+**Collect a new, independent dataset from scratch** 
 
 | File | Purpose |
 |---|---|
