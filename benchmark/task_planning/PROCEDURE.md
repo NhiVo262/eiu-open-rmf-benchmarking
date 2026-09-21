@@ -17,20 +17,32 @@ All scripts live in `scripts/` (paths below are relative to this file's folder).
 |---|---|---|
 | Clear Path (N=1) | `scripts/run_clearpath.sh` | 1 route, `--rounds 5 --repeats 1`, 5 repeats |
 | 4× N=3 scenarios | `scripts/run_task_planning_scenarios.sh`* | 3 concurrent tasks/repeat, 5 repeats, official runs listed in README |
-
-\* not runnable from this folder alone — see `scripts/` table below.
 | 12× matched N=1 baselines | `scripts/run_task_planning_baselines.sh` | 1 route/task, `--rounds 1 --repeats 1`, 5 repeats/route, spawn = winning robot's position in the matching N=3 run |
 
+\* not runnable from this folder alone — see `scripts/` tables below.
+
 ## scripts/
+
+**Analyze existing data / needed to run a benchmark** — re-derive metrics from
+a bag already on disk, or are called by the collection scripts below as a
+dependency:
 
 | File | Purpose |
 |---|---|
 | `analyze_task_planning_concurrent.py` | Computes 1a/1b/1c metrics from a bag (arrival-based makespan) |
-| `run_benchmark_concurrent.py` | Submits tasks for N=3 scenarios and the 12 matched baselines |
-| `run_benchmark.py` | Submits tasks for Clear Path (`--rounds N` single-task protocol) |
 | `check_negotiation_resolved.py` | Resolved/abandoned negotiation counts, cited in the report |
-| `run_clearpath.sh`, `run_task_planning_baselines.sh` | Collect Clear Path / the 12 matched baselines from scratch (self-contained) |
-| `analyze_n3_scenarios.sh` | Computes `task_planning_metrics.json` for the 4 N=3 scenarios from the bags already sitting in this folder
+| `analyze_n3_scenarios.sh` | Computes `task_planning_metrics.json` for the 4 N=3 scenarios from the bags already sitting in this folder |
+| `run_benchmark_concurrent.py` | Submits tasks — called by `run_task_planning_baselines.sh` / `run_task_planning_scenarios.sh`, not run directly |
+| `run_benchmark.py` | Submits tasks — called by `run_clearpath.sh`, not run directly |
+
+**Collect a new, independent dataset from scratch** — top-level scripts you
+run yourself; each brings up the full stack and produces fresh bags:
+
+| File | Purpose |
+|---|---|
+| `run_clearpath.sh` | Collects Clear Path (N=1, no contention) |
+| `run_task_planning_baselines.sh` | Collects the 12 matched N=1 baselines |
+| `run_task_planning_scenarios.sh` | How the 4 N=3 bags already in this folder were produced. **Not runnable here** — needs `traffic_scheduling/scripts/`, which isn't part of this commit. Kept for provenance; will move once Traffic Scheduling is committed (Milestone 3). |
 
 ## Reproducing the report's numbers (bags already present)
 
