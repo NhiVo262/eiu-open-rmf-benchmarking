@@ -240,7 +240,7 @@ cd /home/eiu/rmf_ws
 zenohd
 ```
 
-### 2. Three robots, Gazebo and Nav2
+### 2.Launch the simulation environment and Nav2
 
 ```bash
 TB3_SIM_ROBOTS=tb3_robot1,tb3_robot2,tb3_robot3 \
