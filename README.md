@@ -1,7 +1,7 @@
 # Open-RMF Benchmarking
 
 This EIU × ARTC project evaluates an Open-RMF deployment with TurtleBot3 robots in
-simulation and on hardware, using matched workloads and documented test conditions.
+simulation and on hardware, using matched workloads and test conditions.
 
 ## Contents
 
@@ -26,7 +26,7 @@ robot executes its assigned plan through its navigation, localisation and contro
 This project integrates three TurtleBot3 robots with Open-RMF, Nav2, Zenoh
 and evaluates the resulting system.
 
-Experiments cover a Gazebo fleet and a physical fleet. Collection procedures,
+Experiments cover a simulation fleet and a physical fleet. Collection procedures,
 measurement methods and results are documented in [benchmark/](benchmark/ARCHITECTURE.md).
 
 ## Problem statement and objectives
@@ -62,15 +62,10 @@ requirements are defined in [METRIC_DESIGN.md](benchmark/METRIC_DESIGN.md).
 
 - **Fleet integration:** an Open-RMF EasyFullControl adapter that sends Nav2 goals and
   reads robot telemetry over Zenoh, with simulation and hardware configurations.
-- **Experimental workflow:** scenario runners, placement and reset procedures, state
-  recording and per-repeat checks for the two platforms.
-- **Measurement pipeline:** metric definitions, per-feature analysers and
-  diagnostics distinguishing reported pose, commanded activity and Gazebo ground truth.
+- **Experimental workflow:** scenario runners, state recording and per-repeat checks for the two platforms.
+- **Measurement pipeline:** metric definitions, per-feature analysers.
 - **Cross-platform evaluation:** route-matched single-robot baselines and multi-robot
   results, with documented coverage, measurement limitations and case studies.
-
-Open-RMF's task-planning and traffic-coordination algorithms are upstream components.
-The results characterise the tested integration and configuration.
 
 ## System architecture
 
