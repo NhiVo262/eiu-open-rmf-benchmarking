@@ -70,40 +70,40 @@ requirements are defined in [METRIC_DESIGN.md](benchmark/METRIC_DESIGN.md).
 ## System architecture
 
 ```text
-                          Task submission
-                   run_benchmark_concurrent.py (benchmark)
-                                 |
-            ROS: task_api_requests, task_api_responses, /dispatch_states
-                                 v
-                        Open-RMF dispatcher
-                                 |  bid notice / bid response
-                                 v
-             Fleet adapter (EasyFullControl, tb3_fleet)
-             - traffic participant and negotiation
-             - one Tb3RobotAdapter per robot, in-process
-             - one shared Zenoh client session
-                                 |
-                                 |--- WebSocket ---> record_api_state.py -> JSONL
-                                 v
-                      zenohd (workstation, :7447)
-                                 |
-        +------------------------+------------------------+
-        |                        |                        |
-    SIMULATION              HARDWARE            RECORDING (hardware)
-  one bridge on         one bridge per        workstation bridge
-  the workstation       robot, on the robot   -> workstation DDS
-        |                        |                        |
-    robot DDS               robot DDS                  rosbag2
-        |                        |
-  Nav2 + AMCL             Nav2 + AMCL
-        |                 bring-up: OpenCR, LiDAR, battery
-  ros_gz_bridge                  |
-        |                 physical TurtleBot3
-     Gazebo
-        |
-  ground-truth poses
+                             Task submission
+                 run_benchmark_concurrent.py (benchmark)
+                                    |
+      ROS: task_api_requests, task_api_responses, /dispatch_states
+                                    v
+                           Open-RMF dispatcher
+                                    |  bid notice / bid response
+                                    v
+               Fleet adapter (EasyFullControl, tb3_fleet)
+                  - traffic participant and negotiation
+                  - one Tb3RobotAdapter per robot, in-process
+                  - one shared Zenoh client session
+                                    |
+                                    |--> record_api_state.py -> JSONL
+                                    v
+                       zenohd (workstation, :7447)
+                                    |
+          +-------------------------+-------------------------+
+          |                         |                         |
+     SIMULATION                 HARDWARE            RECORDING (hardware)
+    one bridge on            one bridge per          workstation bridge
+   the workstation         robot, on the robot       -> workstation DDS
+          |                         |                         |
+      robot DDS                 robot DDS                  rosbag2
+          |                         |
+     Nav2 + AMCL               Nav2 + AMCL
+          |                         |
+    ros_gz_bridge       bring-up (OpenCR, LiDAR)
+          |                         |
+       Gazebo              physical TurtleBot3
+          |
+ ground-truth poses
 
-  bag (MCAP) + task-state JSONL + ground-truth JSONL
+           bag (MCAP) + task-state JSONL + ground-truth JSONL
         -> analysers -> metrics JSON -> RESULTS.md / APPENDIX.md
 ```
 
