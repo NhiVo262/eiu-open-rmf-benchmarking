@@ -1,4 +1,4 @@
-# Open-RMF Multi-Robot Benchmarking
+# Open-RMF Benchmarking
 
 This EIU × ARTC project evaluates an Open-RMF deployment with TurtleBot3 robots in
 simulation and on hardware, using matched workloads and documented test conditions.
