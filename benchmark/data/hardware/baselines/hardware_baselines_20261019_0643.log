@@ -1,0 +1,199 @@
+[INFO] [1792392205.316993037] [hardware_baselines]: Starting hardware baselines for routes [bottleneck_r1,crossing_r1,headon_r1,sharedlane_r1].
+[INFO] [1792392205.318483689] [hardware_baselines]: Battery floor [50%].
+[INFO] [1792392205.356413605] [hardware_baselines]: Robot [tb3_robot1], fleet config derived from [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml].
+[INFO] [1792392205.357919353] [hardware_baselines]: Fleet config [/home/eiu/rmf_ws/src/benchmark/.session/hardware/fleet_config_tb3_robot1.yaml].
+[INFO] [1792392205.359336748] [hardware_baselines]: Navigation graph [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/world_tb3/nav_graphs/0.yaml].
+[INFO] [1792392205.365333594] [hardware_baselines]: Route [bottleneck_r1] already holds 5 of 5 repeats.
+[INFO] [1792392205.371232175] [hardware_baselines]: Collecting route [crossing_r1], places [wp_2,wp_6], start [wp_2], into [/home/eiu/rmf_ws/src/benchmark/data/hardware/baselines/crossing_r1/run_20261019_0457_N1HW] with 1 repeat(s) present.
+[INFO] [1792392205.374505640] [hardware_baselines]: Route [crossing_r1], repeat 2 of 5, attempt 1.
+[INFO] [1792392205.376031476] [hardware_baselines]: Stopping the workstation stack.
+[INFO] [1792392219.429934714] [hardware_baselines]: Started workstation [zenoh-bridge-ros2dds].
+[INFO] [1792392222.439491445] [hardware_baselines]: Started the robot topic holder.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   260 msgs    32.5 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x100
+                                              base_link -> wheel_right_link  x100
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[WARN] [1792392234.099656269] [hardware_baselines]: Check 1 of 3 found no usable data.
+[INFO] [1792392234.103257135] [hardware_baselines]: Replacing the topic holder for [tb3_robot1] to rebuild its bridge routes.
+[INFO] [1792392237.111523165] [hardware_baselines]: Started the robot topic holder.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   260 msgs    32.5 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x100
+                                              base_link -> wheel_right_link  x100
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[WARN] [1792392254.370992017] [hardware_baselines]: Check 2 of 3 found no usable data.
+[WARN] [1792392254.372483757] [hardware_baselines]: Streams still absent after replacing the holder; rebuilding the workstation bridge.
+[INFO] [1792392262.394256079] [hardware_baselines]: Started workstation [zenoh-bridge-ros2dds].
+[INFO] [1792392265.402447179] [hardware_baselines]: Started the robot topic holder.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   262 msgs    32.8 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x102
+                                              base_link -> wheel_right_link  x102
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[ERROR] [1792392286.862123838] [hardware_baselines]: Robot [tb3_robot1] is not ready: the zenoh keys carry no data, AMCL is not publishing map -> odom, or the charge is below 50%.
+[ERROR] [1792392286.863587312] [hardware_baselines]: The holder and the workstation bridge were both replaced, so the gap is on the robot.
+[ERROR] [1792392286.865021365] [hardware_baselines]: On the robot, check bringup, Nav2 and zenoh-bridge-ros2dds, confirm 'ros2 lifecycle get /amcl' is active.
+[INFO] [1792392286.866517837] [hardware_baselines]: Route [crossing_r1], repeat 2 of 5, attempt 2.
+[INFO] [1792392286.867941082] [hardware_baselines]: Stopping the workstation stack.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   252 msgs    31.5 Hz
+                                              odom -> base_footprint  x159
+                                              base_link -> wheel_left_link  x93
+                                              base_link -> wheel_right_link  x93
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[WARN] [1792392307.980790842] [hardware_baselines]: Check 1 of 3 found no usable data.
+[INFO] [1792392307.984503906] [hardware_baselines]: Replacing the topic holder for [tb3_robot1] to rebuild its bridge routes.
+[INFO] [1792392310.992815073] [hardware_baselines]: Started the robot topic holder.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   259 msgs    32.4 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x99
+                                              base_link -> wheel_right_link  x99
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[WARN] [1792392328.252414292] [hardware_baselines]: Check 2 of 3 found no usable data.
+[WARN] [1792392328.253924108] [hardware_baselines]: Streams still absent after replacing the holder; rebuilding the workstation bridge.
+[INFO] [1792392336.275909919] [hardware_baselines]: Started workstation [zenoh-bridge-ros2dds].
+[INFO] [1792392339.283942421] [hardware_baselines]: Started the robot topic holder.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   253 msgs    31.6 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x93
+                                              base_link -> wheel_right_link  x93
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[ERROR] [1792392360.744235677] [hardware_baselines]: Robot [tb3_robot1] is not ready: the zenoh keys carry no data, AMCL is not publishing map -> odom, or the charge is below 50%.
+[ERROR] [1792392360.745806989] [hardware_baselines]: The holder and the workstation bridge were both replaced, so the gap is on the robot.
+[ERROR] [1792392360.747231506] [hardware_baselines]: On the robot, check bringup, Nav2 and zenoh-bridge-ros2dds, confirm 'ros2 lifecycle get /amcl' is active.
+[INFO] [1792392360.748674440] [hardware_baselines]: Route [crossing_r1], repeat 2 of 5, attempt 3.
+[INFO] [1792392360.750118445] [hardware_baselines]: Stopping the workstation stack.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   262 msgs    32.8 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x102
+                                              base_link -> wheel_right_link  x102
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[WARN] [1792392381.862682289] [hardware_baselines]: Check 1 of 3 found no usable data.
+[INFO] [1792392381.868518140] [hardware_baselines]: Replacing the topic holder for [tb3_robot1] to rebuild its bridge routes.
+[INFO] [1792392384.876588220] [hardware_baselines]: Started the robot topic holder.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   251 msgs    31.4 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x91
+                                              base_link -> wheel_right_link  x91
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[WARN] [1792392402.135231899] [hardware_baselines]: Check 2 of 3 found no usable data.
+[WARN] [1792392402.136833215] [hardware_baselines]: Streams still absent after replacing the holder; rebuilding the workstation bridge.
+[INFO] [1792392410.158587170] [hardware_baselines]: Started workstation [zenoh-bridge-ros2dds].
+[INFO] [1792392413.166841833] [hardware_baselines]: Started the robot topic holder.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   264 msgs    33.0 Hz
+                                              odom -> base_footprint  x161
+                                              base_link -> wheel_left_link  x103
+                                              base_link -> wheel_right_link  x103
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[ERROR] [1792392434.627043237] [hardware_baselines]: Robot [tb3_robot1] is not ready: the zenoh keys carry no data, AMCL is not publishing map -> odom, or the charge is below 50%.
+[ERROR] [1792392434.628572847] [hardware_baselines]: The holder and the workstation bridge were both replaced, so the gap is on the robot.
+[ERROR] [1792392434.630040874] [hardware_baselines]: On the robot, check bringup, Nav2 and zenoh-bridge-ros2dds, confirm 'ros2 lifecycle get /amcl' is active.
+[INFO] [1792392434.631523336] [hardware_baselines]: Route [crossing_r1], repeat 2 of 5, attempt 4.
+[INFO] [1792392434.632966134] [hardware_baselines]: Stopping the workstation stack.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   258 msgs    32.2 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x98
+                                              base_link -> wheel_right_link  x98
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[WARN] [1792392455.750839401] [hardware_baselines]: Check 1 of 3 found no usable data.
+[INFO] [1792392455.754664098] [hardware_baselines]: Replacing the topic holder for [tb3_robot1] to rebuild its bridge routes.
+[INFO] [1792392458.763219701] [hardware_baselines]: Started the robot topic holder.
+connected to tcp/127.0.0.1:7447; listening 8s
+tb3_robot1/tf                                   262 msgs    32.8 Hz
+                                              odom -> base_footprint  x160
+                                              base_link -> wheel_left_link  x102
+                                              base_link -> wheel_right_link  x102
+tb3_robot1/battery_state                          8 msgs     1.0 Hz
+tb3_robot1/tf_static                              0 msgs     0.0 Hz
+
+map -> odom is absent. Start Nav2 on the robot and set its initial pose.
+
+no data on:
+  map -> odom
+AMCL is not publishing. Restart Nav2 on the robot and seed it there.
+[WARN] [1792392476.028058773] [hardware_baselines]: Check 2 of 3 found no usable data.
+[WARN] [1792392476.029778831] [hardware_baselines]: Streams still absent after replacing the holder; rebuilding the workstation bridge.
+[INFO] [1792392484.058264557] [hardware_baselines]: Started workstation [zenoh-bridge-ros2dds].
+[INFO] [1792392487.068248559] [hardware_baselines]: Started the robot topic holder.
+[WARN] [1792392501.589306808] [hardware_baselines]: Interrupted.
+[INFO] [1792392501.591179981] [hardware_baselines]: Stopping the workstation stack.

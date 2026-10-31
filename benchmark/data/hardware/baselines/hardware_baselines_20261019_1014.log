@@ -1,0 +1,88 @@
+[INFO] [1792404870.719644920] [hardware_baselines]: Starting hardware baselines for routes [sharedlane_r3].
+[INFO] [1792404870.721048453] [hardware_baselines]: Charge floor [0.50].
+[INFO] [1792404870.758905761] [hardware_baselines]: Robot [tb3_robot3], fleet config derived from [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml].
+[INFO] [1792404870.760404725] [hardware_baselines]: Fleet config [/home/eiu/rmf_ws/src/benchmark/.session/hardware/fleet_config_tb3_robot3.yaml].
+[INFO] [1792404870.762075789] [hardware_baselines]: Navigation graph [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/world_tb3/nav_graphs/0.yaml].
+[INFO] [1792404870.768664585] [hardware_baselines]: Collecting route [sharedlane_r3], places [wp_6,wp_3], start [wp_6], into [/home/eiu/rmf_ws/src/benchmark/data/hardware/baselines/sharedlane_r3/run_20261019_0954_N1HW] with 2 repeat(s) present.
+[INFO] [1792404870.772008645] [hardware_baselines]: Route [sharedlane_r3], repeat 3 of 5, attempt 1.
+[INFO] [1792404870.773392907] [hardware_baselines]: Stopping the workstation stack.
+[WARN] [1792404871.243568267] [hardware_baselines]: Navigation not confirmed stopped; see [/home/eiu/rmf_ws/src/benchmark/.session/hardware/stop_robot_navigation.log].
+[INFO] [1792404890.788235829] [hardware_baselines]: Waiting for robot streams, missing: tb3_robot3/scan tb3_robot3/tf
+[INFO] [1792404890.791932124] [hardware_baselines]: Replacing the topic holder for [tb3_robot3] to rebuild its bridge routes.
+[INFO] [1792404893.800055833] [hardware_baselines]: Started the robot topic holder.
+[INFO] [1792404905.307802137] [hardware_baselines]: Waiting for robot streams, missing: tb3_robot3/scan
+[WARN] [1792404905.309300761] [hardware_baselines]: Streams still absent after replacing the holder; rebuilding the workstation bridge.
+[INFO] [1792404913.331318431] [hardware_baselines]: Started workstation [zenoh-bridge-ros2dds].
+[INFO] [1792404916.339577311] [hardware_baselines]: Started the robot topic holder.
+[INFO] [1792404928.635948262] [hardware_baselines]: Robot [tb3_robot3] publishes scan and tf.
+[INFO] [1792404929.105136683] [hardware_baselines]: Robot [tb3_robot3] serves navigate_to_pose.
+[INFO] [1792404929.768359763] [hardware_baselines]: Operator, for repeat 3:
+[INFO] [1792404929.769925171] [hardware_baselines]:   1. park [tb3_robot3] on [wp_6] at map (28.5678, -5.0120), facing [wp_4] at yaw 3.1014
+[INFO] [1792404929.771389490] [hardware_baselines]:   2. face the robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792404929.772782301] [hardware_baselines]:   3. press ENTER here; the runner seeds AMCL on the robot
+[INFO] [1792404933.578995487] [hardware_baselines]: Seeded the initial pose of [tb3_robot3] from the navigation graph.
+[INFO] [1792404934.854589197] [hardware_baselines]: Robot [tb3_robot3] publishes map -> odom.
+[INFO] [1792404936.324917027] [hardware_baselines]: Seed check for [tb3_robot3]: off by 0.032 m and 0.016 rad (AMCL yaw 3.117, seeded 3.1014).
+[INFO] [1792404937.976502920] [hardware_baselines]: Robot [tb3_robot3] state of charge [0.517].
+[INFO] [1792404946.994242990] [hardware_baselines]: Robot [tb3_robot3] joined fleet [tb3_fleet] after 8s.
+[INFO] [1792404956.998425112] [hardware_baselines]: Submitting route [wp_6,wp_3] for repeat 3.
+[INFO] [1792405048.593214967] [hardware_baselines]: Task runner exited 0.
+[INFO] [1792405064.406119659] [hardware_baselines]: Analysis for repeat 3 exited 0.
+[INFO] [1792405064.434225883] [hardware_baselines]: Outcome annotation for repeat 3 exited 0.
+[INFO] [1792405064.437136850] [hardware_baselines]: Route [sharedlane_r3], repeat 4 of 5, attempt 2.
+[INFO] [1792405064.438950346] [hardware_baselines]: Stopping the workstation stack.
+[INFO] [1792405064.920422755] [hardware_baselines]: Navigation stopped on [tb3_robot3].
+[INFO] [1792405076.275668647] [hardware_baselines]: Robot [tb3_robot3] publishes scan and tf.
+[INFO] [1792405076.742914229] [hardware_baselines]: Robot [tb3_robot3] serves navigate_to_pose.
+[INFO] [1792405077.400443878] [hardware_baselines]: Operator, for repeat 4:
+[INFO] [1792405077.402078463] [hardware_baselines]:   1. park [tb3_robot3] on [wp_6] at map (28.5678, -5.0120), facing [wp_4] at yaw 3.1014
+[INFO] [1792405077.403597897] [hardware_baselines]:   2. face the robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792405077.405049814] [hardware_baselines]:   3. press ENTER here; the runner seeds AMCL on the robot
+[INFO] [1792405089.329498849] [hardware_baselines]: Seeded the initial pose of [tb3_robot3] from the navigation graph.
+[INFO] [1792405090.615109645] [hardware_baselines]: Robot [tb3_robot3] publishes map -> odom.
+[INFO] [1792405092.083739066] [hardware_baselines]: Seed check for [tb3_robot3]: off by 0.033 m and 0.011 rad (AMCL yaw 3.113, seeded 3.1014).
+[INFO] [1792405094.140433592] [hardware_baselines]: Robot [tb3_robot3] state of charge [0.500].
+[INFO] [1792405103.157841391] [hardware_baselines]: Robot [tb3_robot3] joined fleet [tb3_fleet] after 8s.
+[INFO] [1792405113.162026712] [hardware_baselines]: Submitting route [wp_6,wp_3] for repeat 4.
+[INFO] [1792405254.396456606] [hardware_baselines]: Task runner exited 0.
+[INFO] [1792405270.318437877] [hardware_baselines]: Analysis for repeat 4 exited 0.
+[INFO] [1792405270.346103793] [hardware_baselines]: Outcome annotation for repeat 4 exited 0.
+[INFO] [1792405270.349109104] [hardware_baselines]: Route [sharedlane_r3], repeat 5 of 5, attempt 3.
+[INFO] [1792405270.350972211] [hardware_baselines]: Stopping the workstation stack.
+[INFO] [1792405270.829926056] [hardware_baselines]: Navigation stopped on [tb3_robot3].
+[INFO] [1792405282.182864811] [hardware_baselines]: Robot [tb3_robot3] publishes scan and tf.
+[INFO] [1792405282.649511134] [hardware_baselines]: Robot [tb3_robot3] serves navigate_to_pose.
+[INFO] [1792405283.309965109] [hardware_baselines]: Operator, for repeat 5:
+[INFO] [1792405283.311456590] [hardware_baselines]:   1. park [tb3_robot3] on [wp_6] at map (28.5678, -5.0120), facing [wp_4] at yaw 3.1014
+[INFO] [1792405283.313036792] [hardware_baselines]:   2. face the robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792405283.314584966] [hardware_baselines]:   3. press ENTER here; the runner seeds AMCL on the robot
+[INFO] [1792405295.312608611] [hardware_baselines]: Seeded the initial pose of [tb3_robot3] from the navigation graph.
+[INFO] [1792405296.610311798] [hardware_baselines]: Robot [tb3_robot3] publishes map -> odom.
+[INFO] [1792405298.095540655] [hardware_baselines]: Seed check for [tb3_robot3]: off by 0.026 m and 0.005 rad (AMCL yaw 3.096, seeded 3.1014).
+[INFO] [1792405299.356982721] [hardware_baselines]: Robot [tb3_robot3] state of charge [0.489].
+[ERROR] [1792405299.359518180] [hardware_baselines]: Charge below HW_MIN_SOC [0.50] on tb3_robot3(0.489). Charge it before continuing.
+[INFO] [1792405299.361143221] [hardware_baselines]: Route [sharedlane_r3], repeat 5 of 5, attempt 4.
+[INFO] [1792405299.362637473] [hardware_baselines]: Stopping the workstation stack.
+[INFO] [1792405299.835501961] [hardware_baselines]: Navigation stopped on [tb3_robot3].
+[INFO] [1792405311.184531049] [hardware_baselines]: Robot [tb3_robot3] publishes scan and tf.
+[INFO] [1792405311.651786194] [hardware_baselines]: Robot [tb3_robot3] serves navigate_to_pose.
+[INFO] [1792405312.310173822] [hardware_baselines]: Operator, for repeat 5:
+[INFO] [1792405312.311823488] [hardware_baselines]:   1. park [tb3_robot3] on [wp_6] at map (28.5678, -5.0120), facing [wp_4] at yaw 3.1014
+[INFO] [1792405312.313294358] [hardware_baselines]:   2. face the robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792405312.314718999] [hardware_baselines]:   3. press ENTER here; the runner seeds AMCL on the robot
+[INFO] [1792405333.402612488] [hardware_baselines]: Seeded the initial pose of [tb3_robot3] from the navigation graph.
+[INFO] [1792405334.561153936] [hardware_baselines]: Robot [tb3_robot3] publishes map -> odom.
+[INFO] [1792405336.038760180] [hardware_baselines]: Seed check for [tb3_robot3]: off by 0.014 m and 0.001 rad (AMCL yaw 3.101, seeded 3.1014).
+[INFO] [1792405337.394531890] [hardware_baselines]: Robot [tb3_robot3] state of charge [0.478].
+[ERROR] [1792405337.396881701] [hardware_baselines]: Charge below HW_MIN_SOC [0.50] on tb3_robot3(0.478). Charge it before continuing.
+[INFO] [1792405337.398431221] [hardware_baselines]: Route [sharedlane_r3], repeat 5 of 5, attempt 5.
+[INFO] [1792405337.399911666] [hardware_baselines]: Stopping the workstation stack.
+[INFO] [1792405337.878012735] [hardware_baselines]: Navigation stopped on [tb3_robot3].
+[INFO] [1792405349.234674780] [hardware_baselines]: Robot [tb3_robot3] publishes scan and tf.
+[INFO] [1792405349.702235355] [hardware_baselines]: Robot [tb3_robot3] serves navigate_to_pose.
+[INFO] [1792405350.363310288] [hardware_baselines]: Operator, for repeat 5:
+[INFO] [1792405350.364957121] [hardware_baselines]:   1. park [tb3_robot3] on [wp_6] at map (28.5678, -5.0120), facing [wp_4] at yaw 3.1014
+[INFO] [1792405350.366431314] [hardware_baselines]:   2. face the robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792405350.367891709] [hardware_baselines]:   3. press ENTER here; the runner seeds AMCL on the robot
+[WARN] [1792405380.492723753] [hardware_baselines]: Interrupted.
+[INFO] [1792405380.494693605] [hardware_baselines]: Stopping the workstation stack.

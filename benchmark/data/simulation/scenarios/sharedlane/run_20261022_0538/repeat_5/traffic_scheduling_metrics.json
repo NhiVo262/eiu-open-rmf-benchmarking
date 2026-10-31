@@ -1,0 +1,76 @@
+{
+  "scenario": "Shared Lane, N=3, CONFIG_01, repeat 5",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane_FLEET0N_TRAF02_CONFIG01/run_20261022_0538_N3/attempt_7/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 0,
+  "2a_method": "schedule feasibility: a conflict makes its tasks infeasible only if the negotiation ended unresolved AND no participant established a new itinerary within 5.0s (replan recovery)",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 100.0,
+  "2a_n_itineraries": 27,
+  "2a_n_itineraries_triggering_negotiation": 0,
+  "2a_n_task_infeasible": 0,
+  "2a_schedule_feasibility_pct": 100.0,
+  "2a_conflict_outcome_counts": {},
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 3,
+    "mean": 0.003051916758219401,
+    "stdev": 0.0011734240775306771,
+    "min": 0.0022814273834228516,
+    "max": 0.0044023990631103516
+  },
+  "raw_planner_compute_s": [
+    0.0044023990631103516,
+    0.0022814273834228516,
+    0.002471923828125
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 27,
+    "mean": 0.005801403964007342,
+    "stdev": 0.0028351433036828155,
+    "min": 0.0004181861877441406,
+    "max": 0.009893178939819336
+  },
+  "2b_scheduling_time_s": {
+    "n": 27,
+    "mean": 0.005801403964007342,
+    "stdev": 0.0028351433036828155,
+    "min": 0.0004181861877441406,
+    "max": 0.009893178939819336
+  },
+  "raw_scheduling_times_s": [
+    0.0004181861877441406,
+    0.009425163269042969,
+    0.0024149417877197266,
+    0.004665374755859375,
+    0.004311561584472656,
+    0.004296064376831055,
+    0.0005824565887451172,
+    0.0031366348266601562,
+    0.009893178939819336,
+    0.004098415374755859,
+    0.0007944107055664062,
+    0.001638650894165039,
+    0.0054776668548583984,
+    0.008444547653198242,
+    0.00775909423828125,
+    0.008056640625,
+    0.009250640869140625,
+    0.008704423904418945,
+    0.007041454315185547,
+    0.00558018684387207,
+    0.007070064544677734,
+    0.006690263748168945,
+    0.007788181304931641,
+    0.007361173629760742,
+    0.007607698440551758,
+    0.007283687591552734,
+    0.0068471431732177734
+  ],
+  "per_conflict": []
+}

@@ -1,0 +1,15 @@
+{
+  mode: "router",
+
+  listen: {
+    endpoints: ["tcp/[::]:7447"]
+  },
+  connect: {
+    endpoints: []
+  },
+
+  timestamping: {
+    enabled: { router: true, peer: true, client: true },
+  },
+  queries_default_timeout: 300000,
+}

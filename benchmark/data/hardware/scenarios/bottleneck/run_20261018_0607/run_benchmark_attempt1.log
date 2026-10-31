@@ -1,0 +1,155 @@
+[WARN] [1792303766.650975795] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[WARN] [1792303766.651316933] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[WARN] [1792303766.651327929] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[WARN] [1792303766.651336452] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[WARN] [1792303766.651344924] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[WARN] [1792303766.651352995] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[WARN] [1792303766.651361465] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[WARN] [1792303766.651369581] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[WARN] [1792303766.651409263] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[WARN] [1792303766.651420703] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[WARN] [1792303766.651428871] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[WARN] [1792303766.651437913] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[WARN] [1792303766.651797934] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[WARN] [1792303766.651814935] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[WARN] [1792303766.651837504] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[WARN] [1792303766.651939801] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[WARN] [1792303766.651967407] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[WARN] [1792303766.651981441] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+=== Repeat 1/1: submitting 3 concurrent patrol tasks ===
+  route ['wp_2', 'wp_5']: task_id=patrol.dispatch-2a9180004d
+  route ['wp_3', 'wp_4']: task_id=patrol.dispatch-0083d10d6a
+  route ['wp_4', 'wp_3']: task_id=patrol.dispatch-63c97710aa
+Repeat 1: outcome={'tb3_robot1': 'completed', 'tb3_robot2': 'completed', 'tb3_robot3': 'timeout'} total_distance_m={'tb3_robot1': 19.772, 'tb3_robot2': 9.901, 'tb3_robot3': 22.025}
+=== DONE ===
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_7fcaa05d-f36d-42a9-a40b-0bea78ca3a99",
+        "places": [
+          "wp_2",
+          "wp_5"
+        ],
+        "submit_wall_time": 1792303766.6894033,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-2a9180004d",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792303766689
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_2",
+                "wp_5"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-2a9180004d"
+      },
+      {
+        "request_id": "bench_patrol_1_1_08307dbb-811e-4ab1-bcf5-0f88fb65a06f",
+        "places": [
+          "wp_3",
+          "wp_4"
+        ],
+        "submit_wall_time": 1792303766.6895711,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-0083d10d6a",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792303766690
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_3",
+                "wp_4"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-0083d10d6a"
+      },
+      {
+        "request_id": "bench_patrol_1_2_cee5eb49-ef4d-4ef8-8ce8-432b341acae2",
+        "places": [
+          "wp_4",
+          "wp_3"
+        ],
+        "submit_wall_time": 1792303766.6896768,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-63c97710aa",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792303766690
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_4",
+                "wp_3"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-63c97710aa"
+      }
+    ],
+    "fixed_wait_exceeded": false,
+    "completion_wall_time": 1792304033.963945,
+    "dispatch_status": {
+      "patrol.dispatch-2a9180004d": 3,
+      "patrol.dispatch-0083d10d6a": 3,
+      "patrol.dispatch-63c97710aa": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 19.772,
+      "tb3_robot2": 9.901,
+      "tb3_robot3": 22.025
+    },
+    "task_released": {
+      "patrol.dispatch-0083d10d6a": true,
+      "patrol.dispatch-2a9180004d": true,
+      "patrol.dispatch-63c97710aa": false
+    },
+    "outcome": {
+      "tb3_robot1": "completed",
+      "tb3_robot2": "completed",
+      "tb3_robot3": "timeout"
+    }
+  }
+]

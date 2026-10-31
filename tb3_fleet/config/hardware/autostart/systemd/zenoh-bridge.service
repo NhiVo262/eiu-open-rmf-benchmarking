@@ -1,0 +1,15 @@
+[Unit]
+Description=zenoh-bridge-ros2dds for tb3_robot@ROBOT@
+After=network-online.target bringup.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=@USER@
+ExecStart=/bin/bash -lc 'source $HOME/turtlebot3_ws/autostart/env.sh && exec $HOME/turtlebot3_ws/config/zenoh-bridge-ros2dds -c $HOME/turtlebot3_ws/config/tb3_zenoh_bridge_robot@ROBOT@_config_hw.json5'
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=0
+
+[Install]
+WantedBy=multi-user.target

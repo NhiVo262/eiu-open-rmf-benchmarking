@@ -1,0 +1,197 @@
+[WARN] [1792375413.241794835] [hardware_scenarios]: HW_NO_GROUND_TRUTH=1: collecting with no external tracker. The pose comes
+[WARN] [1792375413.243237952] [hardware_scenarios]: from AMCL, so F7 and the localisation gate are unavailable for this data.
+config drift check: /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/simulation/fleet/multi_robot_config_sim.yaml vs /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml
+  all 18 values identical
+[INFO] [1792375413.292990390] [hardware_scenarios]: Starting hardware scenarios [Head-on] on 3 physical TurtleBot3.
+[INFO] [1792375413.294540735] [hardware_scenarios]: Fleet config [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml].
+[INFO] [1792375413.295896574] [hardware_scenarios]: Navigation graph [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/world_tb3/nav_graphs/0.yaml].
+[INFO] [1792375413.302018173] [hardware_scenarios]: Collecting scenario [Head-on] into [/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/headon_FLEET0N_TRAF04_CONFIG01/run_20261019_0203_N3HW] with 0 repeat(s) present.
+[INFO] [1792375413.305798774] [hardware_scenarios]: Scenario [Head-on], repeat 1 of 5, attempt 1.
+[INFO] [1792375413.307259912] [hardware_scenarios]: Stopping the workstation stack.
+[INFO] [1792375413.832065506] [hardware_scenarios]: Navigation stopped on 3 robots.
+[INFO] [1792375424.858184575] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792375424.871392828] [hardware_scenarios]: Holding the bridge routes open for 3 robots.
+[INFO] [1792375432.309063635] [hardware_scenarios]: All 3 robots publish scan and tf, and serve navigate_to_pose.
+[INFO] [1792375432.310634852] [hardware_scenarios]: Operator, for scenario [Head-on] repeat 1:
+[INFO] [1792375432.665887635] [hardware_scenarios]:   1.1 park [tb3_robot1] on [wp_2] at map (18.6475, -6.0315), facing [wp_3] at yaw -1.6072
+[INFO] [1792375433.028995949] [hardware_scenarios]:   1.2 park [tb3_robot2] on [wp_5] at map (23.8138, -9.0705), facing [wp_3] at yaw 2.8857
+[INFO] [1792375433.386568320] [hardware_scenarios]:   1.3 park [tb3_robot3] on [wp_3] at map (18.5867, -7.7030), facing [wp_5] at yaw -0.2559
+[INFO] [1792375433.388037794] [hardware_scenarios]:   2.   face each robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792375433.389453181] [hardware_scenarios]:   3.   press ENTER here; the runner seeds AMCL on all three robots
+[INFO] [1792375515.338156409] [hardware_scenarios]: Seeded the initial pose of 3 robots from the navigation graph.
+[INFO] [1792375518.955765530] [hardware_scenarios]: All 3 robots publish map -> odom.
+[INFO] [1792375518.957206692] [hardware_scenarios]: Checking state of charge, floor [0.50].
+[INFO] [1792375520.433111789] [hardware_scenarios]: Robot [tb3_robot1] state of charge [0.817].
+[INFO] [1792375521.749313281] [hardware_scenarios]: Robot [tb3_robot2] state of charge [0.761].
+[INFO] [1792375523.374023886] [hardware_scenarios]: Robot [tb3_robot3] state of charge [0.750].
+[INFO] [1792375538.406258529] [hardware_scenarios]: All 3 robots joined the fleet after 12s.
+[INFO] [1792375546.411804351] [hardware_scenarios]: Submitting scenario [Head-on] for repeat 1.
+[INFO] [1792375763.232836792] [hardware_scenarios]: Task runner exited 0.
+[INFO] [1792375781.642609659] [hardware_scenarios]: Traffic-scheduling analysis for repeat 1 exited 0.
+[INFO] [1792375784.167350986] [hardware_scenarios]: Task-planning analysis for repeat 1 exited 0.
+[INFO] [1792375784.195621155] [hardware_scenarios]: Outcome annotation for repeat 1 exited 0.
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 8.92 m, tb3_robot2 20.31 m, tb3_robot3 11.64 m
+tasks completed: 3 of 3
+resolved conflicts: 11
+furthest from any lane: tb3_robot1 0.53 m, tb3_robot2 1.02 m, tb3_robot3 1.09 m
+fleet state for tb3_robot1: 217 sample(s), gaps head 0.3 s, max 1.0 s, tail 0.7 s
+fleet state for tb3_robot2: 217 sample(s), gaps head 0.3 s, max 1.0 s, tail 0.7 s
+fleet state for tb3_robot3: 217 sample(s), gaps head 0.3 s, max 1.0 s, tail 0.7 s
+robot issues: tb3_robot1 {'navigation': 40}, tb3_robot2 {'navigation': 29}, tb3_robot3 {'navigation': 47}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[INFO] [1792375784.280971485] [hardware_scenarios]: Scenario [Head-on], repeat 2 of 5, attempt 2.
+[INFO] [1792375784.282527589] [hardware_scenarios]: Stopping the workstation stack.
+[INFO] [1792375784.791720552] [hardware_scenarios]: Navigation stopped on 3 robots.
+[INFO] [1792375795.820985120] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792375795.834882870] [hardware_scenarios]: Holding the bridge routes open for 3 robots.
+[INFO] [1792375803.267563111] [hardware_scenarios]: All 3 robots publish scan and tf, and serve navigate_to_pose.
+[INFO] [1792375803.269307901] [hardware_scenarios]: Operator, for scenario [Head-on] repeat 2:
+[INFO] [1792375803.626137122] [hardware_scenarios]:   1.1 park [tb3_robot1] on [wp_2] at map (18.6475, -6.0315), facing [wp_3] at yaw -1.6072
+[INFO] [1792375803.980232053] [hardware_scenarios]:   1.2 park [tb3_robot2] on [wp_5] at map (23.8138, -9.0705), facing [wp_3] at yaw 2.8857
+[INFO] [1792375804.338011793] [hardware_scenarios]:   1.3 park [tb3_robot3] on [wp_3] at map (18.5867, -7.7030), facing [wp_5] at yaw -0.2559
+[INFO] [1792375804.339621114] [hardware_scenarios]:   2.   face each robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792375804.341054731] [hardware_scenarios]:   3.   press ENTER here; the runner seeds AMCL on all three robots
+[INFO] [1792375841.424450392] [hardware_scenarios]: Seeded the initial pose of 3 robots from the navigation graph.
+[INFO] [1792375844.917816482] [hardware_scenarios]: All 3 robots publish map -> odom.
+[INFO] [1792375844.919402004] [hardware_scenarios]: Checking state of charge, floor [0.50].
+[INFO] [1792375846.830511064] [hardware_scenarios]: Robot [tb3_robot1] state of charge [0.750].
+[INFO] [1792375848.316414156] [hardware_scenarios]: Robot [tb3_robot2] state of charge [0.711].
+[INFO] [1792375849.778968258] [hardware_scenarios]: Robot [tb3_robot3] state of charge [0.700].
+[INFO] [1792375864.811391940] [hardware_scenarios]: All 3 robots joined the fleet after 12s.
+[INFO] [1792375872.817095317] [hardware_scenarios]: Submitting scenario [Head-on] for repeat 2.
+[INFO] [1792376083.047402235] [hardware_scenarios]: Task runner exited 0.
+[INFO] [1792376101.491098645] [hardware_scenarios]: Traffic-scheduling analysis for repeat 2 exited 0.
+[INFO] [1792376104.132036830] [hardware_scenarios]: Task-planning analysis for repeat 2 exited 0.
+[INFO] [1792376104.160341901] [hardware_scenarios]: Outcome annotation for repeat 2 exited 0.
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 11.40 m, tb3_robot2 21.09 m, tb3_robot3 11.50 m
+tasks completed: 3 of 3
+resolved conflicts: 9
+furthest from any lane: tb3_robot1 0.92 m, tb3_robot2 1.11 m, tb3_robot3 1.20 m
+fleet state for tb3_robot1: 211 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+fleet state for tb3_robot2: 211 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+fleet state for tb3_robot3: 211 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+robot issues: tb3_robot1 {'navigation': 66}, tb3_robot2 {'navigation': 42}, tb3_robot3 {'navigation': 4}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[INFO] [1792376104.246739926] [hardware_scenarios]: Scenario [Head-on], repeat 3 of 5, attempt 3.
+[INFO] [1792376104.248556971] [hardware_scenarios]: Stopping the workstation stack.
+[INFO] [1792376104.767559308] [hardware_scenarios]: Navigation stopped on 3 robots.
+[INFO] [1792376115.798175840] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792376115.812747775] [hardware_scenarios]: Holding the bridge routes open for 3 robots.
+[INFO] [1792376123.422337171] [hardware_scenarios]: All 3 robots publish scan and tf, and serve navigate_to_pose.
+[INFO] [1792376123.424083392] [hardware_scenarios]: Operator, for scenario [Head-on] repeat 3:
+[INFO] [1792376123.784769309] [hardware_scenarios]:   1.1 park [tb3_robot1] on [wp_2] at map (18.6475, -6.0315), facing [wp_3] at yaw -1.6072
+[INFO] [1792376124.159689555] [hardware_scenarios]:   1.2 park [tb3_robot2] on [wp_5] at map (23.8138, -9.0705), facing [wp_3] at yaw 2.8857
+[INFO] [1792376124.541397079] [hardware_scenarios]:   1.3 park [tb3_robot3] on [wp_3] at map (18.5867, -7.7030), facing [wp_5] at yaw -0.2559
+[INFO] [1792376124.542970569] [hardware_scenarios]:   2.   face each robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792376124.544603567] [hardware_scenarios]:   3.   press ENTER here; the runner seeds AMCL on all three robots
+[INFO] [1792376145.070097129] [hardware_scenarios]: Seeded the initial pose of 3 robots from the navigation graph.
+[INFO] [1792376148.994214594] [hardware_scenarios]: All 3 robots publish map -> odom.
+[INFO] [1792376148.995868878] [hardware_scenarios]: Checking state of charge, floor [0.50].
+[INFO] [1792376151.221038770] [hardware_scenarios]: Robot [tb3_robot1] state of charge [0.711].
+[INFO] [1792376152.857833472] [hardware_scenarios]: Robot [tb3_robot2] state of charge [0.672].
+[INFO] [1792376154.149217867] [hardware_scenarios]: Robot [tb3_robot3] state of charge [0.672].
+[INFO] [1792376169.182067928] [hardware_scenarios]: All 3 robots joined the fleet after 12s.
+[INFO] [1792376177.187865600] [hardware_scenarios]: Submitting scenario [Head-on] for repeat 3.
+[INFO] [1792376407.715470455] [hardware_scenarios]: Task runner exited 0.
+[INFO] [1792376426.642994434] [hardware_scenarios]: Traffic-scheduling analysis for repeat 3 exited 0.
+[INFO] [1792376429.595331308] [hardware_scenarios]: Task-planning analysis for repeat 3 exited 0.
+[INFO] [1792376429.624070321] [hardware_scenarios]: Outcome annotation for repeat 3 exited 0.
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 9.41 m, tb3_robot2 23.05 m, tb3_robot3 11.28 m
+tasks completed: 3 of 3
+resolved conflicts: 25
+furthest from any lane: tb3_robot1 1.09 m, tb3_robot2 0.72 m, tb3_robot3 0.88 m
+fleet state for tb3_robot1: 230 sample(s), gaps head 0.1 s, max 1.1 s, tail 0.9 s
+fleet state for tb3_robot2: 230 sample(s), gaps head 0.1 s, max 1.1 s, tail 0.9 s
+fleet state for tb3_robot3: 230 sample(s), gaps head 0.1 s, max 1.1 s, tail 0.9 s
+robot issues: tb3_robot1 {'navigation': 48}, tb3_robot2 {'navigation': 42}, tb3_robot3 {'navigation': 95}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[INFO] [1792376429.727091453] [hardware_scenarios]: Scenario [Head-on], repeat 4 of 5, attempt 4.
+[INFO] [1792376429.728846440] [hardware_scenarios]: Stopping the workstation stack.
+[INFO] [1792376430.252712281] [hardware_scenarios]: Navigation stopped on 3 robots.
+[INFO] [1792376441.280859418] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792376441.294849238] [hardware_scenarios]: Holding the bridge routes open for 3 robots.
+[INFO] [1792376448.824582793] [hardware_scenarios]: All 3 robots publish scan and tf, and serve navigate_to_pose.
+[INFO] [1792376448.826282367] [hardware_scenarios]: Operator, for scenario [Head-on] repeat 4:
+[INFO] [1792376449.192039958] [hardware_scenarios]:   1.1 park [tb3_robot1] on [wp_2] at map (18.6475, -6.0315), facing [wp_3] at yaw -1.6072
+[INFO] [1792376449.553709849] [hardware_scenarios]:   1.2 park [tb3_robot2] on [wp_5] at map (23.8138, -9.0705), facing [wp_3] at yaw 2.8857
+[INFO] [1792376449.918633310] [hardware_scenarios]:   1.3 park [tb3_robot3] on [wp_3] at map (18.5867, -7.7030), facing [wp_5] at yaw -0.2559
+[INFO] [1792376449.920156867] [hardware_scenarios]:   2.   face each robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792376449.921563948] [hardware_scenarios]:   3.   press ENTER here; the runner seeds AMCL on all three robots
+[INFO] [1792376490.771993665] [hardware_scenarios]: Seeded the initial pose of 3 robots from the navigation graph.
+[INFO] [1792376494.635342370] [hardware_scenarios]: All 3 robots publish map -> odom.
+[INFO] [1792376494.636819834] [hardware_scenarios]: Checking state of charge, floor [0.50].
+[INFO] [1792376496.643660310] [hardware_scenarios]: Robot [tb3_robot1] state of charge [0.672].
+[INFO] [1792376498.464820550] [hardware_scenarios]: Robot [tb3_robot2] state of charge [0.639].
+[INFO] [1792376500.575197406] [hardware_scenarios]: Robot [tb3_robot3] state of charge [0.639].
+[INFO] [1792376515.608113905] [hardware_scenarios]: All 3 robots joined the fleet after 12s.
+[INFO] [1792376523.613647196] [hardware_scenarios]: Submitting scenario [Head-on] for repeat 4.
+[INFO] [1792376708.549678920] [hardware_scenarios]: Task runner exited 0.
+[INFO] [1792376726.832767730] [hardware_scenarios]: Traffic-scheduling analysis for repeat 4 exited 0.
+[INFO] [1792376729.270162612] [hardware_scenarios]: Task-planning analysis for repeat 4 exited 0.
+[INFO] [1792376729.299160313] [hardware_scenarios]: Outcome annotation for repeat 4 exited 0.
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 9.34 m, tb3_robot2 20.48 m, tb3_robot3 10.95 m
+tasks completed: 3 of 3
+resolved conflicts: 3
+furthest from any lane: tb3_robot1 0.69 m, tb3_robot2 1.16 m, tb3_robot3 0.64 m
+fleet state for tb3_robot1: 185 sample(s), gaps head 0.5 s, max 1.2 s, tail 0.5 s
+fleet state for tb3_robot2: 185 sample(s), gaps head 0.5 s, max 1.2 s, tail 0.5 s
+fleet state for tb3_robot3: 185 sample(s), gaps head 0.5 s, max 1.2 s, tail 0.5 s
+robot issues: tb3_robot1 {'navigation': 28}, tb3_robot3 {'navigation': 9}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[INFO] [1792376729.385730742] [hardware_scenarios]: Scenario [Head-on], repeat 5 of 5, attempt 5.
+[INFO] [1792376729.387551381] [hardware_scenarios]: Stopping the workstation stack.
+[INFO] [1792376729.905469652] [hardware_scenarios]: Navigation stopped on 3 robots.
+[INFO] [1792376740.935559106] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792376740.949519502] [hardware_scenarios]: Holding the bridge routes open for 3 robots.
+[INFO] [1792376748.477691313] [hardware_scenarios]: All 3 robots publish scan and tf, and serve navigate_to_pose.
+[INFO] [1792376748.479481714] [hardware_scenarios]: Operator, for scenario [Head-on] repeat 5:
+[INFO] [1792376748.844567515] [hardware_scenarios]:   1.1 park [tb3_robot1] on [wp_2] at map (18.6475, -6.0315), facing [wp_3] at yaw -1.6072
+[INFO] [1792376749.211193173] [hardware_scenarios]:   1.2 park [tb3_robot2] on [wp_5] at map (23.8138, -9.0705), facing [wp_3] at yaw 2.8857
+[INFO] [1792376749.573437528] [hardware_scenarios]:   1.3 park [tb3_robot3] on [wp_3] at map (18.5867, -7.7030), facing [wp_5] at yaw -0.2559
+[INFO] [1792376749.574982377] [hardware_scenarios]:   2.   face each robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792376749.576423394] [hardware_scenarios]:   3.   press ENTER here; the runner seeds AMCL on all three robots
+[INFO] [1792376757.005136480] [hardware_scenarios]: Seeded the initial pose of 3 robots from the navigation graph.
+[INFO] [1792376760.745011929] [hardware_scenarios]: All 3 robots publish map -> odom.
+[INFO] [1792376760.746600685] [hardware_scenarios]: Checking state of charge, floor [0.50].
+[INFO] [1792376761.953258825] [hardware_scenarios]: Robot [tb3_robot1] state of charge [0.639].
+[INFO] [1792376763.931929628] [hardware_scenarios]: Robot [tb3_robot2] state of charge [0.611].
+[INFO] [1792376765.894069159] [hardware_scenarios]: Robot [tb3_robot3] state of charge [0.611].
+[INFO] [1792376780.927212621] [hardware_scenarios]: All 3 robots joined the fleet after 12s.
+[INFO] [1792376788.932959890] [hardware_scenarios]: Submitting scenario [Head-on] for repeat 5.
+[INFO] [1792376945.694021011] [hardware_scenarios]: Task runner exited 0.
+[INFO] [1792376963.929813753] [hardware_scenarios]: Traffic-scheduling analysis for repeat 5 exited 0.
+[INFO] [1792376966.197391371] [hardware_scenarios]: Task-planning analysis for repeat 5 exited 0.
+[INFO] [1792376966.225342089] [hardware_scenarios]: Outcome annotation for repeat 5 exited 0.
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 9.19 m, tb3_robot2 20.22 m, tb3_robot3 11.57 m
+tasks completed: 3 of 3
+resolved conflicts: 5
+furthest from any lane: tb3_robot1 0.80 m, tb3_robot2 1.11 m, tb3_robot3 0.59 m
+fleet state for tb3_robot1: 157 sample(s), gaps head 0.8 s, max 1.0 s, tail 0.2 s
+fleet state for tb3_robot2: 157 sample(s), gaps head 0.8 s, max 1.0 s, tail 0.2 s
+fleet state for tb3_robot3: 157 sample(s), gaps head 0.8 s, max 1.0 s, tail 0.2 s
+robot issues: tb3_robot1 {'navigation': 15}, tb3_robot2 {'navigation': 46}, tb3_robot3 {'navigation': 17}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[INFO] [1792376966.301873618] [hardware_scenarios]: Scenario [Head-on] finished with 5 of 5 repeats after 5 attempt(s).
+merged 5 repeat dir(s) into 5 task entries -> /home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/headon_FLEET0N_TRAF04_CONFIG01/run_20261019_0203_N3HW/repeats_summary.json
+[INFO] [1792376966.333959337] [hardware_scenarios]: Repeat-summary merge for scenario [Head-on] exited 0.
+[INFO] [1792376966.368793959] [hardware_scenarios]: Repeat-metric merge for scenario [Head-on] exited 0.
+[INFO] [1792376966.370334451] [hardware_scenarios]: Stopping the workstation stack.
+[INFO] [1792376966.891356644] [hardware_scenarios]: Navigation stopped on 3 robots.
+[INFO] [1792376977.923898542] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792376977.925494902] [hardware_scenarios]: Scenario [Head-on] written to [/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/headon_FLEET0N_TRAF04_CONFIG01/run_20261019_0203_N3HW].
+[INFO] [1792376977.927296915] [hardware_scenarios]: Finished hardware scenarios [Head-on].

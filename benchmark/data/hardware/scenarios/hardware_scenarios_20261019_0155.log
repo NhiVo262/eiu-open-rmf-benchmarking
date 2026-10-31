@@ -1,0 +1,98 @@
+[WARN] [1792374935.831587684] [hardware_scenarios]: HW_NO_GROUND_TRUTH=1: collecting with no external tracker. The pose comes
+[WARN] [1792374935.833042520] [hardware_scenarios]: from AMCL, so F7 and the localisation gate are unavailable for this data.
+config drift check: /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/simulation/fleet/multi_robot_config_sim.yaml vs /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml
+  all 18 values identical
+[INFO] [1792374935.881349750] [hardware_scenarios]: Starting hardware scenarios [Bottleneck] on 3 physical TurtleBot3.
+[INFO] [1792374935.882897168] [hardware_scenarios]: Fleet config [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml].
+[INFO] [1792374935.884309767] [hardware_scenarios]: Navigation graph [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/world_tb3/nav_graphs/0.yaml].
+[INFO] [1792374935.891060212] [hardware_scenarios]: Scenario [Bottleneck] already holds 5 of 5 repeats.
+[INFO] [1792374935.892905498] [hardware_scenarios]: Finished hardware scenarios [Bottleneck].
+[WARN] [1792374945.403476151] [hardware_scenarios]: HW_NO_GROUND_TRUTH=1: collecting with no external tracker. The pose comes
+[WARN] [1792374945.404881247] [hardware_scenarios]: from AMCL, so F7 and the localisation gate are unavailable for this data.
+config drift check: /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/simulation/fleet/multi_robot_config_sim.yaml vs /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml
+  all 18 values identical
+[INFO] [1792374945.452379072] [hardware_scenarios]: Starting hardware scenarios [Crossing] on 3 physical TurtleBot3.
+[INFO] [1792374945.453947829] [hardware_scenarios]: Fleet config [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml].
+[INFO] [1792374945.455425362] [hardware_scenarios]: Navigation graph [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/world_tb3/nav_graphs/0.yaml].
+[INFO] [1792374945.461745098] [hardware_scenarios]: Collecting scenario [Crossing] into [/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/crossing_FLEET02_TRAF01_CONFIG01/run_20261018_0639_N3HW] with 4 repeat(s) present.
+[INFO] [1792374945.465821942] [hardware_scenarios]: Scenario [Crossing], repeat 5 of 5, attempt 1.
+[INFO] [1792374945.467213831] [hardware_scenarios]: Stopping the workstation stack.
+[WARN] [1792374946.045152768] [hardware_scenarios]: Navigation not confirmed stopped; see [/home/eiu/rmf_ws/src/benchmark/.session/hardware/stop_robot_navigation.log].
+[INFO] [1792374957.071585754] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792374960.091214333] [hardware_scenarios]: Started router [zenohd] on port [7447].
+[INFO] [1792374965.100422636] [hardware_scenarios]: Started workstation [zenoh-bridge-ros2dds].
+[INFO] [1792374974.113988058] [hardware_scenarios]: Holding the bridge routes open for 3 robots.
+[INFO] [1792374981.621226276] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[INFO] [1792374987.099254957] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[INFO] [1792374992.581886985] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[INFO] [1792374998.063333960] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[INFO] [1792375003.544431935] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[INFO] [1792375009.023210571] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[ERROR] [1792375014.500021119] [hardware_scenarios]: Not serving navigate_to_pose after 30s; the fleet adapter cannot command these robots:
+[ERROR] [1792375014.501802202] [hardware_scenarios]:   [tb3_robot1] publishes its topics but serves no action. Restart Nav2 on that robot; this machine cannot supply it.
+[ERROR] [1792375014.503158915] [hardware_scenarios]:   [tb3_robot3] publishes its topics but serves no action. Restart Nav2 on that robot; this machine cannot supply it.
+[ERROR] [1792375014.504676821] [hardware_scenarios]: Detail is in [/home/eiu/rmf_ws/src/benchmark/.session/hardware/check_zenoh_routes.log].
+[WARN] [1792375014.506099421] [hardware_scenarios]: A robot is unreachable, discarding attempt 1 before placing the robots.
+[INFO] [1792375014.507535055] [hardware_scenarios]: Scenario [Crossing], repeat 5 of 5, attempt 2.
+[INFO] [1792375014.508903704] [hardware_scenarios]: Stopping the workstation stack.
+[WARN] [1792375014.989877349] [hardware_scenarios]: Navigation not confirmed stopped; see [/home/eiu/rmf_ws/src/benchmark/.session/hardware/stop_robot_navigation.log].
+[INFO] [1792375026.016827542] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792375026.030685427] [hardware_scenarios]: Holding the bridge routes open for 3 robots.
+[INFO] [1792375033.468263478] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[INFO] [1792375038.962674269] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[INFO] [1792375044.463739542] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot3
+[INFO] [1792375049.943070135] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot2 tb3_robot3
+[INFO] [1792375055.422559822] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot1 tb3_robot2 tb3_robot3
+[INFO] [1792375060.917273247] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot2 tb3_robot3
+[ERROR] [1792375066.403019542] [hardware_scenarios]: Not serving navigate_to_pose after 30s; the fleet adapter cannot command these robots:
+[ERROR] [1792375066.404789103] [hardware_scenarios]:   [tb3_robot3] publishes its topics but serves no action. Restart Nav2 on that robot; this machine cannot supply it.
+[ERROR] [1792375066.406327440] [hardware_scenarios]: Detail is in [/home/eiu/rmf_ws/src/benchmark/.session/hardware/check_zenoh_routes.log].
+[WARN] [1792375066.407738160] [hardware_scenarios]: A robot is unreachable, discarding attempt 2 before placing the robots.
+[INFO] [1792375066.409209287] [hardware_scenarios]: Scenario [Crossing], repeat 5 of 5, attempt 3.
+[INFO] [1792375066.410614178] [hardware_scenarios]: Stopping the workstation stack.
+[WARN] [1792375066.906843617] [hardware_scenarios]: Navigation not confirmed stopped; see [/home/eiu/rmf_ws/src/benchmark/.session/hardware/stop_robot_navigation.log].
+[INFO] [1792375077.932624595] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792375077.946447863] [hardware_scenarios]: Holding the bridge routes open for 3 robots.
+[INFO] [1792375085.365565609] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot3
+[INFO] [1792375090.847167831] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot3
+[INFO] [1792375096.329848146] [hardware_scenarios]: Waiting for navigate_to_pose to be announced by: tb3_robot3
+[INFO] [1792375101.804768757] [hardware_scenarios]: All 3 robots publish scan and tf, and serve navigate_to_pose.
+[INFO] [1792375101.806444383] [hardware_scenarios]: Operator, for scenario [Crossing] repeat 5:
+[INFO] [1792375102.163878466] [hardware_scenarios]:   1.1 park [tb3_robot1] on [wp_2] at map (18.6475, -6.0315), facing [wp_4] at yaw 0.2388
+[INFO] [1792375102.518868539] [hardware_scenarios]:   1.2 park [tb3_robot2] on [wp_6] at map (28.5678, -5.0120), facing [wp_7] at yaw -1.5708
+[INFO] [1792375102.875720701] [hardware_scenarios]:   1.3 park [tb3_robot3] on [wp_7] at map (28.5678, -8.9423), facing [wp_6] at yaw 1.5708
+[INFO] [1792375102.877166290] [hardware_scenarios]:   2.   face each robot as printed above, within 0.2 m and 0.2 rad
+[INFO] [1792375102.878598392] [hardware_scenarios]:   3.   press ENTER here; the runner seeds AMCL on all three robots
+[INFO] [1792375116.740171866] [hardware_scenarios]: Seeded the initial pose of 3 robots from the navigation graph.
+[INFO] [1792375120.584921039] [hardware_scenarios]: All 3 robots publish map -> odom.
+[INFO] [1792375120.586366553] [hardware_scenarios]: Checking state of charge, floor [0.30].
+[INFO] [1792375121.943353133] [hardware_scenarios]: Robot [tb3_robot1] state of charge [0.905].
+[INFO] [1792375124.048516344] [hardware_scenarios]: Robot [tb3_robot2] state of charge [0.883].
+[INFO] [1792375125.892949112] [hardware_scenarios]: Robot [tb3_robot3] state of charge [0.855].
+[INFO] [1792375140.924814004] [hardware_scenarios]: All 3 robots joined the fleet after 12s.
+[INFO] [1792375148.930689317] [hardware_scenarios]: Submitting scenario [Crossing] for repeat 5.
+[INFO] [1792375331.944259234] [hardware_scenarios]: Task runner exited 0.
+[INFO] [1792375350.177231080] [hardware_scenarios]: Traffic-scheduling analysis for repeat 5 exited 0.
+[INFO] [1792375352.484965410] [hardware_scenarios]: Task-planning analysis for repeat 5 exited 0.
+[INFO] [1792375352.513108189] [hardware_scenarios]: Outcome annotation for repeat 5 exited 0.
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 10.71 m, tb3_robot2 12.19 m, tb3_robot3 9.91 m
+tasks completed: 3 of 3
+resolved conflicts: 9
+furthest from any lane: tb3_robot1 1.23 m, tb3_robot2 1.04 m, tb3_robot3 0.35 m
+fleet state for tb3_robot1: 183 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+fleet state for tb3_robot2: 183 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+fleet state for tb3_robot3: 183 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+robot issues: tb3_robot1 {'navigation': 5}, tb3_robot2 {'navigation': 19}, tb3_robot3 {'navigation': 39}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[INFO] [1792375352.597516166] [hardware_scenarios]: Scenario [Crossing] finished with 5 of 5 repeats after 3 attempt(s).
+merged 5 repeat dir(s) into 5 task entries -> /home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/crossing_FLEET02_TRAF01_CONFIG01/run_20261018_0639_N3HW/repeats_summary.json
+[INFO] [1792375352.628699157] [hardware_scenarios]: Repeat-summary merge for scenario [Crossing] exited 0.
+[INFO] [1792375352.663576279] [hardware_scenarios]: Repeat-metric merge for scenario [Crossing] exited 0.
+[INFO] [1792375352.665109580] [hardware_scenarios]: Stopping the workstation stack.
+[INFO] [1792375353.185347860] [hardware_scenarios]: Navigation stopped on 3 robots.
+[INFO] [1792375364.217232797] [hardware_scenarios]: Workstation stack stopped.
+[INFO] [1792375364.218830406] [hardware_scenarios]: Scenario [Crossing] written to [/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/crossing_FLEET02_TRAF01_CONFIG01/run_20261018_0639_N3HW].
+[INFO] [1792375364.220801336] [hardware_scenarios]: Finished hardware scenarios [Crossing].

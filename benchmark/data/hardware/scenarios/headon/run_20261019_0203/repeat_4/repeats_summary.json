@@ -1,0 +1,141 @@
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_6a36731f-f710-48a7-8439-2b8d9300b029",
+        "places": [
+          "wp_2",
+          "wp_5"
+        ],
+        "submit_wall_time": 1792376789.2593632,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-04fb55a95b",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792376789259
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_2",
+                "wp_5"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-04fb55a95b",
+        "task_status": "completed",
+        "completed": true,
+        "censored": false
+      },
+      {
+        "request_id": "bench_patrol_1_1_cc36af39-c8da-4732-b063-caa868ce9e7b",
+        "places": [
+          "wp_5",
+          "wp_2"
+        ],
+        "submit_wall_time": 1792376789.2595448,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-acc83838bd",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792376789260
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_5",
+                "wp_2"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-acc83838bd",
+        "task_status": "completed",
+        "completed": true,
+        "censored": false
+      },
+      {
+        "request_id": "bench_patrol_1_2_92fda30d-bb17-485e-be02-0dc7e6ca9435",
+        "places": [
+          "wp_3",
+          "wp_7"
+        ],
+        "submit_wall_time": 1792376789.2596576,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-b1be17d596",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792376789260
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_3",
+                "wp_7"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-b1be17d596",
+        "task_status": "completed",
+        "completed": true,
+        "censored": false
+      }
+    ],
+    "fixed_wait_exceeded": false,
+    "completion_wall_time": 1792376940.4502702,
+    "dispatch_status": {
+      "patrol.dispatch-04fb55a95b": 3,
+      "patrol.dispatch-acc83838bd": 3,
+      "patrol.dispatch-b1be17d596": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 12.981,
+      "tb3_robot2": 20.18,
+      "tb3_robot3": 11.613
+    },
+    "task_released": {
+      "patrol.dispatch-04fb55a95b": true,
+      "patrol.dispatch-b1be17d596": true,
+      "patrol.dispatch-acc83838bd": false
+    },
+    "outcome": {
+      "tb3_robot1": "completed",
+      "tb3_robot2": "completed",
+      "tb3_robot3": "completed"
+    },
+    "outcome_basis": "task state (RMF API terminal status)"
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "scenario": "sharedlane, N=3, CONFIG_01, repeat_5, simulation",
+  "repeat_dir": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261022_0538/repeat_5",
+  "api_state_file": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261022_0538/api_state_attempt7.jsonl",
+  "method": "explicit task state from rmf_websocket (task_state_update); no inference, no W_RELEASE, no INDETERMINATE bucket",
+  "4a_n_submitted": 3,
+  "4a_n_completed": 3,
+  "4a_completed_pct": 100.0,
+  "4a_state_counts": {
+    "completed": 3
+  },
+  "4a_per_task": [
+    {
+      "task_id": "patrol.dispatch-4a97fa9d40",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 110
+    },
+    {
+      "task_id": "patrol.dispatch-d41908c7ff",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 82
+    },
+    {
+      "task_id": "patrol.dispatch-ddec648263",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 77
+    }
+  ]
+}

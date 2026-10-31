@@ -1,0 +1,45 @@
+{
+  "scenario": "simulation/baselines/bottleneck_r3/run_20261022_0953/repeat_2",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/baselines/bottleneck_r3/run_20261022_0953/repeat_2/bag",
+  "analysis_version": 2,
+  "method": "finish_time from the winning bid_response, converted to wall time through the /clock samples bracketing it in simulation; actual finish from the terminal task state. duration_error_pct = (D_actual - D_planned) / D_planned, D_planned from bid_response to the predicted finish, D_actual from award to the terminal state; delta = actual finish - predicted finish, a difference of two instants",
+  "n_tasks_considered": 1,
+  "n_tasks_with_delta": 1,
+  "n_tasks_no_terminal_state": 0,
+  "actual_finish_source": "task terminal transition (websocket task state)",
+  "5a_delta_s": {
+    "n": 1,
+    "mean": 8.887040138244629,
+    "stdev": 0.0,
+    "min": 8.887040138244629,
+    "max": 8.887040138244629
+  },
+  "5a_duration_error_pct": {
+    "n": 1,
+    "mean": 19.979313952520577,
+    "stdev": 0.0,
+    "min": 19.979313952520577,
+    "max": 19.979313952520577
+  },
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-311fa36b4c",
+      "robot": "tb3_robot3",
+      "t_bid_response_wall": 1792662973.899735,
+      "finish_time_sim": 67.136012249,
+      "predicted_wall_finish": 1792663008.3775687,
+      "clock_extrapolated": false,
+      "t_actual_finish_wall": 1792663017.2646089,
+      "terminal_status": "completed",
+      "t_end_physical_wall": 1792663016.8476758,
+      "5a_delta_actual_minus_predicted_s": 8.887,
+      "5a_delta_v1_bid_offset_s": 8.887,
+      "drift_correction_s": -0.0,
+      "queueing_s": 1.9903090000152588,
+      "t_award": 1792662975.8983405,
+      "predicted_duration_s": 34.478,
+      "actual_duration_s": 41.366,
+      "5a_duration_error_pct": 20.0
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "scenario": "crossing, N=3, CONFIG_01, repeat_1",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing_FLEET02_TRAF01_CONFIG01/run_20261020_0742_N3/repeat_1/bag",
+  "6_method": "stationary while assigned, from /fleet_states; threshold 1mm/s with 3-sample hysteresis, the 4b classifier. Attribution to traffic is made by comparing a route against its own N=1 baseline, not per interval; see the module docstring.",
+  "6a_time_blocked_per_robot_s": {
+    "tb3_robot1": 47.899,
+    "tb3_robot2": 6.513,
+    "tb3_robot3": 47.103
+  },
+  "6a_per_robot": {
+    "tb3_robot1": {
+      "route": "wp_2->wp_6",
+      "time_blocked_s": 47.899,
+      "n_episodes": 19,
+      "longest_episode_s": 41.4,
+      "window_ended_at_last_motion": true
+    },
+    "tb3_robot2": {
+      "route": "wp_6->wp_9",
+      "time_blocked_s": 6.513,
+      "n_episodes": 12,
+      "longest_episode_s": 1.1,
+      "window_ended_at_last_motion": true
+    },
+    "tb3_robot3": {
+      "route": "wp_7->wp_8",
+      "time_blocked_s": 47.103,
+      "n_episodes": 18,
+      "longest_episode_s": 20.001,
+      "window_ended_at_last_motion": true
+    }
+  },
+  "6b_mean_per_episode_s": 2.072,
+  "6b_mean_per_robot_s": 33.838,
+  "n_episodes_total": 49
+}

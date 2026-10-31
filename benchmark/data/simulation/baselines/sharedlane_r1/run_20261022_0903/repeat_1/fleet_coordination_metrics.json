@@ -1,0 +1,18 @@
+{
+  "scenario": "simulation/baselines/sharedlane_r1/run_20261022_0903/repeat_1",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/baselines/sharedlane_r1/run_20261022_0903/repeat_1/bag",
+  "analysis_version": 2,
+  "4b_method": "cmd_vel moving if |v| >= 0.005 m/s or |w| >= 0.05 rad/s, held at most 0.25 s; window [min award, max completed] over the repeat",
+  "4b_window_s": 79.352,
+  "4b_per_robot": {
+    "tb3_robot1": {
+      "t_moving_s": 78.68,
+      "u_pct": 99.15,
+      "n_cmd_vel": 1705
+    }
+  },
+  "4b_u_avg_pct": 99.15,
+  "n_tasks_completed": 1,
+  "throughput_tasks_per_min": 0.7561,
+  "4b_n_robots_scored": 1
+}

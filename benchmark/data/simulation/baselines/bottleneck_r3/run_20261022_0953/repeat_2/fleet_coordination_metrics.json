@@ -1,0 +1,18 @@
+{
+  "scenario": "simulation/baselines/bottleneck_r3/run_20261022_0953/repeat_2",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/baselines/bottleneck_r3/run_20261022_0953/repeat_2/bag",
+  "analysis_version": 2,
+  "4b_method": "cmd_vel moving if |v| >= 0.005 m/s or |w| >= 0.05 rad/s, held at most 0.25 s; window [min award, max completed] over the repeat",
+  "4b_window_s": 41.366,
+  "4b_per_robot": {
+    "tb3_robot3": {
+      "t_moving_s": 41.0,
+      "u_pct": 99.11,
+      "n_cmd_vel": 947
+    }
+  },
+  "4b_u_avg_pct": 99.11,
+  "n_tasks_completed": 1,
+  "throughput_tasks_per_min": 1.4505,
+  "4b_n_robots_scored": 1
+}

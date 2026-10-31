@@ -1,0 +1,20 @@
+{
+  "scenario": "headon_r1, N=1, CONFIG_01, repeat_2",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/baselines/headon_r1/run_20261022_0851_N1/repeat_2/bag",
+  "6_method": "stationary while assigned, from /fleet_states; threshold 1mm/s with 3-sample hysteresis, the 4b classifier. Attribution to traffic is made by comparing a route against its own N=1 baseline, not per interval; see the module docstring.",
+  "6a_time_blocked_per_robot_s": {
+    "tb3_robot1": 3.0
+  },
+  "6a_per_robot": {
+    "tb3_robot1": {
+      "route": "wp_2->wp_5",
+      "time_blocked_s": 3.0,
+      "n_episodes": 10,
+      "longest_episode_s": 0.6,
+      "window_ended_at_last_motion": true
+    }
+  },
+  "6b_mean_per_episode_s": 0.3,
+  "6b_mean_per_robot_s": 3.0,
+  "n_episodes_total": 10
+}

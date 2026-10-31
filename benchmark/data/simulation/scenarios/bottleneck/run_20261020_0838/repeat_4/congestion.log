@@ -1,0 +1,36 @@
+{
+  "scenario": "bottleneck, N=3, CONFIG_01, repeat_4",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck_FLEET0N_TRAF03_CONFIG01/run_20261020_0838_N3/repeat_4/bag",
+  "6_method": "stationary while assigned, from /fleet_states; threshold 1mm/s with 3-sample hysteresis, the 4b classifier. Attribution to traffic is made by comparing a route against its own N=1 baseline, not per interval; see the module docstring.",
+  "6a_time_blocked_per_robot_s": {
+    "tb3_robot1": 38.104,
+    "tb3_robot2": 52.006,
+    "tb3_robot3": 126.124
+  },
+  "6a_per_robot": {
+    "tb3_robot1": {
+      "route": "wp_2->wp_5",
+      "time_blocked_s": 38.104,
+      "n_episodes": 18,
+      "longest_episode_s": 16.7,
+      "window_ended_at_last_motion": true
+    },
+    "tb3_robot2": {
+      "route": "wp_3->wp_4",
+      "time_blocked_s": 52.006,
+      "n_episodes": 22,
+      "longest_episode_s": 15.299,
+      "window_ended_at_last_motion": true
+    },
+    "tb3_robot3": {
+      "route": "wp_4->wp_3",
+      "time_blocked_s": 126.124,
+      "n_episodes": 34,
+      "longest_episode_s": 34.5,
+      "window_ended_at_last_motion": true
+    }
+  },
+  "6b_mean_per_episode_s": 2.922,
+  "6b_mean_per_robot_s": 72.078,
+  "n_episodes_total": 74
+}

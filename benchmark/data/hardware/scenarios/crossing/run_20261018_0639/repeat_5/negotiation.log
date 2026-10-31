@@ -1,0 +1,90 @@
+{
+  "scenario": "crossing, N=3, CONFIG_01, repeat_5, hardware",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/crossing_FLEET02_TRAF01_CONFIG01/run_20261018_0639_N3HW/repeat_5/bag",
+  "3a_n_negotiation": 9,
+  "3a_n_distinct_conflict_versions_noticed": 9,
+  "3a_n_conclusions": 9,
+  "3b_negotiation_latency_s": {
+    "n": 9,
+    "mean": 0.016517930560641818,
+    "stdev": 0.03649715114216318,
+    "min": 0.0023796558380126953,
+    "max": 0.11346435546875
+  },
+  "3b_latency_resolved_s": {
+    "n": 9,
+    "mean": 0.016517930560641818,
+    "stdev": 0.03649715114216318,
+    "min": 0.0023796558380126953,
+    "max": 0.11346435546875
+  },
+  "3b_latency_abandoned_s": null,
+  "3b_n_resolved": 9,
+  "3b_n_abandoned": 0,
+  "3b_target": "below RMF's negotiation timeout, 15 s, fixed at rmf_traffic_ros2/schedule/Negotiation.cpp:216 and not overridden in this tree",
+  "per_negotiation": [
+    {
+      "conflict_version": 0,
+      "t_notice": 1792375164.0781832,
+      "t_conclusion": 1792375164.08061,
+      "resolved": true,
+      "latency_s": 0.0024268627166748047
+    },
+    {
+      "conflict_version": 1,
+      "t_notice": 1792375165.3381758,
+      "t_conclusion": 1792375165.3405604,
+      "resolved": true,
+      "latency_s": 0.002384662628173828
+    },
+    {
+      "conflict_version": 2,
+      "t_notice": 1792375165.6482563,
+      "t_conclusion": 1792375165.650636,
+      "resolved": true,
+      "latency_s": 0.0023796558380126953
+    },
+    {
+      "conflict_version": 3,
+      "t_notice": 1792375170.558251,
+      "t_conclusion": 1792375170.5606492,
+      "resolved": true,
+      "latency_s": 0.002398252487182617
+    },
+    {
+      "conflict_version": 4,
+      "t_notice": 1792375184.0583334,
+      "t_conclusion": 1792375184.0612996,
+      "resolved": true,
+      "latency_s": 0.002966165542602539
+    },
+    {
+      "conflict_version": 5,
+      "t_notice": 1792375186.3585145,
+      "t_conclusion": 1792375186.3625045,
+      "resolved": true,
+      "latency_s": 0.0039899349212646484
+    },
+    {
+      "conflict_version": 6,
+      "t_notice": 1792375186.4681094,
+      "t_conclusion": 1792375186.5815737,
+      "resolved": true,
+      "latency_s": 0.11346435546875
+    },
+    {
+      "conflict_version": 7,
+      "t_notice": 1792375189.2781744,
+      "t_conclusion": 1792375189.2846622,
+      "resolved": true,
+      "latency_s": 0.006487846374511719
+    },
+    {
+      "conflict_version": 8,
+      "t_notice": 1792375204.0882201,
+      "t_conclusion": 1792375204.1003838,
+      "resolved": true,
+      "latency_s": 0.012163639068603516
+    }
+  ]
+}

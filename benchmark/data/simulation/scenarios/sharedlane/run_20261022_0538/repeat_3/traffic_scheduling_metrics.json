@@ -1,0 +1,78 @@
+{
+  "scenario": "Shared Lane, N=3, CONFIG_01, repeat 3",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane_FLEET0N_TRAF02_CONFIG01/run_20261022_0538_N3/attempt_5/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 0,
+  "2a_method": "schedule feasibility: a conflict makes its tasks infeasible only if the negotiation ended unresolved AND no participant established a new itinerary within 5.0s (replan recovery)",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 100.0,
+  "2a_n_itineraries": 29,
+  "2a_n_itineraries_triggering_negotiation": 0,
+  "2a_n_task_infeasible": 0,
+  "2a_schedule_feasibility_pct": 100.0,
+  "2a_conflict_outcome_counts": {},
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 3,
+    "mean": 0.0033013025919596353,
+    "stdev": 0.0006289663021801275,
+    "min": 0.002781391143798828,
+    "max": 0.004000425338745117
+  },
+  "raw_planner_compute_s": [
+    0.004000425338745117,
+    0.003122091293334961,
+    0.002781391143798828
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 29,
+    "mean": 0.005390265892291891,
+    "stdev": 0.002898653615450236,
+    "min": 0.0004048347473144531,
+    "max": 0.010538578033447266
+  },
+  "2b_scheduling_time_s": {
+    "n": 29,
+    "mean": 0.005390265892291891,
+    "stdev": 0.002898653615450236,
+    "min": 0.0004048347473144531,
+    "max": 0.010538578033447266
+  },
+  "raw_scheduling_times_s": [
+    0.0013730525970458984,
+    0.006987094879150391,
+    0.006051301956176758,
+    0.0070493221282958984,
+    0.010538578033447266,
+    0.00696110725402832,
+    0.009564399719238281,
+    0.0019233226776123047,
+    0.004776477813720703,
+    0.010112524032592773,
+    0.0012104511260986328,
+    0.0008575916290283203,
+    0.005217552185058594,
+    0.006402254104614258,
+    0.0054514408111572266,
+    0.0054547786712646484,
+    0.005702495574951172,
+    0.005867719650268555,
+    0.0056226253509521484,
+    0.004422903060913086,
+    0.003987789154052734,
+    0.009847164154052734,
+    0.0021245479583740234,
+    0.005842685699462891,
+    0.005582094192504883,
+    0.002089977264404297,
+    0.0004048347473144531,
+    0.010181188583374023,
+    0.00471043586730957
+  ],
+  "per_conflict": []
+}

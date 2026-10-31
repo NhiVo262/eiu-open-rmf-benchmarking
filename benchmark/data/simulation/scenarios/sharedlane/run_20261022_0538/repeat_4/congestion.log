@@ -1,0 +1,36 @@
+{
+  "scenario": "sharedlane, N=3, CONFIG_01, repeat_4",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane_FLEET0N_TRAF02_CONFIG01/run_20261022_0538_N3/repeat_4/bag",
+  "6_method": "stationary while assigned, from /fleet_states; threshold 1mm/s with 3-sample hysteresis, the 4b classifier. Attribution to traffic is made by comparing a route against its own N=1 baseline, not per interval; see the module docstring.",
+  "6a_time_blocked_per_robot_s": {
+    "tb3_robot1": 9.803,
+    "tb3_robot2": 21.501,
+    "tb3_robot3": 36.201
+  },
+  "6a_per_robot": {
+    "tb3_robot1": {
+      "route": "wp_2->wp_7",
+      "time_blocked_s": 9.803,
+      "n_episodes": 22,
+      "longest_episode_s": 1.2,
+      "window_ended_at_last_motion": true
+    },
+    "tb3_robot2": {
+      "route": "wp_4->wp_5",
+      "time_blocked_s": 21.501,
+      "n_episodes": 11,
+      "longest_episode_s": 18.0,
+      "window_ended_at_last_motion": true
+    },
+    "tb3_robot3": {
+      "route": "wp_6->wp_3",
+      "time_blocked_s": 36.201,
+      "n_episodes": 12,
+      "longest_episode_s": 30.1,
+      "window_ended_at_last_motion": true
+    }
+  },
+  "6b_mean_per_episode_s": 1.5,
+  "6b_mean_per_robot_s": 22.502,
+  "n_episodes_total": 45
+}

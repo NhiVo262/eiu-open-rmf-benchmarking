@@ -1,0 +1,24 @@
+{
+  "scenario": "hardware/baselines/crossing_r2/run_20261019_0816/repeat_2",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/hardware/baselines/crossing_r2/run_20261019_0816/repeat_2/bag",
+  "analysis_version": 2,
+  "6_method": "stationary while assigned: no motion command on cmd_vel within each task's [award, completed]; episodes of at least 0.3 s; attribution to traffic by comparing a route against the same route run alone",
+  "6a_time_blocked_per_robot_s": {
+    "tb3_robot2": 1.543
+  },
+  "6a_per_robot": {
+    "tb3_robot2": {
+      "route": "wp_6->wp_9",
+      "task_id": "patrol.dispatch-4002d4869e",
+      "window_s": 86.281,
+      "time_blocked_s": 1.543,
+      "n_episodes": 3,
+      "longest_episode_s": 0.565
+    }
+  },
+  "n_robots_scored": 1,
+  "6b_mean_per_episode_s": 0.514,
+  "6b_mean_per_episode_s_min_1s": null,
+  "n_episodes_total": 3,
+  "n_episodes_total_min_1s": 0
+}

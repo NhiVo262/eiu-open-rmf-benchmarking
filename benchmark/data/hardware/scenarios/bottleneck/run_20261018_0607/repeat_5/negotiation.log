@@ -1,0 +1,145 @@
+{
+  "scenario": "bottleneck, N=3, CONFIG_01, repeat_5, hardware",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/bottleneck_FLEET0N_TRAF03_CONFIG01/run_20261018_0607_N3HW/repeat_5/bag",
+  "3a_n_negotiation": 16,
+  "3a_n_distinct_conflict_versions_noticed": 16,
+  "3a_n_conclusions": 16,
+  "3b_negotiation_latency_s": {
+    "n": 16,
+    "mean": 0.2790232002735138,
+    "stdev": 0.6042306037041087,
+    "min": 0.002445697784423828,
+    "max": 2.3771591186523438
+  },
+  "3b_latency_resolved_s": {
+    "n": 14,
+    "mean": 0.147092376436506,
+    "stdev": 0.24298008796320653,
+    "min": 0.002445697784423828,
+    "max": 0.7625560760498047
+  },
+  "3b_latency_abandoned_s": {
+    "n": 2,
+    "mean": 1.2025389671325684,
+    "stdev": 1.6611637489160063,
+    "min": 0.02791881561279297,
+    "max": 2.3771591186523438
+  },
+  "3b_n_resolved": 14,
+  "3b_n_abandoned": 2,
+  "3b_target": "below RMF's negotiation timeout, 15 s, fixed at rmf_traffic_ros2/schedule/Negotiation.cpp:216 and not overridden in this tree",
+  "per_negotiation": [
+    {
+      "conflict_version": 0,
+      "t_notice": 1792305306.7370725,
+      "t_conclusion": 1792305306.7459087,
+      "resolved": true,
+      "latency_s": 0.00883626937866211
+    },
+    {
+      "conflict_version": 1,
+      "t_notice": 1792305312.066374,
+      "t_conclusion": 1792305312.0693216,
+      "resolved": true,
+      "latency_s": 0.002947568893432617
+    },
+    {
+      "conflict_version": 2,
+      "t_notice": 1792305317.1676984,
+      "t_conclusion": 1792305317.1755345,
+      "resolved": true,
+      "latency_s": 0.007836103439331055
+    },
+    {
+      "conflict_version": 3,
+      "t_notice": 1792305317.3675666,
+      "t_conclusion": 1792305317.3766625,
+      "resolved": true,
+      "latency_s": 0.009095907211303711
+    },
+    {
+      "conflict_version": 4,
+      "t_notice": 1792305317.4664354,
+      "t_conclusion": 1792305317.4688811,
+      "resolved": true,
+      "latency_s": 0.002445697784423828
+    },
+    {
+      "conflict_version": 5,
+      "t_notice": 1792305317.5565722,
+      "t_conclusion": 1792305317.563248,
+      "resolved": true,
+      "latency_s": 0.00667572021484375
+    },
+    {
+      "conflict_version": 6,
+      "t_notice": 1792305317.8683243,
+      "t_conclusion": 1792305317.8854778,
+      "resolved": true,
+      "latency_s": 0.017153501510620117
+    },
+    {
+      "conflict_version": 7,
+      "t_notice": 1792305324.8768108,
+      "t_conclusion": 1792305325.1469424,
+      "resolved": true,
+      "latency_s": 0.27013158798217773
+    },
+    {
+      "conflict_version": 8,
+      "t_notice": 1792305325.3866956,
+      "t_conclusion": 1792305325.8717926,
+      "resolved": true,
+      "latency_s": 0.48509693145751953
+    },
+    {
+      "conflict_version": 9,
+      "t_notice": 1792305331.0167785,
+      "t_conclusion": 1792305331.7793345,
+      "resolved": true,
+      "latency_s": 0.7625560760498047
+    },
+    {
+      "conflict_version": 10,
+      "t_notice": 1792305347.1771255,
+      "t_conclusion": 1792305347.599396,
+      "resolved": true,
+      "latency_s": 0.4222705364227295
+    },
+    {
+      "conflict_version": 11,
+      "t_notice": 1792305362.8468513,
+      "t_conclusion": 1792305362.8747702,
+      "resolved": false,
+      "latency_s": 0.02791881561279297
+    },
+    {
+      "conflict_version": 12,
+      "t_notice": 1792305362.9167914,
+      "t_conclusion": 1792305362.9539366,
+      "resolved": true,
+      "latency_s": 0.037145137786865234
+    },
+    {
+      "conflict_version": 13,
+      "t_notice": 1792305392.817815,
+      "t_conclusion": 1792305395.1949742,
+      "resolved": false,
+      "latency_s": 2.3771591186523438
+    },
+    {
+      "conflict_version": 14,
+      "t_notice": 1792305395.2466667,
+      "t_conclusion": 1792305395.2597005,
+      "resolved": true,
+      "latency_s": 0.013033866882324219
+    },
+    {
+      "conflict_version": 15,
+      "t_notice": 1792305404.4278944,
+      "t_conclusion": 1792305404.4419627,
+      "resolved": true,
+      "latency_s": 0.014068365097045898
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "scenario": "headon, N=3, CONFIG_01, repeat_1, hardware",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/headon/run_20261019_0203/repeat_1/bag",
+  "method": "finish_time (sim-clock, bid_response.proposal) converted to wall-clock via nearest /clock sample offset at bid time; delta = t_end_physical - predicted_wall_finish (an offset between two instants). duration_error_pct measures the same miss against the length of the task: both durations run from t_award, so the dispatcher queueing is outside them",
+  "n_tasks_considered": 3,
+  "n_tasks_with_delta": 3,
+  "n_tasks_no_terminal_state": 0,
+  "actual_finish_source": "task terminal transition (websocket task state)",
+  "5a_delta_s": {
+    "n": 3,
+    "mean": 106.55478779474895,
+    "stdev": 56.25372646543025,
+    "min": 65.79994082450867,
+    "max": 170.7359049320221
+  },
+  "5a_duration_error_pct": {
+    "n": 3,
+    "mean": 255.89125267872228,
+    "stdev": 186.56009205405394,
+    "min": 123.84367873929409,
+    "max": 469.3166902828527
+  },
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-cd38f5185e",
+      "robot": "tb3_robot1",
+      "t_bid_response_wall": 1792375546.7695138,
+      "finish_time_sim": 1792375591.5397003,
+      "predicted_wall_finish": 1792375591.5397003,
+      "clock_extrapolated": false,
+      "t_actual_finish_wall": 1792375674.668218,
+      "terminal_status": "completed",
+      "t_end_physical_wall": 1792375674.1926239,
+      "5a_delta_actual_minus_predicted_s": 83.129,
+      "5a_delta_v1_bid_offset_s": 83.129,
+      "drift_correction_s": 0.0,
+      "queueing_s": 5.036271095275879,
+      "t_award": 1792375551.7680619,
+      "predicted_duration_s": 44.77,
+      "actual_duration_s": 122.9,
+      "5a_duration_error_pct": 174.5
+    },
+    {
+      "task_id": "patrol.dispatch-544f43701e",
+      "robot": "tb3_robot2",
+      "t_bid_response_wall": 1792375551.9688966,
+      "finish_time_sim": 1792375587.2407577,
+      "predicted_wall_finish": 1792375587.2407577,
+      "clock_extrapolated": false,
+      "t_actual_finish_wall": 1792375757.9766626,
+      "terminal_status": "completed",
+      "t_end_physical_wall": 1792375757.6926491,
+      "5a_delta_actual_minus_predicted_s": 170.736,
+      "5a_delta_v1_bid_offset_s": 170.736,
+      "drift_correction_s": 0.0,
+      "queueing_s": 10.436253786087036,
+      "t_award": 1792375557.1680706,
+      "predicted_duration_s": 35.272,
+      "actual_duration_s": 200.809,
+      "5a_duration_error_pct": 469.3
+    },
+    {
+      "task_id": "patrol.dispatch-408f883122",
+      "robot": "tb3_robot3",
+      "t_bid_response_wall": 1792375557.3694448,
+      "finish_time_sim": 1792375606.4645834,
+      "predicted_wall_finish": 1792375606.4645834,
+      "clock_extrapolated": false,
+      "t_actual_finish_wall": 1792375672.2645242,
+      "terminal_status": "completed",
+      "t_end_physical_wall": 1792375672.0926697,
+      "5a_delta_actual_minus_predicted_s": 65.8,
+      "5a_delta_v1_bid_offset_s": 65.8,
+      "drift_correction_s": 0.0,
+      "queueing_s": 15.636319398880005,
+      "t_award": 1792375562.36816,
+      "predicted_duration_s": 49.095,
+      "actual_duration_s": 109.896,
+      "5a_duration_error_pct": 123.8
+    }
+  ]
+}

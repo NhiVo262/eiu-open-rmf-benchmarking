@@ -1,0 +1,61 @@
+{
+ "scenario": "Head-on, N=3, CONFIG_01, HARDWARE, repeat 4",
+ "bag": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/headon/run_20261019_0203/repeat_4/bag",
+ "analysis_version": 2,
+ "method": "mutual laser range to the other robot's LDS head: a 0.02-0.12 m cluster in each scan, the two agreeing in range within 0.045 m; laser-centre separation = range + [0.029, 0.034]. No pose, no map, no tracker.",
+ "d_safe_m": 0.356,
+ "sensor_floor_m": 0.12,
+ "smallest_resolvable_separation_m": 0.149,
+ "7c_contact_suspected": false,
+ "7c_pairs_with_contact": [],
+ "per_pair": [
+  {
+   "pair": [
+    "tb3_robot1",
+    "tb3_robot2"
+   ],
+   "scan_instants_compared": 1792,
+   "instants_with_a_mutual_match": 1037,
+   "coverage_pct": 57.9,
+   "n_at_sensor_floor": 0,
+   "contact_suspected": false,
+   "min_mutual_range_m": 0.856,
+   "min_separation_lower_m": 0.885,
+   "min_separation_upper_m": 0.89,
+   "instants_below_d_safe": 0,
+   "episodes_below_d_safe": 0
+  },
+  {
+   "pair": [
+    "tb3_robot1",
+    "tb3_robot3"
+   ],
+   "scan_instants_compared": 1792,
+   "instants_with_a_mutual_match": 1213,
+   "coverage_pct": 67.7,
+   "n_at_sensor_floor": 0,
+   "contact_suspected": false,
+   "min_mutual_range_m": 0.975,
+   "min_separation_lower_m": 1.004,
+   "min_separation_upper_m": 1.009,
+   "instants_below_d_safe": 0,
+   "episodes_below_d_safe": 0
+  },
+  {
+   "pair": [
+    "tb3_robot2",
+    "tb3_robot3"
+   ],
+   "scan_instants_compared": 1641,
+   "instants_with_a_mutual_match": 1158,
+   "coverage_pct": 70.6,
+   "n_at_sensor_floor": 0,
+   "contact_suspected": false,
+   "min_mutual_range_m": 0.827,
+   "min_separation_lower_m": 0.856,
+   "min_separation_upper_m": 0.861,
+   "instants_below_d_safe": 0,
+   "episodes_below_d_safe": 0
+  }
+ ]
+}

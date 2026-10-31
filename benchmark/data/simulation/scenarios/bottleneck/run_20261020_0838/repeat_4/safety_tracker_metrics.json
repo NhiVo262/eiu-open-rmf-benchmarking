@@ -1,0 +1,137 @@
+{
+  "scenario": "Bottleneck, N=3, CONFIG_01, SIMULATION, repeat 4",
+  "repeat_dir": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261020_0838/repeat_4",
+  "analysis_version": 2,
+  "thresholds_m": {
+    "d_safe_body_contact": 0.356,
+    "rmf_conflict_separation": 0.628
+  },
+  "threshold_status": "derived from the fleet profile; the requirement leaves X and d_safe unset",
+  "sources": {
+    "as_specified": "/fleet_states RobotState.location (the pose RMF held, post-AMCL)",
+    "ground_truth": "Gazebo /world/*/dynamic_pose/info (physical state)"
+  },
+  "as_specified": {
+    "n_frames": 2631,
+    "7a_min_distance": {
+      "min_distance_m": 0.0707,
+      "at_sim_t": 228.01,
+      "pair": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ]
+    },
+    "7a_min_distance_per_pair_m": {
+      "tb3_robot1+tb3_robot2": 0.229,
+      "tb3_robot1+tb3_robot3": 4.0911,
+      "tb3_robot2+tb3_robot3": 0.0707
+    },
+    "7b_below_threshold": {
+      "d_safe_body_contact": {
+        "events": 3,
+        "samples_below": 38,
+        "frame_rate_hz": 9.67
+      },
+      "rmf_conflict_separation": {
+        "events": 2,
+        "samples_below": 95,
+        "frame_rate_hz": 9.67
+      }
+    }
+  },
+  "ground_truth": {
+    "n_frames": 2447,
+    "7a_min_distance": {
+      "min_distance_m": 0.3088,
+      "at_sim_t": 275.35,
+      "pair": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ]
+    },
+    "7a_min_distance_per_pair_m": {
+      "tb3_robot1+tb3_robot2": 0.5935,
+      "tb3_robot1+tb3_robot3": 4.6896,
+      "tb3_robot2+tb3_robot3": 0.3088
+    },
+    "7b_below_threshold": {
+      "d_safe_body_contact": {
+        "events": 1,
+        "samples_below": 326,
+        "frame_rate_hz": 8.96
+      },
+      "rmf_conflict_separation": {
+        "events": 2,
+        "samples_below": 416,
+        "frame_rate_hz": 8.96
+      }
+    }
+  },
+  "7a_min_distance": {
+    "rmf_observed": {
+      "min_distance_m": 0.0707,
+      "at_sim_t": 228.01,
+      "pair": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ]
+    },
+    "ground_truth": {
+      "min_distance_m": 0.3088,
+      "at_sim_t": 275.35,
+      "pair": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ]
+    }
+  },
+  "7b_episodes": {
+    "threshold_m": 0.356,
+    "really_happened_and_rmf_saw_it": 0,
+    "really_happened_but_rmf_MISSED_it": 1,
+    "rmf_saw_it_but_did_not_really_happen": 3,
+    "detail": {
+      "detected": [],
+      "missed": [
+        {
+          "pair": [
+            "tb3_robot2",
+            "tb3_robot3"
+          ],
+          "t_start": 240.2,
+          "t_end": 276.23,
+          "min_distance_m": 0.3088
+        }
+      ],
+      "false_alarm": [
+        {
+          "pair": [
+            "tb3_robot1",
+            "tb3_robot2"
+          ],
+          "t_start": 131.217,
+          "t_end": 132.41,
+          "min_distance_m": 0.229
+        },
+        {
+          "pair": [
+            "tb3_robot2",
+            "tb3_robot3"
+          ],
+          "t_start": 226.61,
+          "t_end": 229.21,
+          "min_distance_m": 0.0707
+        },
+        {
+          "pair": [
+            "tb3_robot2",
+            "tb3_robot3"
+          ],
+          "t_start": 229.91,
+          "t_end": 230.01,
+          "min_distance_m": 0.3521
+        }
+      ]
+    }
+  }
+}

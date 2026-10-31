@@ -1,0 +1,77 @@
+  services:
+    openRMF-Benchmarking:
+      build:
+        context: .
+        args:
+          USER_UID: ${UID:-1000}
+          USER_GID: ${GID:-1000}
+      image: eiu-artc/open-rmf:jazzy-20260622
+      tty: true
+      container_name: open-rmf
+      network_mode: host
+      volumes:
+        - ${HOME}/eiu_ws:/home/eiu/rmf_ws/
+        - /tmp/.X11-unix:/tmp/.X11-unix
+
+      environment:
+        - ENV=development
+        - DEBUG=""
+        - DISPLAY=${DISPLAY}
+        - QT_X11_NO_MITSHM=1
+        - QT_XCB_GL_INTEGRATION=xcb_glx
+        - TURTLEBOT3_MODEL=burger
+        - ROS_DOMAIN_ID=4 
+        - CYCLONEDDS_URI=file:///home/eiu/rmf_ws/src/scripts/cyclonedds_ros.xml
+        - NVIDIA_VISIBLE_DEVICES=all
+        - NVIDIA_DRIVER_CAPABILITIES=all
+
+      devices:
+        - /dev/dri:/dev/dri
+
+      # The discrete GPU, through nvidia-container-toolkit. Three lidars at 10 Hz are
+      # thirty renders a second, which the integrated GPU cannot hold: it keeps real time
+      # for one robot and drops the simulation to 0.15 of real time for three, so a
+      # recorded stream no longer carries the sampling rate the hardware fleet produces.
+      # DRIVER_CAPABILITIES must include graphics; compute alone leaves EGL without GL.
+      runtime: nvidia
+
+      group_add:
+        - video
+        # GID of the host's render group, which owns /dev/dri/renderD*. Without it the
+        # container user can open card* but not the render node, Mesa cannot reach the
+        # integrated GPU, and Gazebo renders every lidar on the CPU.
+        - "110"
+
+      privileged: true
+
+    openRMF-vda5050:
+      build:
+        context: .
+        args:
+          USER_UID: ${UID:-1000}
+          USER_GID: ${GID:-1000}
+      image: eiu-artc/open-rmf:jazzy-20260622
+      tty: true 
+      container_name: vda5050
+      network_mode: host
+
+      volumes:
+        - ${HOME}/eiu_ws:/home/eiu/rmf_ws/
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - /usr/lib/x86_64-linux-gnu/dri:/usr/lib/x86_64-linux-gnu/dri
+      environment:
+        - ENV=development
+        - DEBUG=""
+        - DISPLAY=${DISPLAY}
+        - QT_X11_NO_MITSHM=1
+        - TURTLEBOT3_MODEL=burger
+        - ROS_DOMAIN_ID=2
+
+      # security_opt:
+      #   - seccomp:unconfined
+
+      # cap_add:
+      #   - SYS_ADMIN
+
+      privileged: true
+      

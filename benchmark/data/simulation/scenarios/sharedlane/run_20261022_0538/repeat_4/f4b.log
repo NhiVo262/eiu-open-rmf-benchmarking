@@ -1,0 +1,83 @@
+{
+  "scenario": "sharedlane, N=3, CONFIG_01, repeat_4",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane_FLEET0N_TRAF02_CONFIG01/run_20261022_0538_N3/repeat_4/bag",
+  "4a_method": "3-state task_id-release classification (W_RELEASE=2.0s), see module docstring",
+  "4a_n_submitted": 3,
+  "4a_state_counts": {
+    "COMPLETED": 3
+  },
+  "4a_per_task": [
+    {
+      "task_id": "patrol.dispatch-93ca4aecfb",
+      "robot": "tb3_robot1",
+      "state": "COMPLETED",
+      "release_delay_s": 0.201
+    },
+    {
+      "task_id": "patrol.dispatch-0390be72cc",
+      "robot": "tb3_robot2",
+      "state": "COMPLETED",
+      "release_delay_s": 0.1
+    },
+    {
+      "task_id": "patrol.dispatch-76b1183bb3",
+      "robot": "tb3_robot3",
+      "state": "COMPLETED",
+      "release_delay_s": 0.4
+    }
+  ],
+  "4b_method": "velocity-based classifier (threshold=1mm/s, hysteresis=3 consecutive intervals). Reported against two denominators: the common batch window, and the metric table's own per-task window. Neither replaces the other.",
+  "t_batch_start": 1792649181.3191586,
+  "t_batch_end": 1792649334.0479057,
+  "t_batch_duration_s": 152.729,
+  "batch_task_ids": [
+    "patrol.dispatch-0390be72cc",
+    "patrol.dispatch-76b1183bb3",
+    "patrol.dispatch-93ca4aecfb"
+  ],
+  "4b_per_robot": {
+    "tb3_robot1": {
+      "t_moving_s": 137.597,
+      "n_moving_intervals": 1376,
+      "u_r_pct": 90.09
+    },
+    "tb3_robot2": {
+      "t_moving_s": 63.299,
+      "n_moving_intervals": 633,
+      "u_r_pct": 41.45
+    },
+    "tb3_robot3": {
+      "t_moving_s": 76.599,
+      "n_moving_intervals": 766,
+      "u_r_pct": 50.15
+    }
+  },
+  "4b_u_avg_pct": 60.56,
+  "4b_per_task": [
+    {
+      "task_id": "patrol.dispatch-93ca4aecfb",
+      "robot": "tb3_robot1",
+      "window_s": 147.434,
+      "t_moving_s": 137.597,
+      "n_moving_intervals": 1376,
+      "u_r_pct": 93.33
+    },
+    {
+      "task_id": "patrol.dispatch-0390be72cc",
+      "robot": "tb3_robot2",
+      "window_s": 84.834,
+      "t_moving_s": 63.299,
+      "n_moving_intervals": 633,
+      "u_r_pct": 74.61
+    },
+    {
+      "task_id": "patrol.dispatch-76b1183bb3",
+      "robot": "tb3_robot3",
+      "window_s": 112.734,
+      "t_moving_s": 76.599,
+      "n_moving_intervals": 766,
+      "u_r_pct": 67.95
+    }
+  ],
+  "4b_u_avg_per_task_pct": 78.63
+}

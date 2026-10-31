@@ -1,0 +1,28 @@
+{
+  "scenario": "hardware/scenarios/bottleneck/run_20261018_0607/repeat_4",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/bottleneck/run_20261018_0607/repeat_4/bag",
+  "analysis_version": 2,
+  "4b_method": "cmd_vel moving if |v| >= 0.005 m/s or |w| >= 0.05 rad/s, held at most 0.25 s; window [min award, max completed] over the repeat",
+  "4b_window_s": 278.917,
+  "4b_per_robot": {
+    "tb3_robot1": {
+      "t_moving_s": 174.48,
+      "u_pct": 62.56,
+      "n_cmd_vel": 4081
+    },
+    "tb3_robot2": {
+      "t_moving_s": 159.451,
+      "u_pct": 57.17,
+      "n_cmd_vel": 3685
+    },
+    "tb3_robot3": {
+      "t_moving_s": 168.55,
+      "u_pct": 60.43,
+      "n_cmd_vel": 4061
+    }
+  },
+  "4b_u_avg_pct": 60.05,
+  "n_tasks_completed": 3,
+  "throughput_tasks_per_min": 0.6454,
+  "4b_n_robots_scored": 3
+}

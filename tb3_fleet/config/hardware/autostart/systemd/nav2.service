@@ -1,0 +1,17 @@
+[Unit]
+Description= Nav2 navigation
+After= bringup.service
+Wants= bringup.service
+
+[Service]
+Type=simple
+User=@USER@
+Environment=HOME=/home/@USER@
+ExecStartPre=/bin/sleep 15
+ExecStart=/home/@USER@/turtlebot3_ws/autostart/run-nav2.sh
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+/home/eiu/rmf_ws/src/benchmark/data/simulation/baselines/sharedlane_r1/run_20261022_0903_N1/attempt_2: 1185 samples over 130.4 s (9.1 Hz)
+dispatched by RMF: tb3_robot1
+robot         coverage   max gap  travelled  min soc verdict
+------------------------------------------------------------
+tb3_robot1     100.00%      0.1s     17.06m        - ok
+
+robot           max amcl sd  against reference
+----------------------------------------------
+tb3_robot1            1.02m  within
+A robot above the reference reported an unusually wide pose spread. This is a property of the run, not of the recording, so it is reported and never discards the repeat.
+
+recorded stream             messages      rate   delivered  head gap   max gap  tail gap
+----------------------------------------------------------------------------------------
+/fleet_states                   1294     9.95Hz       99.5%    0.625s    0.101s    0.075s
+/tb3_robot1/scan                1294     9.95Hz       99.5%    0.608s    0.114s    0.094s
+/tb3_robot1/tf                 10355    79.65Hz      189.7%    0.571s    0.025s    0.003s
+
+KEEP: every dispatched robot is tracked, moved, and stayed above the recharge threshold

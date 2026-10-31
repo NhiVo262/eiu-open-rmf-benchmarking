@@ -1,0 +1,137 @@
+=== Repeat 1/1: submitting 3 concurrent patrol tasks ===
+  route ['wp_2', 'wp_5']: task_id=patrol.dispatch-307d34ce4b
+  route ['wp_5', 'wp_2']: task_id=patrol.dispatch-4c0465f391
+  route ['wp_3', 'wp_7']: task_id=patrol.dispatch-ee5f18f93f
+Repeat 1: outcome={'tb3_robot1': 'completed', 'tb3_robot2': 'completed', 'tb3_robot3': 'completed'} total_distance_m={'tb3_robot1': 27.31, 'tb3_robot2': 25.008, 'tb3_robot3': 17.017}
+=== DONE ===
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_27adbc1b-fe93-402e-b3e4-e301d88cff11",
+        "places": [
+          "wp_2",
+          "wp_5"
+        ],
+        "submit_wall_time": 1792653245.6672256,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-307d34ce4b",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792653245667
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_2",
+                "wp_5"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-307d34ce4b"
+      },
+      {
+        "request_id": "bench_patrol_1_1_ef98e285-669e-4762-90c2-80bd60ff7a4e",
+        "places": [
+          "wp_5",
+          "wp_2"
+        ],
+        "submit_wall_time": 1792653245.667499,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-4c0465f391",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792653245668
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_5",
+                "wp_2"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-4c0465f391"
+      },
+      {
+        "request_id": "bench_patrol_1_2_7059c9f7-3cce-416c-9f96-58f64024b221",
+        "places": [
+          "wp_3",
+          "wp_7"
+        ],
+        "submit_wall_time": 1792653245.6676085,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-ee5f18f93f",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792653245668
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_3",
+                "wp_7"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-ee5f18f93f"
+      }
+    ],
+    "fixed_wait_exceeded": false,
+    "completion_wall_time": 1792653387.11486,
+    "dispatch_status": {
+      "patrol.dispatch-307d34ce4b": 3,
+      "patrol.dispatch-4c0465f391": 3,
+      "patrol.dispatch-ee5f18f93f": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 27.31,
+      "tb3_robot2": 25.008,
+      "tb3_robot3": 17.017
+    },
+    "task_released": {
+      "patrol.dispatch-307d34ce4b": true,
+      "patrol.dispatch-ee5f18f93f": true,
+      "patrol.dispatch-4c0465f391": true
+    },
+    "outcome": {
+      "tb3_robot1": "completed",
+      "tb3_robot2": "completed",
+      "tb3_robot3": "completed"
+    }
+  }
+]

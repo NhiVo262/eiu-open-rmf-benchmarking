@@ -1,0 +1,994 @@
+[INFO] [launch]: All log files can be found below /home/eiu/.ros/log/2026-10-22-05-24-40-628802-nhi-Nitro-AN515-57-27499
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [rmf_traffic_schedule-1]: process started with pid [27507]
+[INFO] [rmf_traffic_blockade-2]: process started with pid [27508]
+[INFO] [building_map_server-3]: process started with pid [27509]
+[INFO] [door_supervisor-4]: process started with pid [27510]
+[INFO] [lift_supervisor-5]: process started with pid [27511]
+[INFO] [mutex_group_supervisor-6]: process started with pid [27512]
+[INFO] [rmf_task_dispatcher-7]: process started with pid [27513]
+[INFO] [static_transform_publisher-8]: process started with pid [27514]
+[INFO] [navgraph_visualizer_node-9]: process started with pid [27515]
+[INFO] [floorplan_visualizer_node-10]: process started with pid [27516]
+[INFO] [schedule_visualizer_node-11]: process started with pid [27517]
+[INFO] [fleetstates_visualizer_node-12]: process started with pid [27518]
+[INFO] [python3-13]: process started with pid [27519]
+[static_transform_publisher-8] [WARN] [1792646680.761029147] []: Old-style arguments are deprecated; see --help for new-style arguments
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.826968766] [rclcpp]: signal handler installed
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.827396587] [rmw_cyclonedds_cpp]: Config XML is <CycloneDDS><Domain><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>32</MaxAutoParticipantIndex></Discovery></Domain></CycloneDDS>,file:///home/eiu/rmf_ws/src/scripts/cyclonedds_ros.xml
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.832224563] [rclcpp]: deferred_signal_handler(): waiting for SIGINT/SIGTERM or uninstall
+[rmf_task_dispatcher-7] ~Initializing Dispatcher Node~
+[static_transform_publisher-8] [INFO] [1792646680.874039088] [static_transform_publisher_TX6zpUhfELGliINo]: Spinning until stopped - publishing transform
+[static_transform_publisher-8] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-8] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-8] from 'map' to 'world_tb3'
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.880411299] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.880439391] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/get_parametersRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.880442254] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/get_parametersReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.880444598] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.886948746] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.886973726] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/get_parameter_typesRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.886976855] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/get_parameter_typesReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.886979363] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.889137650] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.889163575] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/set_parametersRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.889608057] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/set_parametersReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.889623492] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.892242374] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.892264204] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/set_parameters_atomicallyRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.892266981] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/set_parameters_atomicallyReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.892268903] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.894893431] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.894920982] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/describe_parametersRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.894923850] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/describe_parametersReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.894926043] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.898660297] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.898684319] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/list_parametersRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.898687459] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/list_parametersReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.898691101] [rmw_cyclonedds_cpp]: ***********
+[fleetstates_visualizer_node-12] [INFO] [1792646680.919172499] [fleet_states_visualizer]: Configuring fleet_states_visualizer...
+[fleetstates_visualizer_node-12] [INFO] [1792646680.919390224] [fleet_states_visualizer]: Setting parameter initial_map_name to L1
+[fleetstates_visualizer_node-12] [INFO] [1792646680.919426566] [fleet_states_visualizer]: Setting parameter fleet_state_nose_scale to 0.500000
+[rmf_traffic_schedule-1] [INFO] [1792646680.937537927] [rmf_traffic_schedule_primary]: Successfully loaded logfile .rmf_schedule_node.yaml 
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.948544231] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.948574821] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/get_type_descriptionRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.948578236] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/get_type_descriptionReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646680.948580722] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [INFO] [1792646680.950574478] [rmf_dispatcher_node]:  Declared Time Window Param as: 5.000000 secs
+[rmf_task_dispatcher-7] [INFO] [1792646680.950713604] [rmf_dispatcher_node]:  Declared Terminated Tasks Max Size Param as: 100
+[rmf_task_dispatcher-7] [INFO] [1792646680.950774265] [rmf_dispatcher_node]:  Declared publish_active_tasks_period as: 2 secs
+[rmf_task_dispatcher-7] [INFO] [1792646680.950838646] [rmf_dispatcher_node]:  Use timestamp with task_id: false
+[rmf_task_dispatcher-7] [INFO] [1792646680.950911576] [rmf_dispatcher_node]:  Use unique hex string with task_id: true
+[rmf_task_dispatcher-7] [INFO] [1792646680.950985035] [rmf_dispatcher_node]: API server URI: [ws://127.0.0.1:8411]
+[rmf_traffic_blockade-2] [INFO] [1792646680.952915316] [rmf_traffic_blockade_node]: Beginning traffic blockade node
+[rmf_traffic_schedule-1] [INFO] [1792646680.958392936] [rmf_traffic_schedule_primary]: Set up heartbeat on /rmf_traffic/heartbeat with liveliness lease duration of 10000 ms and deadline of 10000 ms
+[rmf_task_dispatcher-7] [INFO] [1792646680.984888287] [rmf_dispatcher_node]: Attempting to connect to ws://127.0.0.1:8411
+[schedule_visualizer_node-11] [INFO] [1792646680.985229749] [schedule_visualizer_node]: Setting parameter rate to 1.000000
+[schedule_visualizer_node-11] [INFO] [1792646680.985387365] [schedule_visualizer_node]: Setting parameter path_width to 0.200000
+[schedule_visualizer_node-11] [INFO] [1792646680.985462211] [schedule_visualizer_node]: Setting parameter initial_map_name to world_tb3
+[schedule_visualizer_node-11] [INFO] [1792646680.985538846] [schedule_visualizer_node]: Setting parameter wait_secs to 10
+[schedule_visualizer_node-11] [INFO] [1792646680.985587803] [schedule_visualizer_node]: Setting parameter port to 8006
+[schedule_visualizer_node-11] [INFO] [1792646680.985636687] [schedule_visualizer_node]: Setting parameter retained_history_count to 0
+[fleetstates_visualizer_node-12] [INFO] [1792646680.989179660] [fleet_states_visualizer]: Running fleet_states_visualizer...
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.021290549] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.021321653] [rmw_cyclonedds_cpp]: Sub Topic rq/submit_taskRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.021325402] [rmw_cyclonedds_cpp]: Pub Topic rr/submit_taskReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.021328197] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.022008215] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.022029600] [rmw_cyclonedds_cpp]: Sub Topic rq/cancel_taskRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.022032063] [rmw_cyclonedds_cpp]: Pub Topic rr/cancel_taskReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.022034037] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.022305226] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.022312221] [rmw_cyclonedds_cpp]: Sub Topic rq/get_dispatchesRequest
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.022314546] [rmw_cyclonedds_cpp]: Pub Topic rr/get_dispatchesReply
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.022316666] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [INFO] [1792646681.022568931] [rmf_dispatcher_node]: Starting task dispatcher node
+[rmf_task_dispatcher-7] [INFO] [1792646681.079221986] [rmf_dispatcher_node]: Succesfully connected to ws://127.0.0.1:8411
+[rmf_task_dispatcher-7] [INFO] [1792646681.079330565] [rmf_dispatcher_node]: Connected to server
+[rmf_task_dispatcher-7] [INFO] [1792646681.079349860] [rmf_dispatcher_node]: Attempting queue flush if connected
+[rmf_task_dispatcher-7] [DEBUG] [1792646681.079358530] [rmf_dispatcher_node]: Emptied queue
+[rmf_traffic_schedule-1] [INFO] [1792646681.110041606] [rmf_traffic_schedule_primary]: Beginning traffic schedule node
+[navgraph_visualizer_node-9] [INFO] [1792646681.309160021] [navgraph_visualizer]: Setting parameter initial_map_name to world_tb3
+[navgraph_visualizer_node-9] [INFO] [1792646681.309414971] [navgraph_visualizer]: Setting parameter lane_width to 0.500000
+[navgraph_visualizer_node-9] [INFO] [1792646681.309523203] [navgraph_visualizer]: Setting parameter lane_transparency to 0.500000
+[navgraph_visualizer_node-9] [INFO] [1792646681.309600804] [navgraph_visualizer]: Setting parameter waypoint_scale to 1.000000
+[navgraph_visualizer_node-9] [INFO] [1792646681.309662711] [navgraph_visualizer]: Setting parameter text_scale to 1.000000
+[floorplan_visualizer_node-10] [INFO] [1792646681.370544627] [floorplan_visualizer]: Configuring floorplan_visualizer...
+[navgraph_visualizer_node-9] [INFO] [1792646681.373582533] [navgraph_visualizer]: NavGraph visualizer is running...
+[floorplan_visualizer_node-10] [INFO] [1792646681.376085060] [floorplan_visualizer]: Setting parameter initial_map_name to world_tb3
+[floorplan_visualizer_node-10] [INFO] [1792646681.429994941] [floorplan_visualizer]: Running floorplan_visualizer...
+[rmf_traffic_schedule-1] [INFO] [1792646681.559424649] [rmf_traffic_schedule_primary]: Registered new query [1]
+[schedule_visualizer_node-11] [INFO] [1792646681.571181186] [schedule_data_node]: Registering to query topic rmf_traffic/query_update_1
+[schedule_visualizer_node-11] [INFO] [1792646681.593746804] [schedule_data_node]: [rmf_traffic_ros2::MirrorManager::request_update] Requesting changes for query ID [1] since beginning of recorded history
+[rmf_traffic_schedule-1] [INFO] [1792646681.635424218] [rmf_traffic_schedule_primary]: [ScheduleNode::update_mirrors] Sending remedial update starting from the beginning going to 3 for query 1
+[building_map_server-3] [INFO] [1792646681.922381390] [building_map_server]: loading map path: /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/turtlebot3_world/world_tb3.building.yaml
+[building_map_server-3] [INFO] [1792646681.963087093] [building_map_server]: opening: /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/turtlebot3_world/map.png
+[building_map_server-3] [INFO] [1792646681.963646090] [building_map_server]: read 7032 byte image
+[building_map_server-3] [INFO] [1792646681.964812349] [building_map_server]: unable to generate GeoJSON for this map.
+[building_map_server-3] [INFO] [1792646681.974572416] [building_map_server]: publishing map...
+[building_map_server-3] [INFO] [1792646681.975819122] [building_map_server]: ready to serve map: "world_tb3"  Ctrl+C to exit...
+[schedule_visualizer_node-11] [INFO] [1792646682.082526144] [schedule_visualizer_node]: Successfully connected to rmf_traffic_schedule node.
+[schedule_visualizer_node-11] [INFO] [1792646682.084288348] [schedule_data_node]: Mirror handling new sync of 1 queries from schedule node [3e2ee713-7051-45dd-bd1e-7ccfebbba360]
+[python3-13] [retreat_to_charger_interval] value is not provided, default to 10 seconds
+[python3-13] Finishing request: nothing
+[python3-13] Fleet is not configured to perform any finishing request
+[python3-13] Maximum delay is not provided, default to 10.0
+[python3-13] [INFO] [1792646682.562144580] [tb3_fleet_fleet_adapter]: Parameter [discovery_timeout] set to: 60.000000
+[rmf_traffic_schedule-1] [INFO] [1792646682.573455353] [rmf_traffic_schedule_primary]: A new mirror is tracking query ID [1]
+[schedule_visualizer_node-11] [INFO] [1792646682.577683051] [schedule_data_node]: Mirror handling new sync of 1 queries from schedule node [3e2ee713-7051-45dd-bd1e-7ccfebbba360]
+[python3-13] [INFO] [1792646682.591526754] [tb3_fleet_fleet_adapter]: Registering to query topic rmf_traffic/query_update_1
+[python3-13] [INFO] [1792646682.659536330] [tb3_fleet_fleet_adapter]: Mirror handling new sync of 1 queries from schedule node [3e2ee713-7051-45dd-bd1e-7ccfebbba360]
+[python3-13] [INFO] [1792646683.678268062] [tb3_fleet_command_handle]: Transformation error estimate for world_tb3: 0.0
+[python3-13] [INFO] [1792646683.689170383] [tb3_fleet_fleet_adapter]: Attempting to connect to ws://127.0.0.1:8411
+[python3-13] [INFO] [1792646683.689987858] [tb3_fleet_fleet_adapter]: Fleet [tb3_fleet] is configured to perform patrol tasks
+[python3-13] [INFO] [1792646683.690049206] [tb3_fleet_fleet_adapter]: Finished configuring Easy Full Control adapter for fleet [tb3_fleet]
+[python3-13] [INFO] [1792646683.691580491] [tb3_fleet_fleet_adapter]: Succesfully connected to ws://127.0.0.1:8411
+[python3-13] [INFO] [1792646683.691653155] [tb3_fleet_fleet_adapter]: Connected to server
+[python3-13] [INFO] [1792646683.691674207] [tb3_fleet_fleet_adapter]: Sent all updates
+[python3-13] [INFO] [1792646683.691680375] [tb3_fleet_fleet_adapter]: Attempting queue flush if connected
+[python3-13] [INFO] [1792646686.704291852] [tb3_fleet_command_handle]: Initializing robot [tb3_robot3]...
+[python3-13] [INFO] [1792646686.704677945] [tb3_fleet_fleet_adapter]: Adding robot [tb3_robot3] to fleet [tb3_fleet].
+[rmf_traffic_schedule-1] [INFO] [1792646686.705413003] [rmf_traffic_schedule_primary]: Registered participant [0] named [tb3_robot3] owned by [tb3_fleet]
+[python3-13] [INFO] [1792646686.708226158] [tb3_fleet_fleet_adapter]: Added a robot named [tb3_robot3] with participant ID [0]
+[python3-13] [INFO] [1792646686.709113039] [tb3_fleet_fleet_adapter]: Successfully added robot [tb3_robot3] to the fleet [tb3_fleet].
+[python3-13] [INFO] [1792646686.709165968] [tb3_fleet_fleet_adapter]: Charger waypoint for robot [tb3_fleet/tb3_robot3] set to index [4]
+[python3-13] [INFO] [1792646686.709347637] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646686.709395057] [tb3_fleet_fleet_adapter]: Got distance from [3] as 1.225863
+[python3-13] [INFO] [1792646686.709464075] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_7] from one of these locations:
+[python3-13]  -- lane 4: { world_tb3 < 23.8138 -9.07052> [wp_5] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 28.3101 -9.02192> | orientation 88.2308
+[python3-13]  -- lane 5: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 23.8138 -9.07052> [wp_5] } | location < 28.3101 -9.02192> | orientation 88.2308
+[python3-13]  -- world_tb3 < 28.5678 -8.94227> [wp_7] | location < 28.3101 -9.02192> | orientation 88.2308
+[python3-13] [INFO] [1792646686.710934642] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646686.712353443] [tb3_fleet_command_handle]: command [tb3_robot3] task=[wait.tb3_robot3.tb3_fleet-0] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.310, -9.022, 1.540) d_xy=0.270 d_yaw=1.902 previous_goal=none
+[python3-13] [INFO] [1792646686.714473033] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553 -2.84175246] on map [world_tb3]
+[python3-13] [INFO] [1792646686.716865560] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.002s.
+[python3-13] [INFO] [1792646686.717464384] [tb3_fleet_command_handle]: [tb3_robot3] command 1 accepted by Nav2 (goal [183, 105, 128, 43, 0, 12, 151, 81, 86, 211, 26, 31, 139, 223, 74, 103])
+[python3-13] [INFO] [1792646689.706541754] [tb3_fleet_command_handle]: Initializing robot [tb3_robot2]...
+[python3-13] [INFO] [1792646689.707063900] [tb3_fleet_fleet_adapter]: Adding robot [tb3_robot2] to fleet [tb3_fleet].
+[rmf_traffic_schedule-1] [INFO] [1792646689.707345235] [rmf_traffic_schedule_primary]: Registered participant [1] named [tb3_robot2] owned by [tb3_fleet]
+[python3-13] [INFO] [1792646689.709778037] [tb3_fleet_fleet_adapter]: Added a robot named [tb3_robot2] with participant ID [1]
+[python3-13] [INFO] [1792646689.710644906] [tb3_fleet_fleet_adapter]: Successfully added robot [tb3_robot2] to the fleet [tb3_fleet].
+[python3-13] [INFO] [1792646689.710714779] [tb3_fleet_fleet_adapter]: Charger waypoint for robot [tb3_fleet/tb3_robot2] set to index [7]
+[python3-13] [INFO] [1792646689.710867638] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646689.710909057] [tb3_fleet_fleet_adapter]: Got distance from [6] as 2.021488
+[python3-13] [INFO] [1792646689.710979306] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_6] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.2304 -4.72225> | orientation -84.131
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location < 28.2304 -4.72225> | orientation -84.131
+[python3-13] [INFO] [1792646689.712791124] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646689.714422947] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-0] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.230, -4.722, -1.468) d_xy=0.445 d_yaw=-2.383 previous_goal=none
+[python3-13] [INFO] [1792646689.717180779] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673  2.43188324] on map [world_tb3]
+[python3-13] [INFO] [1792646689.723207385] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.003s.
+[python3-13] [INFO] [1792646689.723822160] [tb3_fleet_command_handle]: [tb3_robot2] command 1 accepted by Nav2 (goal [224, 158, 203, 88, 199, 26, 90, 74, 33, 152, 92, 30, 4, 91, 64, 175])
+[python3-13] [INFO] [1792646692.708580618] [tb3_fleet_command_handle]: Initializing robot [tb3_robot1]...
+[python3-13] [INFO] [1792646692.708825540] [tb3_fleet_fleet_adapter]: Adding robot [tb3_robot1] to fleet [tb3_fleet].
+[rmf_traffic_schedule-1] [INFO] [1792646692.709077359] [rmf_traffic_schedule_primary]: Registered participant [2] named [tb3_robot1] owned by [tb3_fleet]
+[python3-13] [INFO] [1792646692.711416388] [tb3_fleet_command_handle]: [tb3_robot3] lost-state check active: merge budget 0.300m x up to 10 = 3.00m, 18 lanes on map [world_tb3].
+[python3-13] [INFO] [1792646692.712375129] [tb3_fleet_fleet_adapter]: Added a robot named [tb3_robot1] with participant ID [2]
+[python3-13] [INFO] [1792646692.712774682] [tb3_fleet_command_handle]: Started update thread with period 0.100s
+[python3-13] [INFO] [1792646692.714547303] [tb3_fleet_command_handle]: [tb3_robot2] lost-state check active: merge budget 0.300m x up to 10 = 3.00m, 18 lanes on map [world_tb3].
+[python3-13] [INFO] [1792646692.714831413] [tb3_fleet_fleet_adapter]: Successfully added robot [tb3_robot1] to the fleet [tb3_fleet].
+[python3-13] [INFO] [1792646692.714917001] [tb3_fleet_fleet_adapter]: Charger waypoint for robot [tb3_fleet/tb3_robot1] set to index [8]
+[python3-13] [INFO] [1792646692.715010655] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot1]
+[python3-13] [WARN] [1792646692.715033374] [tb3_fleet_command_handle]: Nav2 ended goal [224, 158, 203, 88, 199, 26, 90, 74, 33, 152, 92, 30, 4, 91, 64, 175] for [tb3_robot2] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646692.715048030] [tb3_fleet_fleet_adapter]: Got distance from [0] as 0.866479
+[python3-13] [INFO] [1792646692.715140666] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot1] to [wp_2] from one of these locations:
+[python3-13]  -- lane 0: { world_tb3 < 18.6475 -6.03149> [wp_2] } -> { world_tb3 < 18.5867 -7.70296> [wp_3] } | location <18.6067 -6.2177> | orientation 11.8712
+[python3-13]  -- lane 1: { world_tb3 < 18.5867 -7.70296> [wp_3] } -> { world_tb3 < 18.6475 -6.03149> [wp_2] } | location <18.6067 -6.2177> | orientation 11.8712
+[python3-13]  -- world_tb3 < 18.6475 -6.03149> [wp_2] | location <18.6067 -6.2177> | orientation 11.8712
+[python3-13]  -- lane 16: { world_tb3 < 15.0918 -5.72759> [wp_1] } -> { world_tb3 < 18.6475 -6.03149> [wp_2] } | location <18.6067 -6.2177> | orientation 11.8712
+[python3-13]  -- lane 17: { world_tb3 < 18.6475 -6.03149> [wp_2] } -> { world_tb3 < 15.0918 -5.72759> [wp_1] } | location <18.6067 -6.2177> | orientation 11.8712
+[python3-13] [INFO] [1792646692.715682948] [tb3_fleet_command_handle]: [tb3_robot1] lost-state check active: merge budget 0.300m x up to 10 = 3.00m, 18 lanes on map [world_tb3].
+[python3-13] [WARN] [1792646692.716175458] [tb3_fleet_command_handle]: Update cycle took 74.33s, expected 0.10s.
+[python3-13] [INFO] [1792646692.717510160] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot2]
+[python3-13] [WARN] [1792646692.719680870] [tb3_fleet_command_handle]: Cancel of goal [224, 158, 203, 88, 199, 26, 90, 74, 33, 152, 92, 30, 4, 91, 64, 175] on [tb3_robot2] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646692.719815567] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_6] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.3682 -4.88053> | orientation -87.809
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location < 28.3682 -4.88053> | orientation -87.809
+[python3-13] [INFO] [1792646692.719970768] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_2] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646692.720360173] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [0] request(s)
+[python3-13] [INFO] [1792646692.721041776] [tb3_fleet_command_handle]: command [tb3_robot1] task=[wait.tb3_robot1.tb3_fleet-0] destination=[wp_2] graph_index=0 map=[world_tb3] pose=(18.607, -6.218, 0.207) d_xy=0.191 d_yaw=-1.994 previous_goal=none
+[python3-13] [INFO] [1792646692.721839241] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [18.64748665 -6.0314942  -1.78643407] on map [world_tb3]
+[python3-13] [INFO] [1792646692.722750003] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646692.725877939] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-0] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.368, -4.881, -1.533) d_xy=0.239 d_yaw=-2.192 previous_goal=none
+[python3-13] [INFO] [1792646692.726905246] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673  2.55893133] on map [world_tb3]
+[python3-13] [INFO] [1792646692.727506479] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.002s.
+[python3-13] [INFO] [1792646692.728997214] [tb3_fleet_command_handle]: [tb3_robot1] command 1 accepted by Nav2 (goal [102, 146, 193, 164, 63, 204, 192, 72, 13, 47, 188, 182, 108, 230, 164, 200])
+[python3-13] [INFO] [1792646692.729619278] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646692.730091788] [tb3_fleet_command_handle]: [tb3_robot2] command 2 accepted by Nav2 (goal [115, 244, 220, 120, 170, 134, 189, 118, 51, 136, 41, 1, 223, 123, 72, 182])
+[python3-13] [WARN] [1792646693.715007341] [tb3_fleet_command_handle]: Canary heartbeat late by 10.21s (tick interval 1.0s).
+[python3-13] [INFO] [1792646697.519142850] [tb3_fleet_command_handle]: Update loop: 50 cycles, avg=1.487s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646698.219788356] [tb3_fleet_command_handle]: Navigation goal [115, 244, 220, 120, 170, 134, 189, 118, 51, 136, 41, 1, 223, 123, 72, 182] reached
+[python3-13] [INFO] [1792646698.318121749] [tb3_fleet_command_handle]: Navigation goal [183, 105, 128, 43, 0, 12, 151, 81, 86, 211, 26, 31, 139, 223, 74, 103] reached
+[python3-13] [INFO] [1792646702.516219605] [tb3_fleet_command_handle]: Update loop: 100 cycles, avg=0.743s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646707.614730455] [tb3_fleet_command_handle]: Update loop: 150 cycles, avg=0.496s, max=74.330s, target=0.100s.
+[rmf_task_dispatcher-7] [INFO] [1792646707.816960730] [rmf_dispatcher_node]: Add Task [patrol.dispatch-a8a22f4d07] to a bidding queue
+[rmf_task_dispatcher-7] [INFO] [1792646707.817375563] [rmf_dispatcher_node]: Add Task [patrol.dispatch-d0a693570f] to a bidding queue
+[rmf_task_dispatcher-7] [INFO] [1792646707.817589650] [rmf_dispatcher_node]: Add Task [patrol.dispatch-962f42c28b] to a bidding queue
+[rmf_task_dispatcher-7] [INFO] [1792646707.822035668] [rmf_dispatcher_node]:  - Start new bidding task: patrol.dispatch-a8a22f4d07
+[python3-13] [INFO] [1792646707.823387376] [tb3_fleet_fleet_adapter]: [Bidder] Received Bidding notice for task_id [patrol.dispatch-a8a22f4d07]
+[python3-13] [INFO] [1792646707.823990196] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [1] request(s)
+[python3-13] [INFO] [1792646707.832019263] [tb3_fleet_fleet_adapter]: Submitted BidProposal to accommodate task [patrol.dispatch-a8a22f4d07] by robot [tb3_robot1] with new cost [137.352083]
+[rmf_task_dispatcher-7] [DEBUG] [1792646707.832462239] [rmf_dispatcher_node]: [Auctioneer] Receive proposal from task_id: patrol.dispatch-a8a22f4d07 | from: tb3_fleet
+[python3-13] [INFO] [1792646712.658720128] [tb3_fleet_command_handle]: Update loop: 200 cycles, avg=0.372s, max=74.330s, target=0.100s.
+[rmf_task_dispatcher-7] [DEBUG] [1792646712.821923278] [rmf_dispatcher_node]: Bidding Deadline reached for [patrol.dispatch-a8a22f4d07]
+[rmf_task_dispatcher-7] [INFO] [1792646712.821987902] [rmf_dispatcher_node]: Determined winning Fleet Adapter: [tb3_fleet], from 1 responses
+[rmf_task_dispatcher-7] [INFO] [1792646712.821999063] [rmf_dispatcher_node]: Dispatcher Bidding Result: task [patrol.dispatch-a8a22f4d07] is awarded to fleet adapter [tb3_fleet], with expected robot [tb3_robot1].
+[python3-13] [INFO] [1792646712.822344160] [tb3_fleet_fleet_adapter]: Bid for task_id [patrol.dispatch-a8a22f4d07] awarded to fleet [tb3_fleet]. Processing request...
+[python3-13] [INFO] [1792646712.823569912] [tb3_fleet_fleet_adapter]: Canceling responsive wait for [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646712.823616805] [tb3_fleet_fleet_adapter]: Canceling go_to_place for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646712.826636345] [tb3_fleet_command_handle]: Cancel of goal [102, 146, 193, 164, 63, 204, 192, 72, 13, 47, 188, 182, 108, 230, 164, 200] on [tb3_robot1] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646712.827132906] [tb3_fleet_fleet_adapter]: TaskAssignments updated for robots in fleet [tb3_fleet] to accommodate task_id [patrol.dispatch-a8a22f4d07]
+[python3-13] [INFO] [1792646712.827253261] [tb3_fleet_fleet_adapter]: Beginning next task [patrol.dispatch-a8a22f4d07] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646712.827474315] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646712.827491459] [tb3_fleet_fleet_adapter]: Got distance from [0] as 0.992795
+[python3-13] [INFO] [1792646712.827547150] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot1] to [wp_2] from one of these locations:
+[python3-13]  -- world_tb3 < 18.6475 -6.03149> [wp_2] | location < 18.4348 -5.98194> | orientation -81.6729
+[python3-13]  -- lane 16: { world_tb3 < 15.0918 -5.72759> [wp_1] } -> { world_tb3 < 18.6475 -6.03149> [wp_2] } | location < 18.4348 -5.98194> | orientation -81.6729
+[python3-13]  -- lane 17: { world_tb3 < 18.6475 -6.03149> [wp_2] } -> { world_tb3 < 15.0918 -5.72759> [wp_1] } | location < 18.4348 -5.98194> | orientation -81.6729
+[python3-13] [INFO] [1792646712.827678541] [tb3_fleet_fleet_adapter]: Beginning new task [patrol.dispatch-a8a22f4d07] for [tb3_fleet/tb3_robot1]. Remaining queue size: 0
+[python3-13] [INFO] [1792646712.830745165] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_2] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646712.833343497] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_2] graph_index=0 map=[world_tb3] pose=(18.435, -5.982, -1.425) d_xy=0.218 d_yaw=-1.945 previous_goal=none
+[python3-13] [INFO] [1792646712.834107132] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [18.64748665 -6.0314942   2.91273571] on map [world_tb3]
+[python3-13] [INFO] [1792646712.837064135] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.002s.
+[python3-13] [INFO] [1792646712.837476203] [tb3_fleet_command_handle]: [tb3_robot1] command 2 accepted by Nav2 (goal [164, 116, 11, 55, 24, 162, 251, 168, 196, 109, 4, 84, 138, 167, 212, 218])
+[python3-13] [WARN] [1792646712.859473114] [tb3_fleet_command_handle]: Nav2 ended goal [164, 116, 11, 55, 24, 162, 251, 168, 196, 109, 4, 84, 138, 167, 212, 218] for [tb3_robot1] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646712.957980706] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot1]
+[python3-13] [WARN] [1792646712.959949164] [tb3_fleet_command_handle]: Cancel of goal [164, 116, 11, 55, 24, 162, 251, 168, 196, 109, 4, 84, 138, 167, 212, 218] on [tb3_robot1] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646712.960086655] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot1] to [wp_2] from one of these locations:
+[python3-13]  -- world_tb3 < 18.6475 -6.03149> [wp_2] | location < 18.4348 -5.98194> | orientation -83.1807
+[python3-13]  -- lane 16: { world_tb3 < 15.0918 -5.72759> [wp_1] } -> { world_tb3 < 18.6475 -6.03149> [wp_2] } | location < 18.4348 -5.98194> | orientation -83.1807
+[python3-13]  -- lane 17: { world_tb3 < 18.6475 -6.03149> [wp_2] } -> { world_tb3 < 15.0918 -5.72759> [wp_1] } | location < 18.4348 -5.98194> | orientation -83.1807
+[python3-13] [INFO] [1792646712.961561007] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_2] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646712.962626063] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_2] graph_index=0 map=[world_tb3] pose=(18.435, -5.983, -1.472) d_xy=0.218 d_yaw=-1.898 previous_goal=none
+[python3-13] [INFO] [1792646712.963131403] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [18.64748665 -6.0314942   2.91273571] on map [world_tb3]
+[python3-13] [INFO] [1792646712.965267860] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646712.968465111] [tb3_fleet_command_handle]: [tb3_robot1] command 3 accepted by Nav2 (goal [205, 55, 69, 150, 206, 198, 120, 173, 2, 90, 53, 31, 19, 239, 153, 89])
+[rmf_task_dispatcher-7] [INFO] [1792646713.021266542] [rmf_dispatcher_node]:  - Start new bidding task: patrol.dispatch-d0a693570f
+[python3-13] [INFO] [1792646713.022026244] [tb3_fleet_fleet_adapter]: [Bidder] Received Bidding notice for task_id [patrol.dispatch-d0a693570f]
+[python3-13] [INFO] [1792646713.022162191] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [1] request(s)
+[rmf_task_dispatcher-7] [DEBUG] [1792646713.023244604] [rmf_dispatcher_node]: [Auctioneer] Receive proposal from task_id: patrol.dispatch-d0a693570f | from: tb3_fleet
+[python3-13] [INFO] [1792646713.023267968] [tb3_fleet_fleet_adapter]: Submitted BidProposal to accommodate task [patrol.dispatch-d0a693570f] by robot [tb3_robot2] with new cost [142.701917]
+[python3-13] [INFO] [1792646716.918788933] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646716.918845794] [tb3_fleet_fleet_adapter]: Got distance from [3] as 1.001953
+[python3-13] [INFO] [1792646716.918929794] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_7] from one of these locations:
+[python3-13]  -- lane 4: { world_tb3 < 23.8138 -9.07052> [wp_5] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 28.5382 -8.72383> | orientation -152.368
+[python3-13]  -- lane 5: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 23.8138 -9.07052> [wp_5] } | location < 28.5382 -8.72383> | orientation -152.368
+[python3-13]  -- world_tb3 < 28.5678 -8.94227> [wp_7] | location < 28.5382 -8.72383> | orientation -152.368
+[python3-13]  -- lane 14: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 28.5382 -8.72383> | orientation -152.368
+[python3-13]  -- lane 15: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.5382 -8.72383> | orientation -152.368
+[python3-13] [INFO] [1792646716.920626022] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646716.921877592] [tb3_fleet_command_handle]: command [tb3_robot3] task=[wait.tb3_robot3.tb3_fleet-0] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.538, -8.724, -2.659) d_xy=0.220 d_yaw=-1.918 previous_goal=None
+[python3-13] [INFO] [1792646716.922478766] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553  1.70539303] on map [world_tb3]
+[python3-13] [INFO] [1792646716.923828501] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.001s.
+[python3-13] [INFO] [1792646716.924264153] [tb3_fleet_command_handle]: [tb3_robot3] command 2 accepted by Nav2 (goal [251, 128, 232, 219, 241, 127, 228, 41, 210, 146, 102, 144, 31, 227, 254, 76])
+[python3-13] [INFO] [1792646717.660310983] [tb3_fleet_command_handle]: Update loop: 250 cycles, avg=0.297s, max=74.330s, target=0.100s.
+[rmf_task_dispatcher-7] [DEBUG] [1792646718.021280399] [rmf_dispatcher_node]: Bidding Deadline reached for [patrol.dispatch-d0a693570f]
+[rmf_task_dispatcher-7] [INFO] [1792646718.022196209] [rmf_dispatcher_node]: Determined winning Fleet Adapter: [tb3_fleet], from 1 responses
+[rmf_task_dispatcher-7] [INFO] [1792646718.022207178] [rmf_dispatcher_node]: Dispatcher Bidding Result: task [patrol.dispatch-d0a693570f] is awarded to fleet adapter [tb3_fleet], with expected robot [tb3_robot2].
+[python3-13] [INFO] [1792646718.022438999] [tb3_fleet_fleet_adapter]: Bid for task_id [patrol.dispatch-d0a693570f] awarded to fleet [tb3_fleet]. Processing request...
+[python3-13] [INFO] [1792646718.022558220] [tb3_fleet_fleet_adapter]: Canceling responsive wait for [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646718.022568748] [tb3_fleet_fleet_adapter]: Canceling go_to_place for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646718.023034504] [tb3_fleet_fleet_adapter]: TaskAssignments updated for robots in fleet [tb3_fleet] to accommodate task_id [patrol.dispatch-d0a693570f]
+[python3-13] [INFO] [1792646718.023248420] [tb3_fleet_fleet_adapter]: Beginning next task [patrol.dispatch-d0a693570f] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646718.023458939] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646718.023477720] [tb3_fleet_fleet_adapter]: Got distance from [6] as 0.748806
+[python3-13] [INFO] [1792646718.023531426] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_6] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.4054 -5.04005> | orientation 159.977
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location < 28.4054 -5.04005> | orientation 159.977
+[python3-13]  -- world_tb3 < 28.5678 -5.01204> [wp_6] | location < 28.4054 -5.04005> | orientation 159.977
+[python3-13]  -- lane 14: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 28.4054 -5.04005> | orientation 159.977
+[python3-13]  -- lane 15: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.4054 -5.04005> | orientation 159.977
+[python3-13] [INFO] [1792646718.023702408] [tb3_fleet_fleet_adapter]: Beginning new task [patrol.dispatch-d0a693570f] for [tb3_fleet/tb3_robot2]. Remaining queue size: 0
+[python3-13] [INFO] [1792646718.025048435] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646718.026140614] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.405, -5.040, 2.792) d_xy=0.165 d_yaw=-2.621 previous_goal=None
+[python3-13] [INFO] [1792646718.026665414] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673  0.17089773] on map [world_tb3]
+[python3-13] [INFO] [1792646718.029271300] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646718.030050336] [tb3_fleet_command_handle]: [tb3_robot2] command 3 accepted by Nav2 (goal [252, 217, 122, 210, 236, 182, 61, 2, 182, 181, 87, 127, 1, 146, 175, 115])
+[rmf_task_dispatcher-7] [INFO] [1792646718.221313904] [rmf_dispatcher_node]:  - Start new bidding task: patrol.dispatch-962f42c28b
+[python3-13] [INFO] [1792646718.221864879] [tb3_fleet_fleet_adapter]: [Bidder] Received Bidding notice for task_id [patrol.dispatch-962f42c28b]
+[python3-13] [INFO] [1792646718.222007000] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [1] request(s)
+[python3-13] [INFO] [1792646718.223103077] [tb3_fleet_fleet_adapter]: Submitted BidProposal to accommodate task [patrol.dispatch-962f42c28b] by robot [tb3_robot3] with new cost [147.744108]
+[rmf_task_dispatcher-7] [DEBUG] [1792646718.223104275] [rmf_dispatcher_node]: [Auctioneer] Receive proposal from task_id: patrol.dispatch-962f42c28b | from: tb3_fleet
+[rmf_traffic_schedule-1] Require negotiation for: 0 1
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [0] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [0] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [0] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 0:1 >1:1<
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [INFO] [1792646720.573678167] [rmf_traffic_schedule_primary]: Resolved negotiation [0]: 0:1 1:1
+[python3-13] [INFO] [1792646720.720257880] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646720.720657639] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [WARN] [1792646720.722809148] [tb3_fleet_command_handle]: Cancel of goal [251, 128, 232, 219, 241, 127, 228, 41, 210, 146, 102, 144, 31, 227, 254, 76] on [tb3_robot3] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646720.723345739] [tb3_fleet_command_handle]: command [tb3_robot3] task=[wait.tb3_robot3.tb3_fleet-0] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.597, -8.762, 1.965) d_xy=0.183 d_yaw=2.589 previous_goal=[251, 128, 232, 219, 241, 127, 228, 41, 210, 146, 102, 144, 31, 227, 254, 76]
+[python3-13] [INFO] [1792646720.723876377] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553 -1.72948825] on map [world_tb3]
+[python3-13] [INFO] [1792646720.726591869] [tb3_fleet_command_handle]: Cancel of goal [252, 217, 122, 210, 236, 182, 61, 2, 182, 181, 87, 127, 1, 146, 175, 115] on [tb3_robot2] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646720.727520919] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.002s.
+[python3-13] [INFO] [1792646720.727619031] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.342, -5.066, 0.966) d_xy=0.232 d_yaw=2.409 previous_goal=[252, 217, 122, 210, 236, 182, 61, 2, 182, 181, 87, 127, 1, 146, 175, 115]
+[python3-13] [INFO] [1792646720.728718043] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673 -2.90848911] on map [world_tb3]
+[python3-13] [INFO] [1792646720.730191260] [tb3_fleet_command_handle]: [tb3_robot3] command 3 accepted by Nav2 (goal [78, 221, 116, 204, 177, 152, 191, 3, 199, 190, 190, 225, 19, 93, 87, 95])
+[python3-13] [INFO] [1792646720.731293501] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646720.731799813] [tb3_fleet_command_handle]: [tb3_robot2] command 4 accepted by Nav2 (goal [148, 98, 101, 99, 134, 223, 157, 128, 145, 12, 234, 229, 50, 47, 83, 93])
+[python3-13] [WARN] [1792646720.759492756] [tb3_fleet_command_handle]: Nav2 ended goal [148, 98, 101, 99, 134, 223, 157, 128, 145, 12, 234, 229, 50, 47, 83, 93] for [tb3_robot2] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646720.857637395] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot2]
+[python3-13] [WARN] [1792646720.862960172] [tb3_fleet_command_handle]: Cancel of goal [148, 98, 101, 99, 134, 223, 157, 128, 145, 12, 234, 229, 50, 47, 83, 93] on [tb3_robot2] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646720.863184811] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_6] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location <28.3414 -5.0626> | orientation 52.5658
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location <28.3414 -5.0626> | orientation 52.5658
+[python3-13] [INFO] [1792646720.867464624] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646720.869210298] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.334, -5.031, 0.867) d_xy=0.235 d_yaw=2.495 previous_goal=none
+[python3-13] [INFO] [1792646720.870074385] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673 -2.92186833] on map [world_tb3]
+[python3-13] [INFO] [1792646720.872952471] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.002s.
+[python3-13] [INFO] [1792646720.873716276] [tb3_fleet_command_handle]: [tb3_robot2] command 5 accepted by Nav2 (goal [79, 48, 49, 73, 164, 192, 185, 33, 222, 23, 3, 50, 153, 87, 6, 220])
+[python3-13] [INFO] [1792646722.656902472] [tb3_fleet_command_handle]: Update loop: 300 cycles, avg=0.248s, max=74.330s, target=0.100s.
+[rmf_task_dispatcher-7] [DEBUG] [1792646723.221415908] [rmf_dispatcher_node]: Bidding Deadline reached for [patrol.dispatch-962f42c28b]
+[rmf_task_dispatcher-7] [INFO] [1792646723.221491005] [rmf_dispatcher_node]: Determined winning Fleet Adapter: [tb3_fleet], from 1 responses
+[rmf_task_dispatcher-7] [INFO] [1792646723.221503424] [rmf_dispatcher_node]: Dispatcher Bidding Result: task [patrol.dispatch-962f42c28b] is awarded to fleet adapter [tb3_fleet], with expected robot [tb3_robot3].
+[python3-13] [INFO] [1792646723.222140636] [tb3_fleet_fleet_adapter]: Bid for task_id [patrol.dispatch-962f42c28b] awarded to fleet [tb3_fleet]. Processing request...
+[python3-13] [INFO] [1792646723.222297495] [tb3_fleet_fleet_adapter]: Canceling responsive wait for [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646723.222310354] [tb3_fleet_fleet_adapter]: Canceling go_to_place for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646723.225767096] [tb3_fleet_command_handle]: Cancel of goal [78, 221, 116, 204, 177, 152, 191, 3, 199, 190, 190, 225, 19, 93, 87, 95] on [tb3_robot3] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646723.226383418] [tb3_fleet_fleet_adapter]: TaskAssignments updated for robots in fleet [tb3_fleet] to accommodate task_id [patrol.dispatch-962f42c28b]
+[python3-13] [INFO] [1792646723.226639636] [tb3_fleet_fleet_adapter]: Beginning next task [patrol.dispatch-962f42c28b] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646723.226854897] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646723.226871630] [tb3_fleet_fleet_adapter]: Got distance from [3] as 1.014490
+[python3-13] [INFO] [1792646723.226946963] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_7] from one of these locations:
+[python3-13]  -- lane 4: { world_tb3 < 23.8138 -9.07052> [wp_5] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 28.5497 -8.71981> | orientation -154.703
+[python3-13]  -- lane 5: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 23.8138 -9.07052> [wp_5] } | location < 28.5497 -8.71981> | orientation -154.703
+[python3-13]  -- world_tb3 < 28.5678 -8.94227> [wp_7] | location < 28.5497 -8.71981> | orientation -154.703
+[python3-13]  -- lane 14: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 28.5497 -8.71981> | orientation -154.703
+[python3-13]  -- lane 15: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.5497 -8.71981> | orientation -154.703
+[python3-13] [INFO] [1792646723.227194828] [tb3_fleet_fleet_adapter]: Beginning new task [patrol.dispatch-962f42c28b] for [tb3_fleet/tb3_robot3]. Remaining queue size: 0
+[python3-13] [INFO] [1792646723.227676464] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646723.228854654] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.550, -8.720, -2.700) d_xy=0.223 d_yaw=-1.931 previous_goal=none
+[rmf_traffic_schedule-1] Require negotiation for: 0 1
+[python3-13] [INFO] [1792646723.230749208] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553  1.65163708] on map [world_tb3]
+[python3-13] [INFO] [1792646723.233166474] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.001s.
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [1] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [1] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1] 
+[python3-13] [INFO] [1792646723.233744769] [tb3_fleet_command_handle]: [tb3_robot3] command 4 accepted by Nav2 (goal [190, 15, 211, 192, 40, 17, 116, 186, 171, 76, 0, 162, 3, 41, 5, 116])
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [1] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 0:1 >1:1<
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [INFO] [1792646723.235851377] [rmf_traffic_schedule_primary]: Resolved negotiation [1]: 0:1 1:1
+[python3-13] [INFO] [1792646723.236666897] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646723.237306315] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646723.241044934] [tb3_fleet_command_handle]: Cancel of goal [190, 15, 211, 192, 40, 17, 116, 186, 171, 76, 0, 162, 3, 41, 5, 116] on [tb3_robot3] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646723.241926214] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.550, -8.720, -2.700) d_xy=0.223 d_yaw=-1.931 previous_goal=[190, 15, 211, 192, 40, 17, 116, 186, 171, 76, 0, 162, 3, 41, 5, 116]
+[python3-13] [INFO] [1792646723.242524868] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553  1.65163708] on map [world_tb3]
+[python3-13] [INFO] [1792646723.246492117] [tb3_fleet_command_handle]: Cancel of goal [79, 48, 49, 73, 164, 192, 185, 33, 222, 23, 3, 50, 153, 87, 6, 220] on [tb3_robot2] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646723.246756603] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.001s.
+[python3-13] [INFO] [1792646723.247428674] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.312, -5.054, 2.244) d_xy=0.259 d_yaw=-2.082 previous_goal=[79, 48, 49, 73, 164, 192, 185, 33, 222, 23, 3, 50, 153, 87, 6, 220]
+[python3-13] [INFO] [1792646723.248880456] [tb3_fleet_command_handle]: [tb3_robot3] command 5 accepted by Nav2 (goal [221, 209, 222, 234, 243, 244, 174, 53, 65, 211, 152, 127, 138, 73, 138, 122])
+[python3-13] [INFO] [1792646723.249179712] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673  0.16197141] on map [world_tb3]
+[python3-13] [INFO] [1792646723.252441182] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646723.253122234] [tb3_fleet_command_handle]: [tb3_robot2] command 6 accepted by Nav2 (goal [204, 95, 247, 180, 77, 226, 96, 63, 193, 135, 70, 167, 185, 177, 79, 19])
+[python3-13] [WARN] [1792646723.258928648] [tb3_fleet_command_handle]: Nav2 ended goal [221, 209, 222, 234, 243, 244, 174, 53, 65, 211, 152, 127, 138, 73, 138, 122] for [tb3_robot3] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646723.358396026] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot3]
+[python3-13] [WARN] [1792646723.360210378] [tb3_fleet_command_handle]: Cancel of goal [221, 209, 222, 234, 243, 244, 174, 53, 65, 211, 152, 127, 138, 73, 138, 122] on [tb3_robot3] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646723.360385969] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_7] from one of these locations:
+[python3-13]  -- lane 4: { world_tb3 < 23.8138 -9.07052> [wp_5] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location <28.5493 -8.7202> | orientation -151.559
+[python3-13]  -- lane 5: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 23.8138 -9.07052> [wp_5] } | location <28.5493 -8.7202> | orientation -151.559
+[python3-13] [INFO] [1792646723.361799274] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646723.363037133] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.545, -8.724, -2.601) d_xy=0.220 d_yaw=-2.028 previous_goal=none
+[python3-13] [INFO] [1792646723.364210144] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553  1.65391102] on map [world_tb3]
+[python3-13] [INFO] [1792646723.367239391] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.001s.
+[python3-13] [INFO] [1792646723.367689641] [tb3_fleet_command_handle]: [tb3_robot3] command 6 accepted by Nav2 (goal [174, 179, 21, 68, 104, 199, 216, 61, 120, 116, 38, 210, 6, 29, 71, 78])
+[rmf_traffic_schedule-1] Require negotiation for: 0 1
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [2] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [2] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [2] Active negotiation: 0 1
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 0:1 >1:1<
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [INFO] [1792646723.374839192] [rmf_traffic_schedule_primary]: Resolved negotiation [2]: 0:1 1:1
+[python3-13] [INFO] [1792646723.377117372] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646723.378323485] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646723.382473211] [tb3_fleet_command_handle]: Cancel of goal [174, 179, 21, 68, 104, 199, 216, 61, 120, 116, 38, 210, 6, 29, 71, 78] on [tb3_robot3] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646723.382949500] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.545, -8.724, -2.601) d_xy=0.220 d_yaw=-2.007 previous_goal=[174, 179, 21, 68, 104, 199, 216, 61, 120, 116, 38, 210, 6, 29, 71, 78]
+[python3-13] [INFO] [1792646723.383410829] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553  1.67470669] on map [world_tb3]
+[python3-13] [INFO] [1792646723.387121379] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.002s.
+[python3-13] [INFO] [1792646723.387302434] [tb3_fleet_command_handle]: Cancel of goal [204, 95, 247, 180, 77, 226, 96, 63, 193, 135, 70, 167, 185, 177, 79, 19] on [tb3_robot2] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646723.387954307] [tb3_fleet_command_handle]: [tb3_robot3] command 7 accepted by Nav2 (goal [86, 46, 95, 166, 234, 27, 153, 235, 10, 230, 50, 142, 113, 76, 68, 133])
+[python3-13] [INFO] [1792646723.388204710] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.296, -5.068, 2.239) d_xy=0.277 d_yaw=-2.037 previous_goal=[204, 95, 247, 180, 77, 226, 96, 63, 193, 135, 70, 167, 185, 177, 79, 19]
+[python3-13] [INFO] [1792646723.388984881] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673  0.20234455] on map [world_tb3]
+[python3-13] [INFO] [1792646723.393619263] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.003s.
+[python3-13] [INFO] [1792646723.394197849] [tb3_fleet_command_handle]: [tb3_robot2] command 7 accepted by Nav2 (goal [226, 232, 178, 245, 0, 219, 179, 85, 98, 157, 45, 195, 254, 182, 19, 224])
+[python3-13] [INFO] [1792646723.558152302] [tb3_fleet_command_handle]: Navigation goal [205, 55, 69, 150, 206, 198, 120, 173, 2, 90, 53, 31, 19, 239, 153, 89] reached
+[python3-13] [INFO] [1792646723.559661910] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646723.559692959] [tb3_fleet_fleet_adapter]: Got distance from [6] as 46.326146
+[python3-13] [INFO] [1792646723.559746405] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot1] to [wp_6] from one of these locations:
+[python3-13]  -- lane 0: { world_tb3 < 18.6475 -6.03149> [wp_2] } -> { world_tb3 < 18.5867 -7.70296> [wp_3] } | location < 18.6073 -6.14609> | orientation 156.719
+[python3-13]  -- lane 1: { world_tb3 < 18.5867 -7.70296> [wp_3] } -> { world_tb3 < 18.6475 -6.03149> [wp_2] } | location < 18.6073 -6.14609> | orientation 156.719
+[python3-13]  -- world_tb3 < 18.6475 -6.03149> [wp_2] | location < 18.6073 -6.14609> | orientation 156.719
+[python3-13]  -- lane 16: { world_tb3 < 15.0918 -5.72759> [wp_1] } -> { world_tb3 < 18.6475 -6.03149> [wp_2] } | location < 18.6073 -6.14609> | orientation 156.719
+[python3-13]  -- lane 17: { world_tb3 < 18.6475 -6.03149> [wp_2] } -> { world_tb3 < 15.0918 -5.72759> [wp_1] } | location < 18.6073 -6.14609> | orientation 156.719
+[python3-13] [INFO] [1792646723.568322421] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646723.570810911] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_4] graph_index=5 map=[world_tb3] pose=(18.607, -6.146, 2.735) d_xy=5.214 d_yaw=-2.775 previous_goal=None
+[python3-13] [INFO] [1792646723.571634234] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [23.6479233  -4.81413528 -0.04020354] on map [world_tb3]
+[python3-13] [INFO] [1792646723.573325960] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646723.573818015] [tb3_fleet_command_handle]: [tb3_robot1] command 4 accepted by Nav2 (goal [176, 107, 205, 214, 61, 72, 132, 96, 25, 134, 47, 221, 34, 153, 158, 215])
+[python3-13] [INFO] [1792646725.858363207] [tb3_fleet_command_handle]: Navigation goal [226, 232, 178, 245, 0, 219, 179, 85, 98, 157, 45, 195, 254, 182, 19, 224] reached
+[python3-13] [INFO] [1792646725.859780001] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646725.859829275] [tb3_fleet_fleet_adapter]: Got distance from [4] as 46.523666
+[python3-13] [INFO] [1792646725.859899902] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.1467 -4.59777> | orientation 33.2122
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location < 28.1467 -4.59777> | orientation 33.2122
+[python3-13]  -- world_tb3 < 28.5678 -5.01204> [wp_6] | location < 28.1467 -4.59777> | orientation 33.2122
+[python3-13] [INFO] [1792646725.997830287] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[rmf_traffic_schedule-1] Require negotiation for: 2 1 0
+[python3-13] [INFO] [1792646726.001098303] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.169, -4.672, 0.536) d_xy=0.524 d_yaw=-2.107 previous_goal=None
+[python3-13] [INFO] [1792646726.001643883] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673 -1.57079633] on map [world_tb3]
+[python3-13] [INFO] [1792646726.003370324] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [3] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- [1:0]
+[rmf_traffic_schedule-1]  -- [2:0]
+[rmf_traffic_schedule-1] 
+[python3-13] [INFO] [1792646726.003803714] [tb3_fleet_command_handle]: [tb3_robot2] command 8 accepted by Nav2 (goal [59, 116, 99, 3, 130, 46, 45, 250, 119, 3, 199, 152, 87, 234, 232, 99])
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [3] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- [2:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [3] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [3] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [3] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [3] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 2:1 [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [3] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 2:1 [1:0]
+[rmf_traffic_schedule-1]  -- 1:1 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 2:1 [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [3] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 2:1 [1:0]
+[rmf_traffic_schedule-1]  -- 1:1 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 2:1 >0:1<
+[rmf_traffic_schedule-1]  -- 2:1 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [INFO] [1792646726.025986382] [rmf_traffic_schedule_primary]: Resolved negotiation [3]: 1:1 2:1 0:1
+[python3-13] [INFO] [1792646726.026561262] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646726.027422109] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646726.028030285] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646726.031758040] [tb3_fleet_command_handle]: Cancel of goal [59, 116, 99, 3, 130, 46, 45, 250, 119, 3, 199, 152, 87, 234, 232, 99] on [tb3_robot2] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646726.032256469] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.169, -4.672, 0.536) d_xy=0.524 d_yaw=-2.107 previous_goal=[59, 116, 99, 3, 130, 46, 45, 250, 119, 3, 199, 152, 87, 234, 232, 99]
+[python3-13] [INFO] [1792646726.032766937] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673 -1.57079633] on map [world_tb3]
+[python3-13] [INFO] [1792646726.036168943] [tb3_fleet_command_handle]: Cancel of goal [176, 107, 205, 214, 61, 72, 132, 96, 25, 134, 47, 221, 34, 153, 158, 215] on [tb3_robot1] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646726.036949779] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_4] graph_index=5 map=[world_tb3] pose=(18.587, -6.092, -1.825) d_xy=5.220 d_yaw=-1.357 previous_goal=[176, 107, 205, 214, 61, 72, 132, 96, 25, 134, 47, 221, 34, 153, 158, 215]
+[python3-13] [INFO] [1792646726.037451957] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646726.038197319] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [23.6479233  -4.81413528  3.10138912] on map [world_tb3]
+[python3-13] [INFO] [1792646726.039701049] [tb3_fleet_command_handle]: [tb3_robot2] command 9 accepted by Nav2 (goal [51, 54, 22, 150, 150, 244, 140, 19, 191, 190, 170, 228, 119, 228, 98, 85])
+[python3-13] [INFO] [1792646726.041426129] [tb3_fleet_command_handle]: Cancel of goal [86, 46, 95, 166, 234, 27, 153, 235, 10, 230, 50, 142, 113, 76, 68, 133] on [tb3_robot3] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646726.041730219] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646726.042763183] [tb3_fleet_command_handle]: [tb3_robot1] command 5 accepted by Nav2 (goal [55, 130, 101, 194, 191, 51, 143, 183, 132, 134, 77, 105, 45, 230, 107, 152])
+[python3-13] [INFO] [1792646726.042868416] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.573, -8.820, 2.370) d_xy=0.123 d_yaw=2.297 previous_goal=[86, 46, 95, 166, 234, 27, 153, 235, 10, 230, 50, 142, 113, 76, 68, 133]
+[python3-13] [INFO] [1792646726.043729449] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553 -1.61547514] on map [world_tb3]
+[python3-13] [INFO] [1792646726.046889743] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.002s.
+[python3-13] [INFO] [1792646726.047390828] [tb3_fleet_command_handle]: [tb3_robot3] command 8 accepted by Nav2 (goal [82, 79, 84, 215, 187, 80, 114, 93, 168, 34, 172, 161, 48, 171, 107, 2])
+[python3-13] [WARN] [1792646726.058923230] [tb3_fleet_command_handle]: Nav2 ended goal [51, 54, 22, 150, 150, 244, 140, 19, 191, 190, 170, 228, 119, 228, 98, 85] for [tb3_robot2] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646726.157203890] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot2]
+[python3-13] [WARN] [1792646726.159467920] [tb3_fleet_command_handle]: Cancel of goal [51, 54, 22, 150, 150, 244, 140, 19, 191, 190, 170, 228, 119, 228, 98, 85] on [tb3_robot2] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646726.159740627] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.1692 -4.67216> | orientation 27.908
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location < 28.1692 -4.67216> | orientation 27.908
+[python3-13]  -- world_tb3 < 28.5678 -5.01204> [wp_6] | location < 28.1692 -4.67216> | orientation 27.908
+[python3-13] [INFO] [1792646726.309161104] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[rmf_traffic_schedule-1] Require negotiation for: 2 1 0
+[python3-13] [INFO] [1792646726.311377988] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.186, -4.887, 0.475) d_xy=0.402 d_yaw=-2.045 previous_goal=none
+[python3-13] [INFO] [1792646726.311978312] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673 -1.57079633] on map [world_tb3]
+[python3-13] [INFO] [1792646726.314877198] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.002s.
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [4] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- [1:0]
+[rmf_traffic_schedule-1]  -- [2:0]
+[rmf_traffic_schedule-1] 
+[python3-13] [INFO] [1792646726.316520848] [tb3_fleet_command_handle]: [tb3_robot2] command 10 accepted by Nav2 (goal [92, 60, 106, 26, 225, 237, 99, 221, 226, 145, 155, 121, 38, 225, 208, 16])
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [4] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- [2:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [4] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [0:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [4] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [4] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 2:1 [1:0]
+[rmf_traffic_schedule-1]  -- 1:1 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 [1:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [4] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 2:1 [1:0]
+[rmf_traffic_schedule-1]  -- 1:1 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 1:1 [0:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [4] Active negotiation: 2 1 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [1:0]
+[rmf_traffic_schedule-1]  -- 0:1 2:1 [1:0]
+[rmf_traffic_schedule-1]  -- 1:1 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 1:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 1:1 >0:1<
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [INFO] [1792646726.329271420] [rmf_traffic_schedule_primary]: Resolved negotiation [4]: 2:1 1:1 0:1
+[python3-13] [INFO] [1792646726.330558589] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646726.331361850] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646726.333793286] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_7] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646726.339648203] [tb3_fleet_command_handle]: Cancel of goal [82, 79, 84, 215, 187, 80, 114, 93, 168, 34, 172, 161, 48, 171, 107, 2] on [tb3_robot3] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646726.341447990] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.620, -8.807, 2.282) d_xy=0.145 d_yaw=2.061 previous_goal=[82, 79, 84, 215, 187, 80, 114, 93, 168, 34, 172, 161, 48, 171, 107, 2]
+[python3-13] [INFO] [1792646726.342205061] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553 -1.93999576] on map [world_tb3]
+[python3-13] [INFO] [1792646726.344098220] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.001s.
+[python3-13] [INFO] [1792646726.346695963] [tb3_fleet_command_handle]: [tb3_robot3] command 9 accepted by Nav2 (goal [2, 127, 36, 123, 19, 108, 155, 132, 217, 199, 1, 100, 99, 143, 131, 84])
+[python3-13] [INFO] [1792646726.347249002] [tb3_fleet_command_handle]: Cancel of goal [55, 130, 101, 194, 191, 51, 143, 183, 132, 134, 77, 105, 45, 230, 107, 152] on [tb3_robot1] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646726.347945359] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_4] graph_index=5 map=[world_tb3] pose=(18.601, -6.094, -1.586) d_xy=5.207 d_yaw=-1.596 previous_goal=[55, 130, 101, 194, 191, 51, 143, 183, 132, 134, 77, 105, 45, 230, 107, 152]
+[python3-13] [INFO] [1792646726.349803597] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [23.6479233  -4.81413528  3.10138912] on map [world_tb3]
+[python3-13] [INFO] [1792646726.353598336] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.002s.
+[python3-13] [INFO] [1792646726.354209862] [tb3_fleet_command_handle]: [tb3_robot1] command 6 accepted by Nav2 (goal [87, 82, 141, 109, 123, 189, 231, 62, 231, 56, 39, 145, 253, 45, 101, 64])
+[python3-13] [INFO] [1792646726.359550040] [tb3_fleet_command_handle]: Cancel of goal [92, 60, 106, 26, 225, 237, 99, 221, 226, 145, 155, 121, 38, 225, 208, 16] on [tb3_robot2] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646726.360556834] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.186, -4.887, 0.458) d_xy=0.402 d_yaw=-2.029 previous_goal=[92, 60, 106, 26, 225, 237, 99, 221, 226, 145, 155, 121, 38, 225, 208, 16]
+[python3-13] [INFO] [1792646726.361319433] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -5.01203673 -1.57079633] on map [world_tb3]
+[python3-13] [INFO] [1792646726.362858106] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646726.363236093] [tb3_fleet_command_handle]: [tb3_robot2] command 11 accepted by Nav2 (goal [84, 171, 110, 116, 102, 195, 252, 3, 7, 72, 52, 60, 253, 73, 196, 30])
+[python3-13] [WARN] [1792646726.459170632] [tb3_fleet_command_handle]: Nav2 ended goal [87, 82, 141, 109, 123, 189, 231, 62, 231, 56, 39, 145, 253, 45, 101, 64] for [tb3_robot1] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646726.558563506] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot1]
+[python3-13] [WARN] [1792646726.560060975] [tb3_fleet_command_handle]: Cancel of goal [87, 82, 141, 109, 123, 189, 231, 62, 231, 56, 39, 145, 253, 45, 101, 64] on [tb3_robot1] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646726.560183563] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot1] to [wp_6] from one of these locations:
+[python3-13]  -- lane 0: { world_tb3 < 18.6475 -6.03149> [wp_2] } -> { world_tb3 < 18.5867 -7.70296> [wp_3] } | location < 18.6488 -6.11809> | orientation -84.3256
+[python3-13]  -- lane 1: { world_tb3 < 18.5867 -7.70296> [wp_3] } -> { world_tb3 < 18.6475 -6.03149> [wp_2] } | location < 18.6488 -6.11809> | orientation -84.3256
+[python3-13]  -- world_tb3 < 18.6475 -6.03149> [wp_2] | location < 18.6488 -6.11809> | orientation -84.3256
+[python3-13] [INFO] [1792646726.567026847] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646726.568837564] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_2] graph_index=0 map=[world_tb3] pose=(18.649, -6.118, -1.394) d_xy=0.087 d_yaw=-1.509 previous_goal=none
+[python3-13] [INFO] [1792646726.569769935] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [18.64748665 -6.0314942  -2.90278764] on map [world_tb3]
+[python3-13] [INFO] [1792646726.571558335] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646726.572119964] [tb3_fleet_command_handle]: [tb3_robot1] command 7 accepted by Nav2 (goal [87, 67, 181, 129, 11, 164, 114, 83, 64, 163, 113, 127, 106, 152, 241, 5])
+[python3-13] [INFO] [1792646727.659271795] [tb3_fleet_command_handle]: Update loop: 350 cycles, avg=0.212s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646728.657367135] [tb3_fleet_command_handle]: Navigation goal [87, 67, 181, 129, 11, 164, 114, 83, 64, 163, 113, 127, 106, 152, 241, 5] reached
+[python3-13] [INFO] [1792646728.658356692] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_4] graph_index=5 map=[world_tb3] pose=(18.607, -6.107, -2.478) d_xy=5.204 d_yaw=-0.704 previous_goal=None
+[python3-13] [INFO] [1792646728.659390690] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [23.6479233  -4.81413528  3.10138912] on map [world_tb3]
+[python3-13] [INFO] [1792646728.661023452] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646728.661605682] [tb3_fleet_command_handle]: [tb3_robot1] command 8 accepted by Nav2 (goal [197, 116, 5, 168, 96, 180, 142, 204, 155, 113, 149, 107, 211, 227, 69, 2])
+[python3-13] [INFO] [1792646730.156814178] [tb3_fleet_command_handle]: Navigation goal [84, 171, 110, 116, 102, 195, 252, 3, 7, 72, 52, 60, 253, 73, 196, 30] reached
+[python3-13] [INFO] [1792646730.157390923] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(28.471, -4.883, -1.316) d_xy=4.060 d_yaw=1.246 previous_goal=None
+[python3-13] [INFO] [1792646730.158115043] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [28.56775935 -8.94226553 -0.07036486] on map [world_tb3]
+[python3-13] [INFO] [1792646730.159832512] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646730.160337126] [tb3_fleet_command_handle]: [tb3_robot2] command 12 accepted by Nav2 (goal [114, 177, 227, 196, 102, 69, 78, 179, 42, 15, 92, 115, 53, 41, 56, 40])
+[python3-13] [INFO] [1792646730.759915697] [tb3_fleet_command_handle]: Navigation goal [2, 127, 36, 123, 19, 108, 155, 132, 217, 199, 1, 100, 99, 143, 131, 84] reached
+[python3-13] [INFO] [1792646730.760633606] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646730.760661988] [tb3_fleet_fleet_adapter]: Got distance from [7] as 43.174377
+[python3-13] [INFO] [1792646730.760713214] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_8] from one of these locations:
+[python3-13]  -- lane 4: { world_tb3 < 23.8138 -9.07052> [wp_5] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 28.5624 -8.83333> | orientation -124.437
+[python3-13]  -- lane 5: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 23.8138 -9.07052> [wp_5] } | location < 28.5624 -8.83333> | orientation -124.437
+[python3-13]  -- world_tb3 < 28.5678 -8.94227> [wp_7] | location < 28.5624 -8.83333> | orientation -124.437
+[python3-13]  -- lane 14: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 28.5624 -8.83333> | orientation -124.437
+[python3-13]  -- lane 15: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.5624 -8.83333> | orientation -124.437
+[python3-13] [INFO] [1792646730.938912463] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_8] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646730.942210487] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_5] graph_index=2 map=[world_tb3] pose=(28.562, -8.833, -2.172) d_xy=4.755 d_yaw=-0.943 previous_goal=None
+[python3-13] [INFO] [1792646730.942741891] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [23.81377451 -9.07051647 -3.11462163] on map [world_tb3]
+[python3-13] [INFO] [1792646730.946032318] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.001s.
+[python3-13] [INFO] [1792646730.946618002] [tb3_fleet_command_handle]: [tb3_robot3] command 10 accepted by Nav2 (goal [40, 75, 62, 107, 200, 155, 2, 67, 168, 181, 91, 81, 29, 248, 117, 228])
+[python3-13] [INFO] [1792646732.703665764] [tb3_fleet_command_handle]: Update loop: 400 cycles, avg=0.186s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646737.701612237] [tb3_fleet_command_handle]: Update loop: 450 cycles, avg=0.165s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646742.701907908] [tb3_fleet_command_handle]: Update loop: 500 cycles, avg=0.149s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646747.703637809] [tb3_fleet_command_handle]: Update loop: 550 cycles, avg=0.135s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646749.600769442] [tb3_fleet_command_handle]: Navigation goal [114, 177, 227, 196, 102, 69, 78, 179, 42, 15, 92, 115, 53, 41, 56, 40] reached
+[python3-13] [INFO] [1792646749.601917465] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(28.481, -8.776, -0.326) d_xy=5.815 d_yaw=0.256 previous_goal=None
+[python3-13] [INFO] [1792646749.603109372] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848 -0.07036486] on map [world_tb3]
+[python3-13] [INFO] [1792646749.604592582] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646749.605051662] [tb3_fleet_command_handle]: [tb3_robot2] command 13 accepted by Nav2 (goal [228, 141, 233, 70, 104, 29, 219, 41, 13, 166, 11, 125, 205, 136, 48, 12])
+[python3-13] [INFO] [1792646752.400510742] [tb3_fleet_command_handle]: Navigation goal [40, 75, 62, 107, 200, 155, 2, 67, 168, 181, 91, 81, 29, 248, 117, 228] reached
+[python3-13] [INFO] [1792646752.401142455] [tb3_fleet_fleet_adapter]: [tb3_fleet/tb3_robot3] waiting for traffic
+[python3-13] [INFO] [1792646752.701536266] [tb3_fleet_command_handle]: Update loop: 600 cycles, avg=0.124s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646752.900425909] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [0] request(s)
+[python3-13] [INFO] [1792646755.500905385] [tb3_fleet_command_handle]: Navigation goal [197, 116, 5, 168, 96, 180, 142, 204, 155, 113, 149, 107, 211, 227, 69, 2] reached
+[python3-13] [INFO] [1792646755.501346677] [tb3_fleet_fleet_adapter]: [tb3_fleet/tb3_robot1] waiting for traffic
+[python3-13] [INFO] [1792646755.501424872] [tb3_fleet_fleet_adapter]: [tb3_fleet/tb3_robot1] done waiting for traffic
+[python3-13] [INFO] [1792646755.502303777] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(23.448, -4.896, 2.870) d_xy=5.122 d_yaw=0.232 previous_goal=None
+[python3-13] [INFO] [1792646755.503499468] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [28.56775935 -5.01203673  3.10138912] on map [world_tb3]
+[python3-13] [INFO] [1792646755.504664807] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646755.505149895] [tb3_fleet_command_handle]: [tb3_robot1] command 9 accepted by Nav2 (goal [59, 87, 26, 176, 195, 66, 96, 194, 41, 20, 50, 209, 141, 99, 127, 97])
+[python3-13] [INFO] [1792646757.700922223] [tb3_fleet_command_handle]: Update loop: 650 cycles, avg=0.114s, max=74.330s, target=0.100s.
+[python3-13] [WARN] [1792646757.901172827] [tb3_fleet_command_handle]: Nav2 ended goal [228, 141, 233, 70, 104, 29, 219, 41, 13, 166, 11, 125, 205, 136, 48, 12] for [tb3_robot2] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646758.000665205] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot2]
+[python3-13] [WARN] [1792646758.002173108] [tb3_fleet_command_handle]: Cancel of goal [228, 141, 233, 70, 104, 29, 219, 41, 13, 166, 11, 125, 205, 136, 48, 12] on [tb3_robot2] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646758.002360983] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 29.9893 -8.84568> | orientation -5.96593
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 29.9893 -8.84568> | orientation -5.96593
+[python3-13] [INFO] [1792646758.004162470] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646758.005566312] [tb3_fleet_command_handle]: command [tb3_robot2] task=[patrol.dispatch-d0a693570f] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(30.007, -8.848, -0.104) d_xy=4.289 d_yaw=3.130 previous_goal=none
+[python3-13] [INFO] [1792646758.006214644] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848  3.02564304] on map [world_tb3]
+[python3-13] [INFO] [1792646758.007817566] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646758.009083382] [tb3_fleet_command_handle]: [tb3_robot2] command 14 accepted by Nav2 (goal [99, 109, 63, 64, 205, 173, 154, 134, 6, 180, 129, 82, 240, 36, 208, 198])
+[python3-13] [INFO] [1792646758.010776828] [tb3_fleet_fleet_adapter]: [tb3_fleet/tb3_robot3] done waiting for traffic
+[python3-13] [INFO] [1792646758.012171749] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_7] graph_index=3 map=[world_tb3] pose=(24.120, -9.004, -3.050) d_xy=4.448 d_yaw=1.479 previous_goal=None
+[python3-13] [INFO] [1792646758.012996436] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -8.94226553 -1.57079633] on map [world_tb3]
+[python3-13] [INFO] [1792646758.015028238] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.001s.
+[python3-13] [INFO] [1792646758.015640992] [tb3_fleet_command_handle]: [tb3_robot3] command 11 accepted by Nav2 (goal [121, 163, 241, 32, 81, 201, 41, 228, 37, 67, 54, 170, 142, 226, 143, 148])
+[python3-13] [INFO] [1792646762.724744198] [tb3_fleet_command_handle]: Update loop: 700 cycles, avg=0.106s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646767.726412558] [tb3_fleet_command_handle]: Update loop: 750 cycles, avg=0.099s, max=74.330s, target=0.100s.
+[python3-13] [WARN] [1792646772.023700436] [tb3_fleet_command_handle]: Nav2 ended goal [59, 87, 26, 176, 195, 66, 96, 194, 41, 20, 50, 209, 141, 99, 127, 97] for [tb3_robot1] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646772.123654190] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot1]
+[python3-13] [WARN] [1792646772.126384501] [tb3_fleet_command_handle]: Cancel of goal [59, 87, 26, 176, 195, 66, 96, 194, 41, 20, 50, 209, 141, 99, 127, 97] on [tb3_robot1] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646772.126554609] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot1] to [wp_6] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 25.7917 -4.70831> | orientation 0.827063
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location < 25.7917 -4.70831> | orientation 0.827063
+[python3-13] [INFO] [1792646772.129094682] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646772.130787315] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(25.802, -4.708, 0.014) d_xy=2.782 d_yaw=3.018 previous_goal=none
+[python3-13] [INFO] [1792646772.133787353] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [28.56775935 -5.01203673  3.03261801] on map [world_tb3]
+[python3-13] [INFO] [1792646772.135534960] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646772.136578381] [tb3_fleet_command_handle]: [tb3_robot1] command 10 accepted by Nav2 (goal [65, 217, 175, 52, 65, 213, 198, 161, 185, 49, 144, 136, 85, 145, 3, 252])
+[python3-13] [WARN] [1792646772.223973790] [tb3_fleet_command_handle]: Nav2 ended goal [65, 217, 175, 52, 65, 213, 198, 161, 185, 49, 144, 136, 85, 145, 3, 252] for [tb3_robot1] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 5s (replan 2 since this robot last reached a goal).
+[python3-13] [INFO] [1792646772.724024833] [tb3_fleet_command_handle]: Update loop: 800 cycles, avg=0.093s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646777.326648853] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot1]
+[python3-13] [WARN] [1792646777.327927248] [tb3_fleet_command_handle]: Cancel of goal [65, 217, 175, 52, 65, 213, 198, 161, 185, 49, 144, 136, 85, 145, 3, 252] on [tb3_robot1] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646777.328076367] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot1] to [wp_6] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 25.6033 -4.70395> | orientation -0.0569757
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location < 25.6033 -4.70395> | orientation -0.0569757
+[python3-13] [INFO] [1792646777.329839665] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646777.332617444] [tb3_fleet_command_handle]: command [tb3_robot1] task=[patrol.dispatch-a8a22f4d07] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(25.603, -4.704, -0.001) d_xy=2.980 d_yaw=3.039 previous_goal=none
+[python3-13] [INFO] [1792646777.333545152] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [28.56775935 -5.01203673  3.03803659] on map [world_tb3]
+[python3-13] [INFO] [1792646777.335378932] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646777.335897262] [tb3_fleet_command_handle]: [tb3_robot1] command 11 accepted by Nav2 (goal [4, 90, 239, 188, 41, 237, 154, 157, 37, 58, 91, 67, 90, 152, 69, 100])
+[python3-13] [INFO] [1792646777.724940970] [tb3_fleet_command_handle]: Update loop: 850 cycles, avg=0.087s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646782.726928616] [tb3_fleet_command_handle]: Update loop: 900 cycles, avg=0.083s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646786.064720416] [tb3_fleet_command_handle]: Navigation goal [121, 163, 241, 32, 81, 201, 41, 228, 37, 67, 54, 170, 142, 226, 143, 148] reached
+[python3-13] [INFO] [1792646786.065283126] [tb3_fleet_fleet_adapter]: [tb3_fleet/tb3_robot3] waiting for traffic
+[python3-13] [INFO] [1792646786.065631353] [tb3_fleet_fleet_adapter]: [tb3_fleet/tb3_robot3] done waiting for traffic
+[python3-13] [INFO] [1792646786.067922147] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.336, -8.876, -1.335) d_xy=3.871 d_yaw=-1.756 previous_goal=None
+[python3-13] [INFO] [1792646786.068542934] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -5.01203673 -3.09096353] on map [world_tb3]
+[python3-13] [INFO] [1792646786.070985809] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.001s.
+[python3-13] [INFO] [1792646786.072660802] [tb3_fleet_command_handle]: [tb3_robot3] command 12 accepted by Nav2 (goal [164, 174, 0, 158, 198, 86, 237, 190, 42, 55, 193, 238, 252, 219, 212, 106])
+[python3-13] [INFO] [1792646786.368174503] [tb3_fleet_command_handle]: Navigation goal [99, 109, 63, 64, 205, 173, 154, 134, 6, 180, 129, 82, 240, 36, 208, 198] reached
+[python3-13] [INFO] [1792646786.368943480] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646786.368972754] [tb3_fleet_fleet_adapter]: Got distance from [4] as 1.070340
+[python3-13] [INFO] [1792646786.369024460] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.0383 -9.39633> | orientation -179.724
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.0383 -9.39633> | orientation -179.724
+[python3-13] [INFO] [1792646786.370898193] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646786.373359086] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.038, -9.396, -3.137) d_xy=0.235 d_yaw=-2.922 previous_goal=None
+[python3-13] [INFO] [1792646786.374235963] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848  0.22404064] on map [world_tb3]
+[python3-13] [INFO] [1792646786.376641099] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646786.377179974] [tb3_fleet_command_handle]: [tb3_robot2] command 15 accepted by Nav2 (goal [236, 113, 144, 126, 56, 34, 223, 222, 44, 32, 243, 223, 186, 164, 111, 142])
+[python3-13] [INFO] [1792646787.766913578] [tb3_fleet_command_handle]: Update loop: 950 cycles, avg=0.078s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646791.465321972] [tb3_fleet_command_handle]: Navigation goal [236, 113, 144, 126, 56, 34, 223, 222, 44, 32, 243, 223, 186, 164, 111, 142] reached
+[python3-13] [INFO] [1792646792.764244887] [tb3_fleet_command_handle]: Update loop: 1000 cycles, avg=0.074s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646797.176676378] [tb3_fleet_command_handle]: Navigation goal [4, 90, 239, 188, 41, 237, 154, 157, 37, 58, 91, 67, 90, 152, 69, 100] reached
+[python3-13] [INFO] [1792646797.178935873] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646797.179029994] [tb3_fleet_fleet_adapter]: Got distance from [6] as 0.802092
+[python3-13] [INFO] [1792646797.179101120] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot1] to [wp_6] from one of these locations:
+[python3-13]  -- lane 10: { world_tb3 < 23.6479 -4.81414> [wp_4] } -> { world_tb3 < 28.5678 -5.01204> [wp_6] } | location < 28.4141 -4.92522> | orientation -172.753
+[python3-13]  -- lane 11: { world_tb3 < 28.5678 -5.01204> [wp_6] } -> { world_tb3 < 23.6479 -4.81414> [wp_4] } | location < 28.4141 -4.92522> | orientation -172.753
+[python3-13]  -- world_tb3 < 28.5678 -5.01204> [wp_6] | location < 28.4141 -4.92522> | orientation -172.753
+[python3-13] [INFO] [1792646797.191260416] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646797.193781597] [tb3_fleet_command_handle]: command [tb3_robot1] task=[wait.tb3_robot1.tb3_fleet-1] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.414, -4.925, -3.015) d_xy=0.176 d_yaw=2.501 previous_goal=None
+[python3-13] [INFO] [1792646797.194806856] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [28.56775935 -5.01203673 -0.51440167] on map [world_tb3]
+[python3-13] [INFO] [1792646797.197559182] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646797.197964888] [tb3_fleet_command_handle]: [tb3_robot1] command 12 accepted by Nav2 (goal [28, 229, 61, 32, 58, 156, 253, 7, 165, 3, 101, 145, 214, 166, 190, 40])
+[rmf_traffic_schedule-1] Require negotiation for: 2 0
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [5] Active negotiation: 2 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- [0:0]
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [5] Active negotiation: 2 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 [2:0]
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [5] Active negotiation: 2 0
+[rmf_traffic_schedule-1]     Current negotiation state
+[rmf_traffic_schedule-1]  -- 0:1 >2:1<
+[rmf_traffic_schedule-1]  -- 2:1 [0:0]
+[rmf_traffic_schedule-1] 
+[rmf_traffic_schedule-1] [INFO] [1792646797.236128722] [rmf_traffic_schedule_primary]: Resolved negotiation [5]: 0:1 2:1
+[python3-13] [INFO] [1792646797.236423811] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_8] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1792646797.236903653] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot1]
+[python3-13] [INFO] [1792646797.238863308] [tb3_fleet_command_handle]: Cancel of goal [28, 229, 61, 32, 58, 156, 253, 7, 165, 3, 101, 145, 214, 166, 190, 40] on [tb3_robot1] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646797.239206175] [tb3_fleet_command_handle]: command [tb3_robot1] task=[wait.tb3_robot1.tb3_fleet-1] destination=[wp_4] graph_index=5 map=[world_tb3] pose=(28.414, -4.925, -3.015) d_xy=4.768 d_yaw=-0.150 previous_goal=[28, 229, 61, 32, 58, 156, 253, 7, 165, 3, 101, 145, 214, 166, 190, 40]
+[python3-13] [INFO] [1792646797.239624435] [tb3_fleet_command_handle]: Commanding [tb3_robot1] to navigate to [23.6479233  -4.81413528  3.11829105] on map [world_tb3]
+[python3-13] [INFO] [1792646797.241474845] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot1]: 0.001s.
+[python3-13] [INFO] [1792646797.242975995] [tb3_fleet_command_handle]: [tb3_robot1] command 13 accepted by Nav2 (goal [168, 239, 39, 233, 109, 244, 144, 246, 159, 76, 43, 184, 238, 32, 176, 110])
+[python3-13] [INFO] [1792646797.244018424] [tb3_fleet_command_handle]: Cancel of goal [164, 174, 0, 158, 198, 86, 237, 190, 42, 55, 193, 238, 252, 219, 212, 106] on [tb3_robot3] returned [ERROR_NONE], 1 goal(s) canceling.
+[python3-13] [INFO] [1792646797.244383422] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-962f42c28b] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.229, -7.242, 1.626) d_xy=2.255 d_yaw=-1.575 previous_goal=[164, 174, 0, 158, 198, 86, 237, 190, 42, 55, 193, 238, 252, 219, 212, 106]
+[python3-13] [INFO] [1792646797.244855458] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -5.01203673  0.05062912] on map [world_tb3]
+[python3-13] [INFO] [1792646797.248905567] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.003s.
+[python3-13] [INFO] [1792646797.249233948] [tb3_fleet_command_handle]: [tb3_robot3] command 13 accepted by Nav2 (goal [247, 157, 117, 173, 40, 141, 187, 138, 205, 224, 108, 221, 44, 27, 251, 202])
+[python3-13] [INFO] [1792646797.778451869] [tb3_fleet_command_handle]: Update loop: 1050 cycles, avg=0.071s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646802.774727093] [tb3_fleet_command_handle]: Update loop: 1100 cycles, avg=0.068s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646807.776129989] [tb3_fleet_command_handle]: Update loop: 1150 cycles, avg=0.065s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646812.832916622] [tb3_fleet_command_handle]: Update loop: 1200 cycles, avg=0.062s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646813.129638421] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [0] request(s)
+[python3-13] [INFO] [1792646816.466969564] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646816.467037660] [tb3_fleet_fleet_adapter]: Got distance from [4] as 0.729873
+[python3-13] [INFO] [1792646816.467115050] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.1112 -9.37898> | orientation 24.0605
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.1112 -9.37898> | orientation 24.0605
+[python3-13] [INFO] [1792646816.468917177] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646816.470238322] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.111, -9.379, 0.420) d_xy=0.161 d_yaw=2.941 previous_goal=None
+[python3-13] [INFO] [1792646816.471819787] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848 -2.92213408] on map [world_tb3]
+[python3-13] [INFO] [1792646816.474735125] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.002s.
+[python3-13] [INFO] [1792646816.475270915] [tb3_fleet_command_handle]: [tb3_robot2] command 16 accepted by Nav2 (goal [173, 83, 149, 226, 192, 182, 69, 94, 181, 151, 95, 79, 149, 146, 32, 118])
+[python3-13] [INFO] [1792646817.829440240] [tb3_fleet_command_handle]: Update loop: 1250 cycles, avg=0.059s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646822.829880449] [tb3_fleet_command_handle]: Update loop: 1300 cycles, avg=0.057s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646827.331865436] [tb3_fleet_command_handle]: Navigation goal [173, 83, 149, 226, 192, 182, 69, 94, 181, 151, 95, 79, 149, 146, 32, 118] reached
+[python3-13] [INFO] [1792646827.830721316] [tb3_fleet_command_handle]: Update loop: 1350 cycles, avg=0.055s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646832.830434544] [tb3_fleet_command_handle]: Update loop: 1400 cycles, avg=0.053s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646837.833904851] [tb3_fleet_command_handle]: Update loop: 1450 cycles, avg=0.051s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646842.830482422] [tb3_fleet_command_handle]: Update loop: 1500 cycles, avg=0.050s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646846.532671905] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646846.532737158] [tb3_fleet_fleet_adapter]: Got distance from [4] as 1.018704
+[python3-13] [INFO] [1792646846.532810914] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.0767 -9.22708> | orientation -154.415
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.0767 -9.22708> | orientation -154.415
+[python3-13] [INFO] [1792646846.535140838] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646846.536267619] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.077, -9.227, -2.695) d_xy=0.224 d_yaw=2.146 previous_goal=None
+[python3-13] [INFO] [1792646846.537666963] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848 -0.54893212] on map [world_tb3]
+[python3-13] [INFO] [1792646846.539166299] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646846.540080160] [tb3_fleet_command_handle]: [tb3_robot2] command 17 accepted by Nav2 (goal [217, 245, 194, 217, 101, 1, 223, 231, 45, 35, 194, 102, 81, 209, 203, 238])
+[python3-13] [INFO] [1792646847.831156725] [tb3_fleet_command_handle]: Update loop: 1550 cycles, avg=0.048s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646850.830405758] [tb3_fleet_command_handle]: Navigation goal [217, 245, 194, 217, 101, 1, 223, 231, 45, 35, 194, 102, 81, 209, 203, 238] reached
+[python3-13] [INFO] [1792646852.829825149] [tb3_fleet_command_handle]: Update loop: 1600 cycles, avg=0.046s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646857.842910531] [tb3_fleet_command_handle]: Update loop: 1650 cycles, avg=0.045s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646862.838827800] [tb3_fleet_command_handle]: Update loop: 1700 cycles, avg=0.044s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646867.839779952] [tb3_fleet_command_handle]: Update loop: 1750 cycles, avg=0.042s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646872.842625003] [tb3_fleet_command_handle]: Update loop: 1800 cycles, avg=0.041s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646873.238833392] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [0] request(s)
+[python3-13] [INFO] [1792646876.631760342] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646876.631832409] [tb3_fleet_fleet_adapter]: Got distance from [4] as 1.157744
+[python3-13] [INFO] [1792646876.631905725] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.0625 -9.19347> | orientation -42.865
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.0625 -9.19347> | orientation -42.865
+[python3-13] [INFO] [1792646876.633658374] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646876.634746760] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.062, -9.193, -0.748) d_xy=0.255 d_yaw=-3.026 previous_goal=None
+[python3-13] [INFO] [1792646876.635471771] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848  2.50918127] on map [world_tb3]
+[python3-13] [INFO] [1792646876.638128162] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.002s.
+[python3-13] [INFO] [1792646876.638565759] [tb3_fleet_command_handle]: [tb3_robot2] command 18 accepted by Nav2 (goal [72, 50, 36, 168, 70, 176, 11, 76, 170, 234, 103, 161, 170, 124, 140, 204])
+[python3-13] [INFO] [1792646877.981543599] [tb3_fleet_command_handle]: Update loop: 1850 cycles, avg=0.040s, max=74.330s, target=0.100s.
+[python3-13] [WARN] [1792646881.828926207] [tb3_fleet_command_handle]: Nav2 ended goal [72, 50, 36, 168, 70, 176, 11, 76, 170, 234, 103, 161, 170, 124, 140, 204] for [tb3_robot2] with status [6] instead of succeeding (Nav2 aborted the goal); asking RMF to replan after 0s (replan 1 since this robot last reached a goal).
+[python3-13] [INFO] [1792646881.929069617] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot2]
+[python3-13] [WARN] [1792646881.931008061] [tb3_fleet_command_handle]: Cancel of goal [72, 50, 36, 168, 70, 176, 11, 76, 170, 234, 103, 161, 170, 124, 140, 204] on [tb3_robot2] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792646881.931146964] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.0796 -9.28095> | orientation 156.368
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.0796 -9.28095> | orientation 156.368
+[python3-13] [INFO] [1792646881.932643351] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646881.933675406] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.080, -9.281, 2.713) d_xy=0.199 d_yaw=-3.037 previous_goal=none
+[python3-13] [INFO] [1792646881.934176142] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848 -0.32327898] on map [world_tb3]
+[python3-13] [INFO] [1792646881.935520019] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792646881.935987267] [tb3_fleet_command_handle]: [tb3_robot2] command 19 accepted by Nav2 (goal [205, 188, 5, 194, 136, 244, 29, 26, 198, 73, 14, 146, 197, 27, 26, 191])
+[python3-13] [INFO] [1792646883.182297581] [tb3_fleet_command_handle]: Update loop: 1900 cycles, avg=0.039s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646886.947808541] [tb3_fleet_command_handle]: Navigation goal [205, 188, 5, 194, 136, 244, 29, 26, 198, 73, 14, 146, 197, 27, 26, 191] reached
+[python3-13] [INFO] [1792646888.403834853] [tb3_fleet_command_handle]: Update loop: 1950 cycles, avg=0.038s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646893.626348202] [tb3_fleet_command_handle]: Update loop: 2000 cycles, avg=0.037s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646898.824307031] [tb3_fleet_command_handle]: Update loop: 2050 cycles, avg=0.036s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646904.036247412] [tb3_fleet_command_handle]: Update loop: 2100 cycles, avg=0.035s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646906.748736144] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646906.748795912] [tb3_fleet_fleet_adapter]: Got distance from [4] as 0.758117
+[python3-13] [INFO] [1792646906.748856264] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.1663 -9.21174> | orientation -5.3076
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.1663 -9.21174> | orientation -5.3076
+[python3-13] [INFO] [1792646906.750979216] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646906.753902499] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.166, -9.212, -0.093) d_xy=0.167 d_yaw=2.318 previous_goal=None
+[python3-13] [INFO] [1792646906.755116989] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848  2.22566251] on map [world_tb3]
+[python3-13] [INFO] [1792646906.757849884] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.002s.
+[python3-13] [INFO] [1792646906.758475525] [tb3_fleet_command_handle]: [tb3_robot2] command 20 accepted by Nav2 (goal [56, 44, 159, 41, 125, 186, 7, 71, 110, 15, 107, 34, 181, 79, 66, 56])
+[python3-13] [INFO] [1792646909.243461150] [tb3_fleet_command_handle]: Update loop: 2150 cycles, avg=0.035s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646911.242832476] [tb3_fleet_command_handle]: Navigation goal [56, 44, 159, 41, 125, 186, 7, 71, 110, 15, 107, 34, 181, 79, 66, 56] reached
+[python3-13] [INFO] [1792646914.463864365] [tb3_fleet_command_handle]: Update loop: 2200 cycles, avg=0.034s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646919.671668866] [tb3_fleet_command_handle]: Update loop: 2250 cycles, avg=0.033s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646924.891146220] [tb3_fleet_command_handle]: Update loop: 2300 cycles, avg=0.032s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646930.093621494] [tb3_fleet_command_handle]: Update loop: 2350 cycles, avg=0.032s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646933.319832970] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [0] request(s)
+[python3-13] [INFO] [1792646935.302466682] [tb3_fleet_command_handle]: Update loop: 2400 cycles, avg=0.031s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646936.844884792] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646936.844972933] [tb3_fleet_fleet_adapter]: Got distance from [4] as 0.512150
+[python3-13] [INFO] [1792646936.845068936] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.2138 -9.24518> | orientation 114.005
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.2138 -9.24518> | orientation 114.005
+[python3-13] [INFO] [1792646936.847552620] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646936.849711790] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.214, -9.245, 1.990) d_xy=0.113 d_yaw=-3.060 previous_goal=None
+[python3-13] [INFO] [1792646936.851295194] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848 -1.07003648] on map [world_tb3]
+[python3-13] [INFO] [1792646936.854994751] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.003s.
+[python3-13] [INFO] [1792646936.856686535] [tb3_fleet_command_handle]: [tb3_robot2] command 21 accepted by Nav2 (goal [243, 128, 54, 92, 84, 134, 162, 236, 97, 220, 157, 186, 142, 237, 99, 248])
+[python3-13] [INFO] [1792646940.548939873] [tb3_fleet_command_handle]: Update loop: 2450 cycles, avg=0.030s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646942.109273732] [tb3_fleet_command_handle]: Navigation goal [243, 128, 54, 92, 84, 134, 162, 236, 97, 220, 157, 186, 142, 237, 99, 248] reached
+[python3-13] [INFO] [1792646945.751122994] [tb3_fleet_command_handle]: Update loop: 2500 cycles, avg=0.030s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646950.959155654] [tb3_fleet_command_handle]: Update loop: 2550 cycles, avg=0.029s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646956.179367024] [tb3_fleet_command_handle]: Update loop: 2600 cycles, avg=0.029s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646961.380935037] [tb3_fleet_command_handle]: Update loop: 2650 cycles, avg=0.028s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646966.619174635] [tb3_fleet_command_handle]: Update loop: 2700 cycles, avg=0.028s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646966.910400617] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646966.910448893] [tb3_fleet_fleet_adapter]: Got distance from [4] as 0.705723
+[python3-13] [INFO] [1792646966.910493416] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.1916 -9.20881> | orientation -49.2134
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.1916 -9.20881> | orientation -49.2134
+[python3-13] [INFO] [1792646966.911979927] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646966.912952014] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.192, -9.209, -0.859) d_xy=0.155 d_yaw=2.944 previous_goal=None
+[python3-13] [INFO] [1792646966.913702340] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848  2.08468837] on map [world_tb3]
+[python3-13] [INFO] [1792646966.916273472] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.002s.
+[python3-13] [INFO] [1792646966.916659344] [tb3_fleet_command_handle]: [tb3_robot2] command 22 accepted by Nav2 (goal [207, 105, 218, 11, 76, 243, 87, 224, 248, 37, 115, 245, 148, 187, 193, 108])
+[python3-13] [INFO] [1792646971.828227539] [tb3_fleet_command_handle]: Navigation goal [207, 105, 218, 11, 76, 243, 87, 224, 248, 37, 115, 245, 148, 187, 193, 108] reached
+[python3-13] [INFO] [1792646971.828737717] [tb3_fleet_command_handle]: Update loop: 2750 cycles, avg=0.027s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646977.025647958] [tb3_fleet_command_handle]: Update loop: 2800 cycles, avg=0.027s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646982.238066892] [tb3_fleet_command_handle]: Update loop: 2850 cycles, avg=0.026s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646987.456452484] [tb3_fleet_command_handle]: Update loop: 2900 cycles, avg=0.026s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646992.655486130] [tb3_fleet_command_handle]: Update loop: 2950 cycles, avg=0.025s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792646993.486263901] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [0] request(s)
+[python3-13] [INFO] [1792646997.029233330] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646997.029278475] [tb3_fleet_fleet_adapter]: Got distance from [4] as 0.920302
+[python3-13] [INFO] [1792646997.029327137] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.1741 -9.16458> | orientation 107.438
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.1741 -9.16458> | orientation 107.438
+[python3-13] [INFO] [1792646997.031138598] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792646997.032274918] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.174, -9.165, 1.875) d_xy=0.202 d_yaw=-2.964 previous_goal=None
+[python3-13] [INFO] [1792646997.032911648] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848 -1.08925887] on map [world_tb3]
+[python3-13] [INFO] [1792646997.035543223] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.002s.
+[python3-13] [INFO] [1792646997.036128072] [tb3_fleet_command_handle]: [tb3_robot2] command 23 accepted by Nav2 (goal [131, 103, 146, 183, 193, 103, 135, 193, 254, 95, 158, 26, 16, 117, 222, 177])
+[python3-13] [INFO] [1792646997.868446270] [tb3_fleet_command_handle]: Update loop: 3000 cycles, avg=0.025s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647001.717037931] [tb3_fleet_command_handle]: Navigation goal [131, 103, 146, 183, 193, 103, 135, 193, 254, 95, 158, 26, 16, 117, 222, 177] reached
+[python3-13] [INFO] [1792647003.078804333] [tb3_fleet_command_handle]: Update loop: 3050 cycles, avg=0.024s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647008.277299079] [tb3_fleet_command_handle]: Update loop: 3100 cycles, avg=0.024s, max=74.330s, target=0.100s.
+[rmf_task_dispatcher-7] [DEBUG] [1792647012.893966204] [rclcpp]: executor taking a message from topic '/task_api_requests' failed to take anything
+[python3-13] [INFO] [1792647013.489684058] [tb3_fleet_command_handle]: Update loop: 3150 cycles, avg=0.024s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647018.706896115] [tb3_fleet_command_handle]: Update loop: 3200 cycles, avg=0.023s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647023.929676630] [tb3_fleet_command_handle]: Update loop: 3250 cycles, avg=0.023s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647027.118523999] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792647027.118570176] [tb3_fleet_fleet_adapter]: Got distance from [4] as 1.056059
+[python3-13] [INFO] [1792647027.118615774] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.172 -9.1324> | orientation -45.793
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.172 -9.1324> | orientation -45.793
+[python3-13] [INFO] [1792647027.120638078] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792647027.121619037] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.172, -9.132, -0.799) d_xy=0.232 d_yaw=2.796 previous_goal=None
+[python3-13] [INFO] [1792647027.122265469] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848  1.99627326] on map [world_tb3]
+[python3-13] [INFO] [1792647027.123683406] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.001s.
+[python3-13] [INFO] [1792647027.124193659] [tb3_fleet_command_handle]: [tb3_robot2] command 24 accepted by Nav2 (goal [110, 134, 220, 238, 40, 178, 195, 165, 118, 24, 198, 198, 109, 240, 173, 72])
+[python3-13] [INFO] [1792647029.139113306] [tb3_fleet_command_handle]: Update loop: 3300 cycles, avg=0.023s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647031.949639660] [tb3_fleet_command_handle]: Navigation goal [110, 134, 220, 238, 40, 178, 195, 165, 118, 24, 198, 198, 109, 240, 173, 72] reached
+[python3-13] [INFO] [1792647034.349361888] [tb3_fleet_command_handle]: Update loop: 3350 cycles, avg=0.022s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647039.553044813] [tb3_fleet_command_handle]: Update loop: 3400 cycles, avg=0.022s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647044.773318568] [tb3_fleet_command_handle]: Update loop: 3450 cycles, avg=0.022s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647050.074739590] [tb3_fleet_command_handle]: Update loop: 3500 cycles, avg=0.021s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647053.734238093] [tb3_fleet_fleet_adapter]: Planning for [3] robot(s) and [0] request(s)
+[python3-13] [INFO] [1792647055.291548804] [tb3_fleet_command_handle]: Update loop: 3550 cycles, avg=0.021s, max=74.330s, target=0.100s.
+[python3-13] [INFO] [1792647057.350321505] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792647057.350401661] [tb3_fleet_fleet_adapter]: Got distance from [4] as 1.005699
+[python3-13] [INFO] [1792647057.350906119] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.1481 -9.15801> | orientation 99.2447
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.1481 -9.15801> | orientation 99.2447
+[python3-13] [INFO] [1792647057.354094732] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]
+[python3-13] [INFO] [1792647057.355523804] [tb3_fleet_command_handle]: command [tb3_robot2] task=[wait.tb3_robot2.tb3_fleet-1] destination=[wp_9] graph_index=4 map=[world_tb3] pose=(34.148, -9.158, 1.732) d_xy=0.221 d_yaw=-2.731 previous_goal=None
+[python3-13] [INFO] [1792647057.356096049] [tb3_fleet_command_handle]: Commanding [tb3_robot2] to navigate to [34.26790112 -9.34401848 -0.99853986] on map [world_tb3]
+[python3-13] [INFO] [1792647057.360054639] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot2]: 0.003s.
+[python3-13] [INFO] [1792647057.361323768] [tb3_fleet_command_handle]: [tb3_robot2] command 25 accepted by Nav2 (goal [112, 12, 104, 222, 142, 108, 5, 136, 154, 229, 176, 243, 201, 193, 179, 43])
+[python3-13] [WARN] [1792647057.497132544] [tb3_fleet_command_handle]: Navigation goal [112, 12, 104, 222, 142, 108, 5, 136, 154, 229, 176, 243, 201, 193, 179, 43] was cancelled unexpectedly -- requesting replan instead of reporting it as reached
+[python3-13] [INFO] [1792647057.497801275] [tb3_fleet_fleet_adapter]: Replanning requested for [tb3_fleet/tb3_robot2]
+[python3-13] [WARN] [1792647057.504444604] [tb3_fleet_command_handle]: Cancel of goal [112, 12, 104, 222, 142, 108, 5, 136, 154, 229, 176, 243, 201, 193, 179, 43] on [tb3_robot2] returned [ERROR_GOAL_TERMINATED], 0 goal(s) canceling.
+[python3-13] [INFO] [1792647057.504664343] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot2] to [wp_9] from one of these locations:
+[python3-13]  -- lane 6: { world_tb3 < 28.5678 -8.94227> [wp_7] } -> { world_tb3 < 34.2679 -9.34402> [wp_9] } | location < 34.1481 -9.15801> | orientation 99.2447
+[python3-13]  -- lane 7: { world_tb3 < 34.2679 -9.34402> [wp_9] } -> { world_tb3 < 28.5678 -8.94227> [wp_7] } | location < 34.1481 -9.15801> | orientation 99.2447
+[python3-13] [INFO] [1792647057.512216688] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_9] for robot [tb3_fleet/tb3_robot2]

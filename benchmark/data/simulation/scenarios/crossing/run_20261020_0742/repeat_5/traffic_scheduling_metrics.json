@@ -1,0 +1,2429 @@
+{
+  "scenario": "Crossing, N=3, CONFIG_01, repeat 5",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing_FLEET02_TRAF01_CONFIG01/run_20261020_0742_N3/attempt_3/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 165,
+  "2a_method": "schedule feasibility: a conflict makes its tasks infeasible only if the negotiation ended unresolved AND no participant established a new itinerary within 5.0s (replan recovery)",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 59.523809523809526,
+  "2a_n_itineraries": 84,
+  "2a_n_itineraries_triggering_negotiation": 34,
+  "2a_n_task_infeasible": 1,
+  "2a_schedule_feasibility_pct": 66.66666666666667,
+  "2a_conflict_outcome_counts": {
+    "recovered_by_replan": 156,
+    "unrecovered": 9
+  },
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 3,
+    "mean": 0.002096414566040039,
+    "stdev": 0.0013194862860768086,
+    "min": 0.001306295394897461,
+    "max": 0.003619670867919922
+  },
+  "raw_planner_compute_s": [
+    0.003619670867919922,
+    0.0013632774353027344,
+    0.001306295394897461
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 84,
+    "mean": 0.006365236781892322,
+    "stdev": 0.002872837432340788,
+    "min": 3.337860107421875e-05,
+    "max": 0.012186765670776367
+  },
+  "2b_scheduling_time_s": {
+    "n": 84,
+    "mean": 0.006365236781892322,
+    "stdev": 0.002872837432340788,
+    "min": 3.337860107421875e-05,
+    "max": 0.012186765670776367
+  },
+  "raw_scheduling_times_s": [
+    0.0030303001403808594,
+    0.008069276809692383,
+    0.0018966197967529297,
+    0.004669666290283203,
+    0.0022482872009277344,
+    0.009523868560791016,
+    0.004700422286987305,
+    0.004834651947021484,
+    0.006195783615112305,
+    0.002986907958984375,
+    0.011833667755126953,
+    0.008695125579833984,
+    0.011237144470214844,
+    0.009311914443969727,
+    0.004194974899291992,
+    0.0033609867095947266,
+    0.0066797733306884766,
+    3.337860107421875e-05,
+    0.006953239440917969,
+    0.006390571594238281,
+    0.006226778030395508,
+    0.010280370712280273,
+    0.00814366340637207,
+    0.005541563034057617,
+    0.0044248104095458984,
+    0.0070269107818603516,
+    0.007246494293212891,
+    0.009821414947509766,
+    0.0029087066650390625,
+    0.008226156234741211,
+    0.0053899288177490234,
+    0.009635686874389648,
+    0.0050470829010009766,
+    0.005695343017578125,
+    0.012103080749511719,
+    0.0008475780487060547,
+    0.0006475448608398438,
+    0.002152681350708008,
+    0.004401683807373047,
+    0.006580352783203125,
+    0.007863283157348633,
+    0.0014424324035644531,
+    0.005089521408081055,
+    0.006196498870849609,
+    0.009919166564941406,
+    0.007860183715820312,
+    0.002084016799926758,
+    0.003710508346557617,
+    0.00439143180847168,
+    0.003420114517211914,
+    0.008013486862182617,
+    0.007183551788330078,
+    0.010090827941894531,
+    0.008877038955688477,
+    0.005341768264770508,
+    0.008790016174316406,
+    0.00839996337890625,
+    0.0062525272369384766,
+    0.009261608123779297,
+    0.005313396453857422,
+    0.0048084259033203125,
+    0.0033957958221435547,
+    0.006413936614990234,
+    0.005806684494018555,
+    0.008816719055175781,
+    0.007932901382446289,
+    0.004456281661987305,
+    0.0084381103515625,
+    0.012186765670776367,
+    0.008321285247802734,
+    0.0026154518127441406,
+    0.006269216537475586,
+    0.0003466606140136719,
+    0.00864720344543457,
+    0.008995532989501953,
+    0.007294893264770508,
+    0.002478361129760742,
+    0.008587837219238281,
+    0.008746623992919922,
+    0.008983612060546875,
+    0.007936954498291016,
+    0.00883793830871582,
+    0.007983684539794922,
+    0.007683277130126953
+  ],
+  "per_conflict": [
+    {
+      "conflict_version": 0,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 30,
+        "delay_s": 0.1931
+      }
+    },
+    {
+      "conflict_version": 1,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot2",
+        "itinerary_version": 44,
+        "delay_s": 0.1129
+      }
+    },
+    {
+      "conflict_version": 2,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 32,
+        "delay_s": 0.0762
+      }
+    },
+    {
+      "conflict_version": 3,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 48,
+        "delay_s": 1.8996
+      }
+    },
+    {
+      "conflict_version": 4,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 3.81
+      }
+    },
+    {
+      "conflict_version": 5,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 3.7206
+      }
+    },
+    {
+      "conflict_version": 6,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 3.5887
+      }
+    },
+    {
+      "conflict_version": 7,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 3.4007
+      }
+    },
+    {
+      "conflict_version": 8,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 3.3207
+      }
+    },
+    {
+      "conflict_version": 9,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 3.1211
+      }
+    },
+    {
+      "conflict_version": 10,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 2.921
+      }
+    },
+    {
+      "conflict_version": 11,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 2.8208
+      }
+    },
+    {
+      "conflict_version": 12,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 2.7211
+      }
+    },
+    {
+      "conflict_version": 13,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 2.4009
+      }
+    },
+    {
+      "conflict_version": 14,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 2.2211
+      }
+    },
+    {
+      "conflict_version": 15,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 2.1207
+      }
+    },
+    {
+      "conflict_version": 16,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 1.9205
+      }
+    },
+    {
+      "conflict_version": 17,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 1.7162
+      }
+    },
+    {
+      "conflict_version": 18,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 1.6209
+      }
+    },
+    {
+      "conflict_version": 19,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 1.5202
+      }
+    },
+    {
+      "conflict_version": 20,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 1.2805
+      }
+    },
+    {
+      "conflict_version": 21,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 1.1505
+      }
+    },
+    {
+      "conflict_version": 22,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 1.0867
+      }
+    },
+    {
+      "conflict_version": 23,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 0.921
+      }
+    },
+    {
+      "conflict_version": 24,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 0.8207
+      }
+    },
+    {
+      "conflict_version": 25,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 0.7208
+      }
+    },
+    {
+      "conflict_version": 26,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 0.4911
+      }
+    },
+    {
+      "conflict_version": 27,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 0.3206
+      }
+    },
+    {
+      "conflict_version": 28,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 0.2208
+      }
+    },
+    {
+      "conflict_version": 29,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 66,
+        "delay_s": 0.1208
+      }
+    },
+    {
+      "conflict_version": 30,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 196,
+        "delay_s": 0.1
+      }
+    },
+    {
+      "conflict_version": 31,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 481,
+        "delay_s": 0.1954
+      }
+    },
+    {
+      "conflict_version": 32,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 33,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 34,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 4.3088
+      }
+    },
+    {
+      "conflict_version": 35,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 4.112
+      }
+    },
+    {
+      "conflict_version": 36,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 3.9078
+      }
+    },
+    {
+      "conflict_version": 37,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 3.3212
+      }
+    },
+    {
+      "conflict_version": 38,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 2.9403
+      }
+    },
+    {
+      "conflict_version": 39,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 2.682
+      }
+    },
+    {
+      "conflict_version": 40,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 2.3795
+      }
+    },
+    {
+      "conflict_version": 41,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 1.9223
+      }
+    },
+    {
+      "conflict_version": 42,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 1.8385
+      }
+    },
+    {
+      "conflict_version": 43,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 1.6711
+      }
+    },
+    {
+      "conflict_version": 44,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 1.4222
+      }
+    },
+    {
+      "conflict_version": 45,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 1.2721
+      }
+    },
+    {
+      "conflict_version": 46,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 1.1717
+      }
+    },
+    {
+      "conflict_version": 47,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 0.9299
+      }
+    },
+    {
+      "conflict_version": 48,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 0.8578
+      }
+    },
+    {
+      "conflict_version": 49,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 247,
+        "delay_s": 0.0567
+      }
+    },
+    {
+      "conflict_version": 50,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 482,
+        "delay_s": 0.1849
+      }
+    },
+    {
+      "conflict_version": 51,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 251,
+        "delay_s": 4.3371
+      }
+    },
+    {
+      "conflict_version": 52,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 251,
+        "delay_s": 4.2444
+      }
+    },
+    {
+      "conflict_version": 53,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 251,
+        "delay_s": 4.1101
+      }
+    },
+    {
+      "conflict_version": 54,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 55,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 56,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 325,
+        "delay_s": 0.0213
+      }
+    },
+    {
+      "conflict_version": 57,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 338,
+        "delay_s": 1.0032
+      }
+    },
+    {
+      "conflict_version": 58,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 338,
+        "delay_s": 0.7019
+      }
+    },
+    {
+      "conflict_version": 59,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 338,
+        "delay_s": 0.4029
+      }
+    },
+    {
+      "conflict_version": 60,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 338,
+        "delay_s": 0.0832
+      }
+    },
+    {
+      "conflict_version": 61,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 613,
+        "delay_s": 0.0147
+      }
+    },
+    {
+      "conflict_version": 62,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 647,
+        "delay_s": 0.01
+      }
+    },
+    {
+      "conflict_version": 63,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 446,
+        "delay_s": 0.0138
+      }
+    },
+    {
+      "conflict_version": 64,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 3.8212
+      }
+    },
+    {
+      "conflict_version": 65,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 3.6414
+      }
+    },
+    {
+      "conflict_version": 66,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 3.5398
+      }
+    },
+    {
+      "conflict_version": 67,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 3.4387
+      }
+    },
+    {
+      "conflict_version": 68,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 3.3379
+      }
+    },
+    {
+      "conflict_version": 69,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 3.2216
+      }
+    },
+    {
+      "conflict_version": 70,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 3.0119
+      }
+    },
+    {
+      "conflict_version": 71,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 2.8123
+      }
+    },
+    {
+      "conflict_version": 72,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 2.5912
+      }
+    },
+    {
+      "conflict_version": 73,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 2.2891
+      }
+    },
+    {
+      "conflict_version": 74,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 2.1881
+      }
+    },
+    {
+      "conflict_version": 75,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 1.9696
+      }
+    },
+    {
+      "conflict_version": 76,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 1.8693
+      }
+    },
+    {
+      "conflict_version": 77,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 1.6598
+      }
+    },
+    {
+      "conflict_version": 78,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 1.556
+      }
+    },
+    {
+      "conflict_version": 79,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 1.3397
+      }
+    },
+    {
+      "conflict_version": 80,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 1.0114
+      }
+    },
+    {
+      "conflict_version": 81,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 0.8315
+      }
+    },
+    {
+      "conflict_version": 82,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 0.7217
+      }
+    },
+    {
+      "conflict_version": 83,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 0.5114
+      }
+    },
+    {
+      "conflict_version": 84,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 0.3989
+      }
+    },
+    {
+      "conflict_version": 85,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 0.2012
+      }
+    },
+    {
+      "conflict_version": 86,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 0.0995
+      }
+    },
+    {
+      "conflict_version": 87,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 732,
+        "delay_s": 0.0017
+      }
+    },
+    {
+      "conflict_version": 88,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 733,
+        "delay_s": 0.3928
+      }
+    },
+    {
+      "conflict_version": 89,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 733,
+        "delay_s": 0.0921
+      }
+    },
+    {
+      "conflict_version": 90,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 91,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 92,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 93,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 94,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-7ab59d6365"
+      ]
+    },
+    {
+      "conflict_version": 95,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 4.825
+      }
+    },
+    {
+      "conflict_version": 96,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 4.6141
+      }
+    },
+    {
+      "conflict_version": 97,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 4.5047
+      }
+    },
+    {
+      "conflict_version": 98,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 4.3943
+      }
+    },
+    {
+      "conflict_version": 99,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 4.1843
+      }
+    },
+    {
+      "conflict_version": 100,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 4.0737
+      }
+    },
+    {
+      "conflict_version": 101,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 3.8834
+      }
+    },
+    {
+      "conflict_version": 102,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 3.6739
+      }
+    },
+    {
+      "conflict_version": 103,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 3.5739
+      }
+    },
+    {
+      "conflict_version": 104,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 2.9349
+      }
+    },
+    {
+      "conflict_version": 105,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 2.6339
+      }
+    },
+    {
+      "conflict_version": 106,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 2.4004
+      }
+    },
+    {
+      "conflict_version": 107,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 2.3028
+      }
+    },
+    {
+      "conflict_version": 108,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 2.0029
+      }
+    },
+    {
+      "conflict_version": 109,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 1.7839
+      }
+    },
+    {
+      "conflict_version": 110,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 1.4642
+      }
+    },
+    {
+      "conflict_version": 111,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 1.1538
+      }
+    },
+    {
+      "conflict_version": 112,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 1.0547
+      }
+    },
+    {
+      "conflict_version": 113,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.9435
+      }
+    },
+    {
+      "conflict_version": 114,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.8432
+      }
+    },
+    {
+      "conflict_version": 115,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.743
+      }
+    },
+    {
+      "conflict_version": 116,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.6425
+      }
+    },
+    {
+      "conflict_version": 117,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.4347
+      }
+    },
+    {
+      "conflict_version": 118,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.314
+      }
+    },
+    {
+      "conflict_version": 119,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.2146
+      }
+    },
+    {
+      "conflict_version": 120,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.1142
+      }
+    },
+    {
+      "conflict_version": 121,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 734,
+        "delay_s": 0.0039
+      }
+    },
+    {
+      "conflict_version": 122,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 4.1997
+      }
+    },
+    {
+      "conflict_version": 123,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 4.1903
+      }
+    },
+    {
+      "conflict_version": 124,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 4.1077
+      }
+    },
+    {
+      "conflict_version": 125,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 4.0105
+      }
+    },
+    {
+      "conflict_version": 126,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 3.9001
+      }
+    },
+    {
+      "conflict_version": 127,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 3.7998
+      }
+    },
+    {
+      "conflict_version": 128,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 3.7108
+      }
+    },
+    {
+      "conflict_version": 129,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 3.5905
+      }
+    },
+    {
+      "conflict_version": 130,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 3.4902
+      }
+    },
+    {
+      "conflict_version": 131,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 3.3898
+      }
+    },
+    {
+      "conflict_version": 132,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 3.2702
+      }
+    },
+    {
+      "conflict_version": 133,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 3.0699
+      }
+    },
+    {
+      "conflict_version": 134,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 2.9669
+      }
+    },
+    {
+      "conflict_version": 135,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 2.7579
+      }
+    },
+    {
+      "conflict_version": 136,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 2.6607
+      }
+    },
+    {
+      "conflict_version": 137,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 2.5475
+      }
+    },
+    {
+      "conflict_version": 138,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 2.4506
+      }
+    },
+    {
+      "conflict_version": 139,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 2.3472
+      }
+    },
+    {
+      "conflict_version": 140,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 2.1299
+      }
+    },
+    {
+      "conflict_version": 141,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 2.0281
+      }
+    },
+    {
+      "conflict_version": 142,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 1.8274
+      }
+    },
+    {
+      "conflict_version": 143,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 1.7096
+      }
+    },
+    {
+      "conflict_version": 144,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 1.6098
+      }
+    },
+    {
+      "conflict_version": 145,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 1.4079
+      }
+    },
+    {
+      "conflict_version": 146,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 1.2648
+      }
+    },
+    {
+      "conflict_version": 147,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 1.1701
+      }
+    },
+    {
+      "conflict_version": 148,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 1.0694
+      }
+    },
+    {
+      "conflict_version": 149,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.9684
+      }
+    },
+    {
+      "conflict_version": 150,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.8505
+      }
+    },
+    {
+      "conflict_version": 151,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.7394
+      }
+    },
+    {
+      "conflict_version": 152,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.637
+      }
+    },
+    {
+      "conflict_version": 153,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.5475
+      }
+    },
+    {
+      "conflict_version": 154,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.4143
+      }
+    },
+    {
+      "conflict_version": 155,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.3077
+      }
+    },
+    {
+      "conflict_version": 156,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.2194
+      }
+    },
+    {
+      "conflict_version": 157,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 760,
+        "delay_s": 0.0901
+      }
+    },
+    {
+      "conflict_version": 158,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 761,
+        "delay_s": 0.3959
+      }
+    },
+    {
+      "conflict_version": 159,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 762,
+        "delay_s": 4.276
+      }
+    },
+    {
+      "conflict_version": 160,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 762,
+        "delay_s": 4.1761
+      }
+    },
+    {
+      "conflict_version": 161,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 762,
+        "delay_s": 4.0661
+      }
+    },
+    {
+      "conflict_version": 162,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 762,
+        "delay_s": 3.5467
+      }
+    },
+    {
+      "conflict_version": 163,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 762,
+        "delay_s": 3.2348
+      }
+    },
+    {
+      "conflict_version": 164,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 762,
+        "delay_s": 1.7762
+      }
+    }
+  ]
+}

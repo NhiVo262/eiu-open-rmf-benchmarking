@@ -1,0 +1,99 @@
+{
+  "scenario": "Head-on, N=3, CONFIG_01, SIMULATION, repeat 5",
+  "repeat_dir": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261022_0615/repeat_5",
+  "analysis_version": 2,
+  "thresholds_m": {
+    "d_safe_body_contact": 0.356,
+    "rmf_conflict_separation": 0.628
+  },
+  "threshold_status": "derived from the fleet profile; the requirement leaves X and d_safe unset",
+  "sources": {
+    "as_specified": "/fleet_states RobotState.location (the pose RMF held, post-AMCL)",
+    "ground_truth": "Gazebo /world/*/dynamic_pose/info (physical state)"
+  },
+  "as_specified": {
+    "n_frames": 1540,
+    "7a_min_distance": {
+      "min_distance_m": 1.843,
+      "at_sim_t": 101.73,
+      "pair": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ]
+    },
+    "7a_min_distance_per_pair_m": {
+      "tb3_robot1+tb3_robot2": 4.0119,
+      "tb3_robot1+tb3_robot3": 1.843,
+      "tb3_robot2+tb3_robot3": 4.0043
+    },
+    "7b_below_threshold": {
+      "d_safe_body_contact": {
+        "events": 0,
+        "samples_below": 0,
+        "frame_rate_hz": 9.74
+      },
+      "rmf_conflict_separation": {
+        "events": 0,
+        "samples_below": 0,
+        "frame_rate_hz": 9.74
+      }
+    }
+  },
+  "ground_truth": {
+    "n_frames": 1422,
+    "7a_min_distance": {
+      "min_distance_m": 1.05,
+      "at_sim_t": 95.56,
+      "pair": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ]
+    },
+    "7a_min_distance_per_pair_m": {
+      "tb3_robot1+tb3_robot2": 3.9595,
+      "tb3_robot1+tb3_robot3": 1.05,
+      "tb3_robot2+tb3_robot3": 4.0538
+    },
+    "7b_below_threshold": {
+      "d_safe_body_contact": {
+        "events": 0,
+        "samples_below": 0,
+        "frame_rate_hz": 8.95
+      },
+      "rmf_conflict_separation": {
+        "events": 0,
+        "samples_below": 0,
+        "frame_rate_hz": 8.95
+      }
+    }
+  },
+  "7a_min_distance": {
+    "rmf_observed": {
+      "min_distance_m": 1.843,
+      "at_sim_t": 101.73,
+      "pair": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ]
+    },
+    "ground_truth": {
+      "min_distance_m": 1.05,
+      "at_sim_t": 95.56,
+      "pair": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ]
+    }
+  },
+  "7b_episodes": {
+    "threshold_m": 0.356,
+    "really_happened_and_rmf_saw_it": 0,
+    "really_happened_but_rmf_MISSED_it": 0,
+    "rmf_saw_it_but_did_not_really_happen": 0,
+    "detail": {
+      "detected": [],
+      "missed": [],
+      "false_alarm": []
+    }
+  }
+}

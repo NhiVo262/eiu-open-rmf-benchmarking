@@ -1,0 +1,137 @@
+=== Repeat 1/1: submitting 3 concurrent patrol tasks ===
+  route ['wp_2', 'wp_5']: task_id=patrol.dispatch-facf2fd177
+  route ['wp_5', 'wp_2']: task_id=patrol.dispatch-bd01163f3c
+  route ['wp_3', 'wp_7']: task_id=patrol.dispatch-7082ec0f0a
+Repeat 1: outcome={'tb3_robot1': 'timeout', 'tb3_robot2': 'completed', 'tb3_robot3': 'timeout'} total_distance_m={'tb3_robot1': 4.344, 'tb3_robot2': 24.79, 'tb3_robot3': 3.854}
+=== DONE ===
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_0f7e50be-38a7-46a4-b480-37ae52ff3740",
+        "places": [
+          "wp_2",
+          "wp_5"
+        ],
+        "submit_wall_time": 1792650552.783794,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-facf2fd177",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792650552784
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_2",
+                "wp_5"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-facf2fd177"
+      },
+      {
+        "request_id": "bench_patrol_1_1_86b8b3c0-df6d-4bf9-85e8-3c464e37d2d6",
+        "places": [
+          "wp_5",
+          "wp_2"
+        ],
+        "submit_wall_time": 1792650552.7842245,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-bd01163f3c",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792650552784
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_5",
+                "wp_2"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-bd01163f3c"
+      },
+      {
+        "request_id": "bench_patrol_1_2_b5290170-7260-484e-989d-69881c58e62f",
+        "places": [
+          "wp_3",
+          "wp_7"
+        ],
+        "submit_wall_time": 1792650552.7844825,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-7082ec0f0a",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792650552784
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_3",
+                "wp_7"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-7082ec0f0a"
+      }
+    ],
+    "fixed_wait_exceeded": true,
+    "completion_wall_time": 1792650852.9496446,
+    "dispatch_status": {
+      "patrol.dispatch-facf2fd177": 3,
+      "patrol.dispatch-bd01163f3c": 3,
+      "patrol.dispatch-7082ec0f0a": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 4.344,
+      "tb3_robot2": 24.79,
+      "tb3_robot3": 3.854
+    },
+    "task_released": {
+      "patrol.dispatch-7082ec0f0a": false,
+      "patrol.dispatch-bd01163f3c": true,
+      "patrol.dispatch-facf2fd177": false
+    },
+    "outcome": {
+      "tb3_robot1": "timeout",
+      "tb3_robot2": "completed",
+      "tb3_robot3": "timeout"
+    }
+  }
+]

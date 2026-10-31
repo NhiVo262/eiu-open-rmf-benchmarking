@@ -1,0 +1,36 @@
+
+{
+  plugins: {
+    ros2dds: {
+      namespace: "/tb3_robot1",
+
+      allow: {
+        publishers: [".*/tf", ".*/tf_static", ".*/battery_state",
+                     ".*/amcl_pose", ".*/cmd_vel", ".*/scan",
+                     ".*/plan"],
+        subscribers: [".*/initialpose"],
+        service_servers: [],
+        service_clients: [],
+        action_servers: [".*/navigate_to_pose"],
+        action_clients: [],
+      },
+
+      pub_max_frequencies: [".*/navigate_to_pose/*=1", ".*/battery_state=1"],
+    },
+  },
+
+  mode: "client",
+
+  // The workstation running zenohd.
+  connect: {
+    endpoints: ["tcp/192.168.10.65:7447"]
+  },
+  listen: {
+    endpoints: []
+  },
+
+  timestamping: {
+    enabled: { router: true, peer: true, client: true },
+  },
+  queries_default_timeout: 300000,
+}

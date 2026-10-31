@@ -1,0 +1,26 @@
+/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon_FLEET0N_TRAF04_CONFIG01/run_20261022_0615_N3/attempt_6: 2642 samples over 293.8 s (9.0 Hz)
+dispatched by RMF: tb3_robot1, tb3_robot2, tb3_robot3
+robot         coverage   max gap  travelled  min soc verdict
+------------------------------------------------------------
+tb3_robot1     100.00%      0.1s     14.68m        - ok
+tb3_robot2     100.00%      0.1s     28.47m        - ok
+tb3_robot3     100.00%      0.1s     14.46m        - ok
+
+robot           max amcl sd  against reference
+----------------------------------------------
+tb3_robot1            0.58m  within
+tb3_robot2            1.30m  within
+tb3_robot3            0.61m  within
+A robot above the reference reported an unusually wide pose spread. This is a property of the run, not of the recording, so it is reported and never discards the repeat.
+
+recorded stream             messages      rate   delivered  head gap   max gap  tail gap
+----------------------------------------------------------------------------------------
+/fleet_states                   2930     9.99Hz       99.9%    0.977s    0.108s    0.053s
+/tb3_robot1/scan                2925     9.97Hz       99.7%    0.977s    0.278s    0.053s
+/tb3_robot1/tf                 23403    79.77Hz      189.9%    0.834s    0.193s    0.019s
+/tb3_robot2/scan                2924     9.97Hz       99.7%    1.112s    0.272s    0.042s
+/tb3_robot2/tf                 23394    79.74Hz      189.8%    0.983s    0.187s    0.009s
+/tb3_robot3/scan                2924     9.97Hz       99.7%    1.080s    0.286s    0.061s
+/tb3_robot3/tf                 23392    79.73Hz      189.8%    0.982s    0.206s    0.019s
+
+KEEP: every dispatched robot is tracked, moved, and stayed above the recharge threshold

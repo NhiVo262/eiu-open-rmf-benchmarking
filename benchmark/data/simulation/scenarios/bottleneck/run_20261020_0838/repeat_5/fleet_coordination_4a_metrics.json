@@ -1,0 +1,69 @@
+{
+  "scenario": "bottleneck, N=3, CONFIG_01, repeat_5, simulation",
+  "repeat_dir": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261020_0838/repeat_5",
+  "api_state_file": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261020_0838/api_state_attempt5.jsonl",
+  "method": "explicit task state from rmf_websocket (task_state_update); no inference, no W_RELEASE, no INDETERMINATE bucket",
+  "4a_n_submitted": 3,
+  "4a_n_completed": 3,
+  "4a_completed_pct": 100.0,
+  "4a_state_counts": {
+    "completed": 3
+  },
+  "4a_per_task": [
+    {
+      "task_id": "patrol.dispatch-3fb4ed04da",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 85
+    },
+    {
+      "task_id": "patrol.dispatch-c55a807d0d",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 102
+    },
+    {
+      "task_id": "patrol.dispatch-e58b146e0d",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 115
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+=== Repeat 1/1: submitting 1 concurrent patrol tasks ===
+  route ['wp_4', 'wp_3']: task_id=patrol.dispatch-011c936193
+Repeat 1: outcome={'tb3_robot3': 'completed'} total_distance_m={'tb3_robot3': 7.587}
+=== DONE ===
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_07a7d43f-3c90-43a9-8c08-b825ae639553",
+        "places": [
+          "wp_4",
+          "wp_3"
+        ],
+        "submit_wall_time": 1792663096.5452552,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-011c936193",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1792663096545
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_4",
+                "wp_3"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-011c936193"
+      }
+    ],
+    "fixed_wait_exceeded": false,
+    "completion_wall_time": 1792663146.2207644,
+    "dispatch_status": {
+      "patrol.dispatch-011c936193": 3
+    },
+    "total_distance_m": {
+      "tb3_robot3": 7.587
+    },
+    "task_released": {
+      "patrol.dispatch-011c936193": true
+    },
+    "outcome": {
+      "tb3_robot3": "completed"
+    }
+  }
+]
