@@ -70,41 +70,49 @@ requirements are defined in [METRIC_DESIGN.md](benchmark/METRIC_DESIGN.md).
 ## System architecture
 
 ```text
-                             Task submission
-                 run_benchmark_concurrent.py (benchmark)
-                                    |
-      ROS: task_api_requests, task_api_responses, /dispatch_states
-                                    v
-                           Open-RMF dispatcher
-                                    |  bid notice / bid response
-                                    v
-               Fleet adapter (EasyFullControl, tb3_fleet)
-                  - traffic participant and negotiation
-                  - one Tb3RobotAdapter per robot, in-process
-                  - one shared Zenoh client session
-                                    |
-                                    |--> record_api_state.py -> JSONL
-                                    v
-                       zenohd (workstation, :7447)
-                                    |
-          +-------------------------+-------------------------+
-          |                         |                         |
-     SIMULATION                 HARDWARE            RECORDING (hardware)
-    one bridge on            one bridge per          workstation bridge
-   the workstation         robot, on the robot       -> workstation DDS
-          |                         |                         |
-      robot DDS                 robot DDS                  rosbag2
-          |                         |
-     Nav2 + AMCL               Nav2 + AMCL
-          |                         |
-    ros_gz_bridge       bring-up (OpenCR, LiDAR)
-          |                         |
-       Gazebo              physical TurtleBot3
-          |
- ground-truth poses
+TASK COORDINATION
 
-           bag (MCAP) + task-state JSONL + ground-truth JSONL
-        -> analysers -> metrics JSON -> RESULTS.md / APPENDIX.md
+                     run_benchmark_concurrent.py
+                                  |
+                 ROS 2 task API: task_api_requests,
+                task_api_responses, /dispatch_states
+                                  v
+                         Open-RMF dispatcher
+                                  |  bid notice / bid response
+                                  v
+                      Fleet adapter (tb3_fleet)
+                 - EasyFullControl
+                 - Tb3RobotAdapter x N, in-process
+                 - traffic participant, negotiation
+                 - one shared Zenoh client session
+
+COMMUNICATION
+
+                     zenohd (workstation, :7447)
+                                  |
+        +----------------------+----------------------+
+        |                      |                      |
+   SIMULATION              HARDWARE               RECORDING
+   one bridge,          one bridge per           workstation
+   workstation        robot, on the robot          bridge
+        |                      |                      |
+   ROS 2 / DDS            ROS 2 / DDS          workstation DDS
+        |                      |
+   Nav2 + AMCL            Nav2 + AMCL
+        |                      |
+  ros_gz_bridge         robot bring-up
+        |                      |
+     Gazebo               TurtleBot3
+
+DATA COLLECTION
+
+  ROS 2 topics      -->  rosbag2 (MCAP)
+  RMF task states   -->  record_api_state.py (WebSocket) -> JSONL
+  Gazebo poses      -->  ground-truth JSONL
+
+DATA ANALYSIS
+
+  MCAP + JSONL  ->  analysers  ->  metrics JSON  ->  RESULTS.md / APPENDIX.md
 ```
 
 The dispatcher auctions tasks among fleets. The fleet adapter bids, manages task execution
@@ -112,11 +120,12 @@ and converts navigation callbacks into Nav2 goals. It holds the fleet's traffic 
 and takes part in negotiation. The per-robot adapters run inside the fleet-adapter process
 and share its single Zenoh client session.
 
-Transport differs by platform. In simulation one workstation bridge serves all three robots,
-and Nav2 reaches Gazebo through `ros_gz_bridge`. On hardware each robot runs its own bridge,
-and the hardware runners start a second workstation bridge that returns robot topics to
-workstation DDS for recording. TF and battery state reach the adapter as Zenoh
-subscriptions; reported pose is derived from the `map` to `base_footprint` transform.
+Transport differs by platform. In simulation one workstation bridge serves all three
+robots, and Nav2 reaches Gazebo through `ros_gz_bridge`. On hardware each robot runs its
+own bridge, robot bring-up supplies TF, `scan` and `battery_state`, and the hardware
+runners start a second workstation bridge that returns robot topics to workstation DDS
+for recording. TF and battery state reach the adapter as Zenoh subscriptions; reported
+pose is derived from the `map` to `base_footprint` transform.
 
 RMF pushes task-state updates over WebSocket to `record_api_state.py`, which writes JSONL.
 See the [fleet package documentation](tb3_fleet/README.md) for transport details.
