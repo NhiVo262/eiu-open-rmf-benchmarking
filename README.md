@@ -147,7 +147,7 @@ See the [fleet package documentation](tb3_fleet/README.md) for transport details
 ## Repository structure
 
 ```text
-src/                         # This README's directory
+src/                      
 ├── tb3_fleet/                # Project fleet integration
 │   ├── config/               # simulation/ and hardware/ configurations
 │   ├── launch/               # RMF and simulation launch files
