@@ -15,8 +15,8 @@ For one scenario run at N robots and the baseline runs of its routes at N=1:
   U(N)        the fleet's moving time over the robots' window time, pooled
   U(1)        the same for each baseline route, and their mean
 
-Because Th(1) omits the travel between routes, scaling is a lower bound. Writes one JSON
-for the collection. METRIC_DESIGN.md §F4 defines the measurands.
+Th(1) omits the travel between routes, so scaling is a lower bound. Writes one JSON for
+the collection. METRIC_DESIGN.md §F4 defines the measurands.
 
 Usage:
     python3 analyze_fleet_scaling.py --platform-dir data/<platform> --output <json>

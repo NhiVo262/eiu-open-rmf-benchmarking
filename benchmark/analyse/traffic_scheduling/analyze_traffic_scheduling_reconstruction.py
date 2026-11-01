@@ -9,13 +9,11 @@ judge Feature 2a, in two stages.
                        = 0.628 m, against the negotiation_notice events RMF
                        published: matched, missed, extra
 
-Stage 1 is the prerequisite: a reconstruction that does not track reality cannot
-judge conflicts, whatever its conflict counts are.
+Stage 1 is the prerequisite for stage 2.
 
 Delay model: an itinerary_set establishes a base itinerary, and each subsequent
-itinerary_delay for that participant adds its signed delay to the itinerary in
-force; querying a position at time t applies the delays received up to t. This
-approximates rmf_traffic's semantics, which is what stage 1 measures.
+itinerary_delay for that participant adds its signed delay to the itinerary in force;
+querying a position at time t applies the delays received up to t.
 """
 import argparse
 import bisect
@@ -139,9 +137,8 @@ def main():
             gt[o['sim_t']] = {k: (v['x'], v['y']) for k, v in o['robots'].items()}
     gts = sorted(gt)
 
-    # wall -> sim, via the nearest /clock sample; the offset drifts by about 1%.
-    # A bag without /clock was recorded against the system clock, where the
-    # conversion is the identity.
+    # wall -> sim via the nearest /clock sample; without /clock the conversion is the
+    # identity.
     cw = [c[0] for c in d['clock']]
     cs = [c[1] for c in d['clock']]
 
@@ -155,7 +152,7 @@ def main():
 
     sched = Schedule(d['sets'], d['delays'])
 
-    # ---- stage 1: does the schedule describe where the robot really went ----
+    # ---- stage 1: reconstructed position against ground truth ----
     horizons = [0, 5, 10, 20, 40]
     fidelity = {}
     for t_set, pid, wps in d['sets']:
@@ -189,7 +186,7 @@ def main():
                                 'p90_m': round(v[int(len(v) * 0.9)], 3),
                                 'max_m': round(v[-1], 3)}
 
-    # ---- stage 2: do our conflicts match RMF's ----
+    # ---- stage 2: reconstructed conflicts against RMF's notices ----
     ours = []
     pids = sorted(sched.sets)
     t_lo = min(t for t, _, _ in d['sets'])

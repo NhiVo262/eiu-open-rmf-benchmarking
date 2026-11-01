@@ -5,9 +5,8 @@ file.
 Deltas are pooled from the concatenated per-task values, never averaged over
 per-repeat means.
 
-A task whose queueing_s exceeds QUEUEING_OUTLIER_S = 400 is excluded, since a task
-that waited that long in the queue reports nothing about execution fidelity.
-Excluded tasks are listed in the output rather than dropped silently.
+A task whose queueing_s exceeds QUEUEING_OUTLIER_S is excluded and listed in the
+output.
 """
 import argparse
 import glob

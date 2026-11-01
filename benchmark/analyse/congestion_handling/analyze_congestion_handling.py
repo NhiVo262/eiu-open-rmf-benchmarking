@@ -1,24 +1,15 @@
 #!/usr/bin/env python3
 """Computes the Feature 6 (Congestion handling) metrics from one repeat's bag.
 
-The measurand is the requirement's description: a robot that is stationary while it holds
-an assignment. Writes analysis_version 2.
+  window    each task's [t_award, t_completed], from task_planning_metrics.json
+  moving    the robot's /<robot>/cmd_vel commands motion, as 4b reads it
+  episode   a stretch of the window with no motion command, at least MIN_EPISODE_S long
 
-  window       each task's [t_award, t_completed], from task_planning_metrics.json
-  moving       the robot's /<robot>/cmd_vel commands motion, as 4b reads it
-               (analyse/fleet_coordination/analyze_fleet_coordination_4b.py)
-  episode      a stretch of the window with no motion command, at least MIN_EPISODE_S long;
-               shorter stretches are the hand-over between consecutive commands
+  6a        the sum of a robot's episodes
+  6b        the mean duration of an episode, also at SENSITIVITY_EPISODE_S
 
-  6a           the sum of a robot's episodes
-  6b           the mean duration of an episode, also at SENSITIVITY_EPISODE_S
-
-A robot whose cmd_vel holds no message has no figure. Nothing in the recording says, per
-interval, whether traffic caused a stop, and the requirement's /mode_requests is not
-published by this adapter, so attribution to traffic is made by comparing a route against
-the same route run alone; this script emits one repeat's figures.
-
-blocked_episodes() is the earlier reported-pose classifier, kept for
+Attribution to traffic is made by comparing a route against the same route run alone.
+blocked_episodes() is the reported-pose classifier, used by
 analyse/validity/analyze_motion_reference.py. METRIC_DESIGN.md section F6 defines the
 measurands.
 """
@@ -35,19 +26,16 @@ from rosbag2_py import ConverterOptions, SequentialReader, StorageOptions
 from rosidl_runtime_py.utilities import get_message
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'fleet_coordination'))
-import analyze_fleet_coordination_4b as motion  # noqa: E402
+import analyze_fleet_coordination_4b as motion 
 
 ANALYSIS_VERSION = 2
-MIN_EPISODE_S = 0.3           # three 10 Hz samples, the earlier classifier's hysteresis
+MIN_EPISODE_S = 0.3
 SENSITIVITY_EPISODE_S = 1.0
 
-# The earlier reported-pose classifier: below this speed is stationary, and HYSTERESIS_N
-# consecutive stationary samples are required before an episode opens, which survives one
-# tick of AMCL publish lag without fragmenting a continuous stop.
+# Reported-pose classifier: below THRESHOLD_MPS is stationary, and HYSTERESIS_N
+# consecutive stationary samples open an episode.
 THRESHOLD_MPS = 0.001
 HYSTERESIS_N = 3
-# Two fleet-state samples further apart than this are not one interval: the recording
-# stopped, or the stream dropped, and the gap is not evidence of standing still.
 MAX_SAMPLE_GAP_S = 2.0
 
 
@@ -72,9 +60,7 @@ def read_fleet_states(bag, robots):
 def blocked_episodes(samples, t_limit=None):
     """Contiguous intervals where the robot holds a task and is not moving.
 
-    Returns [(t_start, t_end), ...]. t_limit, when given, ends the search at the task's
-    last observed motion, so the tail between arriving and the task_id being released is
-    not counted.
+    Returns [(t_start, t_end), ...]. t_limit, when given, ends the search there.
     """
     episodes, low, start = [], 0, None
     for a, b in zip(samples, samples[1:]):

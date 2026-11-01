@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
+"""Cross-checks the 7c lidar separation against the poses RMF held, for hardware, where
+no ground truth exists.
 
+Two directions, per pair of robots:
+
+  7c -> RMF    at each instant 7c reads a separation below --d-safe-m, the separation
+               RMF held at the same instant
+  RMF -> 7c    at each instant RMF holds the robots closer than --near-m, whether a
+               head-sized cluster appears in the expected bearing and range window
+
+Neither is a verdict: the two sources are independent and this reports how far they
+agree.
+"""
 import argparse
 import bisect
 import glob

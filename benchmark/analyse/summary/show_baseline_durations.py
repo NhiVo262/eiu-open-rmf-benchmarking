@@ -30,11 +30,7 @@ DEFAULT_HW_ROOT = os.path.join(BENCHMARK_ROOT, 'data', 'hardware', 'baselines')
 
 
 def sim_medians_from(root):
-    """Median route-leg and total duration per route, from a baseline tree.
-
-    Computed rather than stored so the reference cannot go stale against the
-    collection it comes from.
-    """
+    """Median route-leg and total duration per route, from a baseline tree."""
     out = {}
     for tag in ROUTE_TAGS:
         legs, totals = [], []

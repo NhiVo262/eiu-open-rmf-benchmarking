@@ -6,9 +6,8 @@
   P(N)       mean 1b over the tasks at fleet size N; the median is written beside it
   G          (P(3) - P(1)) / P(1) x 100
   as specified   every N=3 task against every N=1 task
-  first task     only the first task of each N=3 batch, which, like an N=1 task, is
-                 priced with no other task in the fleet's plan, so only the fleet size
-                 differs
+  first task     only the first task of each N=3 batch, priced with no other task in
+                 the fleet's plan, as an N=1 task is
 
 The scenario-level figures compare a scenario's tasks with the N=1 tasks of its own
 routes. 8b reads Th(1), Th(3) and the scaling from fleet_scaling_metrics.json, written by

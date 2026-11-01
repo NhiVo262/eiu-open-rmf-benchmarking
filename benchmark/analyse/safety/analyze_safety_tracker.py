@@ -10,17 +10,14 @@ position reference exists.
 
 7a is the minimum over time and over robot pairs of the Euclidean distance between the
 robots' reference points, with the minimum per pair beside it. 7b counts events: a
-contiguous run below a threshold for one pair is one event, as the requirement's
-description states; the number of samples below it, which its data-source cell names,
-is reported beside the count with the frame rate it depends on. Both are computed at
-D_SAFE_M = 0.356 m and D_RMF_CONFLICT_M = 0.628 m, two values derived from the fleet
-profile while the requirement leaves its threshold unset.
+contiguous run below a threshold for one pair is one event, with the number of samples
+below it reported beside the count. Both are computed at D_SAFE_M and
+D_RMF_CONFLICT_M, derived from the fleet profile.
 
 Where ground truth exists, the same figures are computed from it, and the as-specified
-events at 0.356 m are matched against the true ones by overlap in time: detected,
+events at D_SAFE_M are matched against the true ones by overlap in time: detected,
 missed, false alarm. Ground truth is downsampled to 10 Hz by the recorder, the rate
-/fleet_states arrives at, so the two event counts are comparable in kind.
-METRIC_DESIGN.md defines the measurands.
+/fleet_states arrives at. METRIC_DESIGN.md defines the measurands.
 
 Usage:
     python3 analyze_safety_tracker.py --repeat-dir <repeat> --scenario <label> --output <json>

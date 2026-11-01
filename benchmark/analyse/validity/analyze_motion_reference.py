@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
+"""Compares the three motion classifiers used across the metrics, sample by sample.
 
+At STEP_S intervals within each task's window:
+
+  reported pose     analyze_congestion_handling.blocked_episodes, from /fleet_states
+  cmd_vel           analyze_fleet_coordination_4b, the classifier F4b and F6 use
+  ground truth      the Gazebo pose step, where ground_truth_poses.jsonl exists
+
+Emits, per pair, the agreement rate and the rate at which one calls moving what the
+other calls still. Ground-truth comparisons are simulation only.
+"""
 import argparse
 import bisect
 import glob

@@ -16,15 +16,13 @@ The events, in bag receive time relative to the task's award:
 
 A stationary stretch is attributed, in order, to RMF when the adapter logs the robot as
 waiting for traffic over most of it; to Nav2 when a goal it accepted was open throughout;
-and otherwise to neither. Goal outcomes in the log carry a goal id rather than a robot
-name, so each id is attributed through the command it was accepted for. Positions are what RMF
-held, not ground truth. Writes nothing.
+and otherwise to neither. A goal id in the log is attributed through the command it was
+accepted for. Positions are what RMF held, not ground truth. Writes nothing.
 
 With --attribute <data/platform>, it prints instead, for every scenario, how the
 stationary time of all N=3 robot-tasks divides between the three attributions, with the
-Nav2 aborts logged during the tasks. The division is exploratory: it rests on the
-adapter's log lines, and its third class is a remainder, stationary time between goals
-or spanning a mix of states.
+Nav2 aborts logged during the tasks. The division rests on the adapter's log lines, and
+its third class is a remainder.
 
 Usage, inside the open-rmf container:
     python3 show_case_timeline.py --repeat-dir <repeat> --route wp_5,wp_2

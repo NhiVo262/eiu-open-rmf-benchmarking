@@ -1,4 +1,17 @@
 #!/usr/bin/env python3
+"""Validates the 7c lidar separation against Gazebo ground truth.
+
+For each pair of robots, every mutual range analyze_safety_lidar.py accepts is checked
+against the true laser-centre separation at that instant and classified:
+
+  attributable        the range is consistent with the other robot's LDS head
+  via_third_robot     it is consistent with the third robot instead
+  unattributable      it matches no robot
+
+Also counts the close approaches a pair reached, and scores the below-d_safe readings
+against the truth as true positive, false positive and false negative. Simulation only;
+a repeat without ground_truth_poses.jsonl is reported and skipped.
+"""
 import argparse
 import bisect
 import glob

@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
+"""Prints per-repeat recording and motion health for one robot of a run.
 
+Per repeat, over the task window or the whole bag with --whole-bag:
+
+  covariance    the AMCL pose covariance trace, mean and maximum
+  spin          time commanded to turn in place
+  stalled       time under command with no motion
+  path          distance commanded
+  scan          /scan message rate against NOMINAL_SCAN_HZ
+
+Describes usability of a repeat, not any F1-F8 result.
+"""
 import argparse
 import glob
 import json
@@ -116,7 +127,9 @@ def task_window(repeat_dir):
 
 
 def main():
-    ap = argparse.ArgumentParser(description=__doc__)
+    ap = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('run_dir', help='A run directory holding repeat_N subdirectories')
     ap.add_argument('--robot', default='tb3_robot1',
                     help='Robot whose indicators are reported')

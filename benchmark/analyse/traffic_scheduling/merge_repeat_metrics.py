@@ -2,17 +2,11 @@
 """Merges a run's per-repeat traffic_scheduling_metrics.json files into one
 scenario-level metrics file.
 
-Each repeat rebuilds the whole stack and so carries its own bag and its own
-analyze_traffic_scheduling.py pass; this combines those per-repeat files.
-
   counts        n_submit, n_conflicts_detected and 2a_n_task_infeasible are summed
-  percentages   recomputed from the summed counts, not averaged over repeats,
-                which would weight a repeat with few conflicts like one with many
+  percentages   recomputed from the summed counts, not averaged over repeats
   outcomes      resolved_by_negotiation, recovered_by_replan and unrecovered are
                 summed per key
-  2b            recomputed from the concatenated raw_scheduling_times_s, so the
-                mean and standard deviation are pooled rather than averaged over
-                per-repeat means
+  2b            pooled from the concatenated raw_scheduling_times_s
 """
 import argparse
 import glob

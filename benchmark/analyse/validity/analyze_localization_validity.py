@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
+"""Judges whether a repeat's /fleet_states poses are accurate enough for the metrics
+that read them.
 
+Per robot, the error is the distance between the pose RMF held and the Gazebo ground
+truth at the nearest sample. A robot is measurable when its median error over the window
+in which it was moving stays below --threshold, by default the fleet profile's conflict
+separation halved.
+
+Only robots the capture shows receiving work are judged. F7 reads ground truth directly
+and is not gated by this. Simulation only.
+"""
 import argparse
 import bisect
 import glob
@@ -12,7 +22,7 @@ import rmf_adapter.easy_full_control as rmf_easy
 from rosbag2_py import ConverterOptions, SequentialReader, StorageOptions
 from rosidl_runtime_py.utilities import get_message
 
-# footprint + vicinity, halved; see the module docstring
+# footprint + vicinity, halved
 DEFAULT_MAX_MEDIAN_ERROR_M = 0.314
 GT_MATCH_TOLERANCE_S = 0.2
 # A ground-truth step below this counts as the robot standing still.
@@ -120,8 +130,8 @@ def per_robot_error(repeat_dir):
                 (gts[k], math.hypot(robot.location.x - truth[0],
                                     robot.location.y - truth[1])))
 
-    # distance each robot really covered, so a robot that never drove is visible,
-    # and the last instant it actually moved, which bounds the verdict window
+    # Ground-truth distance covered per robot, and the last instant each one moved,
+    # which bounds the verdict window.
     travelled, previous, last_moved = {}, {}, {}
     for t in gts:
         for name, p in gt[t].items():
@@ -151,8 +161,8 @@ def assess_repeat(run_dir, repeat_dir, threshold):
         moving = sorted(e for t, e in stamped
                         if stop is None or t <= stop)
         median = series[len(series) // 2]
-        # The verdict uses the moving window; see the header. Falls back to the
-        # whole repeat when the robot never moved, where the two agree anyway.
+        # The verdict uses the moving window, falling back to the whole repeat when
+        # the robot never moved.
         median_moving = moving[len(moving) // 2] if moving else median
         dispatched_here = name in dispatched
         valid = dispatched_here and median_moving < threshold
@@ -174,7 +184,9 @@ def assess_repeat(run_dir, repeat_dir, threshold):
 
 
 def main():
-    ap = argparse.ArgumentParser(description=__doc__)
+    ap = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--run-dir', required=True, action='append',
                     help='repeat as many times as there are scenarios')
     ap.add_argument('--output', required=True, help='Where to write the metrics JSON')

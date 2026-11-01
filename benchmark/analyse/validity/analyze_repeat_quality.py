@@ -1,4 +1,16 @@
 #!/usr/bin/env python3
+"""Screens each repeat of a run for defects that make a metric unreadable.
+
+Three checks per repeat:
+
+  physics         a ground-truth step implying more than REAL_MOTION_MPS, that is a
+                  teleport rather than driving
+  localisation    the /fleet_states pose against ground truth, p95 and maximum
+  per-metric      which features the repeat still supports
+
+With --include-discarded it also assesses the attempts that were not kept. Simulation
+only; needs ground_truth_poses.jsonl.
+"""
 import argparse
 import bisect
 import glob
@@ -146,7 +158,9 @@ def assess(repeat_dir, run_dir):
 
 
 def main():
-    ap = argparse.ArgumentParser(description=__doc__)
+    ap = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--run-dir', required=True, help='Run directory holding the repeat_* directories')
     ap.add_argument('--output', required=True, help='Where to write the metrics JSON')
     ap.add_argument('--include-discarded', action='store_true', help='Also assess the attempts that were discarded')

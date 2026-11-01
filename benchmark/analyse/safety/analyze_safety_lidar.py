@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """Measures 7c, the separation between two robots' laser centres, from /scan alone.
 
-7a and 7b need a position reference. 7c does not pass through AMCL, the map or an
-external tracker, so it is computable on both platforms.
+7c does not pass through AMCL, the map or an external tracker, so it is computable on
+both platforms.
 
 The scan plane lies above the Burger's body, so the part of the other robot a laser
-returns is that robot's LDS head, and the separation is measured between laser
-centres. A mutual range at the lidar's 0.120 m floor is reported as censored rather
-than as a number. Coverage is the fraction of instants at which both lasers returned
-each other; a pair never in view is not counted as safe.
+returns is that robot's LDS head, and the separation is measured between laser centres.
+A mutual range at the lidar's 0.120 m floor is reported as censored rather than as a
+number. Coverage is the fraction of instants at which both lasers returned each other.
 
 Validated against Gazebo ground truth by analyse/validity/analyze_lidar_attribution.py.
 METRIC_DESIGN.md section 7c defines the measurand.
@@ -35,9 +34,8 @@ HEAD_FAR_M = 0.034
 HEAD_DIAMETER_M = 0.064
 MUTUAL_TOL_M = HEAD_FAR_M - HEAD_NEAR_M + 4 * LIDAR_NOISE_SD_M   # 0.045
 
-# The head presents a chord of at most its diameter; beams at its edge are lost, so the
-# lower bound is two beams at close range, and the upper bound allows one beam spacing
-# at 3 m (0.052 m at 1 degree).
+# Chord bounds for a cluster to be the LDS head: two beams at the lower end, one beam
+# spacing at 3 m at the upper.
 MIN_CHORD_M = 0.02
 MAX_CHORD_M = 0.12
 EPISODE_GAP_S = 1.0            # matched instants closer than this belong to one episode
@@ -102,11 +100,8 @@ def clusters(angle_min, angle_increment, ranges):
             run = [(i, r)]
     out.append(run)
 
-    # Join the first and last runs if they are continuous across the 0/2*pi seam.
-    # A scan is a ring, but index order is not: an object straddling the seam would
-    # otherwise be split into two half-width clusters and rejected by the chord
-    # filter. Two robots facing each other head-on put each other at bearing 0,
-    # which is exactly the seam, so this is the common case rather than an edge one.
+    # Join the first and last runs when they are continuous across the 0/2*pi seam,
+    # so an object straddling it is one cluster.
     if len(out) > 1:
         first, last = out[0], out[-1]
         n = len(ranges)
@@ -121,14 +116,12 @@ def clusters(angle_min, angle_increment, ranges):
             continue
         rs = [r for _, r in run]
         mean_r = sum(rs) / len(rs)
-        # Beam count, not index difference: a run joined across the seam has
-        # indices running n-1 -> 0 and the difference would be negative.
+        # Beam count, not index difference, which is negative across the seam.
         width = (len(run) - 1) * abs(angle_increment)
         chord = 2.0 * mean_r * math.sin(width / 2.0) if width > 0 else 0.0
         if not (MIN_CHORD_M <= chord <= MAX_CHORD_M):
             continue
-        # Circular mean: a run joined across the seam has indices n-1 -> 0, whose
-        # arithmetic mean points the opposite way.
+        # Circular mean, the arithmetic mean being wrong across the seam.
         sin_sum = sum(math.sin(angle_min + i * angle_increment) for i, _ in run)
         cos_sum = sum(math.cos(angle_min + i * angle_increment) for i, _ in run)
         kept.append({'mean_range_m': mean_r,
@@ -252,8 +245,7 @@ def self_test():
             for k in range(centre + n // 2 - wall_half, centre + n // 2 + wall_half + 1):
                 ranges[k % n] = r - 0.02
             return (0.0, -math.pi, inc, ranges)
-        # A sees B in the middle of its array; B sees A across the 0/2*pi seam, so
-        # both the ordinary case and the wrap-around case are exercised every time.
+        # A sees B mid-array, B sees A across the seam: both paths are exercised.
         sa, sb = make(n // 2), make(0)
         res = analyse_pair('A', [sa], 'B', [sb], d_safe_m=0.356, max_dt=0.1)
         seen = res.get('min_mutual_range_m')

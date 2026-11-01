@@ -8,10 +8,8 @@ The window is the repeat's execution window, the same for every robot:
 
 A robot is moving while the last command on its /<robot>/cmd_vel is no older than
 STALE_S and has a linear speed of at least CMD_LINEAR_MPS or a turn rate of at least
-CMD_ANGULAR_RPS. RobotState.mode is not set by this fleet adapter (METRIC_DESIGN.md
-§1.5); analyse/validity/analyze_motion_reference.py checks cmd_vel against Gazebo ground
-truth. The robots scored are the robots that carried a task. A robot whose cmd_vel holds
-no message in the bag has no figure: it is reported as null and left out of U_avg, and
+CMD_ANGULAR_RPS. The robots scored are the robots that carried a task; one whose
+cmd_vel holds no message is reported as null and left out of U_avg, and
 4b_n_robots_scored says how many robots the mean covers.
 
   U_r        T_moving(r) / T_window
@@ -36,7 +34,7 @@ from rosidl_runtime_py.utilities import get_message
 ANALYSIS_VERSION = 2
 CMD_LINEAR_MPS = 0.005
 CMD_ANGULAR_RPS = 0.05
-STALE_S = 0.25        # a command older than this no longer drives the robot; cmd_vel runs at 20 Hz
+STALE_S = 0.25        # a command older than this no longer drives the robot
 
 
 def read_commands(bag, robots):

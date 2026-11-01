@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
+"""Counts the time a robot's reported pose could not be merged onto the navigation
+graph.
 
+Each /fleet_states pose is offered to rmf_traffic's plan.compute_plan_starts at the
+same lane-merge distances RobotContext retries with. A pose no multiplier accepts is off
+graph, and contiguous off-graph poses form one episode.
+
+Reports, per robot, the fraction of the repeat spent off graph, the episode count and
+the longest episode.
+"""
 import argparse
 import bisect
 import datetime
@@ -14,8 +23,8 @@ import rmf_adapter.plan as plan
 from rosbag2_py import ConverterOptions, SequentialReader, StorageOptions
 from rosidl_runtime_py.utilities import get_message
 
-# RobotContext::NavParams::multipliers, applied to max_merge_lane_distance until
-# a merge succeeds. Not exposed through the bindings, so duplicated here.
+# RobotContext::NavParams::multipliers, applied to max_merge_lane_distance until a
+# merge succeeds; not exposed through the bindings.
 GRAPH_MERGE_MULTIPLIERS = (1.0, 2.0, 3.0, 5.0, 10.0)
 
 
@@ -146,7 +155,9 @@ def read_nav_params(fleet_config, robot_name):
 
 
 def main():
-    ap = argparse.ArgumentParser(description=__doc__)
+    ap = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--run-dir', required=True, help='Run directory holding the repeat_* directories')
     ap.add_argument('--fleet-config', required=True, help='Fleet config YAML the participant profile is read from')
     ap.add_argument('--nav-graph', required=True, help='Navigation graph YAML the waypoints are read from')

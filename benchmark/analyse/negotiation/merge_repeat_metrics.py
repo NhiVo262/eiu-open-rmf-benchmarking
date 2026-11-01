@@ -1,15 +1,10 @@
 #!/usr/bin/env python3
 """Merges a run's per-repeat negotiation metrics into one scenario-level file.
 
-All three 3a counts are carried through: notices, distinct conflict_versions and
-conclusions. negotiation_notice is the only signal that occurs once per conflict
-episode, while negotiation_proposal and negotiation_forfeit are steps within an
-episode. Keeping all three means a run in which a conflict is re-noticed shows up
-as a mismatch between them.
-
-conflict_version restarts at 0 in every repeat, since each repeat rebuilds the
-schedule node, so counts are summed across repeats and never de-duplicated by
-version.
+All three 3a counts are carried through -- notices, distinct conflict_versions and
+conclusions -- so a conflict that was re-noticed shows up as a mismatch between them.
+conflict_version restarts at 0 in every repeat, so counts are summed and never
+de-duplicated by version.
 
 Latency is pooled from the per-negotiation records, split by outcome: resolved,
 abandoned, and abandoned split again by whether a refusal names the conflict.

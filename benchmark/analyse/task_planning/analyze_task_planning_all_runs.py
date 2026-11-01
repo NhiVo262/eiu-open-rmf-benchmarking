@@ -3,15 +3,12 @@
 
 A collection is a directory such as data/<platform>/scenarios or data/<platform>/baselines;
 the default is data/simulation/scenarios, and --collection-dir can be given more than
-once. Scenario and route directories are discovered rather than listed, so a new one needs
-no change here.
+once. Scenario and route directories are discovered rather than listed.
 
 Each repeat is re-analysed against the API state capture and the robot list its existing
-task_planning_metrics.json names: the attempt number of api_state_attempt<N>.jsonl is not
-a stable identifier, so the capture is taken from the repeat's own record. A repeat with no
-existing metrics, or whose capture is missing, is skipped and reported rather than
-overwritten with a figure that has no task state. The metrics are written beside the bag,
-and the analyser's output is kept in analyze_task_planning.log next to them.
+task_planning_metrics.json names. A repeat with no existing metrics, or whose capture is
+missing, is skipped and reported. The metrics are written beside the bag, and the
+analyser's output to analyze_task_planning.log next to them.
 """
 import argparse
 import glob

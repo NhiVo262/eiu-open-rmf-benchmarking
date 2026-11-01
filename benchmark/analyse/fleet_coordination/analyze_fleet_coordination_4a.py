@@ -13,10 +13,8 @@ Emits 4a_n_submitted, 4a_n_completed, 4a_completed_pct, 4a_state_counts and
 terminal state before the recording stopped, are counted separately and folded
 into neither bucket. METRIC_DESIGN.md defines the measurands.
 
-Input is api_state_attempt<N>.jsonl, which sits at run level because the
-websocket listener starts before the fleet adapter and therefore before the
-attempt directory exists. It is matched to a repeat by time overlap with that
-repeat's bag, not by name.
+Input is api_state_attempt<N>.jsonl at run level, matched to a repeat by the path
+task_planning_metrics.json recorded, or failing that by time overlap with the bag.
 """
 import argparse
 import glob
@@ -66,12 +64,7 @@ def load_states(path):
 
 
 def recorded_api_file(repeat_dir):
-    """The api_state file the Task Planning analyser recorded for this repeat, or None.
-
-    A resumed run restarts its attempt numbering, so two passes over one run directory
-    write the same `api_state_attempt<N>.jsonl` name and the window a file covers no
-    longer identifies the repeat it belongs to. The recorded path does.
-    """
+    """The api_state file the Task Planning analyser recorded for this repeat, or None."""
     tp = os.path.join(repeat_dir, 'task_planning_metrics.json')
     try:
         path = json.load(open(tp)).get('api_state_path')
@@ -79,7 +72,7 @@ def recorded_api_file(repeat_dir):
         return None
     if not path:
         return None
-    # Resolved by name against the run directory, so a renamed collection still finds it.
+    # Fall back to the basename resolved against the run directory.
     local = os.path.join(os.path.dirname(os.path.normpath(repeat_dir)),
                          os.path.basename(path))
     for candidate in (path, local):
@@ -91,9 +84,7 @@ def recorded_api_file(repeat_dir):
 def pick_api_file(run_dir, lo, hi):
     """The api_state file overlapping this repeat's bag window."""
     best, best_overlap = None, 0.0
-    # api_state_attempt<N>.jsonl is the current layout; api_state.jsonl is the
-    # run-level file the first pilots wrote before the split, kept readable so
-    # those runs stay analysable.
+    # api_state_attempt<N>.jsonl is the current layout; api_state.jsonl the earlier one.
     candidates = (sorted(glob.glob(os.path.join(run_dir, 'api_state_attempt*.jsonl')))
                   + sorted(glob.glob(os.path.join(run_dir, 'api_state.jsonl'))))
     for f in candidates:
@@ -127,7 +118,7 @@ def main():
                          f'was the websocket listener running for this repeat?')
 
     per = load_states(api)
-    # only tasks that actually belong to this repeat's window
+    # keep only tasks within this repeat's window
     per = {tid: seq for tid, seq in per.items()
            if any(lo <= t <= hi for t, _ in seq)}
 

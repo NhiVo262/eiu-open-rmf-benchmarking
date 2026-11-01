@@ -8,7 +8,6 @@ each column names it:
                         count, with the lowest and highest repeat mean in brackets
     mean of repeats     one figure per repeat: their mean, with their range in brackets
 
-RESULTS.md reports pooled figures, so a `mean of repeats` cell can differ from it.
 METRIC_DESIGN.md defines the metrics; the codes in the tables are its section numbers.
 """
 import argparse
@@ -143,8 +142,7 @@ def f5(scenarios):
 
 def f6(scenarios):
     """Print the Feature 6 table: time blocked per robot-task, the episode count and the
-    mean episode, pooled over the run's repeats. The comparison against the N=1 baseline
-    is made per route when reporting."""
+    mean episode, pooled over the run's repeats."""
     print('%-13s %8s %20s %9s %20s' % ('scenario', 'scored',
                                    '6a blocked/task, mean of robots', 'episodes',
                                    '6b per episode, mean of repeats'))

@@ -2,7 +2,7 @@
 """Computes the Feature 2 (Traffic Scheduling) metrics from a concurrent-submission
 (N>=2) bag.
 
-Emits two rates, kept together because they answer different questions:
+Emits two rates:
 
   2a_schedule_feasibility_pct      did every detected conflict end with a valid
                                    schedule, over N_submit from /task_api_requests
@@ -21,8 +21,7 @@ A conflict makes a task infeasible only when an abandoned negotiation left no
 subsequent valid itinerary within RECOVERY_WINDOW_S. per_conflict[] carries each
 episode's outcome tag, which the feasibility verdict derives from.
 
-METRIC_DESIGN.md defines the measurands, and its section 1.1 states why
-/rmf_traffic/schedule_inconsistency and itinerary_extend are not read.
+METRIC_DESIGN.md defines the measurands.
 """
 import argparse
 import json
@@ -96,8 +95,6 @@ def main():
         conflict_notice_time.setdefault(msg.conflict_version, t)
 
     # ---- conclusion per conflict_version (time + resolved flag) ----
-    # Normally exactly one conclusion is ever published per version; sorting
-    # and keeping the last is defensive only.
     conclusion = {}
     for t, msg in sorted(negotiation_conclusion, key=lambda x: x[0]):
         conclusion[msg.conflict_version] = (t, bool(msg.resolved))
@@ -109,9 +106,8 @@ def main():
         return None
 
     def task_active_on_robot_at(robot_name, t_query):
-        # Same idea as analyze_task_planning.py's owning-robot scan:
-        # the /fleet_states sample at/just before t_query tells us which
-        # task_id that robot was carrying at that moment.
+        # The /fleet_states sample at or before t_query gives the task_id the robot
+        # was carrying then.
         active = None
         for t, msg in fleet_states:
             if t > t_query:
@@ -122,8 +118,8 @@ def main():
         return active
 
     def recovered_after(t_concl, participants):
-        """Did a conflict participant establish a new itinerary after the
-        negotiation was abandoned? That is the replan recovery path."""
+        """Whether a participant established a new itinerary within RECOVERY_WINDOW_S
+        of an abandoned negotiation: the replan recovery path."""
         for t_set, msg in itinerary_set:
             if t_set < t_concl:
                 continue
@@ -182,9 +178,7 @@ def main():
         outcome_counts[c['outcome']] = outcome_counts.get(c['outcome'], 0) + 1
 
     # ---- 2a (ii): conflict-free scheduling rate ----
-    # Attribution follows RMF's own: the conflict is checked against the
-    # itinerary just committed, so for each notice we charge the participant's
-    # most recent itinerary at or before it.
+    # Each notice is charged to the participant's most recent itinerary at or before it.
     itinerary_by_participant = {}
     for t_set, msg in itinerary_set:
         itinerary_by_participant.setdefault(msg.participant, []).append(
@@ -202,10 +196,7 @@ def main():
         if n_itineraries else None)
 
     # ---- 2b (i): planner compute, bid_notice -> bid_response ----
-    # The adapter prices the bid with rmf_task::TaskPlanner between these two
-    # messages, so the interval bounds the planning computation. Matched on
-    # task_id; a notice with no response (no fleet could take the task) is
-    # simply absent from the sample.
+    # Matched on task_id; a notice with no response is absent from the sample.
     bid_notice = sorted(records.get('/rmf_task/bid_notice', []), key=lambda x: x[0])
     bid_response = sorted(records.get('/rmf_task/bid_response', []), key=lambda x: x[0])
     notice_at = {}
@@ -218,8 +209,7 @@ def main():
             planner_compute_s.append(t_r - t_n)
 
     # ---- 2b (ii): schedule confirmation, itinerary_set -> mirror ----
-    # For each itinerary_set(participant, itinerary_version), find the first
-    # query_update_1 (at or after it) whose patch reflects that exact
+    # The first query_update_1 at or after the set whose patch carries the same
     # (participant_id, itinerary_version) pair.
     scheduling_times_s = []
     for t_set, msg in itinerary_set:

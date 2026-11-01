@@ -8,9 +8,7 @@ counts.
 
 Latency runs from a negotiation_notice to the negotiation_conclusion for the same
 conflict_version, reported separately by the conclusion's resolved flag. An abandoned
-negotiation is split by whether a negotiation_refusal names its conflict_version: the
-schedule node answers a refusal with a conclusion whose resolved flag is false
-(rmf_traffic_ros2/schedule/Node.cpp, ScheduleNode::refuse).
+negotiation is split again by whether a negotiation_refusal names its conflict_version.
 METRIC_DESIGN.md defines the measurands.
 """
 import argparse
@@ -84,12 +82,7 @@ def main():
         conclusion_time[msg.conflict_version] = (t, bool(msg.resolved))
 
     # ---- 3b: per-conflict latency, notice -> conclusion, split by outcome ----
-    # NegotiationConclusion.msg states it in the field's own comment: "True if
-    # the conflict was resolved. False if the negotiation was abandoned." The
-    # capability claim says RMF *resolves* negotiations, so a latency that pools
-    # both lets an instant abandonment read as fast coordination. They are
-    # summarised apart; the pooled figure is kept because it is what the metric
-    # table's formula (t_conclusion - t_notice) literally asks for.
+    # Resolved and abandoned are summarised apart; the pooled figure is also kept.
     latencies_s = []
     latencies_resolved_s = []
     latencies_abandoned_s = []

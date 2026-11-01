@@ -7,12 +7,10 @@ from what RMF predicted, per task.
         D_actual  = t_actual_finish - t_award, the job as executed
     5a_delta_s            = t_actual_finish - t_estimate_finish
 
-t_estimate_finish comes from bid_response.proposal.finish_time, a sim-clock
-rmf_traffic::Time instant rather than a duration (rmf_task_ros2's Response.hpp,
-rmf_fleet_adapter's FleetUpdateHandle.cpp), converted by reading the wall time of
-the /clock samples bracketing it. No offset is used, so no drift is assumed. A
-finish_sim outside the recorded /clock range is extrapolated at the local rate and
-flagged with clock_extrapolated.
+t_estimate_finish comes from bid_response.proposal.finish_time, a sim-clock instant,
+converted to wall time through the /clock samples bracketing it. An instant outside the
+recorded /clock range is extrapolated at the local rate and flagged with
+clock_extrapolated.
 
 t_actual_finish comes from the task's terminal transition in the websocket task
 state, reported as actual_finish_source and terminal_status. A task that reached
@@ -59,11 +57,9 @@ TERMINAL = ('completed', 'error', 'canceled', 'killed', 'failed')
 
 
 def terminal_times(path):
-    """task_id -> wall time of its FIRST transition into a terminal status.
+    """task_id -> wall time of its first transition into a terminal status.
 
-    Same parse as analyse/fleet_coordination/analyze_fleet_coordination_4a.py,
-    so 4a's completion verdict and 5a's finish instant cannot disagree about
-    what a task did.
+    Same parse as analyse/fleet_coordination/analyze_fleet_coordination_4a.py.
     """
     per = {}
     for line in open(path):
@@ -91,9 +87,8 @@ def main():
     ap.add_argument('--bag', required=True, help='Path to the rosbag2 directory of one repeat')
     ap.add_argument('--scenario', required=True, help='Scenario label recorded in the output')
     ap.add_argument('--api-state',
-                    help='api_state_attempt<N>.jsonl for this repeat. Without it '
-                         'no delta is computed, because the terminal instant is '
-                         'unavailable and t_end_physical is not a substitute.')
+                    help='api_state_attempt<N>.jsonl for this repeat; without it no '
+                         'delta is computed')
     ap.add_argument('--output', required=True, help='Where to write the metrics JSON')
     args = ap.parse_args()
 
@@ -105,13 +100,8 @@ def main():
     bid_responses = records.get('/rmf_task/bid_response', [])
 
     if not clock_samples:
-        # No /clock means the run was not on a simulated clock. On hardware the
-        # adapter runs with use_sim_time:=false, so its node clock IS the system
-        # clock and proposal.finish_time is already a wall-clock instant: the
-        # conversion below becomes the identity and the drift correction has
-        # nothing to correct. This is the only place the two platforms differ,
-        # and the simulation path is untouched because a sim bag always carries
-        # /clock (it is in the recorded topic list).
+        # No /clock: the run used the system clock, so finish_time is already a wall
+        # instant and the conversion is the identity.
         wall_clock_run = True
     else:
         wall_clock_run = False
@@ -125,12 +115,12 @@ def main():
     else:
 
         def nearest_offset(bag_wall_t):
-            # v1 conversion, kept only to report how large the drift correction is
+            # v1 conversion, reported only as the size of the drift correction
             best = min(clock_samples, key=lambda c: abs(c[0] - bag_wall_t))
             wall, sim = best
             return wall - sim  # wall = sim + offset
 
-        # v2: look the instant up directly instead of assuming a constant offset
+        # v2: look the instant up directly rather than assume a constant offset
         by_sim = sorted(clock_samples, key=lambda c: c[1])
         sims = [c[1] for c in by_sim]
 
@@ -187,23 +177,10 @@ def main():
         offset_at_bid = nearest_offset(t_bid_wall)
         delta_v1 = t_end - (finish_sim + offset_at_bid)
 
-        # A difference of two instants, in seconds. It answers "how many seconds
-        # late", not "how wrong was the estimate", and the two rank the scenarios
-        # differently, so both are reported and neither replaces the other.
-        # The two durations must start from different instants, and getting
-        # this wrong is not subtle: the planner prices the bid at bid time,
-        # assuming the robot could start then, while the auction only awards
-        # the task one bid window later. Measuring the PREDICTED duration from
-        # t_award therefore produced negative lengths -- -16.2 s on 9 of Shared
-        # Lane's 15 tasks, whose routes are shorter than the 60 s window.
-        #
-        # predicted = what the planner thought the job takes, from the moment it
-        #             priced it: predicted_wall_finish - t_bid_response
-        # actual    = what the job took once the robot could start on it:
-        #             t(terminal state) - t_award
-        #
-        # Both are execution lengths with the dispatcher's queueing outside
-        # them, so their ratio measures the planner and not the auction.
+        # The two durations start from different instants, each from the moment its
+        # own clock starts, so queueing falls outside both:
+        #   predicted = predicted_wall_finish - t_bid_response
+        #   actual    = t(terminal state) - t_award
         t_award = task.get('t_award')
         predicted_duration = predicted_wall_finish - t_bid_wall
         actual_duration = duration_error_pct = None
@@ -227,8 +204,7 @@ def main():
             '5a_delta_actual_minus_predicted_s': round(delta, 3),
             '5a_delta_v1_bid_offset_s': round(delta_v1, 3),
             'drift_correction_s': round(delta - delta_v1, 3),
-            # carried through so the merge can apply the documented outlier
-            # rule without re-opening task_planning_metrics.json
+            # carried through for the merge's outlier rule
             'queueing_s': task.get('queueing_s'),
             't_award': t_award,
             'predicted_duration_s': round(predicted_duration, 3),

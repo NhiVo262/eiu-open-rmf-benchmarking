@@ -10,11 +10,8 @@ located on the nav graph within --arrival-threshold-m, to the task's completion
 as reported by the RMF API. A task that has reached no terminal state by the
 end of the capture is censored: its makespan is null and a lower bound is
 recorded instead. A task that terminated without completing carries no
-makespan and is not censored. METRIC_DESIGN.md §F1 defines the measurands.
-
-ANALYSIS_VERSION 1 ended makespan at the robot's last observed movement, which
-assigned a makespan to tasks that never completed. Outputs carry the version
-they were produced with.
+makespan and is not censored. Outputs carry the ANALYSIS_VERSION they were produced
+with. METRIC_DESIGN.md §F1 defines the measurands.
 """
 import argparse
 import json
@@ -34,8 +31,7 @@ from metric_statistics import summarize  # noqa: E402
 
 POS_EPS = 0.01  # meters, movement threshold between consecutive fleet_states samples
 # Metres per second above which a step between two fleet_states samples is the reported
-# pose moving rather than the robot. The TurtleBot3 Burger's maximum is 0.22 m/s; the
-# margin covers sampling jitter without admitting a relocalisation.
+# pose moving rather than the robot; the TurtleBot3 Burger tops out at 0.22 m/s.
 MAX_PLAUSIBLE_SPEED = 0.30
 ANALYSIS_VERSION = 2
 
@@ -68,9 +64,8 @@ def completion_fields(state, t_submit, t_award, has_api_state):
     status = state.get('status')
     completed = status == 'completed'
     t_completed = state.get('t_terminal') if completed else None
-    # Censored means the task reached no terminal state before the capture stopped, so its
-    # duration is only known to exceed what was observed. A task that terminated without
-    # completing is finished, not censored, and carries no makespan either.
+    # Censored: no terminal state before the capture stopped, so the duration is known
+    # only to exceed what was observed.
     censored = has_api_state and status not in TERMINAL
 
     if not has_api_state:
@@ -88,8 +83,7 @@ def completion_fields(state, t_submit, t_award, has_api_state):
         'completed': completed,
         'censored': censored,
         't_last_observed_api': state.get('t_last_observed'),
-        # Queueing is award minus submit, a dispatcher quantity independent of both the
-        # holder and the arrival position test.
+        # Award minus submit: a dispatcher quantity, independent of the holder.
         'queueing_s': t_award - t_submit if t_award is not None and t_submit is not None else None,
         'makespan_incl_transit_s': (t_completed - t_submit
                                     if t_completed is not None and t_submit is not None else None),
@@ -101,10 +95,8 @@ def batch_makespan(tasks, has_api_state):
     """Return the batch makespan: the last completion in the batch minus the first
     submission, with the status that qualifies it.
 
-    The batch is the set of tasks submitted together in one repeat, so the figure answers
-    when the fleet finished all of them. It is defined only when every task completed; a
-    batch still holding an unfinished task has no last completion, and taking the maximum
-    over the completed ones would report the batch as finished early. Statuses:
+    The batch is the set of tasks submitted together in one repeat. The figure is
+    defined only when every task completed. Statuses:
 
         complete            every task completed, value given
         censored            a task reached no terminal state, value null, lower bound
@@ -162,8 +154,7 @@ def load_task_terminal_state(path):
     reported status when it reached none. t_terminal is the wall time of that transition.
 
     Same parse as analyse/execution_fidelity/analyze_execution_fidelity.py and
-    analyse/fleet_coordination/analyze_fleet_coordination_4a.py, so 1c's makespan, 4a's
-    completion verdict and 5a's finish instant cannot disagree about what a task did.
+    analyse/fleet_coordination/analyze_fleet_coordination_4a.py.
     """
     per = {}
     with open(path) as f:
@@ -263,16 +254,9 @@ def path_length_per_robot(fleet_states, robots):
     """robot -> metres travelled over the capture, summed between consecutive
     /fleet_states samples more than POS_EPS apart.
 
-    Steps that imply more than MAX_PLAUSIBLE_SPEED are dropped. A TurtleBot3 Burger tops
-    out at 0.22 m/s, so a larger step is the localisation moving, not the robot: on the
-    hardware collection of 2026-10-15 one robot reported 55.5 m over a 7.08 m route, of
-    which 43.3 m arrived in 22 jumps. Counting those would let a robot that never moved
-    clear the distance the N=3 gate asks for, which is the one thing that gate exists to
-    catch.
-
-    This is still the distance RMF perceived, not ground truth: a robot whose
-    localisation froze reports no path however far it drove. Both cases make the repeat
-    unusable, so the figure serves as a gate either way.
+    Steps implying more than MAX_PLAUSIBLE_SPEED are dropped as localisation jumps. The
+    figure is the distance RMF perceived through AMCL, not ground truth, and is used as a
+    repeat gate.
     """
     out = {}
     for name in robots:
@@ -368,10 +352,8 @@ def main():
         task['robot'] = owning_robot
         task['reassigned'] = len(holder_segment_start) > 1
 
-        # Completion is a task property reported by the API, not a property of motion: a
-        # robot that stops short of its destination also stops moving. Completion and the
-        # dispatcher's timings are resolved before the holder is established, because
-        # neither depends on a robot having been observed holding the task.
+        # Completion and the dispatcher's timings come from the API and do not depend
+        # on a robot having been observed holding the task.
         state = terminal_state.get(task_id, {})
         fields = completion_fields(state, task['t_submit'], task['t_award'],
                                    bool(args.api_state))
@@ -392,23 +374,11 @@ def main():
         window_end = last_seen_with_task_t
         window = [(t, m) for t, m in fs_sorted if window_start <= t <= window_end]
 
-        # t_arrival is an ABSOLUTE position test (robot vs a nav-graph waypoint),
-        # unlike everything else here, which compares consecutive positions. Two
-        # consequences, both measured rather than assumed:
-        #
-        # 1. How much of a task it excludes depends entirely on the scenario.
-        #    Measured over all 60 official tasks, t_arrival - t_award is
-        #    Bottleneck 40.99s (max 64.7) but Crossing 0.057s and Head-on 0.062s,
-        #    because those routes start where the robot already stands. So
-        #    makespan excludes ~41s of transit in Bottleneck and ~0s in Crossing:
-        #    the four scenarios' makespans are NOT directly comparable.
-        # 2. Being absolute, it is the one timing here that a localisation offset
-        #    can break outright - a delocalised robot never registers as having
-        #    reached the waypoint. Ground-truth poses are recorded alongside so
-        #    this can be recomputed.
-        #
-        # Positions come from /fleet_states, that is what RMF perceived through
-        # AMCL, not physical ground truth.
+        # t_arrival is an absolute position test, robot against a nav-graph waypoint,
+        # unlike the other timings here, which compare consecutive positions. The transit
+        # it excludes therefore varies by scenario, and a localisation offset can keep it
+        # from ever triggering. Positions come from /fleet_states, that is what RMF
+        # perceived through AMCL.
         t_arrival = None
         if task['route_start_xy'] is not None:
             sx, sy = task['route_start_xy']

@@ -8,8 +8,7 @@ analysed against, and that repeat's task ids. Per collection it records the repe
 and the analysis versions found. The configuration block carries the SHA-256 of the files
 that define the system under test.
 
-The manifest holds no timestamp, so two runs over an unchanged dataset produce the same
-file and a difference between them is a difference in the data.
+The manifest holds no timestamp, so an unchanged dataset produces an identical file.
 
 Usage:
     python3 write_dataset_manifest.py --data-dir <data> --output <json>
@@ -23,8 +22,8 @@ import re
 
 import yaml
 
-# The files that define the system under test. A path is resolved against the workspace
-# root; one that is absent is recorded as null rather than omitted.
+# The files that define the system under test, resolved against the workspace root; an
+# absent path is recorded as null.
 CONFIGURATION = {
     'nav_graph': 'install/tb3_fleet/share/tb3_fleet/maps/world_tb3/nav_graphs/0.yaml',
     'world': 'install/tb3_fleet/share/tb3_fleet/maps/world_tb3/world_tb3.world',

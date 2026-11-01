@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
+"""Prints the message-level trace behind one repeat's F2 and F3 figures, for audit.
 
+One section per interval, each naming the two messages it is measured between:
+
+  planner compute    bid_notice -> bid_response
+  schedule confirm   itinerary_set -> the query_update_1 carrying that pair
+  negotiation        negotiation_notice -> negotiation_conclusion
+
+Writes nothing.
+"""
 import argparse
 import bisect
 import json
