@@ -1,0 +1,50 @@
+// Workstation bridge for hardware collection, started by run_hardware_scenarios.sh and
+// run_hardware_baselines.sh.
+//
+// It carries two directions:
+//
+//   zenoh -> workstation DDS   Robot bridges publish robot topics onto zenoh. This bridge
+//                              republishes them on workstation DDS, where ros2 bag record,
+//                              hold_robot_topics.py and the runners' reachability checks
+//                              read them. A route forms only while a local subscriber
+//                              exists, which is what hold_robot_topics.py holds open.
+//
+//   workstation DDS -> zenoh   set_initial_pose.py publishes /tb3_robotN/initialpose on
+//                              workstation DDS; the robot bridges subscribe to it and
+//                              deliver it to AMCL.
+//
+// The fleet adapter does not use this bridge: it reads tf and battery_state as a zenoh
+// client, and sends navigate_to_pose goals the same way.
+//
+// No namespace is set, because robot topics already carry their /tb3_robotN prefix.
+{
+  plugins: {
+    ros2dds: {
+      allow: {
+        publishers: [".*/initialpose"],
+        subscribers: [".*/tf", ".*/tf_static", ".*/battery_state",
+                      ".*/amcl_pose", ".*/cmd_vel", ".*/scan",
+                      ".*/plan"],
+        service_servers: [],
+        service_clients: [],
+        action_servers: [],
+        action_clients: [],
+      },
+    },
+  },
+
+  mode: "client",
+
+  // zenohd on this workstation.
+  connect: {
+    endpoints: ["tcp/127.0.0.1:7447"]
+  },
+  listen: {
+    endpoints: []
+  },
+
+  timestamping: {
+    enabled: { router: true, peer: true, client: true },
+  },
+  queries_default_timeout: 300000,
+}

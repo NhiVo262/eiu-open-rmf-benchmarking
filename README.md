@@ -6,18 +6,19 @@ simulation and on hardware, using matched workloads and test conditions.
 ## Contents
 
 1. [Overview](#overview)
-2. [Problem statement and objectives](#problem-statement-and-objectives)
-3. [Benchmark scope: F1–F8](#benchmark-scope-f1f8)
-4. [Project contributions](#project-contributions)
-5. [System architecture](#system-architecture)
-6. [Technology stack](#technology-stack)
-7. [Repository structure](#repository-structure)
-8. [Requirements and setup](#requirements-and-setup)
-9. [Running the simulation demo](#running-the-simulation-demo)
-10. [Running benchmarks and reproducing results](#running-benchmarks-and-reproducing-results)
-11. [Recorded data and results](#recorded-data-and-results)
-12. [Known limitations](#known-limitations)
-13. [Documentation and future work](#documentation-and-future-work)
+2. [Test environment](#test-environment)
+3. [Problem statement and objectives](#problem-statement-and-objectives)
+4. [Benchmark scope: F1–F8](#benchmark-scope-f1f8)
+5. [Project contributions](#project-contributions)
+6. [System architecture](#system-architecture)
+7. [Technology stack](#technology-stack)
+8. [Repository structure](#repository-structure)
+9. [Requirements and setup](#requirements-and-setup)
+10. [Running the simulation demo](#running-the-simulation-demo)
+11. [Running benchmarks and reproducing results](#running-benchmarks-and-reproducing-results)
+12. [Recorded data and results](#recorded-data-and-results)
+13. [Known limitations](#known-limitations)
+14. [Documentation and future work](#documentation-and-future-work)
 
 ## Overview
 
@@ -28,6 +29,28 @@ and evaluates the resulting system.
 
 Experiments cover a simulation fleet and a physical fleet. Collection procedures,
 measurement methods and results are documented in [benchmark/](benchmark/ARCHITECTURE.md).
+
+## Test environment
+
+All experiments use a single office floor plan, 43.2 m x 12.9 m, shared by the
+simulation and hardware platforms.
+
+The Gazebo world holds the desks, chairs, cabinets and sofas that the robots navigate
+around. The same furniture defines the occupied cells of the map.
+
+![Gazebo world, top view](docs/images/gazebo_world.png)
+
+Nav2 localises against an occupancy grid built from this floor, 864 x 257 cells at
+0.05 m resolution. The inflation layer around each obstacle is what keeps a robot off
+the furniture.
+
+![Occupancy grid with the costmap inflation layer](docs/images/slam_map_costmap.png)
+
+Open-RMF plans over a navigation graph of nine waypoints, `wp_1` to `wp_9`, laid on the
+same map. Scenario routes are defined as waypoint pairs on this graph, and the lanes
+between them are the shared space where traffic conflicts arise.
+
+![Open-RMF navigation graph over the map](docs/images/rmf_nav_graph.png)
 
 ## Problem statement and objectives
 
