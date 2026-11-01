@@ -1,4 +1,4 @@
-# Benchmark Results — Open-RMF Multi-Robot Coordination
+# Benchmark Results - Open-RMF Multi-Robot Coordination
 
 ## 1. Evaluation Dataset
 
@@ -6,7 +6,7 @@ The evaluation covers four scenarios (Bottleneck, Crossing, Head-on and Shared L
 
 The tables below report the principal results. Detailed per-route statistics, standard deviations, ranges and event distributions are provided in [APPENDIX.md](APPENDIX.md). Metric definitions and observation sources are specified in [METRIC_DESIGN.md](METRIC_DESIGN.md).
 
-## 2. F1 — Task Planning and Execution
+## 2. F1 - Task Planning and Execution
 
 All 60 N=3 robot-tasks on each platform were dispatched and reported as completed by RMF in the retained dataset. Mean bid latency ranged from 1.21 to 3.63 ms across scenario-platform conditions; pooled means were 3.10 ms in simulation and 2.29 ms on hardware.
 
@@ -21,7 +21,7 @@ Execution duration relative to the matched N=1 baseline
 
 Execution duration increased on all 24 route-platform comparisons. Bottleneck showed the greatest mean increase, while Shared Lane showed the smallest on both platforms. The 100% completion figure applies only to retained repeats, not all collection attempts.
 
-## 3. F2 — Traffic Scheduling
+## 3. F2 - Traffic Scheduling
 
 | Scenario | Platform | Conflict-free itineraries (%) | Resolved / Replanned / Unrecovered conflicts | Schedule feasibility (%) |
 |---|---|---|---|---|
@@ -36,7 +36,7 @@ Execution duration increased on all 24 route-platform comparisons. Bottleneck sh
 
 Conflict-free rate is itinerary-based; schedule feasibility is conflict-based. Shared Lane recorded only one conflict across both platforms, limiting its feasibility assessment. Matched scheduling-update latency averaged 5.86 ms in simulation and 5.66 ms on hardware; the largest observed latencies were 23.66 ms and 11.46 ms, respectively.
 
-## 4. F3 — Traffic Negotiation
+## 4. F3 - Traffic Negotiation
 
 | Scenario | Platform | Median notices / repeat | Resolved | Refused | Search failed |
 |---|---|---|---|---|---|
@@ -51,7 +51,7 @@ Conflict-free rate is itinerary-based; schedule feasibility is conflict-based. S
 
 Mean resolution latency for resolved negotiations was 0.126 s in simulation and 0.094 s on hardware. All resolved negotiations finished within the 15 s timeout. Simulation Crossing contained 401 refused negotiations concentrated in two repeats. Negotiation notices and distinct conflicts may differ because one conflict can generate repeated notices.
 
-## 5. F4 — Fleet Throughput and Utilisation
+## 5. F4 - Fleet Throughput and Utilisation
 
 | Scenario | Platform | Batch Throughput N=3 (tasks/min) | Scaling vs ideal 3× (%) | Workload ceiling (%) | Utilisation N=3 (%) |
 |---|---|---|---|---|---|
@@ -66,7 +66,7 @@ Mean resolution latency for resolved negotiations was 0.126 s in simulation and 
 
 Throughput scaling ranged from 26.8% to 62.7% of ideal threefold scaling. Both platforms ranked the scenarios Bottleneck, Crossing, Head-on and Shared Lane from lowest to highest scaling. Utilisation reflects commanded motion, not independently measured physical motion on hardware.
 
-## 6. F5 — Execution Fidelity
+## 6. F5 - Execution Fidelity
 
 Mean relative duration error (%)
 
@@ -79,7 +79,7 @@ Mean relative duration error (%)
 
 Duration underestimation was present at N=1 and increased at N=3 for every matched route. The hardware N=1 scenario means (+98.8% to +114.8%) exceeded simulation N=1 means (+15.8% to +31.2%). Finish-time offset, including dispatcher queueing, is reported separately in the appendix.
 
-## 7. F6 — Stationary Time
+## 7. F6 - Stationary Time
 
 Additional stationary time, N=3 minus matched N=1 mean (s / robot-task)
 
@@ -92,7 +92,7 @@ Additional stationary time, N=3 minus matched N=1 mean (s / robot-task)
 
 Bottleneck produced the largest additional stationary time on both platforms. Stationary time was determined from cmd_vel and cannot be attributed exclusively to traffic negotiation. Episode-duration statistics and route-level values are provided in the appendix.
 
-## 8. F7 — Inter-Robot Separation
+## 8. F7 - Inter-Robot Separation
 
 F7a/F7b use distances between RMF-reported reference poses (RobotState.location); they do not directly measure physical clearance. F7c estimates laser-centre separation from /scan and was validated against Gazebo ground truth in simulation only.
 
@@ -109,7 +109,7 @@ F7a/F7b use distances between RMF-reported reference poses (RobotState.location)
 
 Simulation validation of F7c at the 0.356 m threshold yielded 1,005 true positives, 29 false positives and 89 false negatives (97.2% precision; 91.9% recall at the instant level), over the 2,464 instants whose true separation was below 0.628 m, of which 94.3% had an attributable match. Hardware has no independent physical position reference; hardware separation estimates remain unvalidated. Some pose-based separations are below the minimum geometrically possible reference-point distance of 0.076 m.
 
-## 9. F8 — Fleet-Size Comparison
+## 9. F8 - Fleet-Size Comparison
 
 | Platform | N=1 mean planning latency (ms) | N=3 mean (ms) | Growth (%) | N=3 throughput scaling range (% of ideal) |
 |---|---|---|---|---|
@@ -118,7 +118,7 @@ Simulation validation of F7c at the 0.356 m threshold yielded 1,005 true positiv
 
 The evaluation includes only N=1 and N=3. These results quantify the observed change between two fleet sizes; they do not establish a scalability curve or breaking point.
 
-## 10. Cross-Feature Findings
+## 10. Cross Feature Findings
 
 - Bottleneck showed the greatest scenario-level execution overhead and additional stationary time on both platforms.
 - Execution overhead varied considerably among routes within the same scenario. For example, additional time on Head-on R2 was +102.4 s in simulation and +93.5 s on hardware, with approximately 12 m of additional RMF-reported travel on both.
