@@ -100,12 +100,14 @@ def main():
         conclusion[msg.conflict_version] = (t, bool(msg.resolved))
 
     def robot_state(msg, name):
+        """The named robot's entry in one /fleet_states message, or None."""
         for r in msg.robots:
             if r.name == name:
                 return r
         return None
 
     def task_active_on_robot_at(robot_name, t_query):
+        """The task_id the robot held at t_query, or None."""
         # The /fleet_states sample at or before t_query gives the task_id the robot
         # was carrying then.
         active = None

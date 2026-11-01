@@ -25,6 +25,7 @@ NOMINAL_SCAN_HZ = 10.0
 
 
 def read_topics(bag, wanted):
+    """{topic: [(timestamp_s, message)]} for the wanted topics."""
     from rclpy.serialization import deserialize_message
     from rosbag2_py import ConverterOptions, SequentialReader, StorageOptions
     from rosidl_runtime_py.utilities import get_message
@@ -43,6 +44,7 @@ def read_topics(bag, wanted):
 
 
 def covariance_stats(poses):
+    """(maximum, mean) AMCL position covariance radius over the poses."""
     if not poses:
         return None, None
     radii = []
@@ -53,6 +55,7 @@ def covariance_stats(poses):
 
 
 def spin_time(cmds):
+    """Seconds commanded to turn in place."""
     total = 0.0
     for (t0, m0), (t1, _) in zip(cmds, cmds[1:]):
         if abs(m0.angular.z) >= SPIN_ANGULAR_MIN and abs(m0.linear.x) <= SPIN_LINEAR_MAX:
@@ -61,6 +64,7 @@ def spin_time(cmds):
 
 
 def stalled_time(cmds):
+    """Seconds under command with neither linear nor angular motion."""
     total = 0.0
     for (t0, m0), (t1, _) in zip(cmds, cmds[1:]):
         if abs(m0.linear.x) <= SPIN_LINEAR_MAX and abs(m0.angular.z) < SPIN_ANGULAR_MIN:
@@ -77,6 +81,7 @@ def path_length(cmds):
 
 
 def clip(series, window):
+    """The series restricted to a (start, end) window, or unchanged when none is given."""
     if window is None:
         return series
     start, end = window
@@ -84,6 +89,7 @@ def clip(series, window):
 
 
 def analyse(bag, robot, window=None):
+    """Health figures for one robot: covariance, replans, spin, stall, path, scan rate."""
     topics = [f'/{robot}/amcl_pose', f'/{robot}/plan', f'/{robot}/cmd_vel',
               f'/{robot}/scan']
     data = read_topics(bag, topics)
@@ -115,6 +121,7 @@ def analyse(bag, robot, window=None):
 
 
 def task_window(repeat_dir):
+    """(makespan, (t_start, t_end)) of the repeat's first task, or (None, None)."""
     path = os.path.join(repeat_dir, 'task_planning_metrics.json')
     if not os.path.exists(path):
         return None, None
@@ -158,6 +165,7 @@ def main():
         row['makespan_s'] = makespan
         rows.append(row)
         def cell(value, width, digits):
+            """A right-aligned number, or a dash when absent."""
             return (f'{value:>{width}.{digits}f}' if value is not None
                     else f'{"-":>{width}}')
         print(f'{row["repeat"]:10}'

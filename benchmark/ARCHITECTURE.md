@@ -32,7 +32,7 @@ src/benchmark/
 | Hardware collection | Run N=1 and N=3 workloads; verify communication and capture readiness | hardware/run_hardware_baselines.sh, hardware/run_hardware_scenarios.sh, hardware/check_hardware_preflight.py |
 | Metric analysis | Compute feature-specific metrics from recorded data | analyse/<feature>/analyze_*.py |
 | Validity assessment | Assess recorded data and measurement validity | analyse/validity/analyze_*.py |
-| Aggregation and reporting | Compute fleet-size comparisons and aggregate statistics | analyse/fleet_coordination/analyze_fleet_scaling.py, analyse/summary/analyze_scalability.py, analyse/summary/write_appendix_tables.py |
+| Aggregation and reporting | Compute fleet-size comparisons and aggregate statistics | analyse/fleet_coordination/analyze_fleet_scaling.py, analyse/summary/analyze_scalability.py |
 
 Hardware collection also uses hardware/check_n3_coordination.py to assess N=3 repeat eligibility, hardware/check_zenoh_routes.py to check robot action routes, and hardware/hold_robot_topics.py to maintain topic availability through Zenoh.
 

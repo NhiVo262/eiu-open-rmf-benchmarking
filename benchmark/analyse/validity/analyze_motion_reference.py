@@ -35,12 +35,14 @@ GT_ANGULAR_RPS = 0.05
 
 
 def command_moving(commands, t):
+    """Whether the command held at t moves the robot."""
     times = [c[0] for c in commands]
     i = bisect.bisect_right(times, t) - 1
     return i >= 0 and t - commands[i][0] <= cmd_classifier.STALE_S and commands[i][1]
 
 
 def read_fleet_states(bag, robots):
+    """{robot: [(t, x, y, True)]} from /fleet_states, shaped for the reported-pose classifier."""
     reader = SequentialReader()
     reader.open(StorageOptions(uri=bag, storage_id='mcap'), ConverterOptions('', ''))
     types = {t.name: get_message(t.type) for t in reader.get_all_topics_and_types()}
@@ -55,6 +57,7 @@ def read_fleet_states(bag, robots):
 
 
 def read_ground_truth(path, robots):
+    """{robot: ([wall times], [(x, y, yaw)])}, or None when the file is absent."""
     out = {r: ([], []) for r in robots}
     if not os.path.exists(path):
         return None
@@ -69,6 +72,7 @@ def read_ground_truth(path, robots):
 
 
 def gt_moving(track, t):
+    """Whether the ground-truth pose step at t exceeds the linear or angular threshold."""
     times, poses = track
     i = bisect.bisect_left(times, t)
     if not 0 < i < len(times) or times[i] <= times[i - 1]:
@@ -80,11 +84,13 @@ def gt_moving(track, t):
 
 
 def tally(counts, name, source, reference):
+    """Add one sample to a comparison's [both moving, source only, reference only, both still]."""
     c = counts.setdefault(name, [0, 0, 0, 0])
     c[0 if source and reference else 1 if source else 2 if reference else 3] += 1
 
 
 def summarise(c):
+    """Agreement and disagreement rates from one comparison's counts."""
     both_moving, source_only, reference_only, both_still = c
     n = sum(c)
     return {'samples': n,

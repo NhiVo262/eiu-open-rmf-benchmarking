@@ -16,7 +16,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 '..', 'common'))
-from metric_statistics import summarize  # noqa: E402
+from metric_statistics import summarize 
 
 QUEUEING_OUTLIER_S = 400.0
 

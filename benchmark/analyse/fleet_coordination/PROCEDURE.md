@@ -1,11 +1,12 @@
-# Benchmark procedure — Feature 4: Fleet coordination
+# Benchmark procedure - Feature 4: Fleet coordination
 
-Computing the F4 metrics from a collected N=3 run. Scenario routes, spawn
-coordinates and the collection procedure itself are in
-[collect/simulation/PROCEDURE.md](../../collect/simulation/PROCEDURE.md).
+Computing the F4 metrics from the collected N=3 runs and their route-matched N=1
+baselines. Scenario routes, spawn coordinates and the collection procedure itself
+are in [collect/simulation/PROCEDURE.md](../../collect/simulation/PROCEDURE.md)
+and [collect/hardware/PROCEDURE.md](../../collect/hardware/PROCEDURE.md).
 
 Metric definitions, formulas, observation units and thresholds are in
-[METRIC_DESIGN.md](../../METRIC_DESIGN.md) §F4. This document covers the
+[METRIC_DESIGN.md](../../METRIC_DESIGN.md) §5 (F4). This document covers the
 inputs, the steps, the outputs and the handling of insufficient data. It holds no
 result figures.
 
@@ -15,22 +16,24 @@ result figures.
 
 | Item | Value |
 |---|---|
-| Feature | 4. Fleet coordination (4a task completion rate, 4b robot utilization) |
+| Feature | 4. Fleet coordination (4a task completion, 4b robot utilisation, throughput and scaling) |
 | Scenarios | Bottleneck, Crossing, Head-on, Shared Lane (N=3); the twelve route-matched baselines (N=1) |
-| ENV_ID | ENV_01 — EIU indoor lab (map `world_tb3`) |
+| ENV_ID | ENV_01 — Gazebo; ENV_02 — physical TurtleBot3 fleet (map `world_tb3`) |
 | FLEET_ID | N = 3 (`tb3_robot1`, `tb3_robot2`, `tb3_robot3`) |
 | CONFIG_ID | CONFIG_01 |
-| Repeats | 5 per scenario |
+| Repeats | 5 per scenario and 5 per baseline route, on each platform |
 
 ---
 
 ## 2. Input
 
-**Dataset**: `../../data/<platform>/scenarios/<scenario_dir>/run_*`, for `platform`
-in `hardware` and `simulation`, 4 scenarios × 5 repeats per platform, one bag per
-repeat. Each scenario directory holds one run. No separate collection pass is run
-for this feature; the signals it reads are recorded by
-`collect/<platform>/run_<platform>_scenarios.sh` into the same bags every other
+**Dataset**: `../../data/<platform>/scenarios/<scenario_dir>/run_*` and
+`../../data/<platform>/baselines/<scenario>_r<N>/run_*`, for `platform` in
+`hardware` and `simulation`: 4 scenarios × 5 repeats and 12 baseline routes × 5
+repeats per platform, one bag per repeat, one run per directory. No separate
+collection pass is run for this feature; the signals it reads are recorded by
+`collect/<platform>/run_<platform>_scenarios.sh` and
+`collect/<platform>/run_<platform>_baselines.sh` into the same bags every other
 feature reads.
 
 **Signals read**:
@@ -39,11 +42,11 @@ feature reads.
 |---|---|---|
 | `api_state_attempt<N>.jsonl` | the task state stream over `rmf_websocket`, `queued → standby → underway → completed` | 4a |
 | `task_planning_metrics.json` | each task's robot, `t_award` and `t_completed` | 4b window, throughput |
-| `/<robot>/cmd_vel` | the command driving each robot, about 20 Hz | 4b |
+| `/<robot>/cmd_vel` | the command driving each robot, published by the Nav2 controller server at `controller_frequency`, 10 Hz | 4b |
 
 `/dispatch_state`, which the metric table names for 4a, does not exist in this
-deployment. `RobotState.mode` is `MODE_IDLE` in every sample; `METRIC_DESIGN.md` §1.5
-has the source chain.
+deployment. `RobotState.mode` is `MODE_IDLE` in every sample, so it separates no
+robot state from another; `METRIC_DESIGN.md` §10 has the measurement scope.
 
 `record_api_state.py` must have captured the run: 4a reads the terminal task
 transition from `api_state_attempt<N>.jsonl` and computes no completion figure
@@ -108,15 +111,15 @@ A repeat with a task that never completed has no execution window, and its 4b an
 throughput are null.
 
 A robot whose `cmd_vel` holds no message in the bag has no utilisation: it is reported as
-null and left out of the mean. On hardware Shared Lane, `tb3_robot3`'s `cmd_vel` is empty
-in all five repeats, so that scenario's utilisation covers two robots.
+null and left out of the mean, and `4b_n_robots_scored` says how many robots the mean
+covers.
 
 ---
 
 ## 6. Results
 
-Reported figures live in one place, [RESULTS.md](../../RESULTS.md),
-generated from the per-repeat metrics by
+Reported figures live in one place, [RESULTS.md](../../RESULTS.md) §5 and
+[APPENDIX.md](../../APPENDIX.md), generated from the per-repeat metrics by
 `../summary/show_collection_summary.py`. They are not repeated here, so that one
 copy cannot drift from another.
 

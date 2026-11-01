@@ -25,6 +25,7 @@ import statistics as st
 
 
 def latencies_ms(paths, first_only=False):
+    """Planning latencies in milliseconds, over every task or each batch's first task."""
     out = []
     for f in paths:
         tasks = sorted(json.load(open(f))['per_task'], key=lambda t: t['t_bid_notice'])
@@ -35,7 +36,9 @@ def latencies_ms(paths, first_only=False):
 
 
 def growth(p3, p1):
+    """Latency statistics at both fleet sizes and the growth between them."""
     def stats(v):
+        """Count, mean, median and maximum of the latencies, in milliseconds."""
         return {'n': len(v), 'mean_ms': round(st.mean(v), 3), 'median_ms': round(st.median(v), 3),
                 'max_ms': round(max(v), 3)}
     a, b = stats(p3), stats(p1)

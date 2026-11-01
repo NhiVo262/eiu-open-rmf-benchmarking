@@ -51,6 +51,7 @@ def read_fleet_states(bag):
 
 
 def to_sim_time(clock_wall, clock_sim, wall):
+    """Sim time of a wall instant, via the nearest /clock sample."""
     i = bisect.bisect_left(clock_wall, wall)
     candidates = [k for k in (i - 1, i) if 0 <= k < len(clock_wall)]
     if not candidates:
@@ -60,6 +61,7 @@ def to_sim_time(clock_wall, clock_sim, wall):
 
 
 def is_pose_on_navigation_graph(graph, map_name, x, y, yaw, params):
+    """Whether rmf_traffic merges the pose onto the graph at any of the retry distances."""
     position = np.array([x, y, yaw])
     now = datetime.datetime.now()
     for multiplier in GRAPH_MERGE_MULTIPLIERS:

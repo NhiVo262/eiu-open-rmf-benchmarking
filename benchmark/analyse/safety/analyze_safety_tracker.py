@@ -52,17 +52,7 @@ def load_ground_truth(path):
 
 
 def load_rmf_observed(bag):
-    """One /fleet_states MESSAGE is one frame.
-
-    Grouping instead by each robot's location.t looks natural and is wrong:
-    robots in the same message can carry timestamps a few ms apart, which
-    splits one simultaneous observation into separate frames. Measured on a
-    pilot bag: 3065 messages, every one carrying all 3 robots, became 3308
-    frames of which 335 held a single robot and produced no pair at all, and
-    328 held only two. Distances are only defined between robots observed at
-    the same moment, so the message is the correct unit; the frame is stamped
-    with the mean of its robots' location.t (intra-message spread is ms).
-    """
+    """{timestamp_s: {robot: (x, y)}} from /fleet_states, for frames holding two robots or more."""
     r = SequentialReader()
     r.open(StorageOptions(uri=bag, storage_id='mcap'), ConverterOptions('', ''))
     tm = {t.name: t.type for t in r.get_all_topics_and_types()}
@@ -175,6 +165,7 @@ def main():
     gt = load_ground_truth(gt_path) if os.path.exists(gt_path) else None
 
     def fmt(eps):
+        """Episodes as JSON records."""
         return [{'pair': list(p), 't_start': round(s, 3), 't_end': round(e, 3),
                  'min_distance_m': round(d, 4)} for p, s, e, d in eps]
 

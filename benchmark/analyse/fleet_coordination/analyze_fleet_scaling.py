@@ -30,6 +30,7 @@ METRICS = 'fleet_coordination_metrics.json'
 
 
 def repeats(run_dir):
+    """Yield (repeat_dir, metrics) for every repeat of the run holding a metrics file."""
     for repeat in sorted(glob.glob(os.path.join(run_dir, 'repeat_*'))):
         f = os.path.join(repeat, METRICS)
         if os.path.exists(f):
@@ -37,10 +38,12 @@ def repeats(run_dir):
 
 
 def places(repeat):
+    """The route waypoints of the repeat's first task."""
     return tuple(json.load(open(os.path.join(repeat, 'task_planning_metrics.json')))['per_task'][0]['places'])
 
 
 def pooled_utilisation(entries):
+    """Moving time over window time, summed across robots and repeats, as a percentage."""
     moving = window = 0.0
     for _, m in entries:
         for robot in (m['4b_per_robot'] or {}).values():
@@ -51,6 +54,7 @@ def pooled_utilisation(entries):
 
 
 def assess(scenario_run, baseline_runs):
+    """Throughput, scaling, ceiling and utilisation for one scenario against its baselines."""
     scen = list(repeats(scenario_run))
     n_robots = max(len(m['4b_per_robot'] or {}) for _, m in scen)
     th_n = 60.0 * sum(m['n_tasks_completed'] for _, m in scen) / sum(m['4b_window_s'] for _, m in scen)

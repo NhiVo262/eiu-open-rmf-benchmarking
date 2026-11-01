@@ -1,11 +1,12 @@
 # Benchmark procedure — Feature 2: Traffic scheduling
 
-Computing the F2 metrics from a collected N=3 run. Scenario routes, spawn
+Computing the F2 metrics from the collected N=3 runs. Scenario routes, spawn
 coordinates and the collection procedure itself are in
-[collect/simulation/PROCEDURE.md](../../collect/simulation/PROCEDURE.md).
+[collect/simulation/PROCEDURE.md](../../collect/simulation/PROCEDURE.md) and
+[collect/hardware/PROCEDURE.md](../../collect/hardware/PROCEDURE.md).
 
 Metric definitions, formulas, observation units and thresholds are in
-[METRIC_DESIGN.md](../../METRIC_DESIGN.md) §F2. This document covers the
+[METRIC_DESIGN.md](../../METRIC_DESIGN.md) §3 (F2). This document covers the
 inputs, the steps, the outputs and the handling of insufficient data. It holds no
 result figures.
 
@@ -15,12 +16,12 @@ result figures.
 
 | Item | Value |
 |---|---|
-| Feature | 2. Traffic scheduling (2a conflict-free scheduling rate, 2b schedule propagation latency) |
+| Feature | 2. Traffic scheduling (2a-i conflict-free itinerary rate, 2a-ii schedule feasibility, 2b schedule update latency) |
 | Scenarios | Bottleneck, Crossing, Head-on, Shared Lane |
-| ENV_ID | ENV_01 — EIU indoor lab (map `world_tb3`) |
+| ENV_ID | ENV_01 — Gazebo; ENV_02 — physical TurtleBot3 fleet (map `world_tb3`) |
 | FLEET_ID | N = 3 (`tb3_robot1`, `tb3_robot2`, `tb3_robot3`) |
 | CONFIG_ID | CONFIG_01 |
-| Repeats | 5 per scenario |
+| Repeats | 5 per scenario on each platform |
 
 ---
 
@@ -42,8 +43,11 @@ feature reads.
 | `/rmf_traffic/negotiation_conclusion` | the conflict outcome, with `resolved` |
 | `/rmf_traffic/query_update_1` | the mirror update that reflects a committed itinerary |
 | `/task_api_requests` | task submissions, the denominator of the feasibility verdict |
+| `/rmf_task/bid_notice`, `/rmf_task/bid_response` | the planner-compute interval reported beside 2b |
+| `/rmf_traffic/participants` | participant id to robot name |
+| `/fleet_states` | the task a robot held when a conflict was noticed |
 
-`run_simulation_scenarios.sh` runs this feature's per-repeat analyser and the
+`run_<platform>_scenarios.sh` runs this feature's per-repeat analyser and the
 per-run merge itself, so the steps below are needed only to recompute an existing
 run.
 
@@ -109,9 +113,7 @@ Conflict?
 
 A task is infeasible only if it was the task active on a robot (per
 `/fleet_states`) that participated in a conflict ending unresolved **and**
-unrecovered. The recovery window is 5 s; on the current collection the only
-abandoned conflict recovered in 0.01 s, so any window from 0.1 s to 30 s gives
-the same verdict.
+unrecovered. The recovery window is 5 s, as `METRIC_DESIGN.md` §3 defines it.
 
 Negotiation outcome counts are not reported here. They belong to F3, which
 measures negotiation events and latency.
@@ -119,9 +121,6 @@ measures negotiation events and latency.
 ---
 
 ## 5. Insufficient data
-
-A `MirrorUpdate` carrying `is_remedial_update` is excluded from the 2b sample
-rather than counted as a slow propagation.
 
 An itinerary with no matching `query_update_1` in the recording contributes to
 neither numerator nor denominator of 2b, and is counted in the output so the
@@ -131,8 +130,8 @@ sample size stays visible.
 
 ## 6. Results
 
-Reported figures live in one place, [RESULTS.md](../../RESULTS.md),
-generated from the per-repeat metrics by
+Reported figures live in one place, [RESULTS.md](../../RESULTS.md) §3 and
+[APPENDIX.md](../../APPENDIX.md), generated from the per-repeat metrics by
 `../summary/show_collection_summary.py`. They are not repeated here, so that one
 copy cannot drift from another.
 

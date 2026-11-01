@@ -1,8 +1,7 @@
 # Appendix - Per-Feature Statistics
 
-All statistics are generated from per-repeat metric outputs using
-analyse/summary/write_appendix_tables.py. This appendix is the reference for
-quantitative results in [RESULTS.md](RESULTS.md).
+All statistics are derived from the per-repeat metric outputs under `data/`. This
+appendix is the reference for quantitative results in [RESULTS.md](RESULTS.md).
 
 **Unit of analysis.** Each N=3 repeat comprises three dependent robot-tasks.
 Robot-task statistics describe variation across tasks; scenario- and route-level

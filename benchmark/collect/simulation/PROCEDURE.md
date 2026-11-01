@@ -48,8 +48,8 @@ python3 $B/analyse/task_planning/analyze_task_planning_all_runs.py \
 ```
 
 It rewrites each repeat's `task_planning_metrics.json` in place and reports any repeat it
-skipped. The F1 tables in `RESULTS.md` §A are computed from those files as
-`METRIC_DESIGN.md` §F1 defines: dispersion per route, the batch figure per repeat.
+skipped. The F1 tables in `RESULTS.md` §2 are computed from those files as
+`METRIC_DESIGN.md` §2 (F1) defines: dispersion per route, the batch figure per repeat.
 
 ## Collecting a dataset from scratch
 

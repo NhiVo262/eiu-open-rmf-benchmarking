@@ -44,6 +44,7 @@ def read_profile_separation(fleet_config_path, nav_graph_path):
 
 
 def recorded_capture(run_dir, repeat_dir):
+    """(api_state path, task ids) recorded for this repeat; the path is None when absent."""
     metrics = os.path.join(repeat_dir, 'task_planning_metrics.json')
     if not os.path.exists(metrics):
         return None, set()
@@ -58,6 +59,7 @@ def recorded_capture(run_dir, repeat_dir):
 
 
 def robots_given_work(run_dir, repeat_dir):
+    """The robots the capture shows a task assigned to."""
     path, ids = recorded_capture(run_dir, repeat_dir)
     out = set()
     if path is None:
@@ -96,6 +98,7 @@ def load_ground_truth(repeat_dir):
 
 
 def per_robot_error(repeat_dir):
+    """Per robot: timestamped pose errors, ground-truth distance covered, last instant moved."""
     gt = load_ground_truth(repeat_dir)
     gts = sorted(gt)
     bag = os.path.join(repeat_dir, 'bag')
@@ -146,6 +149,7 @@ def per_robot_error(repeat_dir):
 
 
 def assess_repeat(run_dir, repeat_dir, threshold):
+    """Per-robot error statistics and the measurability verdict for one repeat."""
     dispatched = robots_given_work(run_dir, repeat_dir)
     errors, travelled, last_moved = per_robot_error(repeat_dir)
     robots = {}

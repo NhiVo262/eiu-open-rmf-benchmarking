@@ -1,11 +1,12 @@
-# Benchmark procedure — Feature 7: Safety and collision avoidance
+# Benchmark procedure - Feature 7: Safety and collision avoidance
 
-Computing the F7 metrics from a collected N=3 run. Scenario routes, spawn
+Computing the F7 metrics from the collected N=3 runs. Scenario routes, spawn
 coordinates and the collection procedure itself are in
-[collect/simulation/PROCEDURE.md](../../collect/simulation/PROCEDURE.md).
+[collect/simulation/PROCEDURE.md](../../collect/simulation/PROCEDURE.md) and
+[collect/hardware/PROCEDURE.md](../../collect/hardware/PROCEDURE.md).
 
 Metric definitions, formulas, observation units and thresholds are in
-[METRIC_DESIGN.md](../../METRIC_DESIGN.md) §F7. This document covers the
+[METRIC_DESIGN.md](../../METRIC_DESIGN.md) §8 (F7). This document covers the
 inputs, the steps, the outputs and the handling of insufficient data. It holds no
 result figures.
 
@@ -15,12 +16,12 @@ result figures.
 
 | Item | Value |
 |---|---|
-| Feature | 7. Safety and collision avoidance (7a minimum inter-robot separation, 7b near-collision episodes) |
+| Feature | 7. Safety and collision avoidance (7a minimum reported separation, 7b separation threshold events, 7c lidar-derived separation) |
 | Scenarios | Bottleneck, Crossing, Head-on, Shared Lane |
-| ENV_ID | ENV_01 — Gazebo fleet, for 7a, 7b and 7c; ENV_02 — physical fleet, for 7c (map `world_tb3`) |
+| ENV_ID | ENV_01 — Gazebo; ENV_02 — physical TurtleBot3 fleet (map `world_tb3`). 7a, 7b and 7c run on both; the ground-truth variant of 7a and 7b is simulation only |
 | FLEET_ID | N = 3 (`tb3_robot1`, `tb3_robot2`, `tb3_robot3`) |
 | CONFIG_ID | CONFIG_01 |
-| Repeats | 5 per scenario |
+| Repeats | 5 per scenario on each platform |
 
 ---
 
@@ -42,9 +43,12 @@ feature reads.
 | `/scan` | the lidar returns, for the laser-centre separation | 7c, on both platforms |
 
 7a and 7b are reported from `/fleet_states`, the requirement's data source, although
-its rationale is physical safety (`METRIC_DESIGN.md` §F7, R1). `METRIC_DESIGN.md` §2 has the inequality that bounds
-their difference. The as-specified figures do not describe physical proximity by
-themselves: the reported pose can move smoothly while being wrong.
+its rationale is physical safety (`METRIC_DESIGN.md` §8). The difference between a
+reported separation and the true one is bounded by the two robots' own position
+errors, `| ‖p̂i − p̂j‖ − ‖pi − pj‖ | <= ‖ei‖ + ‖ej‖`, which is why
+`analyse/validity/analyze_localization_validity.py` sets its threshold at half the
+0.628 m conflict separation. The as-specified figures do not describe physical
+proximity by themselves: the reported pose can move smoothly while being wrong.
 
 **Threshold.** `d_safe = 2 × footprint radius = 0.356 m`, with the footprint
 radius 0.178 m from
@@ -123,16 +127,17 @@ A repeat without `ground_truth_poses.jsonl`, every hardware repeat, yields the
 as-specified 7a and 7b only; the output records `ground_truth: null` and the reason. 7c
 needs `/scan` from at least two robots and exits otherwise.
 
-F7 is not gated by the position-error validity criterion, because it reads the
-position reference rather than an RMF decision
+F7 is not gated by the position-error validity criterion: its as-specified figures
+are reported as the separation RMF held, not as physical proximity, and its
+ground-truth figures read the position reference directly
 (`SYSTEM_UNDER_TEST.md` §4).
 
 ---
 
 ## 6. Results
 
-Reported figures live in one place, [RESULTS.md](../../RESULTS.md),
-generated from the per-repeat metrics by
+Reported figures live in one place, [RESULTS.md](../../RESULTS.md) §8 and
+[APPENDIX.md](../../APPENDIX.md), generated from the per-repeat metrics by
 `../summary/show_collection_summary.py`. They are not repeated here, so that one
 copy cannot drift from another.
 

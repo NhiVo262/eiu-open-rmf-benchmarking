@@ -65,10 +65,12 @@ def nearest(times, values, t):
 
 
 def wrap(angle):
+    """An angle folded into [-pi, pi)."""
     return (angle + math.pi) % (2 * math.pi) - math.pi
 
 
 def assess_pair(scans, poses, a, b, args):
+    """Corroboration counts for one robot pair: 7c against RMF-held poses, in both directions."""
     held_at_close = []
     near_instants = with_head = 0
     chords = []

@@ -30,8 +30,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
 from metric_statistics import summarize  # noqa: E402
 
 POS_EPS = 0.01  # meters, movement threshold between consecutive fleet_states samples
-# Metres per second above which a step between two fleet_states samples is the reported
-# pose moving rather than the robot; the TurtleBot3 Burger tops out at 0.22 m/s.
 MAX_PLAUSIBLE_SPEED = 0.30
 ANALYSIS_VERSION = 2
 
@@ -54,18 +52,10 @@ TERMINAL = ('completed', 'error', 'canceled', 'killed', 'failed')
 
 
 def completion_fields(state, t_submit, t_award, has_api_state):
-    """Return the task fields that do not depend on a robot being observed holding the
-    task: its terminal status, whether it completed, whether it is censored, the
-    dispatcher's queueing, and the submit-to-completion duration.
-
-    state is this task's entry from load_task_terminal_state, or {} when it has none.
-    unresolved carries why no makespan is defined, or None when completion is in hand.
-    """
+    """Terminal status, completion, censoring, queueing and submit-to-completion duration."""
     status = state.get('status')
     completed = status == 'completed'
     t_completed = state.get('t_terminal') if completed else None
-    # Censored: no terminal state before the capture stopped, so the duration is known
-    # only to exceed what was observed.
     censored = has_api_state and status not in TERMINAL
 
     if not has_api_state:

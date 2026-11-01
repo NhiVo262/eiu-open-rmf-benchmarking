@@ -108,23 +108,25 @@ def main():
 
     if wall_clock_run:
         def sim_to_wall(sim_t):
+            """Wall time of a sim instant; the identity on a system-clock run."""
             return sim_t, False
 
         def nearest_offset(bag_wall_t):
+            """Sim-to-wall offset; zero on a system-clock run."""
             return 0.0
     else:
 
         def nearest_offset(bag_wall_t):
-            # v1 conversion, reported only as the size of the drift correction
+            """Sim-to-wall offset at the /clock sample nearest bag_wall_t."""
             best = min(clock_samples, key=lambda c: abs(c[0] - bag_wall_t))
             wall, sim = best
             return wall - sim  # wall = sim + offset
 
-        # v2: look the instant up directly rather than assume a constant offset
         by_sim = sorted(clock_samples, key=lambda c: c[1])
         sims = [c[1] for c in by_sim]
 
         def _rate(i0, i1):
+            """Wall seconds per sim second between two /clock samples."""
             dw = by_sim[i1][0] - by_sim[i0][0]
             ds = by_sim[i1][1] - by_sim[i0][1]
             return dw / ds if ds > 0 else 1.0

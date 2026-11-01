@@ -76,7 +76,7 @@ def main():
     for t, msg in negotiation_notice:
         first_notice_time.setdefault(msg.conflict_version, t)
 
-    # ---- conclusion time per conflict_version (last one, defensive only) ----
+    # ---- conclusion time per conflict_version ----
     conclusion_time = {}
     for t, msg in negotiation_conclusion:
         conclusion_time[msg.conflict_version] = (t, bool(msg.resolved))

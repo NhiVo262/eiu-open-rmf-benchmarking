@@ -65,6 +65,7 @@ def read_bag(bag):
 
 
 def assess(repeat_dir, run_dir):
+    """Streams present, physics defects, localisation error and per-metric validity."""
     bag = os.path.join(repeat_dir, 'bag')
     gt_path = os.path.join(repeat_dir, 'ground_truth_poses.jsonl')
     rec = {'repeat_dir': repeat_dir}
@@ -85,7 +86,7 @@ def assess(repeat_dir, run_dir):
         'negotiation_statuses': '/rmf_traffic/negotiation_statuses' in topics,
     }
 
-    # --- physics: did the body actually move impossibly fast? ---
+    # --- physics: ground-truth steps above REAL_MOTION_MPS ---
     per_gt = {}
     for t in gts:
         for nm, p in gt[t].items():

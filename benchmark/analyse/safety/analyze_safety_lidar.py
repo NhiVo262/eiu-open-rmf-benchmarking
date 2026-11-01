@@ -23,7 +23,6 @@ import os
 
 ANALYSIS_VERSION = 2
 
-# --- geometry, read from tb3_robot1.sdf and turtlebot3_common/meshes/sensors/lds.stl
 LIDAR_MIN_RANGE_M = 0.120
 LIDAR_MAX_RANGE_M = 3.5
 LIDAR_NOISE_SD_M = 0.01
@@ -34,8 +33,7 @@ HEAD_FAR_M = 0.034
 HEAD_DIAMETER_M = 0.064
 MUTUAL_TOL_M = HEAD_FAR_M - HEAD_NEAR_M + 4 * LIDAR_NOISE_SD_M   # 0.045
 
-# Chord bounds for a cluster to be the LDS head: two beams at the lower end, one beam
-# spacing at 3 m at the upper.
+
 MIN_CHORD_M = 0.02
 MAX_CHORD_M = 0.12
 EPISODE_GAP_S = 1.0            # matched instants closer than this belong to one episode
@@ -77,13 +75,7 @@ def read_scans(bag, robots):
 
 
 def clusters(angle_min, angle_increment, ranges):
-    """Isolated, robot-sized clusters in one scan.
-
-    Segmented on a range discontinuity rather than on a fixed gap, because the
-    spacing between neighbouring beams grows with range: at 0.3 m two adjacent
-    beams are 5 mm apart, at 3 m they are 52 mm apart, so one absolute threshold
-    either splits a near object or merges a far one.
-    """
+    """Isolated, robot-sized clusters in one scan."""
     valid = [(i, r) for i, r in enumerate(ranges)
              if r is not None and not math.isnan(r)
              and LIDAR_MIN_RANGE_M <= r <= LIDAR_MAX_RANGE_M]
@@ -100,8 +92,6 @@ def clusters(angle_min, angle_increment, ranges):
             run = [(i, r)]
     out.append(run)
 
-    # Join the first and last runs when they are continuous across the 0/2*pi seam,
-    # so an object straddling it is one cluster.
     if len(out) > 1:
         first, last = out[0], out[-1]
         n = len(ranges)
@@ -116,12 +106,10 @@ def clusters(angle_min, angle_increment, ranges):
             continue
         rs = [r for _, r in run]
         mean_r = sum(rs) / len(rs)
-        # Beam count, not index difference, which is negative across the seam.
         width = (len(run) - 1) * abs(angle_increment)
         chord = 2.0 * mean_r * math.sin(width / 2.0) if width > 0 else 0.0
         if not (MIN_CHORD_M <= chord <= MAX_CHORD_M):
             continue
-        # Circular mean, the arithmetic mean being wrong across the seam.
         sin_sum = sum(math.sin(angle_min + i * angle_increment) for i, _ in run)
         cos_sum = sum(math.cos(angle_min + i * angle_increment) for i, _ in run)
         kept.append({'mean_range_m': mean_r,
@@ -148,12 +136,7 @@ def pair_by_time(a_scans, b_scans, max_dt):
 
 
 def mutual_range(scan_a, scan_b):
-    """Smallest range on which the two scans agree, or None.
-
-    Agreement to within MUTUAL_TOL_M is the attribution: r_A - r_B is bounded by
-    the 2.9 cm hull spread, so a wall seen by both at unrelated distances cannot
-    pass, while the robots themselves must.
-    """
+    """Smallest range on which the two scans agree, or None."""
     ca = clusters(*scan_a[1:])
     cb = clusters(*scan_b[1:])
     best = None
@@ -172,25 +155,7 @@ def count_episodes(times, gap_s=EPISODE_GAP_S):
 
 
 def analyse_pair(name_a, a_scans, name_b, b_scans, d_safe_m, max_dt):
-    """Return the 7c separation statistics for one robot pair, from the scans each
-    robot recorded, pairing scans within max_dt.
-
-    Geometry: each laser returns the other robot's LDS head, whose outline lies 0.029 to
-    0.034 m from that head's laser centre. With D the separation between laser centres
-    and h_A, h_B each head's extent along the ray:
-
-        r_A = D - h_B        r_B = D - h_A        h_A, h_B in [0.029, 0.034]
-
-    r_A - r_B is bounded by 0.005 m plus noise, so the two clusters that are each other
-    agree in range, which attributes a match without any position. And D lies in
-    [r + 0.029, r + 0.034]. The laser centres sit 0.032 m behind each model origin, so
-    D differs from the origin separation 7a reads by at most 0.064 m, depending on the
-    headings.
-
-    Range agreement alone also admits two unrelated returns at equal range. Such a match
-    can only lower the minimum, so the minimum is conservative while the other robot is
-    returned; analyze_lidar_attribution.py measures both effects against ground truth.
-    """
+    """7c for one robot pair: coverage, minimum separation interval and below-d_safe counts."""
     paired = pair_by_time(a_scans, b_scans, max_dt)
     matched = []
     for t, sa, sb in paired:
@@ -220,14 +185,7 @@ def analyse_pair(name_a, a_scans, name_b, b_scans, d_safe_m, max_dt):
 
 
 def self_test():
-    """Synthetic scans with a known separation, so the arithmetic is checked not asserted.
-
-    Two robots face each other at a known laser-centre separation D. Each sees the
-    other's LDS head at D - 0.031 across the beams the 0.064 m head subtends, and a
-    wall-sized return 0.02 m nearer on the opposite side. The recovered interval
-    must contain D, the wall must not be matched, and a separation below the floor
-    must read as not seen.
-    """
+    """Recover known separations from synthetic scans; returns a shell exit code."""
     print('%10s %14s %18s %16s %s' % ('D set', 'range seen', 'D recovered',
                                       'contains truth', 'contact flag'))
     print('-' * 78)
@@ -239,6 +197,7 @@ def self_test():
         half = max(1, int(math.atan2(HEAD_DIAMETER_M / 2, max(r, 0.12)) / inc))
         wall_half = int(math.atan2(0.5, r) / inc)
         def make(centre):
+            """A synthetic scan with a head-sized cluster at one index and a wall opposite."""
             ranges = [float('inf')] * n
             for k in range(centre - half, centre + half + 1):
                 ranges[k % n] = r if r >= LIDAR_MIN_RANGE_M else float('inf')

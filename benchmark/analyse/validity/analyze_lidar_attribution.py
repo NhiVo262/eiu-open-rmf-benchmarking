@@ -111,6 +111,7 @@ def assess_pair(scans, times, lasers, a, b, close_m, d_safe_m):
 
 
 def assess_repeat(repeat_dir, close_m, d_safe_m):
+    """Attribution counts for every robot pair of one repeat, or the reason none were made."""
     gt_path = os.path.join(repeat_dir, 'ground_truth_poses.jsonl')
     if not os.path.exists(gt_path):
         return {'repeat_dir': repeat_dir, 'pairs': None, 'reason': 'no ground_truth_poses.jsonl'}

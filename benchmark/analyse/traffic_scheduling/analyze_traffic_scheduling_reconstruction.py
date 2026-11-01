@@ -10,10 +10,6 @@ judge Feature 2a, in two stages.
                        published: matched, missed, extra
 
 Stage 1 is the prerequisite for stage 2.
-
-Delay model: an itinerary_set establishes a base itinerary, and each subsequent
-itinerary_delay for that participant adds its signed delay to the itinerary in force;
-querying a position at time t applies the delays received up to t.
 """
 import argparse
 import bisect
@@ -101,6 +97,7 @@ class Schedule:
             self.delays.setdefault(pid, []).append((t, d))
 
     def itinerary_at(self, pid, t_wall):
+        """The participant's itinerary in force at t_wall, with the delay accumulated on it."""
         cand = [(t, w) for t, w in self.sets.get(pid, []) if t <= t_wall]
         if not cand:
             return None, 0.0
@@ -109,6 +106,7 @@ class Schedule:
         return wps, shift
 
     def position_at(self, pid, t_wall, t_sim):
+        """The scheduled position of a participant at sim time t_sim, or None."""
         wps, shift = self.itinerary_at(pid, t_wall)
         if wps is None:
             return None
@@ -137,12 +135,12 @@ def main():
             gt[o['sim_t']] = {k: (v['x'], v['y']) for k, v in o['robots'].items()}
     gts = sorted(gt)
 
-    # wall -> sim via the nearest /clock sample; without /clock the conversion is the
-    # identity.
+
     cw = [c[0] for c in d['clock']]
     cs = [c[1] for c in d['clock']]
 
     def wall_to_sim(tw):
+        """Sim time of a wall instant, via the nearest /clock sample."""
         if not cw:
             return tw
         i = bisect.bisect_left(cw, tw)
@@ -152,7 +150,6 @@ def main():
 
     sched = Schedule(d['sets'], d['delays'])
 
-    # ---- stage 1: reconstructed position against ground truth ----
     horizons = [0, 5, 10, 20, 40]
     fidelity = {}
     for t_set, pid, wps in d['sets']:
@@ -186,7 +183,6 @@ def main():
                                 'p90_m': round(v[int(len(v) * 0.9)], 3),
                                 'max_m': round(v[-1], 3)}
 
-    # ---- stage 2: reconstructed conflicts against RMF's notices ----
     ours = []
     pids = sorted(sched.sets)
     t_lo = min(t for t, _, _ in d['sets'])
