@@ -171,13 +171,16 @@ def main():
         per_conflict.append(entry)
 
     n_task_infeasible = len(infeasible_task_ids)
-    schedule_feasibility_pct = (
-        100.0 * (n_submit - n_task_infeasible) / n_submit if n_submit else None
-    )
-
     outcome_counts = {}
     for c in per_conflict:
         outcome_counts[c['outcome']] = outcome_counts.get(c['outcome'], 0) + 1
+
+    n_conflicts_classified = len(per_conflict)
+    n_feasible = (outcome_counts.get('resolved_by_negotiation', 0)
+                  + outcome_counts.get('recovered_by_replan', 0))
+    schedule_feasibility_pct = (
+        100.0 * n_feasible / n_conflicts_classified if n_conflicts_classified else None
+    )
 
     # ---- 2a (ii): conflict-free scheduling rate ----
     # Each notice is charged to the participant's most recent itinerary at or before it.
@@ -235,9 +238,10 @@ def main():
         'n_submit': n_submit,
         'n_conflicts_detected': len(conclusion),
         '2a_method': (
-            'schedule feasibility: a conflict makes its tasks infeasible only if the '
-            f'negotiation ended unresolved AND no participant established a new '
-            f'itinerary within {RECOVERY_WINDOW_S}s (replan recovery)'
+            'schedule feasibility = (resolved + recovered) / classified conflicts; a '
+            'conflict is recovered when, after an unresolved negotiation, a participant '
+            f'established a new itinerary within {RECOVERY_WINDOW_S}s (replan recovery). '
+            'Null where no conflict was classified'
         ),
         '2a_method_conflict_free': (
             'conflict-free scheduling rate = itineraries that did not trigger a '
@@ -248,6 +252,7 @@ def main():
         '2a_conflict_free_scheduling_pct': conflict_free_pct,
         '2a_n_itineraries': n_itineraries,
         '2a_n_itineraries_triggering_negotiation': len(triggered),
+        '2a_n_conflicts_classified': n_conflicts_classified,
         '2a_n_task_infeasible': n_task_infeasible,
         '2a_schedule_feasibility_pct': schedule_feasibility_pct,
         '2a_conflict_outcome_counts': outcome_counts,

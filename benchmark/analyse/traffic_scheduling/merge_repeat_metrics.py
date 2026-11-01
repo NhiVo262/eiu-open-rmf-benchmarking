@@ -3,7 +3,8 @@
 scenario-level metrics file.
 
   counts        n_submit, n_conflicts_detected and 2a_n_task_infeasible are summed
-  percentages   recomputed from the summed counts, not averaged over repeats
+  feasibility   (resolved + recovered) / classified conflicts, over the summed outcome
+                counts, not averaged over repeats
   outcomes      resolved_by_negotiation, recovered_by_replan and unrecovered are
                 summed per key
   2b            pooled from the concatenated raw_scheduling_times_s
@@ -46,14 +47,17 @@ def main():
     n_conflicts_detected = sum(r['n_conflicts_detected'] for r in per_repeat)
     n_task_infeasible = sum(r['2a_n_task_infeasible'] for r in per_repeat)
 
-    schedule_feasibility_pct = (
-        100.0 * (n_submit - n_task_infeasible) / n_submit if n_submit else None
-    )
-
     outcome_counts = {}
     for r in per_repeat:
         for k, v in (r.get('2a_conflict_outcome_counts') or {}).items():
             outcome_counts[k] = outcome_counts.get(k, 0) + v
+
+    n_conflicts_classified = sum(outcome_counts.values())
+    n_feasible = (outcome_counts.get('resolved_by_negotiation', 0)
+                  + outcome_counts.get('recovered_by_replan', 0))
+    schedule_feasibility_pct = (
+        100.0 * n_feasible / n_conflicts_classified if n_conflicts_classified else None
+    )
 
     raw_scheduling_times_s = []
     for r in per_repeat:
@@ -73,6 +77,7 @@ def main():
         'n_repeats': len(per_repeat),
         'n_submit': n_submit,
         'n_conflicts_detected': n_conflicts_detected,
+        '2a_n_conflicts_classified': n_conflicts_classified,
         '2a_n_task_infeasible': n_task_infeasible,
         '2a_schedule_feasibility_pct': schedule_feasibility_pct,
         '2a_conflict_outcome_counts': outcome_counts,
