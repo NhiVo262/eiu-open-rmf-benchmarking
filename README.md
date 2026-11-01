@@ -36,17 +36,17 @@ Simulation and hardware share one office-floor environment.
 
 - **Gazebo world:** the SDF world model of the floor, used in simulation.
 
-![Gazebo world, top view](docs/images/gazebo_world.png)
+![Gazebo world world_tb3, top view](docs/images/world_tb3_gazebo.png)
 
 - **Occupancy grid map:** the static map AMCL localises against and the Nav2 costmaps
   are built from.
 
-![Occupancy grid map and costmap inflation layer](docs/images/slam_map_costmap.png)
+![Nav2 global costmap: static layer and inflation layer](docs/images/nav2_global_costmap.png)
 
 - **RMF navigation graph:** the waypoints and lanes the fleet adapter plans over and
   the traffic schedule reserves.
 
-![Open-RMF navigation graph](docs/images/rmf_nav_graph.png)
+![Open-RMF navigation graph: waypoints and lanes](docs/images/rmf_nav_graph.png)
 
 The four benchmark scenarios use predefined routes on this graph. Route definitions and
 experimental conditions are documented in
