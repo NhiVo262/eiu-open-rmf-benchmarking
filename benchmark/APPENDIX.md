@@ -1,4 +1,4 @@
-# Appendix — Per-Feature Statistics
+# Appendix - Per-Feature Statistics
 
 All statistics are generated from per-repeat metric outputs using
 analyse/summary/write_appendix_tables.py. This appendix is the reference for
@@ -17,7 +17,7 @@ experimental geometry; they are not pass/fail criteria.
 
 **Table numbering.** A1–A14 follow the appendix checklist.
 
-### A1 — F1: task dispatch and planning latency
+### A1 - F1: task dispatch and planning latency
 
 One bid per task; 15 tasks per scenario–platform condition at N=3. Planning latency
 is t(bid_response) − t(bid_notice). The final column reports bids exceeding 8 ms.
@@ -33,7 +33,7 @@ is t(bid_response) − t(bid_notice). The final column reports bids exceeding 8 
 | Shared Lane | simulation | 15/15 | 3.42 | 1.01 | 2.14 | 5.36 | 0 |
 | Shared Lane | hardware | 15/15 | 2.29 | 0.64 | 1.50 | 4.20 | 0 |
 
-### A2 — F1: route-level execution time
+### A2 - F1: route-level execution time
 
 Execution duration is measured from task award to RMF-reported completion (s).
 Each route–platform condition includes five observations at N=1 and five at N=3.
@@ -65,7 +65,7 @@ Each route–platform condition includes five observations at N=1 and five at N=
 | sharedlane_r2 wp_4→wp_5 | hardware | 124.6 | 10.0 | 107.9 | 133.1 | 158.9 | 41.3 | 107.9 | 200.6 | +34.4 | +27.6% |
 | sharedlane_r3 wp_6→wp_3 | hardware | 107.3 | 19.5 | 80.8 | 130.4 | 173.1 | 33.7 | 146.4 | 220.0 | +65.8 | +61.3% |
 
-### A3 — F2: scheduling feasibility and event counts
+### A3 - F2: scheduling feasibility and event counts
 
 Counts are pooled over five repeats per condition. Conflict-free rate is
 itinerary-based; schedule feasibility is conflict-based.
@@ -81,7 +81,7 @@ itinerary-based; schedule feasibility is conflict-based.
 | Shared Lane | simulation | 137 | 0 | 0 | 0 | 0 | 0 | — |
 | Shared Lane | hardware | 155 | 2 | 1 | 1 | 0 | 0 | 100.0% (1/1) |
 
-### A4 — F2: scheduling latency
+### A4 - F2: scheduling latency
 
 Scheduling latency is t(query_update_1) − t(itinerary_set) for matched
 itinerary updates, pooled across the four scenarios. The reference budget is 2.85 s.
@@ -91,7 +91,7 @@ itinerary updates, pooled across the four scenarios. The reference budget is 2.8
 | simulation | 1152 of 1161 | 5.86 | 3.00 | 0.03 | 23.66 | 0 |
 | hardware | 1188 of 1196 | 5.66 | 2.82 | 0.20 | 11.46 | 0 |
 
-### A5 — F3: negotiation notices by repeat
+### A5 - F3: negotiation notices by repeat
 
 Negotiation notices are reported per repeat in collection order. Repeated notices
 can exceed the number of distinct conflicts in A3.
@@ -107,7 +107,7 @@ can exceed the number of distinct conflicts in A3.
 | Shared Lane | simulation | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Shared Lane | hardware | 0 | 0 | 0 | 1 | 0 | 0 | 1 |
 
-### A6 — F3: negotiation outcomes and latency
+### A6 - F3: negotiation outcomes and latency
 
 Negotiation latency is measured from notice to conclusion (s), with one
 observation per concluded conflict and results stratified by outcome.
@@ -127,7 +127,7 @@ observation per concluded conflict and results stratified by outcome.
 | Head-on | hardware | resolved | 33 | 0.084 | 0.224 | 0.002 | 1.092 |
 | Shared Lane | hardware | resolved | 1 | 0.011 | 0.000 | 0.011 | 0.011 |
 
-### A7 — F4: throughput, scaling and utilisation
+### A7 - F4: throughput, scaling and utilisation
 
 Throughput is the batch completion rate over the execution window.
 Workload ceiling represents the theoretical scaling limit without inter-robot
@@ -144,7 +144,7 @@ interference. Utilisation (U) is the fraction of the window with a motion comman
 | Shared Lane | simulation | 15/15 | 0.827 | 1.474 | 59.4% | 83.4% | 99.1% | 72.6% |
 | Shared Lane | hardware | 15/15 | 0.484 | 0.910 | 62.7% | 88.6% | 94.2% | 73.1% |
 
-### A8 — F5: execution fidelity
+### A8 - F5: execution fidelity
 
 F5a is relative duration error (%) against the prediction at bidding; F5b is
 finish-time offset (s), including dispatch queueing. Each condition includes 15 tasks.
@@ -160,7 +160,7 @@ finish-time offset (s), including dispatch queueing. Each condition includes 15 
 | Shared Lane | simulation | 15.8 | 14.7 | −1.8 | 53.9 | 53.3 | 33.2 | 15.6 | 117.5 | 38.2 | 20.8 | 15.5 | 84.7 |
 | Shared Lane | hardware | 98.8 | 29.3 | 39.2 | 158.2 | 157.1 | 63.5 | 60.9 | 275.2 | 102.2 | 36.7 | 46.1 | 166.4 |
 
-### A9 — F6: route-level stationary time
+### A9 - F6: route-level stationary time
 
 Stationary time (s) is measured without a motion command during an active task.
 Additional stationary time is the difference between N=3 and matched N=1 route means.
@@ -192,7 +192,7 @@ Additional stationary time is the difference between N=3 and matched N=1 route m
 | sharedlane_r2 wp_4→wp_5 | hardware | 0.4 | 0.6 | 0.0 | 1.3 | 28.3 | 16.3 | 10.0 | 53.0 | +27.9 |
 | sharedlane_r3 wp_6→wp_3 | hardware | 4.0 | 7.9 | 0.0 | 18.1 | 45.1 | 46.9 | 0.6 | 119.8 | +41.1 |
 
-### A10 — F6: waiting episode statistics
+### A10 - F6: waiting episode statistics
 
 An episode is a continuous interval without a motion command. Mean episode
 duration is aggregated across episodes; the reported SD represents variability
@@ -217,7 +217,7 @@ among the five per-repeat means.
 | Shared Lane | hardware | ≥ 0.3 s | 26 | 14.62 | 4.76 |
 | Shared Lane | hardware | ≥ 1.0 s | 20 | 18.81 | 5.81 |
 
-### A11 — F7: pose-based separation and events
+### A11 - F7: pose-based separation and events
 
 F7a/F7b measure reference-point separation from RMF-reported poses
 (RobotState.location), not physical clearance. The geometric minimum
@@ -243,7 +243,7 @@ The table identifies repeats with reported separations below this limit.
 | Shared Lane | hardware | 0.960–2.945 | 1.806 | 0 | 0.356 m | 0 | 0 | 0/5 |
 |  |  |  |  |  | 0.628 m | 0 | 0 | 0/5 |
 
-### A12 — F7: laser separation and its validation
+### A12 - F7: laser separation and its validation
 
 F7c estimates laser-centre separation using /scan, independent of reported
 poses and the navigation map. Coverage is the fraction of paired scan instants
@@ -271,7 +271,7 @@ position reference is available for hardware.
 | Shared Lane | 0 | 0 | 0 | 0 | 0 |
 | **All** | **2464** | **2323 (94.3%)** | **1005** | **29** | **89** |
 
-### A13 — F8: planning growth and throughput scaling
+### A13 - F8: planning growth and throughput scaling
 
 Results quantify the change from N=1 to N=3; scalability beyond this range was
 not evaluated. First-task statistics use the initial bid of each N=3 batch.
@@ -294,7 +294,7 @@ not evaluated. First-task statistics use the initial bid of each N=3 batch.
 | Head-on | hardware | 1.21 | 1.20 | +0.4% | 50.1% | 93.1% |
 | Shared Lane | hardware | 2.29 | 1.40 | +63.0% | 62.7% | 88.6% |
 
-### A14 — cross-feature route-level comparison
+### A14 -  cross-feature route-level comparison
 
 Differences are calculated as N=3 minus the matched N=1 route means. Distance
 is RMF-reported; conflict counts are per-robot medians across repeats. Robot-level

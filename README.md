@@ -32,25 +32,25 @@ measurement methods and results are documented in [benchmark/](benchmark/ARCHITE
 
 ## Test environment
 
-All experiments use a single office floor plan, 43.2 m x 12.9 m, shared by the
-simulation and hardware platforms.
+Simulation and hardware share one office-floor environment.
 
-The Gazebo world holds the desks, chairs, cabinets and sofas that the robots navigate
-around. The same furniture defines the occupied cells of the map.
+- **Gazebo world:** the SDF world model of the floor, used in simulation.
 
 ![Gazebo world, top view](docs/images/gazebo_world.png)
 
-Nav2 localises against an occupancy grid built from this floor, 864 x 257 cells at
-0.05 m resolution. The inflation layer around each obstacle is what keeps a robot off
-the furniture.
+- **Occupancy grid map:** the static map AMCL localises against and the Nav2 costmaps
+  are built from.
 
-![Occupancy grid with the costmap inflation layer](docs/images/slam_map_costmap.png)
+![Occupancy grid map and costmap inflation layer](docs/images/slam_map_costmap.png)
 
-Open-RMF plans over a navigation graph of nine waypoints, `wp_1` to `wp_9`, laid on the
-same map. Scenario routes are defined as waypoint pairs on this graph, and the lanes
-between them are the shared space where traffic conflicts arise.
+- **RMF navigation graph:** the waypoints and lanes the fleet adapter plans over and
+  the traffic schedule reserves.
 
-![Open-RMF navigation graph over the map](docs/images/rmf_nav_graph.png)
+![Open-RMF navigation graph](docs/images/rmf_nav_graph.png)
+
+The four benchmark scenarios use predefined routes on this graph. Route definitions and
+experimental conditions are documented in
+[SCENARIO_DESIGN.md](benchmark/SCENARIO_DESIGN.md).
 
 ## Problem statement and objectives
 
