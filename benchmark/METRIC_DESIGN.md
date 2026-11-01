@@ -1,4 +1,4 @@
-# Metric Specification — F1–F8
+# Metric Specification - F1 - F8
 
 This document defines the benchmark metrics, calculation rules, and measurement sources. Experimental conditions are documented in [SYSTEM_UNDER_TEST.md](SYSTEM_UNDER_TEST.md); results and detailed statistics are in [RESULTS.md](RESULTS.md) and [APPENDIX.md](APPENDIX.md).
 
@@ -30,7 +30,7 @@ Reference parameters
 | Bid window: N=3 / N=1 | 5 s / 2 s |
 | Separation thresholds | 0.356 m / 0.628 m |
 
-## 2. F1 — Task Planning and Execution
+## 2. F1 - Task Planning and Execution
 
 | Metric | Definition | Observation unit | Source |
 |---|---|---|---|
@@ -49,7 +49,7 @@ F1c components:
 
 F1a is reported for retained tasks. F1c baseline comparisons use matched-route execution durations, excluding dispatcher queueing. The F1a reference target is ≥ 95% dispatch success; no fixed bid-latency threshold is specified.
 
-## 3. F2 — Traffic Scheduling
+## 3. F2 - Traffic Scheduling
 
 | Metric | Definition | Observation unit | Source |
 |---|---|---|---|
@@ -61,7 +61,7 @@ A resolved conflict has negotiation_conclusion.resolved=true. A recovered confli
 
 F2b matches participant and itinerary version. Its reference budget is `0.628 / 0.220 = 2.85 s`. It measures schedule propagation, not bid computation.
 
-## 4. F3 — Traffic Negotiation
+## 4. F3 - Traffic Negotiation
 
 | Metric | Definition | Observation unit | Source |
 |---|---|---|---|
@@ -70,7 +70,7 @@ F2b matches participant and itinerary version. Its reference budget is `0.628 / 
 
 F3a reports per-repeat counts and their median. F3b separates resolved, refused (resolved=false with matching refusal), and search-failed (resolved=false without matching refusal) outcomes. The resolution-time mean is calculated over resolved negotiations only; the configured negotiation timeout is 15 s.
 
-## 5. F4 — Fleet Throughput and Utilisation
+## 5. F4 - Fleet Throughput and Utilisation
 
 | Metric | Definition | Observation unit | Source |
 |---|---|---|---|
@@ -84,7 +84,7 @@ For N=3, `T_batch = max(t_completed) − min(t_award)` within each repeat. For N
 
 A robot is commanded to move when its most recent /cmd_vel sample is no older than 0.25 s and `|v| ≥ 0.005 m/s` or `|ω| ≥ 0.05 rad/s`. Hardware utilisation is command-based, not a direct measurement of physical motion.
 
-## 6. F5 — Execution Fidelity
+## 6. F5 - Execution Fidelity
 
 | Metric | Definition | Observation unit | Source |
 |---|---|---|---|
@@ -93,7 +93,7 @@ A robot is commanded to move when its most recent /cmd_vel sample is no older th
 
 `D_planned = t_estimated_finish − t_bid_response`; `D_actual = t_completed − t_award`. The winning bid_response.proposal.finish_time provides the planned finish. Simulation timestamps are aligned using /clock; hardware uses wall time. F5a is evaluated for N=1 and N=3 on matched routes. F5b includes dispatch queueing.
 
-## 7. F6 — Stationary Time
+## 7. F6 - Stationary Time
 
 | Metric | Definition | Observation unit | Source |
 |---|---|---|---|
@@ -103,7 +103,7 @@ A robot is commanded to move when its most recent /cmd_vel sample is no older th
 
 Stationary episodes contain no qualifying motion command for at least 0.3 s; episode statistics are also reported with a 1.0 s minimum. Motion thresholds and command freshness follow F4b. Stationary duration is not restricted to a map region and is not exclusively attributed to traffic coordination.
 
-## 8. F7 — Inter-Robot Separation
+## 8. F7 - Inter-Robot Separation
 
 | Metric | Definition | Observation unit | Source |
 |---|---|---|---|
@@ -115,7 +115,7 @@ F7a and F7b use RMF-reported reference-point poses, not physical ground truth. F
 
 F7c is a supplementary measurement of laser-centre separation. A candidate mutual match requires a 0.02–0.12 m scan cluster on each robot and range disagreement ≤ 0.045 m. The reported lower-bound estimate is `D = min(r_1,r_2) + 0.029 m`, with a geometry interval extending to +0.034 m. Measurements at the 0.120 m sensor range floor are censored. F7c uses 0.356 m for threshold reporting and was validated against Gazebo ground truth in simulation; hardware has no independent physical position reference.
 
-## 9. F8 — Fleet-Size Comparison
+## 9. F8 - Fleet-Size Comparison
 
 | Metric | Definition | Observation unit | Source |
 |---|---|---|---|
