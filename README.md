@@ -7,18 +7,19 @@ simulation and on hardware, using matched workloads and test conditions.
 
 1. [Overview](#overview)
 2. [Test environment](#test-environment)
-3. [Problem statement and objectives](#problem-statement-and-objectives)
-4. [Benchmark scope: F1–F8](#benchmark-scope-f1f8)
-5. [Project contributions](#project-contributions)
-6. [System architecture](#system-architecture)
-7. [Technology stack](#technology-stack)
-8. [Repository structure](#repository-structure)
-9. [Requirements and setup](#requirements-and-setup)
-10. [Running the simulation demo](#running-the-simulation-demo)
-11. [Running benchmarks and reproducing results](#running-benchmarks-and-reproducing-results)
-12. [Recorded data and results](#recorded-data-and-results)
-13. [Known limitations](#known-limitations)
-14. [Documentation and future work](#documentation-and-future-work)
+3. [Demo](#demo)
+4. [Problem statement and objectives](#problem-statement-and-objectives)
+5. [Benchmark scope: F1–F8](#benchmark-scope-f1f8)
+6. [Project contributions](#project-contributions)
+7. [System architecture](#system-architecture)
+8. [Technology stack](#technology-stack)
+9. [Repository structure](#repository-structure)
+10. [Requirements and setup](#requirements-and-setup)
+11. [Running the simulation demo](#running-the-simulation-demo)
+12. [Running benchmarks and reproducing results](#running-benchmarks-and-reproducing-results)
+13. [Recorded data and results](#recorded-data-and-results)
+14. [Known limitations](#known-limitations)
+15. [Documentation and future work](#documentation-and-future-work)
 
 ## Overview
 
@@ -51,6 +52,17 @@ Simulation and hardware share one office-floor environment.
 The four benchmark scenarios use predefined routes on this graph. Route definitions and
 experimental conditions are documented in
 [SCENARIO_DESIGN.md](benchmark/SCENARIO_DESIGN.md).
+
+## Demo
+
+Open-RMF Multi-robot Fleet. The recording shows two views side by side:
+
+- **Collection runner:** the scenario runner together with the RMF core and the fleet
+  adapter, covering task dispatch, bid award and traffic negotiation.
+- **Open-RMF view:** the navigation graph with the traffic schedule and fleet markers,
+  showing the itinerary each robot holds while it moves.
+
+https://github.com/user-attachments/assets/3a9a227d-a765-47ec-ac4d-4d7cc129581e
 
 ## Problem statement and objectives
 
