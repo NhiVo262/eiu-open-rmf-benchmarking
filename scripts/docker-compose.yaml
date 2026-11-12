@@ -27,20 +27,10 @@
 
       devices:
         - /dev/dri:/dev/dri
-
-      # The discrete GPU, through nvidia-container-toolkit. Three lidars at 10 Hz are
-      # thirty renders a second, which the integrated GPU cannot hold: it keeps real time
-      # for one robot and drops the simulation to 0.15 of real time for three, so a
-      # recorded stream no longer carries the sampling rate the hardware fleet produces.
-      # DRIVER_CAPABILITIES must include graphics; compute alone leaves EGL without GL.
       runtime: nvidia
 
       group_add:
         - video
-        # GID of the host's render group, which owns /dev/dri/renderD*. Without it the
-        # container user can open card* but not the render node, Mesa cannot reach the
-        # integrated GPU, and Gazebo renders every lidar on the CPU. launch_docker.sh
-        # reads it from the host; .env.example covers a start without that script.
         - "${RENDER_GID:-110}"
 
       privileged: true
@@ -67,12 +57,6 @@
         - QT_X11_NO_MITSHM=1
         - TURTLEBOT3_MODEL=burger
         - ROS_DOMAIN_ID=2
-
-      # security_opt:
-      #   - seccomp:unconfined
-
-      # cap_add:
-      #   - SYS_ADMIN
 
       privileged: true
       

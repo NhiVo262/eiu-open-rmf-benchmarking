@@ -1,33 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  CycloneDDS configuration for the benchmark, shared by the simulation and the
-  hardware runs.
-
-  Interfaces pins DDS to the adapter that carries the robot network, so traffic does not
-  leave through the campus network. The adapter is matched by network address rather than
-  by name, because the name differs between machines while the fleet subnet does not: an
-  IPv4 address with a zero host part matches on the network part alone. Loopback is listed
-  for simulation runs, which keep every participant on one host. presence_required is
-  false on both, so an absent adapter is skipped instead of failing; without it Cyclone
-  refuses to create a domain and every ROS node in the container fails at start-up.
-  Change the address below if the fleet moves to another subnet.
-
-  Off the fleet network Cyclone reports the subnet as not found and falls back to
-  loopback, which carries no multicast flag, so it also reports multicast disabled. Both
-  lines are informational: discovery then runs over localhost unicast, which reaches
-  every participant on the host.
-
-  MaxMessageSize and FragmentSize keep every RTPS datagram inside the 1500-byte
-  interface MTU. Without them Cyclone emits datagrams that the IP layer fragments,
-  and a WiFi link loses fragments readily; RTPS needs every fragment of a sample, so
-  the effect is size-dependent rather than random. Measured on this link: messages of
-  0.08 KB, 0.11 KB and 0.72 KB arrived, while /scan at 1.90 KB and /map at 180 KB did
-  not. 1400 and 1344 bytes leave room for the UDP, IP and RTPS headers.
-
-  Multicast stays enabled because simulation participants share a host and discover
-  each other over it. If discovery remains unstable on the WiFi link, replace it with
-  the unicast peer list below, which removes the dependency on multicast entirely.
--->
 <CycloneDDS xmlns="https://cdds.io/config">
   <Domain Id="any">
     <General>
@@ -41,36 +12,11 @@
       <MaxMessageSize>1400B</MaxMessageSize>
       <FragmentSize>1344B</FragmentSize>
     </General>
-
-    <!--
-      MaxAutoParticipantIndex bounds the discovery port index a participant may claim
-      under ParticipantIndex auto. The default of 9 admits ten participants per domain
-      per host, which the simulation exceeds: three Nav2 stacks, the Gazebo bridges and
-      the fleet adapter together open above sixty, and every node past the tenth fails to
-      create its domain. The bound is reached by node count alone and alters no message
-      size, interface or timing, so both platforms share the value and the hardware runs,
-      which hold well under ten participants in this container, are unaffected.
-    -->
     <Discovery>
       <MaxAutoParticipantIndex>1000</MaxAutoParticipantIndex>
     </Discovery>
 
-    <!--
-      Unicast discovery, for use if multicast proves unreliable on this link. Set
-      AllowMulticast to false and uncomment; every participant must be listed.
-    <Discovery>
-      <ParticipantIndex>auto</ParticipantIndex>
-      <Peers>
-        <Peer address="localhost"/>
-        <Peer address="192.168.10.65"/>
-        <Peer address="192.168.10.199"/>
-      </Peers>
-    </Discovery>
-    -->
-
     <Internal>
-      <!-- Larger write-history cache, so a retransmission of a fragmented sample is
-           still available when the reader asks for it. -->
       <Watermarks>
         <WhcHigh>500kB</WhcHigh>
       </Watermarks>
