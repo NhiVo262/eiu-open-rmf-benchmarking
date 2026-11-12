@@ -281,7 +281,7 @@ supplies the ROS and Open-RMF dependencies at the versions pinned in
 committed here, and a clean clone does not build or run without them.
 
 **free_fleet.** `tb3_fleet` imports `free_fleet.ros2_types` and `free_fleet.convert`.
-Clone it beside the project packages; the checkout is about 64 MB:
+Clone it beside the project packages:
 
 ```bash
 cd ~/eiu_ws/src
