@@ -15,6 +15,10 @@ cleanup() {
 
 trap cleanup INT TERM
 
+# GID of the host group owning /dev/dri/renderD*, read by docker-compose.yaml.
+RENDER_GID="$(getent group render | cut -d: -f3)"
+export RENDER_GID
+
 echo ">>> Running docker compose up..."
 docker compose up
 

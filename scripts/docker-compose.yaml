@@ -39,8 +39,9 @@
         - video
         # GID of the host's render group, which owns /dev/dri/renderD*. Without it the
         # container user can open card* but not the render node, Mesa cannot reach the
-        # integrated GPU, and Gazebo renders every lidar on the CPU.
-        - "110"
+        # integrated GPU, and Gazebo renders every lidar on the CPU. launch_docker.sh
+        # reads it from the host; .env.example covers a start without that script.
+        - "${RENDER_GID:-110}"
 
       privileged: true
 

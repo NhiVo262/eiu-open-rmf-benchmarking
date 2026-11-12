@@ -4,9 +4,18 @@
   hardware runs.
 
   Interfaces pins DDS to the adapter that carries the robot network, so traffic does not
-  leave through the campus network. The name must match an interface that exists: Cyclone
-  refuses to create a domain when it does not, and every ROS node in the container then
-  fails at start-up. Check with "ip -br addr" after any change of adapter.
+  leave through the campus network. The adapter is matched by network address rather than
+  by name, because the name differs between machines while the fleet subnet does not: an
+  IPv4 address with a zero host part matches on the network part alone. Loopback is listed
+  for simulation runs, which keep every participant on one host. presence_required is
+  false on both, so an absent adapter is skipped instead of failing; without it Cyclone
+  refuses to create a domain and every ROS node in the container fails at start-up.
+  Change the address below if the fleet moves to another subnet.
+
+  Off the fleet network Cyclone reports the subnet as not found and falls back to
+  loopback, which carries no multicast flag, so it also reports multicast disabled. Both
+  lines are informational: discovery then runs over localhost unicast, which reaches
+  every participant on the host.
 
   MaxMessageSize and FragmentSize keep every RTPS datagram inside the 1500-byte
   interface MTU. Without them Cyclone emits datagrams that the IP layer fragments,
@@ -23,7 +32,10 @@
   <Domain Id="any">
     <General>
       <Interfaces>
-        <NetworkInterface name="wlp0s20f3" priority="default" multicast="default"/>
+        <NetworkInterface address="192.168.10.0" presence_required="false"
+                          priority="default" multicast="default"/>
+        <NetworkInterface name="lo" presence_required="false"
+                          priority="default" multicast="default"/>
       </Interfaces>
       <AllowMulticast>true</AllowMulticast>
       <MaxMessageSize>1400B</MaxMessageSize>

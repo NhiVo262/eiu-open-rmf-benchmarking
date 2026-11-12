@@ -210,6 +210,41 @@ Dependencies are specified in
 [Dockerfile](scripts/Dockerfile) and [requirements.txt](scripts/requirements.txt).
 ROS Jazzy runs inside the container.
 
+The host must provide:
+
+- **Docker** with the Compose plugin.
+- **NVIDIA Container Toolkit.** [docker-compose.yaml](scripts/docker-compose.yaml)
+  requests `runtime: nvidia`, and Compose refuses to start the service without it. The
+  discrete GPU renders the simulated lidars; the integrated GPU does not sustain three
+  robots in real time.
+- **Membership of the host group that owns `/dev/dri/renderD*`.** Without it the
+  container user cannot reach the GPU and Gazebo renders every lidar on the CPU.
+  [launch_docker.sh](scripts/launch_docker.sh) reads the GID from the host and passes it
+  to Compose as `RENDER_GID`. Starting Compose directly instead requires the value in
+  the environment or in `scripts/.env`, for which
+  [.env.example](scripts/.env.example) is the template:
+
+```bash
+getent group render
+```
+
+### Network configuration
+
+[scripts/cyclonedds_ros.xml](scripts/cyclonedds_ros.xml) restricts DDS to the adapter
+carrying the fleet network, so traffic does not leave through the site network, and the
+Compose file exports it as `CYCLONEDDS_URI`. The adapter is matched by network address
+rather than by name, because interface names differ between machines while the fleet
+subnet does not; loopback is matched as well, for simulation runs that keep every
+participant on one host. Neither entry is required to be present, so a machine off the
+fleet network still starts.
+
+The committed address is the subnet of this deployment. A fleet on another subnet needs
+that value changed:
+
+```bash
+ip -br addr
+```
+
 ### Start the open-rmf container
 
 Bring the stack up on the host, in a terminal that stays open.
@@ -242,12 +277,34 @@ docker exec -it open-rmf bash
 
 This repository contains `tb3_fleet/`, `benchmark/` and `scripts/`. The container image
 supplies the ROS and Open-RMF dependencies at the versions pinned in
-[Dockerfile](scripts/Dockerfile). 
+[Dockerfile](scripts/Dockerfile). Two further dependencies are neither in the image nor
+committed here, and a clean clone does not build or run without them.
+
+**free_fleet.** `tb3_fleet` imports `free_fleet.ros2_types` and `free_fleet.convert`.
+Clone it beside the project packages:
+
+```bash
+cd ~/eiu_ws/src
+git clone -b jazzy https://github.com/open-rmf/free_fleet.git
+```
+
+**zenoh-bridge-ros2dds.** `tb3_fleet` installs this prebuilt upstream executable from
+`tb3_fleet/bin/`, and `colcon build` fails when the directory is absent. The version
+must match the `zenohd` router installed by the Dockerfile:
+
+```bash
+cd ~/eiu_ws/src/tb3_fleet && mkdir -p bin
+wget https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds/releases/download/1.5.0/zenoh-plugin-ros2dds-1.5.0-x86_64-unknown-linux-gnu-standalone.zip \
+  -O /tmp/zenoh_bridge.zip
+unzip -o /tmp/zenoh_bridge.zip -d /tmp/zenoh_bridge
+install -m 0755 /tmp/zenoh_bridge/zenoh-bridge-ros2dds bin/
+rm -rf /tmp/zenoh_bridge.zip /tmp/zenoh_bridge
+```
 
 ### Build the project packages
 
 ```bash
-colcon build --packages-select tb3_fleet
+colcon build --packages-select free_fleet tb3_fleet
 source install/setup.bash
 ```
 
