@@ -210,19 +210,24 @@ Dependencies are specified in
 [Dockerfile](scripts/Dockerfile) and [requirements.txt](scripts/requirements.txt).
 ROS Jazzy runs inside the container.
 
-The host must provide:
+The repository is the `src` directory of the workspace, and
+[docker-compose.yaml](scripts/docker-compose.yaml) bind mounts `${HOME}/eiu_ws` into the
+container, so the clone goes to a fixed location:
 
-- **Docker** with the Compose plugin.
-- **NVIDIA Container Toolkit.** [docker-compose.yaml](scripts/docker-compose.yaml)
-  requests `runtime: nvidia`, and Compose refuses to start the service without it. The
-  discrete GPU renders the simulated lidars; the integrated GPU does not sustain three
-  robots in real time.
-- **Membership of the host group that owns `/dev/dri/renderD*`.** Without it the
-  container user cannot reach the GPU and Gazebo renders every lidar on the CPU.
-  [launch_docker.sh](scripts/launch_docker.sh) reads the GID from the host and passes it
-  to Compose as `RENDER_GID`. Starting Compose directly instead requires the value in
-  the environment or in `scripts/.env`, for which
-  [.env.example](scripts/.env.example) is the template:
+```bash
+mkdir -p ~/eiu_ws && cd ~/eiu_ws
+git clone https://github.com/NhiVo262/eiu-open-rmf-benchmarking.git src
+```
+
+The host must provide:
+- Docker with the Compose plugin.
+- NVIDIA Container Toolkit, for the `runtime: nvidia` that
+  [docker-compose.yaml](scripts/docker-compose.yaml) requests.
+- A discrete GPU, for the simulated lidars.
+- `RENDER_GID`, the GID of the host group owning `/dev/dri/renderD*`.
+  [launch_docker.sh](scripts/launch_docker.sh) sets it. Starting Compose directly takes
+  it from the environment or from `scripts/.env`, templated by
+  [.env.example](scripts/.env.example):
 
 ```bash
 getent group render
@@ -230,16 +235,11 @@ getent group render
 
 ### Network configuration
 
-[scripts/cyclonedds_ros.xml](scripts/cyclonedds_ros.xml) restricts DDS to the adapter
-carrying the fleet network, so traffic does not leave through the site network, and the
-Compose file exports it as `CYCLONEDDS_URI`. The adapter is matched by network address
-rather than by name, because interface names differ between machines while the fleet
-subnet does not; loopback is matched as well, for simulation runs that keep every
-participant on one host. Neither entry is required to be present, so a machine off the
-fleet network still starts.
+[scripts/cyclonedds_ros.xml](scripts/cyclonedds_ros.xml) is the DDS configuration, which
+the Compose file exports as `CYCLONEDDS_URI`. It selects the adapter by network address,
+and falls back to loopback when that network is absent.
 
-The committed address is the subnet of this deployment. A fleet on another subnet needs
-that value changed:
+Set the address to the subnet of the fleet:
 
 ```bash
 ip -br addr
