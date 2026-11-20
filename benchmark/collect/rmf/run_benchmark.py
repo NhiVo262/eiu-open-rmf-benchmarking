@@ -180,15 +180,24 @@ def main():
         entry['dispatch_status'] = node.dispatch_status.get(task_id)
         entry['total_distance_m'] = round(node.total_distance, 3)
         entry['task_released'] = node.task_released
+        entry['monitor_end_wall_time'] = time.time()
+        entry['completion_time_verified'] = False
 
         if entry['outcome'] is None:
-            if node.task_ever_held and not node.task_released:
+            if not node.task_ever_held:
+                entry['outcome'] = 'unknown'
+
+            elif not node.task_released:
                 entry['outcome'] = 'timeout'
-            elif (args.min_expected_distance_m is not None
-                    and node.total_distance < args.min_expected_distance_m):
+
+            elif (
+                args.min_expected_distance_m is not None
+                and node.total_distance < args.min_expected_distance_m
+            ):
                 entry['outcome'] = 'short_distance'
+
             else:
-                entry['outcome'] = 'completed'
+                entry['outcome'] = 'released_unverified'
 
         print(f'Repeat {i}: outcome={entry["outcome"]} dispatch_status={entry["dispatch_status"]} '
               f'total_distance_m={entry["total_distance_m"]}', flush=True)

@@ -1,0 +1,67 @@
+1794494789.398752 [4]    python3: 192.168.10.0: optional interface was not found.
+1794494789.398786 [4]    python3: selected interface "lo" is not multicast-capable: disabling multicast
+=== Repeat 1/1: submitting 1 concurrent patrol tasks ===
+  route ['wp_2', 'wp_5']: task_id=patrol.dispatch-c7c1d075f9
+Repeat 1: outcome={'tb3_robot1': 'unknown'} total_distance_m={'tb3_robot1': 23.444}
+=== DONE ===
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_f3a4018a-7ac1-4d64-9bd4-be6551aefec1",
+        "places": [
+          "wp_2",
+          "wp_5"
+        ],
+        "submit_wall_time": 1794494789.4521916,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-c7c1d075f9",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1794494789452
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_2",
+                "wp_5"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-c7c1d075f9",
+        "terminal_status": null,
+        "task_outcome": "unknown"
+      }
+    ],
+    "requested_tasks": 1,
+    "accepted_tasks": 1,
+    "dispatch_complete": true,
+    "fixed_wait_exceeded": false,
+    "completion_wall_time": 1794494870.9469469,
+    "dispatch_status": {
+      "patrol.dispatch-c7c1d075f9": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 23.444
+    },
+    "task_released": {
+      "patrol.dispatch-c7c1d075f9": true
+    },
+    "outcome": {
+      "tb3_robot1": "unknown"
+    },
+    "outcome_basis": "RMF API terminal status"
+  }
+]

@@ -1,0 +1,149 @@
+1794484161.508315 [4]    python3: 192.168.10.0: optional interface was not found.
+1794484161.508346 [4]    python3: selected interface "lo" is not multicast-capable: disabling multicast
+=== Repeat 1/1: submitting 3 concurrent patrol tasks ===
+  route ['wp_2', 'wp_6']: task_id=patrol.dispatch-cc45d1e7fc
+  route ['wp_6', 'wp_9']: task_id=patrol.dispatch-72a5987dc9
+  route ['wp_7', 'wp_8']: task_id=patrol.dispatch-8b983b7419
+Repeat 1: outcome={'tb3_robot1': 'unknown', 'tb3_robot2': 'unknown', 'tb3_robot3': 'unknown'} total_distance_m={'tb3_robot1': 15.41, 'tb3_robot2': 5.687, 'tb3_robot3': 7.765}
+=== DONE ===
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_87cbcbf1-8f58-4140-99ae-af2e55836a72",
+        "places": [
+          "wp_2",
+          "wp_6"
+        ],
+        "submit_wall_time": 1794484161.5749266,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-cc45d1e7fc",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1794484161575
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_2",
+                "wp_6"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-cc45d1e7fc",
+        "terminal_status": null,
+        "task_outcome": "unknown"
+      },
+      {
+        "request_id": "bench_patrol_1_1_4249050d-c8d4-4139-a997-f1ad5479c3b5",
+        "places": [
+          "wp_6",
+          "wp_9"
+        ],
+        "submit_wall_time": 1794484161.5750878,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-72a5987dc9",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1794484161575
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_6",
+                "wp_9"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-72a5987dc9",
+        "terminal_status": null,
+        "task_outcome": "unknown"
+      },
+      {
+        "request_id": "bench_patrol_1_2_2b15a949-1bb2-4679-984f-cfd0cc78f599",
+        "places": [
+          "wp_7",
+          "wp_8"
+        ],
+        "submit_wall_time": 1794484161.575143,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-8b983b7419",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1794484161575
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_7",
+                "wp_8"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-8b983b7419",
+        "terminal_status": null,
+        "task_outcome": "unknown"
+      }
+    ],
+    "requested_tasks": 3,
+    "accepted_tasks": 3,
+    "dispatch_complete": true,
+    "fixed_wait_exceeded": true,
+    "completion_wall_time": 1794484461.8107786,
+    "dispatch_status": {
+      "patrol.dispatch-cc45d1e7fc": 3,
+      "patrol.dispatch-72a5987dc9": 3,
+      "patrol.dispatch-8b983b7419": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 15.41,
+      "tb3_robot2": 5.687,
+      "tb3_robot3": 7.765
+    },
+    "task_released": {
+      "patrol.dispatch-cc45d1e7fc": true,
+      "patrol.dispatch-72a5987dc9": false,
+      "patrol.dispatch-8b983b7419": false
+    },
+    "outcome": {
+      "tb3_robot1": "unknown",
+      "tb3_robot2": "unknown",
+      "tb3_robot3": "unknown"
+    },
+    "outcome_basis": "RMF API terminal status"
+  }
+]

@@ -1,0 +1,586 @@
+[INFO] [launch]: All log files can be found below /home/eiu/.ros/log/2026-11-13-08-31-52-025895-nhi-Nitro-AN515-57-15582
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [rmf_traffic_schedule-1]: process started with pid [15589]
+[INFO] [rmf_traffic_blockade-2]: process started with pid [15590]
+[INFO] [building_map_server-3]: process started with pid [15591]
+[INFO] [door_supervisor-4]: process started with pid [15592]
+[INFO] [lift_supervisor-5]: process started with pid [15593]
+[INFO] [mutex_group_supervisor-6]: process started with pid [15594]
+[INFO] [rmf_task_dispatcher-7]: process started with pid [15595]
+[INFO] [static_transform_publisher-8]: process started with pid [15596]
+[INFO] [navgraph_visualizer_node-9]: process started with pid [15597]
+[INFO] [floorplan_visualizer_node-10]: process started with pid [15598]
+[INFO] [schedule_visualizer_node-11]: process started with pid [15599]
+[INFO] [fleetstates_visualizer_node-12]: process started with pid [15600]
+[INFO] [python3-13]: process started with pid [15601]
+[door_supervisor-4] 1794558712.107245 [12] door_super: selected interface "lo" is not multicast-capable: disabling multicast
+[static_transform_publisher-8] [WARN] [1794558712.108759707] []: Old-style arguments are deprecated; see --help for new-style arguments
+[lift_supervisor-5] 1794558712.110319 [12] lift_super: selected interface "lo" is not multicast-capable: disabling multicast
+[static_transform_publisher-8] 1794558712.113304 [12] static_tra: selected interface "lo" is not multicast-capable: disabling multicast
+[fleetstates_visualizer_node-12] 1794558712.120201 [12] fleetstate: selected interface "lo" is not multicast-capable: disabling multicast
+[mutex_group_supervisor-6] 1794558712.122083 [12] mutex_grou: selected interface "lo" is not multicast-capable: disabling multicast
+[static_transform_publisher-8] [INFO] [1794558712.125289690] [static_transform_publisher_3Yn9q9bTlffwvFXE]: Spinning until stopped - publishing transform
+[static_transform_publisher-8] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-8] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-8] from 'map' to 'world_tb3'
+[fleetstates_visualizer_node-12] [INFO] [1794558712.127875340] [fleet_states_visualizer]: Configuring fleet_states_visualizer...
+[fleetstates_visualizer_node-12] [INFO] [1794558712.128001111] [fleet_states_visualizer]: Setting parameter initial_map_name to L1
+[fleetstates_visualizer_node-12] [INFO] [1794558712.128036055] [fleet_states_visualizer]: Setting parameter fleet_state_nose_scale to 0.500000
+[rmf_traffic_schedule-1] 1794558712.130809 [12] rmf_traffi: selected interface "lo" is not multicast-capable: disabling multicast
+[fleetstates_visualizer_node-12] [INFO] [1794558712.133698647] [fleet_states_visualizer]: Running fleet_states_visualizer...
+[schedule_visualizer_node-11] 1794558712.138390 [12] schedule_v: selected interface "lo" is not multicast-capable: disabling multicast
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.138674081] [rclcpp]: signal handler installed
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.138929942] [rclcpp]: deferred_signal_handler(): waiting for SIGINT/SIGTERM or uninstall
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.139096416] [rmw_cyclonedds_cpp]: Config XML is <CycloneDDS><Domain><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>32</MaxAutoParticipantIndex></Discovery></Domain></CycloneDDS>,file:///home/eiu/rmf_ws/src/scripts/cyclonedds_ros.xml
+[rmf_task_dispatcher-7] ~Initializing Dispatcher Node~
+[door_supervisor-4] [WARN] [1794558712.139060577] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139154217] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139169228] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139223697] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139238961] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139252479] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139311264] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139329513] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139600046] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139633739] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139645588] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139657534] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139668547] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139742919] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139757559] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139775462] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139224657] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139265592] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139281719] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139292909] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139303789] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139314595] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139325328] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139336356] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139347240] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139358275] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139368778] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139378192] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139387535] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139396478] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139405343] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139417371] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139430043] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139439612] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139449046] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139458830] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139468839] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139639374] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139653662] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[static_transform_publisher-8] [WARN] [1794558712.139666186] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139798396] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139820194] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.139831011] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.140133760] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.140151172] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.140157703] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.140325042] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[door_supervisor-4] [WARN] [1794558712.140334503] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140216442] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140297721] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140323038] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140350077] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140372862] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140396326] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140410788] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140426371] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140439720] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140455026] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140469004] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140483851] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140496343] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140511652] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140524673] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140539554] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140556043] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140709150] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140903863] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140925499] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140932864] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140948685] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.140956191] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[lift_supervisor-5] [WARN] [1794558712.141004560] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [INFO] [1794558712.141937769] [rmf_traffic_schedule_primary]: Successfully loaded logfile .rmf_schedule_node.yaml 
+[rmf_traffic_schedule-1] [INFO] [1794558712.144680112] [rmf_traffic_schedule_primary]: Set up heartbeat on /rmf_traffic/heartbeat with liveliness lease duration of 10000 ms and deadline of 10000 ms
+[rmf_task_dispatcher-7] 1794558712.142148 [12] rmf_task_d: selected interface "lo" is not multicast-capable: disabling multicast
+[rmf_traffic_blockade-2] 1794558712.144859 [12] rmf_traffi: selected interface "lo" is not multicast-capable: disabling multicast
+[navgraph_visualizer_node-9] 1794558712.148406 [12] navgraph_v: selected interface "lo" is not multicast-capable: disabling multicast
+[navgraph_visualizer_node-9] [INFO] [1794558712.160948672] [navgraph_visualizer]: Setting parameter initial_map_name to world_tb3
+[navgraph_visualizer_node-9] [INFO] [1794558712.161019180] [navgraph_visualizer]: Setting parameter lane_width to 0.500000
+[navgraph_visualizer_node-9] [INFO] [1794558712.161042396] [navgraph_visualizer]: Setting parameter lane_transparency to 0.500000
+[navgraph_visualizer_node-9] [INFO] [1794558712.161059763] [navgraph_visualizer]: Setting parameter waypoint_scale to 1.000000
+[navgraph_visualizer_node-9] [INFO] [1794558712.161080548] [navgraph_visualizer]: Setting parameter text_scale to 1.000000
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.148855828] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.148909016] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/get_parametersRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.148926282] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/get_parametersReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.148939450] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.149952393] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.149959407] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/get_parameter_typesRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.149961890] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/get_parameter_typesReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.149964350] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150195081] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150200985] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/set_parametersRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150203444] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/set_parametersReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150205907] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150412622] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150417893] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/set_parameters_atomicallyRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150420529] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/set_parameters_atomicallyReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150423119] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150663720] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150669777] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/describe_parametersRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150672433] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/describe_parametersReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150674869] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150910766] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150917596] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/list_parametersRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150919704] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/list_parametersReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.150921737] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.152992150] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.153007171] [rmw_cyclonedds_cpp]: Sub Topic rq/rmf_dispatcher_node/get_type_descriptionRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.153009872] [rmw_cyclonedds_cpp]: Pub Topic rr/rmf_dispatcher_node/get_type_descriptionReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.153011863] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [INFO] [1794558712.153427075] [rmf_dispatcher_node]:  Declared Time Window Param as: 2.000000 secs
+[rmf_task_dispatcher-7] [INFO] [1794558712.153506737] [rmf_dispatcher_node]:  Declared Terminated Tasks Max Size Param as: 100
+[rmf_task_dispatcher-7] [INFO] [1794558712.153537905] [rmf_dispatcher_node]:  Declared publish_active_tasks_period as: 2 secs
+[rmf_task_dispatcher-7] [INFO] [1794558712.153559067] [rmf_dispatcher_node]:  Use timestamp with task_id: false
+[rmf_task_dispatcher-7] [INFO] [1794558712.153577618] [rmf_dispatcher_node]:  Use unique hex string with task_id: true
+[rmf_task_dispatcher-7] [INFO] [1794558712.153596068] [rmf_dispatcher_node]: API server URI: [ws://127.0.0.1:8411]
+[rmf_task_dispatcher-7] [INFO] [1794558712.158242758] [rmf_dispatcher_node]: Attempting to connect to ws://127.0.0.1:8411
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.158417068] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.158426749] [rmw_cyclonedds_cpp]: Sub Topic rq/submit_taskRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.158429461] [rmw_cyclonedds_cpp]: Pub Topic rr/submit_taskReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.158431866] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.159315927] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.159328584] [rmw_cyclonedds_cpp]: Sub Topic rq/cancel_taskRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.159331221] [rmw_cyclonedds_cpp]: Pub Topic rr/cancel_taskReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.159333638] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.159685875] [rmw_cyclonedds_cpp]: ************ Service Details *********
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.159694105] [rmw_cyclonedds_cpp]: Sub Topic rq/get_dispatchesRequest
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.159697866] [rmw_cyclonedds_cpp]: Pub Topic rr/get_dispatchesReply
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.159700374] [rmw_cyclonedds_cpp]: ***********
+[rmf_task_dispatcher-7] [INFO] [1794558712.160153529] [rmf_dispatcher_node]: Starting task dispatcher node
+[rmf_task_dispatcher-7] [INFO] [1794558712.164085467] [rmf_dispatcher_node]: Succesfully connected to ws://127.0.0.1:8411
+[rmf_task_dispatcher-7] [INFO] [1794558712.164119263] [rmf_dispatcher_node]: Connected to server
+[rmf_task_dispatcher-7] [INFO] [1794558712.164130894] [rmf_dispatcher_node]: Attempting queue flush if connected
+[rmf_task_dispatcher-7] [DEBUG] [1794558712.164137797] [rmf_dispatcher_node]: Emptied queue
+[schedule_visualizer_node-11] [INFO] [1794558712.150800240] [schedule_visualizer_node]: Setting parameter rate to 1.000000
+[schedule_visualizer_node-11] [INFO] [1794558712.150872672] [schedule_visualizer_node]: Setting parameter path_width to 0.200000
+[schedule_visualizer_node-11] [INFO] [1794558712.150906475] [schedule_visualizer_node]: Setting parameter initial_map_name to world_tb3
+[schedule_visualizer_node-11] [INFO] [1794558712.150934233] [schedule_visualizer_node]: Setting parameter wait_secs to 10
+[schedule_visualizer_node-11] [INFO] [1794558712.150953419] [schedule_visualizer_node]: Setting parameter port to 8006
+[schedule_visualizer_node-11] [INFO] [1794558712.150972042] [schedule_visualizer_node]: Setting parameter retained_history_count to 0
+[rmf_traffic_schedule-1] [INFO] [1794558712.153998906] [rmf_traffic_schedule_primary]: Beginning traffic schedule node
+[rmf_traffic_schedule-1] [WARN] [1794558712.161726663] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161750507] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161754433] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161928721] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161939081] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161945493] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161951230] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161960171] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161971352] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161979258] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.161987659] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162004882] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162013838] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162029697] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162038915] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162067074] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162075314] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162084150] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162092665] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162109343] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162146473] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162151952] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162157347] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [WARN] [1794558712.162162003] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164048007] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164107549] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164115253] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164221796] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164229727] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164235371] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164241363] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164247497] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164253470] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164259255] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164293959] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164300425] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164306741] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164313222] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164319147] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164325664] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164331982] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164338566] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164345164] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164351367] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164357344] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164363105] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164390621] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[mutex_group_supervisor-6] [WARN] [1794558712.164399633] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [INFO] [1794558712.167027037] [rmf_traffic_blockade_node]: Beginning traffic blockade node
+[navgraph_visualizer_node-9] [INFO] [1794558712.168087484] [navgraph_visualizer]: NavGraph visualizer is running...
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168613762] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168641144] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168648037] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168742495] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168748542] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168753903] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168759276] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168773032] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168779156] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168784119] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168789615] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168794342] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168799593] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168804548] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168811106] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168816612] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168822418] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168827781] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168832713] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168838226] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168879130] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168884824] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168890982] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[fleetstates_visualizer_node-12] [WARN] [1794558712.168895905] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.168613248] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.168689602] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169269763] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169302023] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169316608] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169329876] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169340734] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169348150] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169355579] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169362692] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169373254] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169380546] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169387312] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169394458] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169402382] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169409498] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169428954] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169463813] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169471580] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169478622] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169485603] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169637782] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169645429] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_task_dispatcher-7] [WARN] [1794558712.169652604] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177236582] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177269365] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177273607] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177277552] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177281244] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177308700] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177315673] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177320281] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177326822] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177354121] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177360732] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177375322] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177380447] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177392810] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177397003] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177401123] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177404609] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177408384] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177411899] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177415567] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177418989] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177431937] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177472495] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[rmf_traffic_blockade-2] [WARN] [1794558712.177487217] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183231928] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183317944] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183374318] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183408113] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183429158] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183441205] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183447734] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183453666] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183458851] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183465847] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183472145] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183488692] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183495809] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183502578] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183511284] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183519010] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183532768] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183546542] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183554647] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183563550] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183738274] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183904096] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183917251] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[schedule_visualizer_node-11] [WARN] [1794558712.183925367] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184106942] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184132095] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184139161] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184232460] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184240709] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184247308] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184254622] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184262006] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184268982] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184280642] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184289720] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184295794] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184301997] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184313103] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184319803] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184328200] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184335033] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184341426] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184347506] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184372449] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184379548] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184386132] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184394039] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[navgraph_visualizer_node-9] [WARN] [1794558712.184407421] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[rmf_traffic_schedule-1] [INFO] [1794558712.188380120] [rmf_traffic_schedule_primary]: Registered new query [1]
+[schedule_visualizer_node-11] [INFO] [1794558712.189118545] [schedule_data_node]: Registering to query topic rmf_traffic/query_update_1
+[schedule_visualizer_node-11] [INFO] [1794558712.190330004] [schedule_data_node]: [rmf_traffic_ros2::MirrorManager::request_update] Requesting changes for query ID [1] since beginning of recorded history
+[rmf_traffic_schedule-1] [INFO] [1794558712.191576131] [rmf_traffic_schedule_primary]: [ScheduleNode::update_mirrors] Sending remedial update starting from the beginning going to 2 for query 1
+[schedule_visualizer_node-11] [INFO] [1794558712.195573776] [schedule_visualizer_node]: Successfully connected to rmf_traffic_schedule node.
+[schedule_visualizer_node-11] [INFO] [1794558712.196045724] [schedule_data_node]: Mirror handling new sync of 1 queries from schedule node [2e85eaf8-a874-45c5-bfdd-2e89e4866031]
+[floorplan_visualizer_node-10] 1794558712.200214 [12] floorplan_: selected interface "lo" is not multicast-capable: disabling multicast
+[floorplan_visualizer_node-10] [INFO] [1794558712.204575213] [floorplan_visualizer]: Configuring floorplan_visualizer...
+[floorplan_visualizer_node-10] [INFO] [1794558712.204676115] [floorplan_visualizer]: Setting parameter initial_map_name to world_tb3
+[floorplan_visualizer_node-10] [INFO] [1794558712.207907684] [floorplan_visualizer]: Running floorplan_visualizer...
+[floorplan_visualizer_node-10] [WARN] [1794558712.215500966] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215545701] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215553111] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215559417] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215564958] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215617702] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215624664] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215631582] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215644411] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215651335] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215667081] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215673518] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215723865] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215748237] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215767028] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215773386] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215777464] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215787118] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215797546] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215860908] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215869293] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215907197] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215917074] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[floorplan_visualizer_node-10] [WARN] [1794558712.215921172] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[building_map_server-3] 1794558712.492548 [12] building_m: selected interface "lo" is not multicast-capable: disabling multicast
+[building_map_server-3] [WARN] [1794558712.509254784] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509290933] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509298367] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509303449] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509381124] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509396940] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509403572] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509409879] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509416067] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509427252] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509433819] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509482652] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509489794] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509511380] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509521220] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509587250] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509595739] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509602432] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509607640] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509629796] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509636584] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509667756] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509673637] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[building_map_server-3] [WARN] [1794558712.509706800] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[building_map_server-3] [INFO] [1794558712.547382603] [building_map_server]: loading map path: /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/turtlebot3_world/world_tb3.building.yaml
+[building_map_server-3] [INFO] [1794558712.571020442] [building_map_server]: opening: /home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/turtlebot3_world/map.png
+[building_map_server-3] [INFO] [1794558712.571314895] [building_map_server]: read 7032 byte image
+[building_map_server-3] [INFO] [1794558712.571727944] [building_map_server]: unable to generate GeoJSON for this map.
+[building_map_server-3] [INFO] [1794558712.574928648] [building_map_server]: publishing map...
+[building_map_server-3] [INFO] [1794558712.575488399] [building_map_server]: ready to serve map: "world_tb3"  Ctrl+C to exit...
+[python3-13] [retreat_to_charger_interval] value is not provided, default to 10 seconds
+[python3-13] Finishing request: nothing
+[python3-13] Fleet is not configured to perform any finishing request
+[python3-13] Maximum delay is not provided, default to 10.0
+[python3-13] 1794558712.610898 [12]    python3: selected interface "lo" is not multicast-capable: disabling multicast
+[python3-13] [WARN] [1794558712.626300572] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626339629] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626352072] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626378719] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626385438] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626391021] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626396983] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626402844] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626411082] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626424514] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626430891] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626456754] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626467799] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626480887] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626492259] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626497015] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626516560] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626541340] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626577773] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626587522] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626591445] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626623631] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626628403] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.626685042] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.651964958] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.651998864] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652008726] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652492997] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652498443] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652502127] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652505625] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652509138] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652521687] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652525797] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652530037] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652533518] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652539250] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652543855] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652547501] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652551004] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652554850] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot2/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652558328] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652561752] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652565211] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652585561] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652589493] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652592824] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [WARN] [1794558712.652596263] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot3/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[python3-13] [INFO] [1794558712.661187728] [tb3_fleet_fleet_adapter]: Parameter [discovery_timeout] set to: 60.000000
+[rmf_traffic_schedule-1] [INFO] [1794558712.662796198] [rmf_traffic_schedule_primary]: A new mirror is tracking query ID [1]
+[schedule_visualizer_node-11] [INFO] [1794558712.662964522] [schedule_data_node]: Mirror handling new sync of 1 queries from schedule node [2e85eaf8-a874-45c5-bfdd-2e89e4866031]
+[python3-13] [INFO] [1794558712.665829170] [tb3_fleet_fleet_adapter]: Registering to query topic rmf_traffic/query_update_1
+[python3-13] [INFO] [1794558712.676498217] [tb3_fleet_fleet_adapter]: Mirror handling new sync of 1 queries from schedule node [2e85eaf8-a874-45c5-bfdd-2e89e4866031]
+[python3-13] [INFO] [1794558713.685652108] [tb3_fleet_command_handle]: Transformation error estimate for world_tb3: 0.0
+[python3-13] [INFO] [1794558713.689262122] [tb3_fleet_fleet_adapter]: Attempting to connect to ws://127.0.0.1:8411
+[python3-13] [INFO] [1794558713.689677828] [tb3_fleet_fleet_adapter]: Fleet [tb3_fleet] is configured to perform patrol tasks
+[python3-13] [INFO] [1794558713.689734619] [tb3_fleet_fleet_adapter]: Finished configuring Easy Full Control adapter for fleet [tb3_fleet]
+[python3-13] [INFO] [1794558713.690407138] [tb3_fleet_fleet_adapter]: Succesfully connected to ws://127.0.0.1:8411
+[python3-13] [INFO] [1794558713.690434257] [tb3_fleet_fleet_adapter]: Connected to server
+[python3-13] [INFO] [1794558713.690444218] [tb3_fleet_fleet_adapter]: Sent all updates
+[python3-13] [INFO] [1794558713.690450007] [tb3_fleet_fleet_adapter]: Attempting queue flush if connected
+[python3-13] [INFO] [1794558716.693730332] [tb3_fleet_command_handle]: Initializing robot [tb3_robot3]...
+[python3-13] [INFO] [1794558716.693990493] [tb3_fleet_fleet_adapter]: Adding robot [tb3_robot3] to fleet [tb3_fleet].
+[rmf_traffic_schedule-1] [INFO] [1794558716.694388976] [rmf_traffic_schedule_primary]: Registered participant [1] named [tb3_robot3] owned by [tb3_fleet]
+[python3-13] [INFO] [1794558716.695484797] [tb3_fleet_command_handle]: [tb3_robot3] lost-state check active: merge budget 0.300m x up to 10 = 3.00m, 18 lanes on map [world_tb3].
+[python3-13] [INFO] [1794558716.695665187] [tb3_fleet_command_handle]: Started update thread with period 0.100s
+[python3-13] [INFO] [1794558716.696040235] [tb3_fleet_fleet_adapter]: Added a robot named [tb3_robot3] with participant ID [1]
+[python3-13] [WARN] [1794558716.696661960] [tb3_fleet_command_handle]: Canary heartbeat late by 3.05s (tick interval 1.0s).
+[python3-13] [INFO] [1794558716.697140477] [tb3_fleet_fleet_adapter]: Successfully added robot [tb3_robot3] to the fleet [tb3_fleet].
+[python3-13] [INFO] [1794558716.697166754] [tb3_fleet_fleet_adapter]: Charger waypoint for robot [tb3_fleet/tb3_robot3] set to index [4]
+[python3-13] [INFO] [1794558716.697268251] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558716.697282472] [tb3_fleet_fleet_adapter]: Got distance from [6] as 0.000000
+[python3-13] [INFO] [1794558716.697307465] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_6] from one of these locations:
+[python3-13]  -- world_tb3 < 28.5678 -5.01204> [wp_6] | on waypoint | orientation 177.952
+[python3-13] [INFO] [1794558716.697597991] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_6] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558716.698097080] [tb3_fleet_command_handle]: command [tb3_robot3] task=[wait.tb3_robot3.tb3_fleet-0] destination=[wp_6] graph_index=6 map=[world_tb3] pose=(28.555, -5.007, 3.106) d_xy=0.014 d_yaw=0.000 previous_goal=none
+[python3-13] [INFO] [1794558716.698539998] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [28.56775935 -5.01203673  3.10584122] on map [world_tb3]
+[python3-13] [INFO] [1794558716.707695875] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.009s.
+[python3-13] [INFO] [1794558716.707966786] [tb3_fleet_command_handle]: [tb3_robot3] command 1 accepted by Nav2 (goal [103, 231, 223, 31, 107, 153, 243, 32, 1, 154, 224, 3, 103, 248, 142, 101])
+[python3-13] [INFO] [1794558716.895268089] [tb3_fleet_command_handle]: Navigation goal [103, 231, 223, 31, 107, 153, 243, 32, 1, 154, 224, 3, 103, 248, 142, 101] reached
+[python3-13] [INFO] [1794558721.603091619] [tb3_fleet_command_handle]: Update loop: 50 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558726.612693320] [tb3_fleet_command_handle]: Update loop: 100 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[rmf_task_dispatcher-7] [INFO] [1794558731.111459445] [rmf_dispatcher_node]: Add Task [patrol.dispatch-8ad90a6381] to a bidding queue
+[rmf_task_dispatcher-7] [INFO] [1794558731.158448692] [rmf_dispatcher_node]:  - Start new bidding task: patrol.dispatch-8ad90a6381
+[python3-13] [INFO] [1794558731.158866293] [tb3_fleet_fleet_adapter]: [Bidder] Received Bidding notice for task_id [patrol.dispatch-8ad90a6381]
+[python3-13] [INFO] [1794558731.159050174] [tb3_fleet_fleet_adapter]: Planning for [1] robot(s) and [1] request(s)
+[python3-13] [INFO] [1794558731.159953284] [tb3_fleet_fleet_adapter]: Submitted BidProposal to accommodate task [patrol.dispatch-8ad90a6381] by robot [tb3_robot3] with new cost [1794558788.212508]
+[rmf_task_dispatcher-7] [DEBUG] [1794558731.160031861] [rmf_dispatcher_node]: [Auctioneer] Receive proposal from task_id: patrol.dispatch-8ad90a6381 | from: tb3_fleet
+[python3-13] [INFO] [1794558731.621655890] [tb3_fleet_command_handle]: Update loop: 150 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[rmf_task_dispatcher-7] [DEBUG] [1794558733.358598344] [rmf_dispatcher_node]: Bidding Deadline reached for [patrol.dispatch-8ad90a6381]
+[rmf_task_dispatcher-7] [INFO] [1794558733.358649716] [rmf_dispatcher_node]: Determined winning Fleet Adapter: [tb3_fleet], from 1 responses
+[rmf_task_dispatcher-7] [INFO] [1794558733.358656101] [rmf_dispatcher_node]: Dispatcher Bidding Result: task [patrol.dispatch-8ad90a6381] is awarded to fleet adapter [tb3_fleet], with expected robot [tb3_robot3].
+[python3-13] [INFO] [1794558733.359184137] [tb3_fleet_fleet_adapter]: Bid for task_id [patrol.dispatch-8ad90a6381] awarded to fleet [tb3_fleet]. Processing request...
+[python3-13] [INFO] [1794558733.359850404] [tb3_fleet_fleet_adapter]: Canceling responsive wait for [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558733.359867982] [tb3_fleet_fleet_adapter]: Canceling go_to_place for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558733.359992349] [tb3_fleet_fleet_adapter]: TaskAssignments updated for robots in fleet [tb3_fleet] to accommodate task_id [patrol.dispatch-8ad90a6381]
+[python3-13] [INFO] [1794558733.360065553] [tb3_fleet_fleet_adapter]: Beginning next task [patrol.dispatch-8ad90a6381] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558733.360242362] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558733.360253268] [tb3_fleet_fleet_adapter]: Got distance from [6] as 0.000000
+[python3-13] [INFO] [1794558733.360286931] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_6] from one of these locations:
+[python3-13]  -- world_tb3 < 28.5678 -5.01204> [wp_6] | on waypoint | orientation 177.997
+[python3-13] [INFO] [1794558733.360338797] [tb3_fleet_fleet_adapter]: Beginning new task [patrol.dispatch-8ad90a6381] for [tb3_fleet/tb3_robot3]. Remaining queue size: 0
+[python3-13] [INFO] [1794558733.360573226] [tb3_fleet_fleet_adapter]: Robot [tb3_fleet/tb3_robot3] is already at its goal [6]
+[python3-13] [INFO] [1794558733.360624449] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558733.360631774] [tb3_fleet_fleet_adapter]: Got distance from [1] as 53.376680
+[python3-13] [INFO] [1794558733.360647959] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_3] from one of these locations:
+[python3-13]  -- world_tb3 < 28.5678 -5.01204> [wp_6] | on waypoint | orientation 177.997
+[python3-13] [INFO] [1794558733.361950433] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_3] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558733.362691946] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-8ad90a6381] destination=[wp_4] graph_index=5 map=[world_tb3] pose=(28.555, -5.007, 3.107) d_xy=4.911 d_yaw=0.274 previous_goal=None
+[python3-13] [INFO] [1794558733.363197281] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [23.6479233  -4.81413528 -2.90278764] on map [world_tb3]
+[python3-13] [INFO] [1794558733.368310836] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.004s.
+[python3-13] [INFO] [1794558733.368577491] [tb3_fleet_command_handle]: [tb3_robot3] command 2 accepted by Nav2 (goal [59, 117, 57, 93, 195, 241, 8, 34, 212, 64, 117, 10, 89, 51, 125, 41])
+[python3-13] [INFO] [1794558736.630346268] [tb3_fleet_command_handle]: Update loop: 200 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558741.638920784] [tb3_fleet_command_handle]: Update loop: 250 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558746.646426617] [tb3_fleet_command_handle]: Update loop: 300 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558751.654871335] [tb3_fleet_command_handle]: Update loop: 350 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558756.664255990] [tb3_fleet_command_handle]: Update loop: 400 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558761.672952892] [tb3_fleet_command_handle]: Update loop: 450 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558764.377628095] [tb3_fleet_command_handle]: Navigation goal [59, 117, 57, 93, 195, 241, 8, 34, 212, 64, 117, 10, 89, 51, 125, 41] reached
+[python3-13] [INFO] [1794558764.378073460] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-8ad90a6381] destination=[wp_2] graph_index=0 map=[world_tb3] pose=(23.690, -4.818, 3.140) d_xy=5.186 d_yaw=1.536 previous_goal=None
+[python3-13] [INFO] [1794558764.378468732] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [18.64748665 -6.0314942  -1.6071559 ] on map [world_tb3]
+[python3-13] [INFO] [1794558764.382501232] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.004s.
+[python3-13] [INFO] [1794558764.382798879] [tb3_fleet_command_handle]: [tb3_robot3] command 3 accepted by Nav2 (goal [248, 112, 76, 21, 184, 192, 206, 218, 205, 32, 166, 249, 220, 118, 195, 103])
+[python3-13] [INFO] [1794558766.682473193] [tb3_fleet_command_handle]: Update loop: 500 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558771.691624091] [tb3_fleet_command_handle]: Update loop: 550 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558776.700512599] [tb3_fleet_fleet_adapter]: Planning for [1] robot(s) and [0] request(s)
+[python3-13] [INFO] [1794558776.700750143] [tb3_fleet_command_handle]: Update loop: 600 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558781.710472470] [tb3_fleet_command_handle]: Update loop: 650 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558786.719081600] [tb3_fleet_command_handle]: Update loop: 700 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558791.726183460] [tb3_fleet_command_handle]: Update loop: 750 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558796.734875672] [tb3_fleet_command_handle]: Update loop: 800 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558801.743094722] [tb3_fleet_command_handle]: Update loop: 850 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558803.246140062] [tb3_fleet_command_handle]: Navigation goal [248, 112, 76, 21, 184, 192, 206, 218, 205, 32, 166, 249, 220, 118, 195, 103] reached
+[python3-13] [INFO] [1794558803.246726110] [tb3_fleet_command_handle]: command [tb3_robot3] task=[patrol.dispatch-8ad90a6381] destination=[wp_3] graph_index=1 map=[world_tb3] pose=(18.683, -6.008, -1.851) d_xy=1.698 d_yaw=0.244 previous_goal=None
+[python3-13] [INFO] [1794558803.247241779] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [18.58668621 -7.70295645 -1.6071559 ] on map [world_tb3]
+[python3-13] [INFO] [1794558803.252475328] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.005s.
+[python3-13] [INFO] [1794558803.252743804] [tb3_fleet_command_handle]: [tb3_robot3] command 4 accepted by Nav2 (goal [94, 235, 156, 44, 70, 130, 242, 43, 47, 68, 198, 240, 82, 115, 123, 92])
+[python3-13] [INFO] [1794558806.752104612] [tb3_fleet_command_handle]: Update loop: 900 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558811.761194916] [tb3_fleet_command_handle]: Update loop: 950 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558816.769644499] [tb3_fleet_command_handle]: Update loop: 1000 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558821.778359876] [tb3_fleet_command_handle]: Update loop: 1050 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558826.787495834] [tb3_fleet_command_handle]: Update loop: 1100 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558831.794369485] [tb3_fleet_command_handle]: Update loop: 1150 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558836.702295361] [tb3_fleet_fleet_adapter]: Planning for [1] robot(s) and [0] request(s)
+[python3-13] [INFO] [1794558836.802723053] [tb3_fleet_command_handle]: Update loop: 1200 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558841.811062543] [tb3_fleet_command_handle]: Update loop: 1250 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558846.819772522] [tb3_fleet_command_handle]: Update loop: 1300 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558851.827069988] [tb3_fleet_command_handle]: Update loop: 1350 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558856.835608327] [tb3_fleet_command_handle]: Update loop: 1400 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558861.844771971] [tb3_fleet_command_handle]: Update loop: 1450 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558866.852368023] [tb3_fleet_command_handle]: Update loop: 1500 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558871.859970857] [tb3_fleet_command_handle]: Update loop: 1550 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558876.867794695] [tb3_fleet_command_handle]: Update loop: 1600 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558877.369066806] [tb3_fleet_command_handle]: Navigation goal [94, 235, 156, 44, 70, 130, 242, 43, 47, 68, 198, 240, 82, 115, 123, 92] reached
+[python3-13] [INFO] [1794558877.369664124] [tb3_fleet_fleet_adapter]: Selecting a new go_to_place location from [1] choices for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558877.369694127] [tb3_fleet_fleet_adapter]: Got distance from [1] as 0.000000
+[python3-13] [INFO] [1794558877.369721648] [tb3_fleet_fleet_adapter]: Planning for [tb3_fleet/tb3_robot3] to [wp_3] from one of these locations:
+[python3-13]  -- world_tb3 < 18.5867 -7.70296> [wp_3] | on waypoint | orientation -79.8847
+[python3-13] [INFO] [1794558877.370193155] [tb3_fleet_fleet_adapter]: Executing go_to_place [wp_3] for robot [tb3_fleet/tb3_robot3]
+[python3-13] [INFO] [1794558877.370769320] [tb3_fleet_command_handle]: command [tb3_robot3] task=[wait.tb3_robot3.tb3_fleet-1] destination=[wp_3] graph_index=1 map=[world_tb3] pose=(18.586, -7.699, -1.394) d_xy=0.004 d_yaw=0.000 previous_goal=None
+[python3-13] [INFO] [1794558877.371186353] [tb3_fleet_command_handle]: Commanding [tb3_robot3] to navigate to [18.58668621 -7.70295645 -1.39425076] on map [world_tb3]
+[python3-13] [INFO] [1794558877.379486249] [tb3_fleet_command_handle]: send_goal round-trip for [tb3_robot3]: 0.008s.
+[python3-13] [INFO] [1794558877.379780883] [tb3_fleet_command_handle]: [tb3_robot3] command 5 accepted by Nav2 (goal [197, 253, 199, 123, 136, 120, 236, 183, 248, 57, 165, 231, 115, 103, 39, 34])
+[python3-13] [INFO] [1794558877.569303885] [tb3_fleet_command_handle]: Navigation goal [197, 253, 199, 123, 136, 120, 236, 183, 248, 57, 165, 231, 115, 103, 39, 34] reached
+[python3-13] [INFO] [1794558881.876697308] [tb3_fleet_command_handle]: Update loop: 1650 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[rmf_task_dispatcher-7] [DEBUG] [1794558882.392131509] [rclcpp]: executor taking a message from topic '/task_api_requests' failed to take anything
+[python3-13] [INFO] [1794558886.886076160] [tb3_fleet_command_handle]: Update loop: 1700 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558891.893654233] [tb3_fleet_command_handle]: Update loop: 1750 cycles, avg=0.000s, max=0.001s, target=0.100s.
+[python3-13] [INFO] [1794558896.802343971] [tb3_fleet_fleet_adapter]: Planning for [1] robot(s) and [0] request(s)
+[python3-13] [INFO] [1794558896.902638003] [tb3_fleet_command_handle]: Update loop: 1800 cycles, avg=0.000s, max=0.001s, target=0.100s.

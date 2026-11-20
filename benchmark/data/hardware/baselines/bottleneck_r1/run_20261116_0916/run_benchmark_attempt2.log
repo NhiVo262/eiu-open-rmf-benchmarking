@@ -1,0 +1,74 @@
+1794820773.491959 [12]    python3: selected interface "lo" is not multicast-capable: disabling multicast
+[WARN] [1794820773.508225153] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/initialpose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[WARN] [1794820773.508308404] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/scan' with type 'sensor_msgs::msg::dds_::LaserScan_' from USER_DATA '(null)'.
+[WARN] [1794820773.508321470] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/cmd_vel' with type 'geometry_msgs::msg::dds_::Twist_' from USER_DATA '(null)'.
+[WARN] [1794820773.508330114] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/plan' with type 'nav_msgs::msg::dds_::Path_' from USER_DATA '(null)'.
+[WARN] [1794820773.508338932] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/amcl_pose' with type 'geometry_msgs::msg::dds_::PoseWithCovarianceStamped_' from USER_DATA '(null)'.
+[WARN] [1794820773.508347568] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+[WARN] [1794820773.508361025] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/battery_state' with type 'sensor_msgs::msg::dds_::BatteryState_' from USER_DATA '(null)'.
+[WARN] [1794820773.508370121] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/tb3_robot1/tf_static' with type 'tf2_msgs::msg::dds_::TFMessage_' from USER_DATA '(null)'.
+=== Repeat 1/1: submitting 1 concurrent patrol tasks ===
+  route ['wp_2', 'wp_5']: task_id=patrol.dispatch-ca1b4fc9b9
+Repeat 1: outcome={'tb3_robot1': 'completed'} total_distance_m={'tb3_robot1': 8.808}
+=== DONE ===
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_a72bca65-1823-44b3-b68f-f9b85000f919",
+        "places": [
+          "wp_2",
+          "wp_5"
+        ],
+        "submit_wall_time": 1794820773.5495906,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-ca1b4fc9b9",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1794820773550
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_2",
+                "wp_5"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-ca1b4fc9b9",
+        "terminal_status": "completed",
+        "task_outcome": "completed"
+      }
+    ],
+    "requested_tasks": 1,
+    "accepted_tasks": 1,
+    "dispatch_complete": true,
+    "fixed_wait_exceeded": false,
+    "completion_wall_time": 1794820825.3540149,
+    "dispatch_status": {
+      "patrol.dispatch-ca1b4fc9b9": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 8.808
+    },
+    "task_released": {
+      "patrol.dispatch-ca1b4fc9b9": false
+    },
+    "outcome": {
+      "tb3_robot1": "completed"
+    },
+    "outcome_basis": "RMF API terminal status"
+  }
+]

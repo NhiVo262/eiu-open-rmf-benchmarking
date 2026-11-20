@@ -1,0 +1,42 @@
+{
+  "scenario": "simulation/scenarios/sharedlane/run_20261112_1316/repeat_2",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316/repeat_2/bag",
+  "analysis_version": 2,
+  "6_method": "stationary while assigned: no motion command on cmd_vel within each task's [award, completed]; episodes of at least 0.3 s; attribution to traffic by comparing a route against the same route run alone",
+  "6a_time_blocked_per_robot_s": {
+    "tb3_robot1": 0,
+    "tb3_robot2": 20.3,
+    "tb3_robot3": 24.3
+  },
+  "6a_per_robot": {
+    "tb3_robot1": {
+      "route": "wp_2->wp_7",
+      "task_id": "patrol.dispatch-910fca68c3",
+      "window_s": 84.616,
+      "time_blocked_s": 0,
+      "n_episodes": 0,
+      "longest_episode_s": 0.0
+    },
+    "tb3_robot2": {
+      "route": "wp_4->wp_5",
+      "task_id": "patrol.dispatch-34133fc0a2",
+      "window_s": 83.717,
+      "time_blocked_s": 20.3,
+      "n_episodes": 1,
+      "longest_episode_s": 20.3
+    },
+    "tb3_robot3": {
+      "route": "wp_6->wp_3",
+      "task_id": "patrol.dispatch-9d537c9a11",
+      "window_s": 122.975,
+      "time_blocked_s": 24.3,
+      "n_episodes": 2,
+      "longest_episode_s": 20.9
+    }
+  },
+  "n_robots_scored": 3,
+  "6b_mean_per_episode_s": 14.867,
+  "6b_mean_per_episode_s_min_1s": 14.867,
+  "n_episodes_total": 3,
+  "n_episodes_total_min_1s": 3
+}

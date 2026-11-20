@@ -114,17 +114,9 @@ RUN pip3 install --break-system-packages --no-cache-dir -r /tmp/requirements.txt
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# ----------------------------------------------------------
-# Create non-root user matching the host user's UID/GID, so the
-# bind-mounted workspace stays writable without manual chown/chmod.
-# Pass --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g)
-# (docker-compose.yaml already does this via ${UID}/${GID}).
-# ----------------------------------------------------------
 ARG USER_UID=1000
 ARG USER_GID=1000
-# The base image already ships a user/group at 1000:1000 (ubuntu:ubuntu) — if
-# USER_UID/GID collide with it (the common default case), rename that account
-# to eiu instead of failing on "UID/GID already exists"; otherwise create fresh.
+
 RUN if getent passwd ${USER_UID} >/dev/null 2>&1; then \
         usermod -l eiu -d /home/eiu -m "$(getent passwd ${USER_UID} | cut -d: -f1)" && \
         groupmod -n eiu "$(getent group ${USER_GID} | cut -d: -f1)" 2>/dev/null || true; \

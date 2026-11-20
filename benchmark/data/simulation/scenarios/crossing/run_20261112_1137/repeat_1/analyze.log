@@ -1,0 +1,2271 @@
+{
+  "scenario": "Crossing, N=3, CONFIG_01, repeat 1",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137/attempt_1/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 165,
+  "2a_method": "schedule feasibility = (resolved + recovered) / classified conflicts; a conflict is recovered when, after an unresolved negotiation, a participant established a new itinerary within 5.0s (replan recovery). Null where no conflict was classified",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 36.470588235294116,
+  "2a_n_itineraries": 510,
+  "2a_n_itineraries_triggering_negotiation": 324,
+  "2a_n_conflicts_classified": 165,
+  "2a_n_task_infeasible": 1,
+  "2a_schedule_feasibility_pct": 99.39393939393939,
+  "2a_conflict_outcome_counts": {
+    "resolved_by_negotiation": 159,
+    "recovered_by_replan": 5,
+    "unrecovered": 1
+  },
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 3,
+    "mean": 0.0018881956736246746,
+    "stdev": 0.0012872235719194644,
+    "min": 0.0010852813720703125,
+    "max": 0.0033729076385498047
+  },
+  "raw_planner_compute_s": [
+    0.0033729076385498047,
+    0.0012063980102539062,
+    0.0010852813720703125
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 507,
+    "mean": 0.00476843882829715,
+    "stdev": 0.0031427695956644016,
+    "min": 0.0004200935363769531,
+    "max": 0.010833501815795898
+  },
+  "2b_scheduling_time_s": {
+    "n": 507,
+    "mean": 0.00476843882829715,
+    "stdev": 0.0031427695956644016,
+    "min": 0.0004200935363769531,
+    "max": 0.010833501815795898
+  },
+  "raw_scheduling_times_s": [
+    0.010731697082519531,
+    0.002038717269897461,
+    0.007501840591430664,
+    0.0032815933227539062,
+    0.005982398986816406,
+    0.005797386169433594,
+    0.004827022552490234,
+    0.0074808597564697266,
+    0.007273435592651367,
+    0.005568265914916992,
+    0.007102012634277344,
+    0.006974697113037109,
+    0.005692005157470703,
+    0.007122516632080078,
+    0.006897687911987305,
+    0.006134033203125,
+    0.007033586502075195,
+    0.0068852901458740234,
+    0.0069272518157958984,
+    0.007405281066894531,
+    0.00719761848449707,
+    0.007685184478759766,
+    0.00710606575012207,
+    0.006963491439819336,
+    0.004880428314208984,
+    0.0077304840087890625,
+    0.0074920654296875,
+    0.00527501106262207,
+    0.007523298263549805,
+    0.007392406463623047,
+    0.005583763122558594,
+    0.007286548614501953,
+    0.007125139236450195,
+    0.00566864013671875,
+    0.00745081901550293,
+    0.007313251495361328,
+    0.005627155303955078,
+    0.00710749626159668,
+    0.00691986083984375,
+    0.0056955814361572266,
+    0.0071485042572021484,
+    0.007018566131591797,
+    0.006762981414794922,
+    0.007036924362182617,
+    0.006806850433349609,
+    0.007965326309204102,
+    0.007151126861572266,
+    0.0070056915283203125,
+    0.004109621047973633,
+    0.007451534271240234,
+    0.007277727127075195,
+    0.005434751510620117,
+    0.007284879684448242,
+    0.0071258544921875,
+    0.006235599517822266,
+    0.007263898849487305,
+    0.007077932357788086,
+    0.0069026947021484375,
+    0.007027149200439453,
+    0.00682520866394043,
+    0.007263660430908203,
+    0.008130311965942383,
+    0.008059501647949219,
+    0.004945039749145508,
+    0.004018545150756836,
+    0.003916263580322266,
+    0.004578590393066406,
+    0.006534576416015625,
+    0.006353616714477539,
+    0.0030486583709716797,
+    0.002769947052001953,
+    0.006454944610595703,
+    0.006268501281738281,
+    0.005682229995727539,
+    0.007542848587036133,
+    0.00732111930847168,
+    0.005584716796875,
+    0.006741046905517578,
+    0.006579875946044922,
+    0.005166053771972656,
+    0.0066454410552978516,
+    0.006514310836791992,
+    0.004791975021362305,
+    0.0074977874755859375,
+    0.007321834564208984,
+    0.00405430793762207,
+    0.007000446319580078,
+    0.006814002990722656,
+    0.004547834396362305,
+    0.007414817810058594,
+    0.0072214603424072266,
+    0.004899024963378906,
+    0.007078409194946289,
+    0.006901741027832031,
+    0.005003929138183594,
+    0.006763458251953125,
+    0.0057599544525146484,
+    0.0056955814361572266,
+    0.006849527359008789,
+    0.006640195846557617,
+    0.006784677505493164,
+    0.0073146820068359375,
+    0.007122993469238281,
+    0.004635334014892578,
+    0.005275249481201172,
+    0.0050830841064453125,
+    0.004573345184326172,
+    0.0072019100189208984,
+    0.006989717483520508,
+    0.005617380142211914,
+    0.008559942245483398,
+    0.0021827220916748047,
+    0.0049474239349365234,
+    0.0012662410736083984,
+    0.009248733520507812,
+    0.0033578872680664062,
+    0.0031957626342773438,
+    0.008986949920654297,
+    0.0034542083740234375,
+    0.004525423049926758,
+    0.00841665267944336,
+    0.008837461471557617,
+    0.0016431808471679688,
+    0.005777835845947266,
+    0.0008828639984130859,
+    0.0006322860717773438,
+    0.009390830993652344,
+    0.004275798797607422,
+    0.003866910934448242,
+    0.008071660995483398,
+    0.00763702392578125,
+    0.001405954360961914,
+    0.001157999038696289,
+    0.001832723617553711,
+    0.009046077728271484,
+    0.00880122184753418,
+    0.002443075180053711,
+    0.0034482479095458984,
+    0.0011723041534423828,
+    0.0032851696014404297,
+    0.004828214645385742,
+    0.004594087600708008,
+    0.00458073616027832,
+    0.004136800765991211,
+    0.0036945343017578125,
+    0.0010328292846679688,
+    0.004785776138305664,
+    0.004573345184326172,
+    0.001986980438232422,
+    0.004724740982055664,
+    0.0045168399810791016,
+    0.002779722213745117,
+    0.008455991744995117,
+    0.008252620697021484,
+    0.0023963451385498047,
+    0.0049288272857666016,
+    0.0031080245971679688,
+    0.009476423263549805,
+    0.010431289672851562,
+    0.009896039962768555,
+    0.002660512924194336,
+    0.007889032363891602,
+    0.007615804672241211,
+    0.0005970001220703125,
+    0.009589433670043945,
+    0.009227991104125977,
+    0.0012884140014648438,
+    0.00956106185913086,
+    0.009158611297607422,
+    0.008903026580810547,
+    0.0033109188079833984,
+    0.009217023849487305,
+    0.00902247428894043,
+    0.004358053207397461,
+    0.005194902420043945,
+    0.00493621826171875,
+    0.010313034057617188,
+    0.007956504821777344,
+    0.007706403732299805,
+    0.0015697479248046875,
+    0.007941007614135742,
+    0.007717609405517578,
+    0.009816408157348633,
+    0.005053997039794922,
+    0.0020301342010498047,
+    0.010517358779907227,
+    0.007736921310424805,
+    0.007280588150024414,
+    0.0009832382202148438,
+    0.008692502975463867,
+    0.008278369903564453,
+    0.0007922649383544922,
+    0.008488893508911133,
+    0.00822591781616211,
+    0.002481698989868164,
+    0.008888721466064453,
+    0.008679628372192383,
+    0.001939535140991211,
+    0.0045969486236572266,
+    0.00422358512878418,
+    0.0012788772583007812,
+    0.005680084228515625,
+    0.004544734954833984,
+    0.0009293556213378906,
+    0.008027076721191406,
+    0.007768154144287109,
+    0.0011332035064697266,
+    0.009036064147949219,
+    0.008815288543701172,
+    0.0014803409576416016,
+    0.008856058120727539,
+    0.008625030517578125,
+    0.0006136894226074219,
+    0.010427474975585938,
+    0.009903430938720703,
+    0.009870290756225586,
+    0.0010311603546142578,
+    0.0008618831634521484,
+    0.010242938995361328,
+    0.009312152862548828,
+    0.009249687194824219,
+    0.010170459747314453,
+    0.00719141960144043,
+    0.0060155391693115234,
+    0.001455068588256836,
+    0.009215354919433594,
+    0.008971452713012695,
+    0.0016243457794189453,
+    0.009155988693237305,
+    0.008922576904296875,
+    0.0011892318725585938,
+    0.010766983032226562,
+    0.010505199432373047,
+    0.0011026859283447266,
+    0.0016193389892578125,
+    0.0012462139129638672,
+    0.0042798519134521484,
+    0.008196115493774414,
+    0.007925271987915039,
+    0.0042378902435302734,
+    0.010004043579101562,
+    0.00981903076171875,
+    0.0035452842712402344,
+    0.009224176406860352,
+    0.0089569091796875,
+    0.0036547183990478516,
+    0.010032892227172852,
+    0.009748697280883789,
+    0.0042552947998046875,
+    0.010123491287231445,
+    0.009783506393432617,
+    0.004489898681640625,
+    0.004873991012573242,
+    0.00458836555480957,
+    0.000885009765625,
+    0.008825540542602539,
+    0.008620738983154297,
+    0.0011944770812988281,
+    0.00897526741027832,
+    0.008620977401733398,
+    0.0015811920166015625,
+    0.006669044494628906,
+    0.0060596466064453125,
+    0.0018184185028076172,
+    0.009390830993652344,
+    0.00906062126159668,
+    0.0028235912322998047,
+    0.008537530899047852,
+    0.008067846298217773,
+    0.0017168521881103516,
+    0.00506281852722168,
+    0.0048274993896484375,
+    0.002919435501098633,
+    0.0008423328399658203,
+    0.0005953311920166016,
+    0.0030536651611328125,
+    0.009930610656738281,
+    0.009600162506103516,
+    0.0035219192504882812,
+    0.00950002670288086,
+    0.009233713150024414,
+    0.0046732425689697266,
+    0.0007476806640625,
+    0.010397672653198242,
+    0.0012044906616210938,
+    0.0005645751953125,
+    0.010206460952758789,
+    0.0014424324035644531,
+    0.010833501815795898,
+    0.010574102401733398,
+    0.0026488304138183594,
+    0.009689807891845703,
+    0.009348392486572266,
+    0.0026397705078125,
+    0.0006494522094726562,
+    0.010409832000732422,
+    0.0026941299438476562,
+    0.0018434524536132812,
+    0.0016398429870605469,
+    0.0029964447021484375,
+    0.001758575439453125,
+    0.0014750957489013672,
+    0.0032262802124023438,
+    0.0015382766723632812,
+    0.001180410385131836,
+    0.0040972232818603516,
+    0.0013966560363769531,
+    0.0011792182922363281,
+    0.0008742809295654297,
+    0.0009572505950927734,
+    0.0005106925964355469,
+    0.002103567123413086,
+    0.0012395381927490234,
+    0.0008821487426757812,
+    0.003629922866821289,
+    0.0010876655578613281,
+    0.0009362697601318359,
+    0.00402379035949707,
+    0.010580301284790039,
+    0.010374784469604492,
+    0.004303693771362305,
+    0.001138925552368164,
+    0.0008380413055419922,
+    0.0004200935363769531,
+    0.0006630420684814453,
+    0.01047372817993164,
+    0.000598907470703125,
+    0.0014202594757080078,
+    0.0011670589447021484,
+    0.001817464828491211,
+    0.001264333724975586,
+    0.001054525375366211,
+    0.0017313957214355469,
+    0.0008962154388427734,
+    0.0005609989166259766,
+    0.0019974708557128906,
+    0.0014002323150634766,
+    0.0010974407196044922,
+    0.001477956771850586,
+    0.0014896392822265625,
+    0.0010516643524169922,
+    0.002279520034790039,
+    0.008952856063842773,
+    0.008688211441040039,
+    0.002708911895751953,
+    0.0008411407470703125,
+    0.010540246963500977,
+    0.0018477439880371094,
+    0.01022958755493164,
+    0.009912252426147461,
+    0.0018761157989501953,
+    0.0009441375732421875,
+    0.0006153583526611328,
+    0.0026695728302001953,
+    0.0011725425720214844,
+    0.0008687973022460938,
+    0.0018396377563476562,
+    0.0019016265869140625,
+    0.0014619827270507812,
+    0.0020279884338378906,
+    0.001415252685546875,
+    0.0013470649719238281,
+    0.001474142074584961,
+    0.0013012886047363281,
+    0.0009732246398925781,
+    0.0023593902587890625,
+    0.0015730857849121094,
+    0.0013129711151123047,
+    0.0035164356231689453,
+    0.0012464523315429688,
+    0.0009644031524658203,
+    0.0042421817779541016,
+    0.0020699501037597656,
+    0.0019507408142089844,
+    0.0008299350738525391,
+    0.0021097660064697266,
+    0.0017578601837158203,
+    0.0022301673889160156,
+    0.00983428955078125,
+    0.009528875350952148,
+    0.0005924701690673828,
+    0.002700328826904297,
+    0.002374887466430664,
+    0.0016734600067138672,
+    0.0020668506622314453,
+    0.001804351806640625,
+    0.0016655921936035156,
+    0.0018429756164550781,
+    0.0014319419860839844,
+    0.002636432647705078,
+    0.0023450851440429688,
+    0.0020122528076171875,
+    0.0026662349700927734,
+    0.001711130142211914,
+    0.0014710426330566406,
+    0.003129720687866211,
+    0.008357763290405273,
+    0.008054256439208984,
+    0.002838134765625,
+    0.0015606880187988281,
+    0.009339332580566406,
+    0.0031363964080810547,
+    0.0022537708282470703,
+    0.002004384994506836,
+    0.004436016082763672,
+    0.002201080322265625,
+    0.001968860626220703,
+    0.0006747245788574219,
+    0.0011820793151855469,
+    0.010682106018066406,
+    0.0020880699157714844,
+    0.0098419189453125,
+    0.00948476791381836,
+    0.0026335716247558594,
+    0.006148099899291992,
+    0.0060863494873046875,
+    0.003621339797973633,
+    0.0017442703247070312,
+    0.0015454292297363281,
+    0.001416921615600586,
+    0.0010852813720703125,
+    0.0018410682678222656,
+    0.0017452239990234375,
+    0.0010249614715576172,
+    0.0027272701263427734,
+    0.0006957054138183594,
+    0.010567188262939453,
+    0.004303932189941406,
+    0.0024178028106689453,
+    0.0014414787292480469,
+    0.0007243156433105469,
+    0.010407686233520508,
+    0.010163068771362305,
+    0.001239776611328125,
+    0.0026187896728515625,
+    0.002343416213989258,
+    0.002727985382080078,
+    0.00128936767578125,
+    0.0010218620300292969,
+    0.004318714141845703,
+    0.0023987293243408203,
+    0.002140522003173828,
+    0.0013871192932128906,
+    0.0010666847229003906,
+    0.0012619495391845703,
+    0.003114461898803711,
+    0.0028319358825683594,
+    0.0026276111602783203,
+    0.0031287670135498047,
+    0.0027854442596435547,
+    0.0010542869567871094,
+    0.0015859603881835938,
+    0.001463174819946289,
+    0.0016870498657226562,
+    0.003038167953491211,
+    0.002736330032348633,
+    0.0021257400512695312,
+    0.0022895336151123047,
+    0.002034425735473633,
+    0.0025374889373779297,
+    0.002343893051147461,
+    0.0018756389617919922,
+    0.0029230117797851562,
+    0.0027124881744384766,
+    0.002332925796508789,
+    0.003649473190307617,
+    0.0007576942443847656,
+    0.0006010532379150391,
+    0.0027637481689453125,
+    0.0035696029663085938,
+    0.0031321048736572266,
+    0.0037941932678222656,
+    0.0012593269348144531,
+    0.0010552406311035156,
+    0.0004448890686035156,
+    0.0030372142791748047,
+    0.002799510955810547,
+    0.0021545886993408203,
+    0.003046274185180664,
+    0.0026445388793945312,
+    0.002663135528564453,
+    0.0029582977294921875,
+    0.0024900436401367188,
+    0.0039424896240234375,
+    0.0016202926635742188,
+    0.0015492439270019531,
+    0.0024869441986083984,
+    0.0034418106079101562,
+    0.003190755844116211,
+    0.0034782886505126953,
+    0.0032362937927246094,
+    0.008658409118652344,
+    0.010555028915405273,
+    0.00822591781616211,
+    0.007742643356323242,
+    0.0012233257293701172,
+    0.000469207763671875,
+    0.008118867874145508,
+    0.0037708282470703125,
+    0.009456396102905273,
+    0.0018916130065917969,
+    0.0021283626556396484,
+    0.0031175613403320312,
+    0.010404586791992188,
+    0.0019028186798095703,
+    0.00559544563293457,
+    0.004967451095581055
+  ],
+  "per_conflict": [
+    {
+      "conflict_version": 0,
+      "resolved": true,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 1,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 2,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 3,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 4,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 5,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 6,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 7,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 8,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 9,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 10,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 11,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 12,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 13,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 14,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 15,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 16,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 17,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 18,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 19,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 20,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 21,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 22,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 23,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 24,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 25,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 26,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 27,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 28,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 29,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 30,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 31,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 32,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 33,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 34,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 35,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 36,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 37,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 38,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 39,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 40,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 41,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 42,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 43,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 44,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 45,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 46,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 47,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 48,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 104,
+        "delay_s": 0.0341
+      }
+    },
+    {
+      "conflict_version": 49,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-b36a78e9ce"
+      ]
+    },
+    {
+      "conflict_version": 50,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 51,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 52,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 53,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 54,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 55,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 56,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 57,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 58,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 59,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 60,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 61,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 62,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 63,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 64,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 65,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 66,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 67,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 68,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 69,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 70,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 71,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 72,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 73,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 74,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 75,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 76,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 77,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 78,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 79,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 80,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 81,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 82,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 83,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 84,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 85,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 86,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 87,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 88,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 89,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 90,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 91,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 92,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 93,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 94,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 95,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 96,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 97,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 98,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 99,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 100,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 101,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 102,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 103,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 104,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 105,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 106,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 107,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 108,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 109,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 110,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 111,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 112,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 113,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 114,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 115,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 116,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 117,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 118,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 119,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 120,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 121,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 122,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 123,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 124,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 125,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 126,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 127,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 128,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 129,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 130,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 131,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 132,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 133,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 134,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 135,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 136,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 137,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 138,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 139,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 140,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 141,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 142,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 143,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 144,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 145,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 146,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 147,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 148,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 149,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 150,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 151,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 152,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 153,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 154,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 155,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 156,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 157,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 158,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 159,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 160,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 446,
+        "delay_s": 0.035
+      }
+    },
+    {
+      "conflict_version": 161,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 650,
+        "delay_s": 4.8102
+      }
+    },
+    {
+      "conflict_version": 162,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 650,
+        "delay_s": 2.6893
+      }
+    },
+    {
+      "conflict_version": 163,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 650,
+        "delay_s": 0.5006
+      }
+    },
+    {
+      "conflict_version": 164,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    }
+  ]
+}
+{
+  "scenario": "Crossing, N=3, CONFIG_01, repeat 1",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137/attempt_1/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "analysis_version": 2,
+  "api_state_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137/api_state_attempt1.jsonl",
+  "n_tasks": 3,
+  "n_tasks_completed": 3,
+  "n_tasks_censored": 0,
+  "n_makespan_unresolved": 0,
+  "makespan_resolution_rate_pct": 100.0,
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-3a4c31eda9",
+      "t_bid_notice": 1794483599.74348,
+      "t_bid_response": 1794483599.7468529,
+      "planning_latency_s": 0.0033729076385498047,
+      "dispatch_id": 0,
+      "dispatch_success": true,
+      "t_award": 1794483604.7434688,
+      "t_submit": 1794483599.838559,
+      "places": [
+        "wp_2",
+        "wp_6"
+      ],
+      "route_start_xy": [
+        18.647486653140287,
+        -6.031494200199116
+      ],
+      "robot": "tb3_robot1",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794483655.442921,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794483655.442921,
+      "queueing_s": 4.90490984916687,
+      "makespan_incl_transit_s": 55.60436201095581,
+      "t_arrival_at_route_start": 1794483604.8063157,
+      "t_end_physical": 1794483655.2063584,
+      "makespan_s": 50.63660526275635,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    },
+    {
+      "task_id": "patrol.dispatch-32c9c214d2",
+      "t_bid_notice": 1794483604.9434826,
+      "t_bid_response": 1794483604.944689,
+      "planning_latency_s": 0.0012063980102539062,
+      "dispatch_id": 1,
+      "dispatch_success": true,
+      "t_award": 1794483609.9435432,
+      "t_submit": 1794483599.8386052,
+      "places": [
+        "wp_6",
+        "wp_9"
+      ],
+      "route_start_xy": [
+        28.56775935121708,
+        -5.012036729376512
+      ],
+      "robot": "tb3_robot2",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794483683.4589436,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794483683.4589436,
+      "queueing_s": 10.10493803024292,
+      "makespan_incl_transit_s": 83.6203384399414,
+      "t_arrival_at_route_start": 1794483610.0063546,
+      "t_end_physical": 1794483683.3064764,
+      "makespan_s": 73.45258903503418,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    },
+    {
+      "task_id": "patrol.dispatch-b36a78e9ce",
+      "t_bid_notice": 1794483610.1434722,
+      "t_bid_response": 1794483610.1445575,
+      "planning_latency_s": 0.0010852813720703125,
+      "dispatch_id": 2,
+      "dispatch_success": true,
+      "t_award": 1794483615.143573,
+      "t_submit": 1794483599.8386307,
+      "places": [
+        "wp_7",
+        "wp_8"
+      ],
+      "route_start_xy": [
+        28.56775935121708,
+        -8.942265531011703
+      ],
+      "robot": "tb3_robot3",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794483775.876236,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794483775.876236,
+      "queueing_s": 15.30494236946106,
+      "makespan_incl_transit_s": 176.03760528564453,
+      "t_arrival_at_route_start": 1794483615.2066915,
+      "t_end_physical": 1794483775.3063393,
+      "makespan_s": 160.66954445838928,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    }
+  ],
+  "per_robot": {
+    "tb3_robot1": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 50.63660526275635,
+        "stdev": 0.0,
+        "min": 50.63660526275635,
+        "max": 50.63660526275635
+      },
+      "observed_path_m": 9.373
+    },
+    "tb3_robot2": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 73.45258903503418,
+        "stdev": 0.0,
+        "min": 73.45258903503418,
+        "max": 73.45258903503418
+      },
+      "observed_path_m": 9.06
+    },
+    "tb3_robot3": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 160.66954445838928,
+        "stdev": 0.0,
+        "min": 160.66954445838928,
+        "max": 160.66954445838928
+      },
+      "observed_path_m": 22.563
+    }
+  },
+  "1a_task_dispatch_success_rate_pct": 100.0,
+  "1b_planning_latency_s": {
+    "n": 3,
+    "mean": 0.0018881956736246746,
+    "stdev": 0.0012872235719194644,
+    "min": 0.0010852813720703125,
+    "max": 0.0033729076385498047
+  },
+  "1c_makespan_s": {
+    "n": 3,
+    "mean": 94.91957958539327,
+    "stdev": 58.07267592830873,
+    "min": 50.63660526275635,
+    "max": 160.66954445838928
+  },
+  "1c_makespan_incl_transit_s": {
+    "n": 3,
+    "mean": 105.08743524551392,
+    "stdev": 63.021176642141135,
+    "min": 55.60436201095581,
+    "max": 176.03760528564453
+  },
+  "1c_queueing_s": {
+    "n": 3,
+    "mean": 10.10493008295695,
+    "stdev": 5.200016260151649,
+    "min": 4.90490984916687,
+    "max": 15.30494236946106
+  },
+  "1c_batch_makespan_s": 176.03767704963684,
+  "1c_batch_makespan_status": "complete",
+  "1c_batch_censored_lower_bound_s": null,
+  "1c_batch_makespan_detail": null,
+  "negotiation_message_counts": {
+    "/rmf_traffic/negotiation_notice": 165,
+    "/rmf_traffic/negotiation_proposal": 489,
+    "/rmf_traffic/negotiation_conclusion": 165,
+    "/rmf_traffic/negotiation_rejection": 7,
+    "/rmf_traffic/negotiation_forfeit": 12
+  },
+  "blockade_message_counts": {
+    "/rmf_traffic/blockade_set": 0,
+    "/rmf_traffic/blockade_ready": 0,
+    "/rmf_traffic/blockade_reached": 0,
+    "/rmf_traffic/blockade_release": 0
+  }
+}
+annotated 1 repeat entr(ies) in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137/attempt_1/repeats_summary.json

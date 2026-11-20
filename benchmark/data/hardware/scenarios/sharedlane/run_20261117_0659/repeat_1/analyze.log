@@ -1,0 +1,260 @@
+{
+  "scenario": "Shared Lane, N=3, CONFIG_01, HARDWARE, repeat 1",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/sharedlane/run_20261117_0659/attempt_1/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 0,
+  "2a_method": "schedule feasibility = (resolved + recovered) / classified conflicts; a conflict is recovered when, after an unresolved negotiation, a participant established a new itinerary within 5.0s (replan recovery). Null where no conflict was classified",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 100.0,
+  "2a_n_itineraries": 16,
+  "2a_n_itineraries_triggering_negotiation": 0,
+  "2a_n_conflicts_classified": 0,
+  "2a_n_task_infeasible": 0,
+  "2a_schedule_feasibility_pct": null,
+  "2a_conflict_outcome_counts": {},
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 2,
+    "mean": 0.0021131038665771484,
+    "stdev": 0.00040764431879736706,
+    "min": 0.0018248558044433594,
+    "max": 0.0024013519287109375
+  },
+  "raw_planner_compute_s": [
+    0.0018248558044433594,
+    0.0024013519287109375
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 15,
+    "mean": 0.0057432333628336584,
+    "stdev": 0.0032662547207502903,
+    "min": 0.0010194778442382812,
+    "max": 0.010307550430297852
+  },
+  "2b_scheduling_time_s": {
+    "n": 15,
+    "mean": 0.0057432333628336584,
+    "stdev": 0.0032662547207502903,
+    "min": 0.0010194778442382812,
+    "max": 0.010307550430297852
+  },
+  "raw_scheduling_times_s": [
+    0.006192684173583984,
+    0.0048940181732177734,
+    0.009011983871459961,
+    0.004461765289306641,
+    0.006753683090209961,
+    0.010187625885009766,
+    0.0012552738189697266,
+    0.0010194778442382812,
+    0.0027925968170166016,
+    0.007527589797973633,
+    0.008927345275878906,
+    0.010307550430297852,
+    0.008232593536376953,
+    0.0022945404052734375,
+    0.0022897720336914062
+  ],
+  "per_conflict": []
+}
+{
+  "scenario": "Shared Lane, N=3, CONFIG_01, HARDWARE, repeat 1",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/sharedlane/run_20261117_0659/attempt_1/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "analysis_version": 2,
+  "api_state_path": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/sharedlane/run_20261117_0659/api_state_attempt1.jsonl",
+  "n_tasks": 3,
+  "n_tasks_completed": 3,
+  "n_tasks_censored": 0,
+  "n_makespan_unresolved": 0,
+  "makespan_resolution_rate_pct": 100.0,
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-c58fa6f9c6",
+      "t_submit": 1794898899.842012,
+      "places": [
+        "wp_2",
+        "wp_7"
+      ],
+      "t_bid_notice": null,
+      "t_bid_response": null,
+      "planning_latency_s": null,
+      "dispatch_id": 0,
+      "dispatch_success": true,
+      "t_award": 1794898904.9802108,
+      "route_start_xy": [
+        18.647486653140287,
+        -6.031494200199116
+      ],
+      "robot": "tb3_robot1",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794899039.6626284,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794899039.6626284,
+      "queueing_s": 5.1381988525390625,
+      "makespan_incl_transit_s": 139.82061648368835,
+      "t_arrival_at_route_start": 1794898905.0627043,
+      "t_end_physical": 1794899039.4625177,
+      "makespan_s": 134.5999240875244,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    },
+    {
+      "task_id": "patrol.dispatch-6d451cbbd3",
+      "t_submit": 1794898899.8423154,
+      "places": [
+        "wp_4",
+        "wp_5"
+      ],
+      "t_bid_notice": 1794898905.1805274,
+      "t_bid_response": 1794898905.1823523,
+      "planning_latency_s": 0.0018248558044433594,
+      "dispatch_id": 1,
+      "dispatch_success": true,
+      "t_award": 1794898910.380321,
+      "route_start_xy": [
+        23.647923297508665,
+        -4.8141352791084335
+      ],
+      "robot": "tb3_robot2",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794899061.7958224,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794899061.7958224,
+      "queueing_s": 10.538005590438843,
+      "makespan_incl_transit_s": 161.95350694656372,
+      "t_arrival_at_route_start": 1794898910.4627695,
+      "t_end_physical": 1794899061.7627287,
+      "makespan_s": 151.33305287361145,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    },
+    {
+      "task_id": "patrol.dispatch-08e998e116",
+      "t_submit": 1794898899.842331,
+      "places": [
+        "wp_6",
+        "wp_3"
+      ],
+      "t_bid_notice": 1794898910.5803883,
+      "t_bid_response": 1794898910.5827897,
+      "planning_latency_s": 0.0024013519287109375,
+      "dispatch_id": 2,
+      "dispatch_success": true,
+      "t_award": 1794898915.7802298,
+      "route_start_xy": [
+        28.56775935121708,
+        -5.012036729376512
+      ],
+      "robot": "tb3_robot3",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794899058.5917864,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794899058.5917864,
+      "queueing_s": 15.937898874282837,
+      "makespan_incl_transit_s": 158.74945545196533,
+      "t_arrival_at_route_start": 1794898915.862673,
+      "t_end_physical": 1794899058.3628068,
+      "makespan_s": 142.7291133403778,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    }
+  ],
+  "per_robot": {
+    "tb3_robot1": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 134.5999240875244,
+        "stdev": 0.0,
+        "min": 134.5999240875244,
+        "max": 134.5999240875244
+      },
+      "observed_path_m": 14.189
+    },
+    "tb3_robot2": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 151.33305287361145,
+        "stdev": 0.0,
+        "min": 151.33305287361145,
+        "max": 151.33305287361145
+      },
+      "observed_path_m": 14.037
+    },
+    "tb3_robot3": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 142.7291133403778,
+        "stdev": 0.0,
+        "min": 142.7291133403778,
+        "max": 142.7291133403778
+      },
+      "observed_path_m": 12.595
+    }
+  },
+  "1a_task_dispatch_success_rate_pct": 100.0,
+  "1b_planning_latency_s": {
+    "n": 2,
+    "mean": 0.0021131038665771484,
+    "stdev": 0.00040764431879736706,
+    "min": 0.0018248558044433594,
+    "max": 0.0024013519287109375
+  },
+  "1c_makespan_s": {
+    "n": 3,
+    "mean": 142.8873634338379,
+    "stdev": 8.367686780825615,
+    "min": 134.5999240875244,
+    "max": 151.33305287361145
+  },
+  "1c_makespan_incl_transit_s": {
+    "n": 3,
+    "mean": 153.5078596274058,
+    "stdev": 11.961268960751603,
+    "min": 139.82061648368835,
+    "max": 161.95350694656372
+  },
+  "1c_queueing_s": {
+    "n": 3,
+    "mean": 10.538034439086914,
+    "stdev": 5.399850010929684,
+    "min": 5.1381988525390625,
+    "max": 15.937898874282837
+  },
+  "1c_batch_makespan_s": 161.95381045341492,
+  "1c_batch_makespan_status": "complete",
+  "1c_batch_censored_lower_bound_s": null,
+  "1c_batch_makespan_detail": null,
+  "negotiation_message_counts": {
+    "/rmf_traffic/negotiation_notice": 0,
+    "/rmf_traffic/negotiation_proposal": 0,
+    "/rmf_traffic/negotiation_conclusion": 0,
+    "/rmf_traffic/negotiation_rejection": 0,
+    "/rmf_traffic/negotiation_forfeit": 0
+  },
+  "blockade_message_counts": {
+    "/rmf_traffic/blockade_set": 0,
+    "/rmf_traffic/blockade_ready": 0,
+    "/rmf_traffic/blockade_reached": 0,
+    "/rmf_traffic/blockade_release": 0
+  }
+}
+annotated 1 repeat entr(ies) in /home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/sharedlane/run_20261117_0659/attempt_1/repeats_summary.json

@@ -1,0 +1,64 @@
+{
+  "scenario": "Shared Lane, N=3, CONFIG_01, HARDWARE, repeat 2",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/sharedlane/run_20261117_0659/attempt_2/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 0,
+  "2a_method": "schedule feasibility = (resolved + recovered) / classified conflicts; a conflict is recovered when, after an unresolved negotiation, a participant established a new itinerary within 5.0s (replan recovery). Null where no conflict was classified",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 100.0,
+  "2a_n_itineraries": 16,
+  "2a_n_itineraries_triggering_negotiation": 0,
+  "2a_n_conflicts_classified": 0,
+  "2a_n_task_infeasible": 0,
+  "2a_schedule_feasibility_pct": null,
+  "2a_conflict_outcome_counts": {},
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 2,
+    "mean": 0.0018558502197265625,
+    "stdev": 0.0003530220031272484,
+    "min": 0.0016062259674072266,
+    "max": 0.0021054744720458984
+  },
+  "raw_planner_compute_s": [
+    0.0016062259674072266,
+    0.0021054744720458984
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 15,
+    "mean": 0.0065670967102050785,
+    "stdev": 0.0029860355111750573,
+    "min": 0.0004742145538330078,
+    "max": 0.010256528854370117
+  },
+  "2b_scheduling_time_s": {
+    "n": 15,
+    "mean": 0.0065670967102050785,
+    "stdev": 0.0029860355111750573,
+    "min": 0.0004742145538330078,
+    "max": 0.010256528854370117
+  },
+  "raw_scheduling_times_s": [
+    0.00588679313659668,
+    0.003175973892211914,
+    0.009781122207641602,
+    0.0050776004791259766,
+    0.008980751037597656,
+    0.010256528854370117,
+    0.006738424301147461,
+    0.00798654556274414,
+    0.007670402526855469,
+    0.0004742145538330078,
+    0.0013561248779296875,
+    0.008963346481323242,
+    0.009313106536865234,
+    0.006517171859741211,
+    0.0063283443450927734
+  ],
+  "per_conflict": []
+}

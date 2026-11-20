@@ -1,4 +1,4 @@
-# Benchmark procedure - Feature 7: Safety and collision avoidance
+# Benchmark procedure — Feature 7: Safety and collision avoidance
 
 Computing the F7 metrics from the collected N=3 runs. Scenario routes, spawn
 coordinates and the collection procedure itself are in

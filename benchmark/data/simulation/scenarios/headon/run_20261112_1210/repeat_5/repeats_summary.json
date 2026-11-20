@@ -1,0 +1,152 @@
+[
+  {
+    "repeat": 1,
+    "tasks": [
+      {
+        "request_id": "bench_patrol_1_0_792ef591-588b-461a-a25f-843a7c5c709d",
+        "places": [
+          "wp_2",
+          "wp_5"
+        ],
+        "submit_wall_time": 1794489194.1559615,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-33ecf7c4d3",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1794489194156
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_2",
+                "wp_5"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-33ecf7c4d3",
+        "terminal_status": null,
+        "task_outcome": "unknown",
+        "task_status": "completed",
+        "completed": true,
+        "censored": false
+      },
+      {
+        "request_id": "bench_patrol_1_1_f62af521-0b7a-4808-b05b-1b563b53631e",
+        "places": [
+          "wp_5",
+          "wp_2"
+        ],
+        "submit_wall_time": 1794489194.1567385,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-41abe69d3a",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1794489194157
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_5",
+                "wp_2"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-41abe69d3a",
+        "terminal_status": null,
+        "task_outcome": "unknown",
+        "task_status": "completed",
+        "completed": true,
+        "censored": false
+      },
+      {
+        "request_id": "bench_patrol_1_2_e3d20363-c9d2-4353-927c-ce5bc58f0047",
+        "places": [
+          "wp_3",
+          "wp_7"
+        ],
+        "submit_wall_time": 1794489194.156854,
+        "response": {
+          "state": {
+            "booking": {
+              "id": "patrol.dispatch-c6fd66bed1",
+              "requester": "benchmark_task_planning",
+              "unix_millis_earliest_start_time": 0,
+              "unix_millis_request_time": 1794489194157
+            },
+            "category": "patrol",
+            "detail": {
+              "places": [
+                "wp_3",
+                "wp_7"
+              ],
+              "rounds": 1
+            },
+            "dispatch": {
+              "errors": [],
+              "status": "queued"
+            },
+            "status": "queued",
+            "unix_millis_start_time": 0
+          },
+          "success": true
+        },
+        "task_id": "patrol.dispatch-c6fd66bed1",
+        "terminal_status": null,
+        "task_outcome": "unknown",
+        "task_status": "completed",
+        "completed": true,
+        "censored": false
+      }
+    ],
+    "requested_tasks": 3,
+    "accepted_tasks": 3,
+    "dispatch_complete": true,
+    "fixed_wait_exceeded": false,
+    "completion_wall_time": 1794489367.4135323,
+    "dispatch_status": {
+      "patrol.dispatch-33ecf7c4d3": 3,
+      "patrol.dispatch-41abe69d3a": 3,
+      "patrol.dispatch-c6fd66bed1": 3
+    },
+    "total_distance_m": {
+      "tb3_robot1": 44.403,
+      "tb3_robot2": 22.991,
+      "tb3_robot3": 16.922
+    },
+    "task_released": {
+      "patrol.dispatch-33ecf7c4d3": true,
+      "patrol.dispatch-c6fd66bed1": true,
+      "patrol.dispatch-41abe69d3a": true
+    },
+    "outcome": {
+      "tb3_robot1": "completed",
+      "tb3_robot2": "completed",
+      "tb3_robot3": "completed"
+    },
+    "outcome_basis": "task_planning_metrics",
+    "outcome_verified": true,
+    "unresolved_tasks": []
+  }
+]

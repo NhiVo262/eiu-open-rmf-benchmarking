@@ -1,327 +1,282 @@
-# Appendix - Per-Feature Statistics
+# Appendix — Per-Feature Statistics
 
-All statistics are derived from the per-repeat metric outputs under `data/`. This
-appendix is the reference for quantitative results in [RESULTS.md](RESULTS.md).
+Detailed F1–F8 results for the 160 retained repeats (40 N=3 scenario repeats and 120 N=1 route baselines) across simulation and hardware. Tables use five repeats per condition; N=3 robot-tasks within a repeat are dependent. Source data: data/. See [RESULTS.md](RESULTS.md) for the main findings and [METRIC_DESIGN.md](METRIC_DESIGN.md) for metric definitions.
 
-**Unit of analysis.** Each N=3 repeat comprises three dependent robot-tasks.
-Robot-task statistics describe variation across tasks; scenario- and route-level
-comparisons are based on five repeats per condition.
+### A1 — F1: Task Dispatch and Planning Latency
 
-**Dataset.** 160 retained repeats across simulation and hardware: four scenarios ×
-five repeats per platform at N=3, and 12 matched routes × five repeats per platform
-at N=1.
+All 120 N=3 task dispatches succeeded (15 per scenario–platform condition). Planning latency remained below 8 ms for every matched bid; hardware bid-response coverage was 10–11 of 15 tasks per condition. Latency statistics use matched bids only.
 
-**Thresholds.** Reference thresholds are derived from the fleet profile and
-experimental geometry; they are not pass/fail criteria.
+| Scenario | Platform | Dispatched/submitted | Bids matched | Mean (ms) | SD | Min | Max | Bids > 8 ms |
+|---|---|---|---|---|---|---|---|---|
+| Bottleneck | simulation | 15/15 | 15/15 | 1.68 | 0.52 | 0.81 | 2.79 | 0 |
+| Bottleneck | hardware | 15/15 | 11/15 | 1.32 | 0.32 | 0.91 | 1.73 | 0 |
+| Crossing | simulation | 15/15 | 15/15 | 2.20 | 1.13 | 1.08 | 4.06 | 0 |
+| Crossing | hardware | 15/15 | 10/15 | 1.47 | 0.36 | 1.19 | 2.36 | 0 |
+| Head-on | simulation | 15/15 | 15/15 | 1.36 | 0.58 | 0.53 | 2.16 | 0 |
+| Head-on | hardware | 15/15 | 11/15 | 1.28 | 0.47 | 0.71 | 1.82 | 0 |
+| Shared Lane | simulation | 15/15 | 15/15 | 3.07 | 0.99 | 1.83 | 5.41 | 0 |
+| Shared Lane | hardware | 15/15 | 11/15 | 2.37 | 0.78 | 1.61 | 3.88 | 0 |
 
-**Table numbering.** A1–A14 follow the appendix checklist.
+### A2 — F1: Route-Level Execution Time
 
-### A1 - F1: task dispatch and planning latency
+N=3 execution time exceeded N=1 on most routes, with the largest increase at Bottleneck R1 in simulation (+168.5 s; +492.0%). Crossing R1 and Shared Lane R1 were slightly faster at N=3 on hardware. Execution time = t(completed) − t(award); Δ compares route means and excludes dispatcher queueing.
 
-One bid per task; 15 tasks per scenario–platform condition at N=3. Planning latency
-is t(bid_response) − t(bid_notice). The final column reports bids exceeding 8 ms.
-
-| Scenario | Platform | Dispatched/submitted | Mean (ms) | SD | Min | Max | Bids > 8 ms |
-|---|---|---|---|---|---|---|---|
-| Bottleneck | simulation | 15/15 | 3.63 | 4.92 | 1.02 | 18.39 | 2 |
-| Bottleneck | hardware | 15/15 | 2.28 | 1.36 | 0.82 | 4.41 | 0 |
-| Crossing | simulation | 15/15 | 2.61 | 1.39 | 1.31 | 5.48 | 0 |
-| Crossing | hardware | 15/15 | 3.38 | 3.26 | 0.94 | 11.64 | 2 |
-| Head-on | simulation | 15/15 | 2.73 | 3.07 | 0.52 | 11.73 | 1 |
-| Head-on | hardware | 15/15 | 1.21 | 0.41 | 0.58 | 1.77 | 0 |
-| Shared Lane | simulation | 15/15 | 3.42 | 1.01 | 2.14 | 5.36 | 0 |
-| Shared Lane | hardware | 15/15 | 2.29 | 0.64 | 1.50 | 4.20 | 0 |
-
-### A2 - F1: route-level execution time
-
-Execution duration is measured from task award to RMF-reported completion (s).
-Each route–platform condition includes five observations at N=1 and five at N=3.
-
-| Route | Platform | N=1 mean | SD | Min | Max | N=3 mean | SD | Min | Max | Δ (s) | Δ |
+| Route | Platform | N=1 mean | SD | Min | Max | N=3 mean | SD | Min | Max | Δ (s) | Δ (%) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| bottleneck_r1 wp_2→wp_5 | simulation | 55.3 | 11.9 | 38.2 | 66.5 | 120.3 | 19.9 | 91.9 | 139.4 | +65.0 | +117.5% |
-| bottleneck_r2 wp_3→wp_4 | simulation | 50.0 | 3.5 | 44.1 | 53.0 | 150.6 | 50.2 | 110.5 | 233.5 | +100.6 | +201.3% |
-| bottleneck_r3 wp_4→wp_3 | simulation | 43.1 | 1.7 | 41.4 | 45.9 | 161.4 | 58.3 | 84.5 | 235.3 | +118.3 | +274.2% |
-| bottleneck_r1 wp_2→wp_5 | hardware | 107.2 | 22.4 | 79.5 | 138.0 | 199.8 | 64.0 | 120.5 | 278.9 | +92.6 | +86.3% |
-| bottleneck_r2 wp_3→wp_4 | hardware | 65.3 | 16.4 | 47.9 | 87.9 | 210.0 | 79.9 | 112.1 | 303.4 | +144.7 | +221.5% |
-| bottleneck_r3 wp_4→wp_3 | hardware | 66.9 | 4.4 | 60.8 | 70.7 | 184.8 | 42.5 | 151.7 | 251.2 | +117.9 | +176.1% |
-| crossing_r1 wp_2→wp_6 | simulation | 89.1 | 28.7 | 60.3 | 134.2 | 97.1 | 37.3 | 66.3 | 160.0 | +8.0 | +9.0% |
-| crossing_r2 wp_6→wp_9 | simulation | 56.4 | 4.4 | 53.1 | 63.7 | 78.2 | 12.3 | 60.5 | 91.5 | +21.8 | +38.6% |
-| crossing_r3 wp_7→wp_8 | simulation | 60.5 | 6.2 | 49.9 | 65.2 | 191.3 | 59.5 | 136.7 | 265.8 | +130.8 | +216.2% |
-| crossing_r1 wp_2→wp_6 | hardware | 106.5 | 38.6 | 66.1 | 170.5 | 144.2 | 49.8 | 101.9 | 227.7 | +37.6 | +35.3% |
-| crossing_r2 wp_6→wp_9 | hardware | 112.4 | 46.0 | 84.0 | 191.6 | 144.1 | 35.9 | 103.5 | 193.9 | +31.7 | +28.2% |
-| crossing_r3 wp_7→wp_8 | hardware | 104.2 | 32.9 | 71.1 | 157.5 | 203.0 | 86.5 | 98.7 | 328.3 | +98.7 | +94.7% |
-| headon_r1 wp_2→wp_5 | simulation | 63.4 | 18.3 | 40.9 | 87.6 | 168.4 | 61.2 | 110.2 | 265.2 | +104.9 | +165.5% |
-| headon_r2 wp_5→wp_2 | simulation | 48.6 | 4.1 | 44.8 | 55.1 | 151.1 | 17.4 | 125.9 | 173.3 | +102.4 | +210.6% |
-| headon_r3 wp_3→wp_7 | simulation | 76.7 | 9.1 | 66.8 | 89.1 | 98.1 | 11.2 | 82.3 | 111.4 | +21.4 | +27.9% |
-| headon_r1 wp_2→wp_5 | hardware | 92.3 | 21.5 | 74.2 | 126.8 | 138.0 | 30.4 | 92.8 | 165.4 | +45.7 | +49.5% |
-| headon_r2 wp_5→wp_2 | hardware | 85.0 | 17.1 | 67.3 | 106.7 | 178.5 | 24.4 | 140.5 | 200.8 | +93.5 | +109.9% |
-| headon_r3 wp_3→wp_7 | hardware | 99.0 | 16.6 | 76.0 | 116.3 | 111.1 | 21.0 | 78.5 | 131.1 | +12.1 | +12.2% |
-| sharedlane_r1 wp_2→wp_7 | simulation | 87.0 | 14.4 | 66.7 | 104.6 | 100.0 | 28.1 | 78.8 | 147.6 | +13.0 | +15.0% |
-| sharedlane_r2 wp_4→wp_5 | simulation | 66.8 | 1.5 | 64.5 | 68.6 | 89.6 | 18.5 | 72.1 | 112.8 | +22.8 | +34.2% |
-| sharedlane_r3 wp_6→wp_3 | simulation | 63.8 | 1.2 | 62.4 | 64.9 | 98.1 | 17.1 | 70.4 | 113.1 | +34.2 | +53.7% |
-| sharedlane_r1 wp_2→wp_7 | hardware | 140.0 | 22.5 | 118.3 | 176.6 | 146.7 | 33.0 | 108.0 | 198.0 | +6.7 | +4.8% |
-| sharedlane_r2 wp_4→wp_5 | hardware | 124.6 | 10.0 | 107.9 | 133.1 | 158.9 | 41.3 | 107.9 | 200.6 | +34.4 | +27.6% |
-| sharedlane_r3 wp_6→wp_3 | hardware | 107.3 | 19.5 | 80.8 | 130.4 | 173.1 | 33.7 | 146.4 | 220.0 | +65.8 | +61.3% |
+| Bottleneck R1 | simulation | 34.2 | 3.4 | 30.9 | 39.7 | 202.7 | 87.6 | 50.4 | 258.5 | +168.5 | +492.0% |
+| Bottleneck R1 | hardware | 55.2 | 7.2 | 45.6 | 61.3 | 124.6 | 30.2 | 99.9 | 168.3 | +69.4 | +125.7% |
+| Bottleneck R2 | simulation | 44.3 | 14.4 | 29.9 | 63.8 | 146.8 | 44.1 | 87.2 | 183.5 | +102.5 | +231.2% |
+| Bottleneck R2 | hardware | 44.9 | 8.5 | 37.2 | 55.5 | 96.7 | 39.9 | 63.3 | 150.2 | +51.7 | +115.2% |
+| Bottleneck R3 | simulation | 35.9 | 2.9 | 32.7 | 38.9 | 124.4 | 44.4 | 47.3 | 157.4 | +88.5 | +246.3% |
+| Bottleneck R3 | hardware | 69.8 | 5.8 | 61.4 | 77.5 | 208.7 | 77.9 | 134.2 | 302.4 | +138.9 | +199.0% |
+| Crossing R1 | simulation | 50.4 | 0.6 | 49.6 | 51.2 | 51.1 | 0.5 | 50.4 | 51.7 | +0.7 | +1.3% |
+| Crossing R1 | hardware | 102.8 | 56.7 | 54.1 | 195.8 | 88.7 | 37.0 | 53.9 | 146.1 | -14.1 | -13.7% |
+| Crossing R2 | simulation | 60.6 | 6.2 | 51.1 | 68.4 | 63.1 | 9.3 | 52.5 | 73.5 | +2.4 | +4.0% |
+| Crossing R2 | hardware | 64.3 | 10.4 | 56.1 | 80.3 | 81.2 | 17.0 | 63.2 | 108.0 | +17.0 | +26.4% |
+| Crossing R3 | simulation | 70.9 | 8.9 | 58.4 | 82.7 | 154.1 | 25.3 | 131.7 | 194.5 | +83.3 | +117.5% |
+| Crossing R3 | hardware | 61.5 | 5.7 | 53.6 | 68.4 | 203.6 | 52.9 | 163.9 | 296.2 | +142.1 | +231.0% |
+| Head-on R1 | simulation | 44.6 | 17.8 | 30.6 | 74.2 | 101.8 | 45.8 | 37.0 | 163.0 | +57.1 | +128.0% |
+| Head-on R1 | hardware | 61.3 | 14.1 | 42.4 | 78.0 | 137.7 | 21.4 | 107.5 | 161.8 | +76.3 | +124.4% |
+| Head-on R2 | simulation | 41.8 | 2.9 | 39.6 | 46.6 | 112.8 | 6.9 | 102.1 | 120.2 | +71.1 | +170.2% |
+| Head-on R2 | hardware | 64.5 | 9.4 | 55.0 | 78.7 | 143.7 | 30.8 | 90.7 | 165.9 | +79.2 | +122.9% |
+| Head-on R3 | simulation | 71.3 | 4.5 | 65.4 | 76.4 | 127.8 | 102.9 | 69.4 | 311.1 | +56.5 | +79.2% |
+| Head-on R3 | hardware | 81.5 | 17.2 | 57.3 | 105.6 | 96.6 | 39.2 | 62.4 | 146.1 | +15.1 | +18.5% |
+| Shared Lane R1 | simulation | 66.9 | 9.2 | 61.3 | 83.0 | 78.1 | 9.0 | 63.9 | 86.6 | +11.2 | +16.7% |
+| Shared Lane R1 | hardware | 113.6 | 34.6 | 79.7 | 168.7 | 112.7 | 19.8 | 93.3 | 134.7 | -0.9 | -0.8% |
+| Shared Lane R2 | simulation | 64.5 | 5.2 | 57.2 | 71.6 | 80.8 | 5.5 | 73.3 | 87.8 | +16.3 | +25.3% |
+| Shared Lane R2 | hardware | 113.5 | 7.6 | 103.2 | 123.0 | 142.2 | 37.5 | 99.9 | 191.9 | +28.7 | +25.2% |
+| Shared Lane R3 | simulation | 73.9 | 7.6 | 64.6 | 85.8 | 102.0 | 13.2 | 90.1 | 123.0 | +28.1 | +38.1% |
+| Shared Lane R3 | hardware | 99.7 | 27.5 | 68.0 | 144.0 | 122.2 | 14.5 | 104.0 | 142.8 | +22.5 | +22.6% |
 
-### A3 - F2: scheduling feasibility and event counts
+### A3 — F2: Scheduling Feasibility and Event Counts
 
-Counts are pooled over five repeats per condition. Conflict-free rate is
-itinerary-based; schedule feasibility is conflict-based.
+Bottleneck showed the lowest scheduling feasibility (39.1% simulation; 79.4% hardware); Crossing and Head-on reached 99.5–100%. Shared Lane had no classified conflicts. Feasibility = (Resolved + Recovered by replan) / Conflicts; itinerary counts and classified conflict versions are different units.
 
 | Scenario | Platform | Itineraries | Triggering negotiation | Conflicts | Resolved | Recovered by replan | Unrecovered | Feasibility |
 |---|---|---|---|---|---|---|---|---|
-| Bottleneck | simulation | 384 | 121 | 101 | 42 | 57 | 2 | 98.0% (99/101) |
-| Bottleneck | hardware | 531 | 246 | 111 | 81 | 29 | 1 | 99.1% (110/111) |
-| Crossing | simulation | 334 | 113 | 413 | 12 | 386 | 15 | 96.4% (398/413) |
-| Crossing | hardware | 253 | 75 | 37 | 32 | 5 | 0 | 100.0% (37/37) |
-| Head-on | simulation | 306 | 109 | 38 | 38 | 0 | 0 | 100.0% (38/38) |
-| Head-on | hardware | 257 | 74 | 33 | 33 | 0 | 0 | 100.0% (33/33) |
-| Shared Lane | simulation | 137 | 0 | 0 | 0 | 0 | 0 | — |
-| Shared Lane | hardware | 155 | 2 | 1 | 1 | 0 | 0 | 100.0% (1/1) |
+| Bottleneck | simulation | 178 | 41 | 115 | 8 | 37 | 70 | 39.1% |
+| Bottleneck | hardware | 296 | 118 | 97 | 33 | 44 | 20 | 79.4% |
+| Crossing | simulation | 672 | 372 | 189 | 183 | 5 | 1 | 99.5% |
+| Crossing | hardware | 255 | 67 | 32 | 32 | 0 | 0 | 100.0% |
+| Head-on | simulation | 177 | 47 | 23 | 22 | 1 | 0 | 100.0% |
+| Head-on | hardware | 123 | 23 | 8 | 8 | 0 | 0 | 100.0% |
+| Shared Lane | simulation | 86 | 0 | 0 | 0 | 0 | 0 | N/A |
+| Shared Lane | hardware | 98 | 0 | 0 | 0 | 0 | 0 | N/A |
 
-### A4 - F2: scheduling latency
+### A4 — F2: Scheduling Latency
 
-Scheduling latency is t(query_update_1) − t(itinerary_set) for matched
-itinerary updates, pooled across the four scenarios. The reference budget is 2.85 s.
+Matched itinerary-update latency averaged 5.13 ms in simulation and 5.69 ms on hardware, with no observations above the 2.85 s reference budget. Latency = t(query_update_1) − t(itinerary_set).
 
 | Platform | Itineraries with a matched update | Mean (ms) | SD | Min | Max | Above 2.85 s |
 |---|---|---|---|---|---|---|
-| simulation | 1152 of 1161 | 5.86 | 3.00 | 0.03 | 23.66 | 0 |
-| hardware | 1188 of 1196 | 5.66 | 2.82 | 0.20 | 11.46 | 0 |
+| simulation | 1107 | 5.13 | 3.04 | 0.17 | 10.90 | 0 |
+| hardware | 762 | 5.69 | 2.84 | 0.15 | 10.54 | 0 |
 
-### A5 - F3: negotiation notices by repeat
+### A5 — F3: Negotiation Notices by Repeat
 
-Negotiation notices are reported per repeat in collection order. Repeated notices
-can exceed the number of distinct conflicts in A3.
+Negotiation activity was highly uneven across repeats: Bottleneck simulation R4 recorded 109 notices and Crossing simulation R1 recorded 165. Shared Lane recorded none. Notice totals equal the classified conflict-version counts in A3 for this dataset.
 
 | Scenario | Platform | R1 | R2 | R3 | R4 | R5 | Median | Total |
 |---|---|---|---|---|---|---|---|---|
-| Bottleneck | simulation | 54 | 15 | 10 | 18 | 4 | 15 | 101 |
-| Bottleneck | hardware | 32 | 17 | 21 | 26 | 16 | 21 | 112 |
-| Crossing | simulation | 5 | 236 | 4 | 3 | 165 | 5 | 413 |
-| Crossing | hardware | 14 | 3 | 7 | 4 | 9 | 7 | 37 |
-| Head-on | simulation | 13 | 8 | 7 | 7 | 4 | 7 | 39 |
-| Head-on | hardware | 11 | 9 | 3 | 5 | 5 | 5 | 33 |
+| Bottleneck | simulation | 1 | 2 | 1 | 109 | 2 | 2 | 115 |
+| Bottleneck | hardware | 11 | 44 | 18 | 12 | 12 | 12 | 97 |
+| Crossing | simulation | 165 | 1 | 20 | 1 | 2 | 2 | 189 |
+| Crossing | hardware | 2 | 1 | 1 | 2 | 26 | 2 | 32 |
+| Head-on | simulation | 4 | 3 | 8 | 5 | 3 | 4 | 23 |
+| Head-on | hardware | 1 | 1 | 3 | 2 | 1 | 1 | 8 |
 | Shared Lane | simulation | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Shared Lane | hardware | 0 | 0 | 0 | 1 | 0 | 0 | 1 |
+| Shared Lane | hardware | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
-### A6 - F3: negotiation outcomes and latency
+### A6 — F3: Negotiation Outcomes and Latency
 
-Negotiation latency is measured from notice to conclusion (s), with one
-observation per concluded conflict and results stratified by outcome.
+Most Crossing negotiations resolved quickly (mean 0.028 s in simulation; 0.123 s on hardware). Hardware Bottleneck recorded 64 search-failed outcomes, with a maximum latency of 24.454 s. Counts and extrema are conflict-level; mean and SD use unweighted means from repeats containing the outcome. Latency runs from the first notice to conclusion.
 
 | Scenario | Platform | Outcome | Count | Mean (s) | SD | Min | Max |
 |---|---|---|---|---|---|---|---|
-| Bottleneck | simulation | resolved | 42 | 0.209 | 0.959 | 0.003 | 6.160 |
-| Bottleneck | simulation | refused | 51 | 0.000 | 0.001 | 0.000 | 0.004 |
-| Bottleneck | simulation | search failed | 8 | 6.872 | 6.981 | 0.012 | 16.558 |
-| Bottleneck | hardware | resolved | 81 | 0.107 | 0.186 | 0.002 | 0.880 |
-| Bottleneck | hardware | search failed | 30 | 5.643 | 6.884 | 0.012 | 24.248 |
-| Crossing | simulation | resolved | 12 | 0.157 | 0.348 | 0.004 | 1.126 |
-| Crossing | simulation | refused | 401 | 0.001 | 0.001 | 0.000 | 0.005 |
-| Crossing | hardware | resolved | 32 | 0.074 | 0.173 | 0.002 | 0.847 |
-| Crossing | hardware | search failed | 5 | 0.909 | 1.060 | 0.122 | 2.135 |
-| Head-on | simulation | resolved | 38 | 0.026 | 0.030 | 0.003 | 0.139 |
-| Head-on | hardware | resolved | 33 | 0.084 | 0.224 | 0.002 | 1.092 |
-| Shared Lane | hardware | resolved | 1 | 0.011 | 0.000 | 0.011 | 0.011 |
+| Bottleneck | simulation | resolved | 8 | 0.031 | 0.014 | 0.007 | 0.058 |
+| Bottleneck | simulation | refused | 107 | 0.001 | 0.000 | -0.000 | 0.005 |
+| Bottleneck | hardware | resolved | 33 | 0.057 | 0.073 | 0.002 | 0.560 |
+| Bottleneck | hardware | search failed | 64 | 6.777 | 5.174 | 0.056 | 24.454 |
+| Crossing | simulation | resolved | 183 | 0.028 | 0.013 | 0.001 | 0.428 |
+| Crossing | simulation | search failed | 6 | 2.001 | 0.000 | 2.001 | 2.002 |
+| Crossing | hardware | resolved | 32 | 0.123 | 0.172 | 0.002 | 0.405 |
+| Head-on | simulation | resolved | 22 | 0.146 | 0.132 | 0.002 | 1.476 |
+| Head-on | simulation | search failed | 1 | 12.018 | 0.000 | 12.018 | 12.018 |
+| Head-on | hardware | resolved | 8 | 0.186 | 0.074 | 0.003 | 0.300 |
 
-### A7 - F4: throughput, scaling and utilisation
+### A7 — F4: Throughput, Scaling and Utilisation
 
-Throughput is the batch completion rate over the execution window.
-Workload ceiling represents the theoretical scaling limit without inter-robot
-interference. Utilisation (U) is the fraction of the window with a motion command.
+All 15 N=3 tasks completed per scenario–platform condition. Throughput scaling ranged from 17.6% of ideal (Bottleneck simulation) to 71.2% (Shared Lane hardware). Scaling = Th(3) / [3 × Th(1)]; Th(1) omits inter-route travel, making reported scaling a lower bound. Workload ceiling = Σd / (3 × max d) using mean route durations; utilisation is moving time / observation-window time.
 
 | Scenario | Platform | 4a completed | Th(1) /min | Th(3) /min | Scaling, % of ideal | Workload ceiling | U(1) routes alone | U(3) |
 |---|---|---|---|---|---|---|---|---|
-| Bottleneck | simulation | 15/15 | 1.213 | 0.973 | 26.8% | 89.4% | 99.3% | 58.3% |
-| Bottleneck | hardware | 15/15 | 0.751 | 0.696 | 30.9% | 74.5% | 97.8% | 59.5% |
-| Crossing | simulation | 15/15 | 0.874 | 0.892 | 34.0% | 77.1% | 98.9% | 57.2% |
-| Crossing | hardware | 15/15 | 0.557 | 0.757 | 45.3% | 95.8% | 92.7% | 61.6% |
-| Head-on | simulation | 15/15 | 0.954 | 1.008 | 35.2% | 82.0% | 99.3% | 63.7% |
-| Head-on | hardware | 15/15 | 0.651 | 0.979 | 50.1% | 93.1% | 96.2% | 74.3% |
-| Shared Lane | simulation | 15/15 | 0.827 | 1.474 | 59.4% | 83.4% | 99.1% | 72.6% |
-| Shared Lane | hardware | 15/15 | 0.484 | 0.910 | 62.7% | 88.6% | 94.2% | 73.1% |
+| Bottleneck | simulation | 15/15 | 1.572 | 0.829 | 17.6% | 86.1% | 99.4% | 47.0% |
+| Bottleneck | hardware | 15/15 | 1.059 | 0.820 | 25.8% | 81.1% | 99.1% | 45.7% |
+| Crossing | simulation | 15/15 | 0.989 | 1.094 | 36.9% | 85.6% | 99.4% | 48.9% |
+| Crossing | hardware | 15/15 | 0.787 | 0.840 | 35.5% | 74.1% | 96.1% | 58.8% |
+| Head-on | simulation | 15/15 | 1.141 | 1.072 | 31.3% | 73.7% | 99.3% | 55.2% |
+| Head-on | hardware | 15/15 | 0.868 | 1.120 | 43.0% | 84.8% | 97.8% | 68.5% |
+| Shared Lane | simulation | 15/15 | 0.877 | 1.600 | 60.9% | 92.6% | 99.4% | 65.1% |
+| Shared Lane | hardware | 15/15 | 0.551 | 1.177 | 71.2% | 95.9% | 96.9% | 69.3% |
 
-### A8 - F5: execution fidelity
+### A8 — F5: Execution Fidelity
 
-F5a is relative duration error (%) against the prediction at bidding; F5b is
-finish-time offset (s), including dispatch queueing. Each condition includes 15 tasks.
+N=3 duration prediction error was largest in Bottleneck (336.1% simulation; 348.9% hardware), substantially above its N=1 baseline. Hardware N=3 fidelity statistics cover 10–11 matched tasks per condition; the remaining tasks lacked recorded bid responses. F5a is relative duration error; F5b is actual-minus-predicted finish-time offset.
 
 | Scenario | Platform | 5a N=1 mean % | SD | Min | Max | 5a N=3 mean % | SD | Min | Max | 5b mean (s) | SD | Min | Max |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Bottleneck | simulation | 31.2 | 18.7 | −15.4 | 55.8 | 289.4 | 149.3 | 104.2 | 588.7 | 111.2 | 48.2 | 52.1 | 204.9 |
-| Bottleneck | hardware | 110.3 | 58.2 | 38.0 | 279.6 | 430.5 | 178.5 | 169.7 | 794.7 | 165.4 | 60.7 | 80.8 | 274.7 |
-| Crossing | simulation | 31.0 | 27.1 | −3.7 | 98.7 | 140.2 | 138.1 | 9.5 | 454.7 | 74.6 | 65.5 | 12.1 | 222.9 |
-| Crossing | hardware | 114.8 | 74.9 | 15.0 | 298.3 | 232.3 | 135.8 | 75.4 | 593.0 | 119.1 | 64.3 | 49.0 | 286.1 |
-| Head-on | simulation | 26.1 | 30.1 | −12.4 | 95.1 | 215.9 | 165.7 | 7.5 | 520.8 | 92.2 | 59.5 | 10.7 | 227.5 |
-| Head-on | hardware | 113.9 | 42.4 | 53.8 | 199.4 | 244.3 | 131.5 | 59.8 | 469.3 | 104.5 | 41.8 | 34.6 | 170.7 |
-| Shared Lane | simulation | 15.8 | 14.7 | −1.8 | 53.9 | 53.3 | 33.2 | 15.6 | 117.5 | 38.2 | 20.8 | 15.5 | 84.7 |
-| Shared Lane | hardware | 98.8 | 29.3 | 39.2 | 158.2 | 157.1 | 63.5 | 60.9 | 275.2 | 102.2 | 36.7 | 46.1 | 166.4 |
+| Bottleneck | simulation | 11.8 | 27.8 | -11.6 | 88.4 | 336.1 | 195.4 | 40.0 | 640.3 | 125.7 | 66.2 | 18.5 | 228.6 |
+| Bottleneck | hardware | 66.7 | 37.8 | 11.0 | 131.5 | 348.9 | 233.9 | 87.7 | 796.9 | 123.2 | 78.8 | 34.8 | 273.9 |
+| Crossing | simulation | 27.0 | 21.6 | 4.2 | 73.4 | 86.8 | 104.6 | 3.7 | 310.3 | 46.5 | 49.9 | 6.8 | 152.1 |
+| Crossing | hardware | 61.9 | 76.0 | 14.0 | 313.0 | 196.8 | 155.3 | 31.3 | 517.7 | 99.6 | 74.4 | 20.3 | 253.4 |
+| Head-on | simulation | 13.9 | 31.6 | -14.2 | 112.3 | 161.4 | 123.0 | -8.9 | 365.8 | 70.6 | 61.4 | -1.6 | 240.0 |
+| Head-on | hardware | 76.7 | 32.7 | 19.1 | 125.3 | 216.1 | 138.2 | 26.2 | 374.3 | 86.9 | 45.9 | 18.2 | 136.1 |
+| Shared Lane | simulation | 16.6 | 14.8 | -5.3 | 47.9 | 46.4 | 25.1 | 10.7 | 109.1 | 32.5 | 14.6 | 11.2 | 69.2 |
+| Shared Lane | hardware | 86.5 | 42.7 | 19.2 | 191.9 | 113.8 | 46.3 | 61.3 | 210.7 | 73.8 | 29.0 | 40.7 | 135.3 |
 
-### A9 - F6: route-level stationary time
+### A9 — F6: Route-Level Stationary Time
 
-Stationary time (s) is measured without a motion command during an active task.
-Additional stationary time is the difference between N=3 and matched N=1 route means.
+Bottleneck had the largest additional stationary times on several routes; Bottleneck R1 simulation increased by 92.8 s and R3 hardware by 88.1 s. Two hardware routes showed decreases: Crossing R1 (−8.7 s) and Shared Lane R1 (−8.2 s). Δ stationary time = N=3 route mean − matched N=1 mean; it does not identify why a robot stopped.
 
-| Route | Platform | N=1 mean | SD | Min | Max | N=3 mean | SD | Min | Max | Excess (s) |
+| Route | Platform | N=1 mean | SD | Min | Max | N=3 mean | SD | Min | Max | Δ stationary time (s) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| bottleneck_r1 wp_2→wp_5 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 38.9 | 20.0 | 16.2 | 60.5 | +38.9 |
-| bottleneck_r2 wp_3→wp_4 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 38.4 | 24.5 | 0.0 | 64.3 | +38.4 |
-| bottleneck_r3 wp_4→wp_3 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 76.8 | 36.8 | 30.3 | 121.5 | +76.8 |
-| bottleneck_r1 wp_2→wp_5 | hardware | 2.5 | 3.0 | 0.0 | 6.2 | 53.7 | 27.0 | 35.2 | 100.7 | +51.2 |
-| bottleneck_r2 wp_3→wp_4 | hardware | 0.9 | 1.0 | 0.0 | 2.5 | 73.3 | 31.1 | 18.0 | 91.5 | +72.5 |
-| bottleneck_r3 wp_4→wp_3 | hardware | 0.0 | 0.0 | 0.0 | 0.0 | 58.4 | 27.7 | 18.2 | 85.6 | +58.4 |
-| crossing_r1 wp_2→wp_6 | simulation | 1.2 | 2.2 | 0.0 | 5.1 | 18.5 | 15.6 | 0.5 | 43.2 | +17.3 |
-| crossing_r2 wp_6→wp_9 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 8.6 | 13.3 | 0.0 | 30.8 | +8.6 |
-| crossing_r3 wp_7→wp_8 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 62.2 | 27.3 | 29.2 | 95.3 | +62.2 |
-| crossing_r1 wp_2→wp_6 | hardware | 6.5 | 10.6 | 0.0 | 24.8 | 25.2 | 34.1 | 0.0 | 63.8 | +18.7 |
-| crossing_r2 wp_6→wp_9 | hardware | 12.9 | 24.0 | 0.3 | 55.5 | 39.3 | 31.6 | 0.0 | 87.1 | +26.5 |
-| crossing_r3 wp_7→wp_8 | hardware | 1.2 | 2.7 | 0.0 | 6.0 | 30.6 | 30.4 | 1.1 | 64.9 | +29.4 |
-| headon_r1 wp_2→wp_5 | simulation | 0.2 | 0.4 | 0.0 | 0.8 | 71.3 | 54.2 | 20.7 | 162.4 | +71.1 |
-| headon_r2 wp_5→wp_2 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 19.9 | 14.9 | 5.4 | 36.9 | +19.9 |
-| headon_r3 wp_3→wp_7 | simulation | 0.1 | 0.3 | 0.0 | 0.6 | 18.3 | 11.3 | 5.4 | 32.0 | +18.2 |
-| headon_r1 wp_2→wp_5 | hardware | 6.0 | 5.1 | 0.9 | 14.4 | 29.0 | 39.6 | 0.4 | 95.5 | +23.0 |
-| headon_r2 wp_5→wp_2 | hardware | 0.1 | 0.2 | 0.0 | 0.5 | 5.4 | 6.5 | 0.4 | 16.4 | +5.3 |
-| headon_r3 wp_3→wp_7 | hardware | 0.2 | 0.5 | 0.0 | 1.1 | 15.0 | 20.2 | 0.0 | 39.5 | +14.8 |
-| sharedlane_r1 wp_2→wp_7 | simulation | 0.1 | 0.2 | 0.0 | 0.4 | 1.3 | 2.0 | 0.0 | 4.9 | +1.2 |
-| sharedlane_r2 wp_4→wp_5 | simulation | 0.4 | 0.4 | 0.0 | 0.9 | 16.2 | 12.8 | 2.0 | 35.1 | +15.8 |
-| sharedlane_r3 wp_6→wp_3 | simulation | 0.1 | 0.2 | 0.0 | 0.5 | 23.2 | 12.8 | 0.5 | 30.7 | +23.1 |
-| sharedlane_r1 wp_2→wp_7 | hardware | 14.6 | 20.7 | 0.7 | 47.9 | 2.6 | 2.9 | 0.0 | 6.4 | −12.0 |
-| sharedlane_r2 wp_4→wp_5 | hardware | 0.4 | 0.6 | 0.0 | 1.3 | 28.3 | 16.3 | 10.0 | 53.0 | +27.9 |
-| sharedlane_r3 wp_6→wp_3 | hardware | 4.0 | 7.9 | 0.0 | 18.1 | 45.1 | 46.9 | 0.6 | 119.8 | +41.1 |
+| Bottleneck R1 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 92.8 | 56.3 | 5.1 | 146.3 | +92.8 |
+| Bottleneck R1 | hardware | 0.3 | 0.7 | 0.0 | 1.5 | 17.9 | 27.3 | 5.5 | 66.7 | +17.6 |
+| Bottleneck R2 | simulation | 0.1 | 0.2 | 0.0 | 0.4 | 76.2 | 69.7 | 0.0 | 133.1 | +76.1 |
+| Bottleneck R2 | hardware | 0.1 | 0.3 | 0.0 | 0.7 | 25.8 | 21.7 | 3.8 | 50.1 | +25.7 |
+| Bottleneck R3 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 8.8 | 5.4 | 0.0 | 14.9 | +8.8 |
+| Bottleneck R3 | hardware | 0.3 | 0.4 | 0.0 | 0.8 | 88.4 | 68.3 | 31.1 | 206.6 | +88.1 |
+| Crossing R1 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | +0.0 |
+| Crossing R1 | hardware | 10.1 | 21.9 | 0.0 | 49.2 | 1.4 | 3.1 | 0.0 | 6.8 | -8.7 |
+| Crossing R2 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 6.0 | 8.2 | 0.9 | 20.5 | +6.0 |
+| Crossing R2 | hardware | 0.0 | 0.0 | 0.0 | 0.0 | 5.5 | 0.1 | 5.3 | 5.5 | +5.5 |
+| Crossing R3 | simulation | 0.4 | 0.3 | 0.0 | 0.8 | 42.8 | 36.1 | 0.7 | 99.0 | +42.4 |
+| Crossing R3 | hardware | 0.0 | 0.0 | 0.0 | 0.0 | 29.7 | 25.2 | 0.4 | 62.5 | +29.7 |
+| Head-on R1 | simulation | 0.2 | 0.5 | 0.0 | 1.2 | 33.3 | 30.6 | 0.0 | 70.9 | +33.0 |
+| Head-on R1 | hardware | 0.4 | 0.4 | 0.0 | 1.0 | 27.6 | 20.7 | 3.0 | 51.4 | +27.2 |
+| Head-on R2 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 0.1 | 0.1 | 0.0 | 0.3 | +0.1 |
+| Head-on R2 | hardware | 0.1 | 0.3 | 0.0 | 0.6 | 1.2 | 2.1 | 0.0 | 4.8 | +1.0 |
+| Head-on R3 | simulation | 0.1 | 0.1 | 0.0 | 0.3 | 37.6 | 61.6 | 0.9 | 147.3 | +37.6 |
+| Head-on R3 | hardware | 3.1 | 6.3 | 0.0 | 14.5 | 16.8 | 33.6 | 0.0 | 76.7 | +13.7 |
+| Shared Lane R1 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 0.1 | 0.3 | 0.0 | 0.6 | +0.1 |
+| Shared Lane R1 | hardware | 8.2 | 18.1 | 0.0 | 40.5 | 0.0 | 0.0 | 0.0 | 0.0 | -8.2 |
+| Shared Lane R2 | simulation | 0.2 | 0.2 | 0.0 | 0.4 | 22.3 | 5.3 | 16.1 | 30.3 | +22.1 |
+| Shared Lane R2 | hardware | 0.1 | 0.2 | 0.0 | 0.5 | 27.4 | 10.1 | 16.8 | 43.6 | +27.3 |
+| Shared Lane R3 | simulation | 0.0 | 0.0 | 0.0 | 0.0 | 20.4 | 4.2 | 16.5 | 25.4 | +20.4 |
+| Shared Lane R3 | hardware | 0.3 | 0.4 | 0.0 | 0.8 | 30.8 | 0.6 | 30.1 | 31.7 | +30.5 |
 
-### A10 - F6: waiting episode statistics
+### A10 — F6: Waiting Episode Statistics
 
-An episode is a continuous interval without a motion command. Mean episode
-duration is aggregated across episodes; the reported SD represents variability
-among the five per-repeat means.
+Bottleneck produced the longest mean qualifying waiting episodes (33.22 s simulation at the 0.3 s floor). Episodes occurred in every repeat at both floors. Counts are pooled; duration mean and SD are calculated across the five per-repeat means, not weighted by episode count.
 
 | Scenario | Platform | Episode floor | Episodes | Mean duration (s) | SD across repeats |
 |---|---|---|---|---|---|
-| Bottleneck | simulation | ≥ 0.3 s | 85 | 9.06 | 3.31 |
-| Bottleneck | simulation | ≥ 1.0 s | 68 | 11.20 | 2.60 |
-| Bottleneck | hardware | ≥ 0.3 s | 98 | 9.46 | 3.06 |
-| Bottleneck | hardware | ≥ 1.0 s | 76 | 12.06 | 2.75 |
-| Crossing | simulation | ≥ 0.3 s | 41 | 10.88 | 6.26 |
-| Crossing | simulation | ≥ 1.0 s | 30 | 14.69 | 4.58 |
-| Crossing | hardware | ≥ 0.3 s | 40 | 11.89 | 5.08 |
-| Crossing | hardware | ≥ 1.0 s | 25 | 18.68 | 6.76 |
-| Head-on | simulation | ≥ 0.3 s | 54 | 10.14 | 11.95 |
-| Head-on | simulation | ≥ 1.0 s | 39 | 13.82 | 18.30 |
-| Head-on | hardware | ≥ 0.3 s | 33 | 7.49 | 7.14 |
-| Head-on | hardware | ≥ 1.0 s | 16 | 14.96 | 9.31 |
-| Shared Lane | simulation | ≥ 0.3 s | 16 | 12.73 | 4.98 |
-| Shared Lane | simulation | ≥ 1.0 s | 14 | 14.47 | 3.81 |
-| Shared Lane | hardware | ≥ 0.3 s | 26 | 14.62 | 4.76 |
-| Shared Lane | hardware | ≥ 1.0 s | 20 | 18.81 | 5.81 |
+| Bottleneck | simulation | 0.3 s | 28 | 33.22 | 25.59 |
+| Bottleneck | simulation | 1.0 s | 21 | 39.96 | 26.60 |
+| Bottleneck | hardware | 0.3 s | 46 | 16.48 | 11.53 |
+| Bottleneck | hardware | 1.0 s | 40 | 18.11 | 10.47 |
+| Crossing | simulation | 0.3 s | 16 | 15.82 | 10.69 |
+| Crossing | simulation | 1.0 s | 11 | 22.56 | 8.58 |
+| Crossing | hardware | 0.3 s | 19 | 9.15 | 5.77 |
+| Crossing | hardware | 1.0 s | 15 | 12.09 | 8.64 |
+| Head-on | simulation | 0.3 s | 27 | 13.06 | 6.50 |
+| Head-on | simulation | 1.0 s | 24 | 14.54 | 6.06 |
+| Head-on | hardware | 0.3 s | 19 | 11.87 | 8.98 |
+| Head-on | hardware | 1.0 s | 13 | 13.90 | 9.59 |
+| Shared Lane | simulation | 0.3 s | 20 | 11.00 | 2.43 |
+| Shared Lane | simulation | 1.0 s | 15 | 14.22 | 1.24 |
+| Shared Lane | hardware | 0.3 s | 34 | 9.40 | 2.86 |
+| Shared Lane | hardware | 1.0 s | 24 | 13.16 | 3.72 |
 
-### A11 - F7: pose-based separation and events
+### A11 — F7: Pose-Based Separation and Events
 
-F7a/F7b measure reference-point separation from RMF-reported poses
-(RobotState.location), not physical clearance. The geometric minimum
-reference-point separation is 0.076 m under the specified robot model.
-The table identifies repeats with reported separations below this limit.
+Reported pose separation fell below the model-derived 0.076 m reference minimum in seven repeats, including four hardware repeats. These are RMF-reported reference-point separations, not verified physical clearances; waypoint snapping can produce a reported 0.000 m even when robots remain separated.
 
 | Scenario | Platform | 7a min, 5 repeats | Median | Repeats below 0.076 m | Threshold | 7b events | Samples | Affected repeats |
 |---|---|---|---|---|---|---|---|---|
-| Bottleneck | simulation | 0.071–1.642 | 1.270 | 1 | 0.356 m | 3 | 38 | 1/5 |
-|  |  |  |  |  | 0.628 m | 3 | 127 | 2/5 |
-| Bottleneck | hardware | 0.011–0.496 | 0.065 | 3 | 0.356 m | 9 | 902 | 4/5 |
-|  |  |  |  |  | 0.628 m | 17 | 1815 | 5/5 |
-| Crossing | simulation | 0.115–2.908 | 1.812 | 0 | 0.356 m | 6 | 518 | 2/5 |
-|  |  |  |  |  | 0.628 m | 3 | 612 | 2/5 |
-| Crossing | hardware | 0.006–2.329 | 0.075 | 3 | 0.356 m | 6 | 541 | 3/5 |
-|  |  |  |  |  | 0.628 m | 6 | 813 | 3/5 |
-| Head-on | simulation | 0.075–1.843 | 1.431 | 1 | 0.356 m | 3 | 57 | 1/5 |
-|  |  |  |  |  | 0.628 m | 1 | 145 | 1/5 |
-| Head-on | hardware | 0.849–1.460 | 1.202 | 0 | 0.356 m | 0 | 0 | 0/5 |
-|  |  |  |  |  | 0.628 m | 0 | 0 | 0/5 |
-| Shared Lane | simulation | 1.838–2.851 | 2.199 | 0 | 0.356 m | 0 | 0 | 0/5 |
-|  |  |  |  |  | 0.628 m | 0 | 0 | 0/5 |
-| Shared Lane | hardware | 0.960–2.945 | 1.806 | 0 | 0.356 m | 0 | 0 | 0/5 |
-|  |  |  |  |  | 0.628 m | 0 | 0 | 0/5 |
+| Bottleneck | simulation | 0.187, 0.467, 1.100, 0.085, 0.458 | 0.458 | 0 | 0.356 m | 5 | 42 | 2/5 |
+| Bottleneck | hardware | 0.131, 0.000, 0.000, 0.000, 0.408 | 0.000 | 3 | 0.356 m | 5 | 2700 | 4/5 |
+| Crossing | simulation | 0.000, 0.000, 2.640, 0.666, 0.000 | 0.000 | 3 | 0.356 m | 3 | 199 | 3/5 |
+| Crossing | hardware | 2.982, 0.000, 0.376, 0.925, 2.412 | 0.925 | 1 | 0.356 m | 1 | 817 | 1/5 |
+| Head-on | simulation | 0.054, 0.353, 0.452, 0.176, 0.930 | 0.353 | 1 | 0.356 m | 4 | 86 | 3/5 |
+| Head-on | hardware | 1.661, 1.647, 1.146, 0.918, 1.545 | 1.545 | 0 | 0.356 m | 0 | 0 | 0/5 |
+| Shared Lane | simulation | 2.455, 1.934, 2.274, 2.001, 1.759 | 2.001 | 0 | 0.356 m | 0 | 0 | 0/5 |
+| Shared Lane | hardware | 1.719, 1.693, 2.045, 1.896, 1.716 | 1.719 | 0 | 0.356 m | 0 | 0 | 0/5 |
 
-### A12 - F7: laser separation and its validation
+### A12 — F7: Laser Separation and Its Validation
 
-F7c estimates laser-centre separation using /scan, independent of reported
-poses and the navigation map. Coverage is the fraction of paired scan instants
-with a mutual match; estimates are subject to incomplete detection coverage.
+LiDAR-based separation coverage ranged from 23.3% to 78.0% across conditions. Threshold events were observed in several scenarios, but low coverage limits interpretation of unobserved periods; Contact suspected does not confirm physical collision. Minimum values are per-repeat lower bounds from /scan, pooled across three robot pairs.
 
 | Scenario | Platform | 7c min, 5 repeats | Median | Coverage | Instants < 0.356 m | Episodes < 0.356 m | Pair-repeats | Contact suspected |
 |---|---|---|---|---|---|---|---|---|
-| Bottleneck | simulation | 0.183–0.652 | 0.356 | 30.5±13.6% | 430 | 4 | 3 | 0 |
-| Bottleneck | hardware | 0.181–0.563 | 0.201 | 61.3±8.4% | 464 | 13 | 5 | 0 |
-| Crossing | simulation | 0.149–0.651 | 0.570 | 67.9±14.2% | 594 | 7 | 2 | 2 |
-| Crossing | hardware | 0.183–0.635 | 0.368 | 75.3±5.9% | 675 | 17 | 4 | 0 |
-| Head-on | simulation | 0.297–1.014 | 0.837 | 28.4±11.1% | 10 | 1 | 1 | 0 |
-| Head-on | hardware | 0.521–0.856 | 0.740 | 62.8±8.4% | 0 | 0 | 0 | 0 |
-| Shared Lane | simulation | 0.700–1.126 | 0.852 | 23.7±9.6% | 0 | 0 | 0 | 0 |
-| Shared Lane | hardware | 0.211–0.891 | 0.324 | 64.6±7.8% | 28 | 3 | 3 | 0 |
+| Bottleneck | simulation | 0.149, 0.261, 0.779, 0.184, 0.149 | 0.184 | 34.4% | 136 | 8 | 15 | 2/5 |
+| Bottleneck | hardware | 0.197, 0.189, 0.215, 0.181, 0.365 | 0.197 | 70.8% | 1307 | 13 | 15 | 0/5 |
+| Crossing | simulation | 0.371, 0.293, 0.972, 0.358, 0.278 | 0.358 | 65.4% | 53 | 2 | 15 | 0/5 |
+| Crossing | hardware | 0.533, 0.181, 0.358, 0.309, 0.361 | 0.358 | 78.0% | 532 | 12 | 15 | 0/5 |
+| Head-on | simulation | 0.149, 0.151, 0.204, 0.171, 0.149 | 0.151 | 25.3% | 401 | 11 | 15 | 3/5 |
+| Head-on | hardware | 0.824, 0.663, 0.185, 0.437, 0.755 | 0.663 | 61.9% | 13 | 1 | 15 | 0/5 |
+| Shared Lane | simulation | 1.084, 0.462, 0.750, 0.307, 0.852 | 0.750 | 23.3% | 7 | 1 | 15 | 0/5 |
+| Shared Lane | hardware | 0.547, 0.651, 0.219, 1.012, 0.185 | 0.547 | 63.8% | 31 | 3 | 15 | 0/5 |
 
-F7c validation uses Gazebo ground truth in simulation only; no independent
-position reference is available for hardware.
+Simulation validation: Of 1,441 ground-truth close instants (<0.628 m), 1,169 had an attributable laser match (81.1%). At the separate 0.356 m classification threshold, TP = 560, FP = 37 and FN = 141 (precision 93.8%; recall 79.9%). Unmatched true-close instants count as false negatives; these classifications are not confirmed collisions. The two thresholds use different denominators.
 
 | Scenario | Close instants, true separation < 0.628 m | With an attributable match | TP | FP | FN |
 |---|---|---|---|---|---|
-| Bottleneck | 1469 | 1468 | 410 | 20 | 0 |
-| Crossing | 764 | 625 | 587 | 7 | 89 |
-| Head-on | 231 | 230 | 8 | 2 | 0 |
-| Shared Lane | 0 | 0 | 0 | 0 | 0 |
-| **All** | **2464** | **2323 (94.3%)** | **1005** | **29** | **89** |
+| Bottleneck | 331 | 232 | 124 | 12 | 37 |
+| Crossing | 310 | 308 | 47 | 6 | 0 |
+| Head-on | 748 | 577 | 385 | 16 | 104 |
+| Shared Lane | 52 | 52 | 4 | 3 | 0 |
+| **All** | **1441** | **1169 (81.1%)** | **560** | **37** | **141** |
 
-### A13 - F8: planning growth and throughput scaling
+### A13 — F8: Planning Growth and Throughput Scaling
 
-Results quantify the change from N=1 to N=3; scalability beyond this range was
-not evaluated. First-task statistics use the initial bid of each N=3 batch.
+N=3 planning latency increased relative to N=1 in most comparisons; overall mean growth was +80.6% in simulation and +13.9% on hardware. The first bid of each N=3 batch showed higher growth (+142.1% and +70.9%, respectively). Scalability beyond N=3 was not tested.
 
 | Platform | Set | P(3) mean (ms) | Median | P(1) mean (ms) | Median | G mean | G median |
 |---|---|---|---|---|---|---|---|
-| simulation | every task, as specified | 3.10 | 2.33 | 1.48 | 1.29 | +109.1% | +80.3% |
-| simulation | first task of each batch | 3.86 | 3.64 | 1.48 | 1.29 | +160.2% | +182.2% |
-| hardware | every task, as specified | 2.29 | 1.62 | 1.18 | 1.15 | +94.6% | +40.8% |
-| hardware | first task of each batch | 3.02 | 2.08 | 1.18 | 1.15 | +156.5% | +81.5% |
+| simulation | all bids | 2.08 | 1.81 | 1.15 | 1.10 | +80.6% | +64.6% |
+| simulation | first bid per batch | 2.79 | 2.47 | 1.15 | 1.10 | +142.1% | +124.9% |
+| hardware | all bids | 1.61 | 1.58 | 1.42 | 1.25 | +13.9% | +26.9% |
+| hardware | first bid per batch | 2.42 | 1.73 | 1.42 | 1.25 | +70.9% | +38.5% |
 
 | Scenario | Platform | P(3) mean (ms) | P(1) mean | G mean | Throughput scaling | Workload ceiling |
 |---|---|---|---|---|---|---|
-| Bottleneck | simulation | 3.63 | 1.52 | +139.4% | 26.8% | 89.4% |
-| Crossing | simulation | 2.61 | 1.09 | +138.7% | 34.0% | 77.1% |
-| Head-on | simulation | 2.73 | 1.53 | +78.1% | 35.2% | 82.0% |
-| Shared Lane | simulation | 3.42 | 1.78 | +92.1% | 59.4% | 83.4% |
-| Bottleneck | hardware | 2.28 | 1.04 | +118.8% | 30.9% | 74.5% |
-| Crossing | hardware | 3.38 | 1.06 | +220.1% | 45.3% | 95.8% |
-| Head-on | hardware | 1.21 | 1.20 | +0.4% | 50.1% | 93.1% |
-| Shared Lane | hardware | 2.29 | 1.40 | +63.0% | 62.7% | 88.6% |
+| Bottleneck | simulation | 1.68 | 1.07 | +57.4% | 17.6% | 86.1% |
+| Crossing | simulation | 2.20 | 1.03 | +114.5% | 36.9% | 85.6% |
+| Head-on | simulation | 1.36 | 1.13 | +21.1% | 31.3% | 73.7% |
+| Shared Lane | simulation | 3.08 | 1.39 | +121.9% | 60.9% | 92.6% |
+| Bottleneck | hardware | 1.31 | 1.02 | +28.9% | 25.8% | 81.1% |
+| Crossing | hardware | 1.47 | 1.23 | +20.0% | 35.5% | 74.1% |
+| Head-on | hardware | 1.28 | 1.61 | -20.6% | 43.0% | 84.8% |
+| Shared Lane | hardware | 2.37 | 1.80 | +31.6% | 71.2% | 95.9% |
 
-### A14 -  cross-feature route-level comparison
+### A14 — Cross-Feature Route-Level Comparison
 
-Differences are calculated as N=3 minus the matched N=1 route means. Distance
-is RMF-reported; conflict counts are per-robot medians across repeats. Robot-level
-conflict counts within a repeat are not independent.
+Bottleneck combined large execution-time increases, stationary delays and duration-prediction errors. Shared Lane had no classified conflicts despite measurable waiting on some routes. Values are N=3 route means; Δ duration error is N=3 minus matched N=1 in percentage points. Hardware Crossing R1 has no valid F5 comparison (—). Conflicts per repeat are scenario-level, repeated across routes.
 
-| Route | Platform | Execution (s) | Stationary (s) | Distance (m) | Duration error (points) | Conflicts per repeat |
+| Route | Platform | Execution (s) | Stationary (s) | Distance (m) | Δ duration error (pp) | Conflicts per repeat |
 |---|---|---|---|---|---|---|
-| bottleneck_r1 | simulation | +65.0 | +38.9 | +4.0 | +148.4 | 10 |
-| bottleneck_r1 | hardware | +92.6 | +51.2 | +3.8 | +199.5 | 15 |
-| bottleneck_r2 | simulation | +100.6 | +38.4 | +10.1 | +293.9 | 10 |
-| bottleneck_r2 | hardware | +144.7 | +72.5 | +6.9 | +424.5 | 20 |
-| bottleneck_r3 | simulation | +118.3 | +76.8 | +6.7 | +332.1 | 14 |
-| bottleneck_r3 | hardware | +117.9 | +58.4 | +6.4 | +336.8 | 14 |
-| crossing_r1 | simulation | +8.0 | +17.3 | +3.2 | +6.4 | 2 |
-| crossing_r1 | hardware | +37.6 | +18.7 | +3.5 | +74.8 | 2 |
-| crossing_r2 | simulation | +21.8 | +8.6 | +1.0 | +46.0 | 4 |
-| crossing_r2 | hardware | +31.7 | +26.5 | +0.1 | +68.5 | 5 |
-| crossing_r3 | simulation | +130.8 | +62.2 | +11.7 | +275.3 | 5 |
-| crossing_r3 | hardware | +98.7 | +29.4 | +7.2 | +209.3 | 7 |
-| headon_r1 | simulation | +104.9 | +71.1 | +4.0 | +255.6 | 7 |
-| headon_r1 | hardware | +45.7 | +23.0 | +3.6 | +102.4 | 5 |
-| headon_r2 | simulation | +102.4 | +19.9 | +11.7 | +285.5 | 7 |
-| headon_r2 | hardware | +93.5 | +5.3 | +12.1 | +262.9 | 4 |
-| headon_r3 | simulation | +21.4 | +18.2 | +1.3 | +28.2 | 7 |
-| headon_r3 | hardware | +12.1 | +14.8 | −0.1 | +25.8 | 4 |
-| sharedlane_r1 | simulation | +13.0 | +1.2 | +3.8 | +19.0 | 0 |
-| sharedlane_r1 | hardware | +6.7 | −12.0 | +3.4 | +5.4 | 0 |
-| sharedlane_r2 | simulation | +22.8 | +15.8 | +0.6 | +35.6 | 0 |
-| sharedlane_r2 | hardware | +34.4 | +27.9 | −0.5 | +56.7 | 0 |
-| sharedlane_r3 | simulation | +34.2 | +23.1 | +1.1 | +57.7 | 0 |
-| sharedlane_r3 | hardware | +65.8 | +41.1 | +0.6 | +112.9 | 0 |
+| Bottleneck R1 | simulation | 202.7 | 92.8 | 16.0 | +423 | 23.0 |
+| Bottleneck R1 | hardware | 124.6 | 17.9 | 14.0 | +254 | 19.4 |
+| Bottleneck R2 | simulation | 146.8 | 76.2 | 10.5 | +292 | 23.0 |
+| Bottleneck R2 | hardware | 96.7 | 25.8 | 8.0 | +153 | 19.4 |
+| Bottleneck R3 | simulation | 124.4 | 8.8 | 18.1 | +258 | 23.0 |
+| Bottleneck R3 | hardware | 208.7 | 88.4 | 15.0 | +411 | 19.4 |
+| Crossing R1 | simulation | 51.1 | 0.0 | 12.9 | +0 | 37.8 |
+| Crossing R1 | hardware | 88.7 | 1.4 | 16.0 | — | 6.4 |
+| Crossing R2 | simulation | 63.1 | 6.0 | 9.2 | +5 | 37.8 |
+| Crossing R2 | hardware | 81.2 | 5.5 | 10.2 | +31 | 6.4 |
+| Crossing R3 | simulation | 154.1 | 42.8 | 17.7 | +174 | 37.8 |
+| Crossing R3 | hardware | 203.6 | 29.7 | 20.6 | +292 | 6.4 |
+| Head-on R1 | simulation | 101.8 | 33.3 | 10.0 | +163 | 4.6 |
+| Head-on R1 | hardware | 137.7 | 27.6 | 12.4 | +269 | 1.6 |
+| Head-on R2 | simulation | 112.8 | 0.1 | 17.5 | +205 | 4.6 |
+| Head-on R2 | hardware | 143.7 | 1.2 | 17.7 | +227 | 1.6 |
+| Head-on R3 | simulation | 127.8 | 37.6 | 14.8 | +74 | 4.6 |
+| Head-on R3 | hardware | 96.6 | 16.8 | 11.2 | +26 | 1.6 |
+| Shared Lane R1 | simulation | 78.1 | 0.1 | 12.6 | +19 | 0.0 |
+| Shared Lane R1 | hardware | 112.7 | 0.0 | 13.9 | -35 | 0.0 |
+| Shared Lane R2 | simulation | 80.8 | 22.3 | 10.4 | +24 | 0.0 |
+| Shared Lane R2 | hardware | 142.2 | 27.4 | 14.1 | +42 | 0.0 |
+| Shared Lane R3 | simulation | 102.0 | 20.4 | 11.4 | +46 | 0.0 |
+| Shared Lane R3 | hardware | 122.2 | 30.8 | 11.9 | +33 | 0.0 |

@@ -198,8 +198,10 @@ def main():
     print('tasks per robot: %s' % ', '.join('%s %d' % (r, tasks.get(r, 0))
                                             for r in args.robots))
     print('robots the fleet used: %d of %d' % (len(working), len(args.robots)))
-    if not working:
-        failures.append('no robot carried a task, so nothing was allocated')
+    idle = [r for r in args.robots if tasks.get(r, 0) < 1]
+    if idle:
+        failures.append('%s carried no task, so the repeat is not a %d-robot sample'
+                        % (', '.join(idle), len(args.robots)))
 
     # Only the robots that were given work: one left parked carried no task to execute.
     path = observed_path_per_robot(args.task_planning_metrics)

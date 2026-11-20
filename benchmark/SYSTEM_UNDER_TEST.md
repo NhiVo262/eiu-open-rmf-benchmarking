@@ -2,9 +2,7 @@
 
 ## 1. System Overview
 
-The benchmark evaluates an Open-RMF multi-robot fleet on simulation and hardware platforms. Three TurtleBot3 robots execute navigation tasks through ROS 2 Nav2 and a custom fleet adapter. Both platforms use the same fleet profile and navigation graph.
-
-The navigation graph contains 9 waypoints (wp_1–wp_9) and 18 directed lanes. Scenario routes, initial placements, and lane closures are specified in [SCENARIO_DESIGN.md](SCENARIO_DESIGN.md).
+The benchmark evaluates an Open-RMF fleet of three TurtleBot3 robots in Gazebo simulation and on physical hardware. Both platforms use ROS 2 Nav2, a custom fleet adapter, the same fleet profile, and a navigation graph with 9 waypoints and 18 directed lanes. Routes, initial placements, and lane closures are defined in [SCENARIO_DESIGN.md](SCENARIO_DESIGN.md).
 
 ## 2. Experimental Configuration
 
@@ -14,44 +12,43 @@ The navigation graph contains 9 waypoints (wp_1–wp_9) and 18 directed lanes. S
 | Fleet sizes | N=1 (baseline); N=3 (concurrent workload) |
 | Scenarios | Bottleneck, Crossing, Head-on, Shared Lane |
 | Navigation graph | 9 waypoints; 18 directed lanes |
-| RMF footprint radius | 0.178 m |
-| RMF vicinity radius | 0.45 m |
+| RMF footprint / vicinity radius | 0.178 m / 0.450 m |
 | Nav2 local controller | dwb_core::DWBLocalPlanner |
 | Hardware command limits (observed) | Linear: 0.220 m/s; angular: 1.000 rad/s |
-| /scan frequency (observed) | Simulation: 9.72–9.95 Hz; hardware: 9.60–10.32 Hz |
-| /fleet_states frequency (observed) | 10 Hz on both platforms |
+| /scan frequency (observed) | Simulation: 9.78–10.00 Hz; hardware: 8.99–11.38 Hz |
+| /fleet_states frequency (observed) | Simulation: 9.89–10.00 Hz; hardware: 9.87–10.00 Hz |
 | Task bid window | N=3: 5.0 s; N=1: 2.0 s |
+| Waypoint merge radius | 0.25 m on both platforms |
 
-The simulation N=3 collection recorded a real-time factor of 0.999.
+Simulation N=3 real-time factor: 0.979–1.000 across 20 repeats (mean 0.998). Both platforms set max_merge_waypoint_distance to 0.25 m, matching the Nav2 goal tolerance rather than the RMF default of 1e-3 m. Within this radius, RMF reports the robot at the waypoint.
 
 ## 3. Navigation and Task Execution
 
-All robots use Nav2 for local navigation. The fleet adapter reports robot states to Open-RMF, forwards navigation commands, and requests replanning after navigation failures. Unsuccessful navigation goals may be retried without a fixed retry limit.
+Nav2 handles local navigation. The custom fleet adapter reports robot states, forwards navigation commands, and requests replanning after navigation failures. Failed goals may be retried without a fixed retry limit.
 
-Each N=3 repeat contains three tasks. Robots are initially placed at the respective route starts, and each robot executes one task in the retained workload. Task auctions are processed sequentially; queueing time is measured separately from execution duration.
+Each N=3 repeat submits three tasks, with robots initially positioned at the corresponding route starts. Each robot executes one task in the retained workload. Task auctions are processed sequentially, and dispatch queueing is measured separately from execution duration.
 
-The configuration evaluates task dispatch and concurrent route execution, not unconstrained task allocation or load balancing.
+This setup evaluates task dispatch and concurrent route execution, not unconstrained allocation or load balancing.
 
-## 4. Dataset and Measurement Sources
+## 4. Dataset and Measurement
 
 | Condition | Per platform | Both platforms |
 |---|---|---|
-| N=3: 4 scenarios × 5 repeats | 20 repeats | 40 repeats |
-| N=1: 12 routes × 5 repeats | 60 repeats | 120 repeats |
-| Total | 80 repeats | 160 repeats |
+| N=3: 4 scenarios × 5 repeats | 20 | 40 |
+| N=1: 12 routes × 5 repeats | 60 | 120 |
+| Total retained repeats | 80 | 160 |
 
-Five repeats are retained per scenario at N=3 and per route at N=1. N=3 repeats contain three robot-tasks; N=1 repeats contain one robot-task.
+Each N=3 repeat contains three robot-tasks; each N=1 repeat contains one. Recordings include task events, robot states, navigation signals, and traffic coordination events, with feature-specific metrics generated during analysis.
 
-The collection records task events, robot states, navigation signals, traffic coordination events, and feature-specific metrics. Gazebo ground-truth poses are available only in simulation. Hardware has no independent position reference.
+Retained repeats pass recording and applicable physics checks. N=3 repeats additionally require all three tasks to reach the RMF completed state. Completion rates therefore refer to retained repeats, not all collection attempts.
 
-Retained repeats pass recording and applicable physics checks. N=3 repeats additionally require all three tasks to reach the RMF completed state. Completion statistics apply to retained repeats, not all attempted runs.
+Gazebo ground-truth poses are available in simulation only; the hardware dataset has no independent position reference.
 
-## 5. Evaluation Scope
+## 5. Evaluation Limits
 
-- Task allocation: Route-start placement favours predefined robot–route assignments; allocation optimality is outside the evaluation scope.
-- Localisation: RMF-reported poses are available on both platforms; independent pose validation is available only in simulation.
-- Task completion: The completed state is reported by RMF and does not independently verify physical goal arrival on hardware.
-- Execution duration: Bid queueing is reported separately from execution time because the N=1 and N=3 bid windows differ.
-- Measurement definitions: Metric-specific data sources, aggregation units, and validation procedures are defined in [METRIC_DESIGN.md](METRIC_DESIGN.md).
+- Allocation: Initial placement favours the predefined robot–route assignments; allocation optimality is not evaluated.
+- Localisation: RMF-reported poses are available on both platforms, but independent pose validation is limited to simulation.
+- Completion: RMF completed does not independently establish physical goal arrival on hardware.
+- Timing: Dispatch queueing is separate from execution duration because N=1 and N=3 use different bid windows.
 
-Results are reported in [RESULTS.md](RESULTS.md).
+Metric definitions and measurement rules: [METRIC_DESIGN.md](METRIC_DESIGN.md). Results: [RESULTS.md](RESULTS.md).

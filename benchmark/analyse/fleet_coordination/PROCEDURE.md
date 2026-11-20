@@ -1,4 +1,4 @@
-# Benchmark procedure - Feature 4: Fleet coordination
+# Benchmark procedure — Feature 4: Fleet coordination
 
 Computing the F4 metrics from the collected N=3 runs and their route-matched N=1
 baselines. Scenario routes, spawn coordinates and the collection procedure itself

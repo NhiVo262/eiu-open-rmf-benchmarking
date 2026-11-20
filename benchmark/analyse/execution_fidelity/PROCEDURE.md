@@ -1,4 +1,4 @@
-# Benchmark procedure - Feature 5: Execution fidelity
+# Benchmark procedure — Feature 5: Execution fidelity
 
 Computing the F5 metrics from collected runs. Scenario routes, spawn coordinates
 and the collection procedure itself are in
@@ -72,7 +72,7 @@ repeat's `task_planning_metrics.json`.
 
 ```bash
 BENCHMARK=/home/eiu/rmf_ws/src/benchmark
-RUN=$BENCHMARK/data/simulation/scenarios/bottleneck/run_20261020_0838
+RUN=$BENCHMARK/data/simulation/scenarios/bottleneck/run_20261112_0846
 REPEAT=$RUN/repeat_1
 API=$(python3 -c "import json,os,sys; print(os.path.basename(
   json.load(open(sys.argv[1]))['api_state_path']))" "$REPEAT/task_planning_metrics.json")

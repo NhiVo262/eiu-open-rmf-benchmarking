@@ -1,0 +1,128 @@
+{
+  "scenario": "Head-on, N=3, CONFIG_01, repeat 4",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210/attempt_10/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 5,
+  "2a_method": "schedule feasibility = (resolved + recovered) / classified conflicts; a conflict is recovered when, after an unresolved negotiation, a participant established a new itinerary within 5.0s (replan recovery). Null where no conflict was classified",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 63.333333333333336,
+  "2a_n_itineraries": 30,
+  "2a_n_itineraries_triggering_negotiation": 11,
+  "2a_n_conflicts_classified": 5,
+  "2a_n_task_infeasible": 0,
+  "2a_schedule_feasibility_pct": 100.0,
+  "2a_conflict_outcome_counts": {
+    "resolved_by_negotiation": 5
+  },
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 3,
+    "mean": 0.0014653205871582031,
+    "stdev": 0.000826660134050086,
+    "min": 0.0005514621734619141,
+    "max": 0.0021610260009765625
+  },
+  "raw_planner_compute_s": [
+    0.0021610260009765625,
+    0.0005514621734619141,
+    0.0016834735870361328
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 29,
+    "mean": 0.0050957696191195785,
+    "stdev": 0.0031418520353074077,
+    "min": 0.0006349086761474609,
+    "max": 0.010514974594116211
+  },
+  "2b_scheduling_time_s": {
+    "n": 29,
+    "mean": 0.0050957696191195785,
+    "stdev": 0.0031418520353074077,
+    "min": 0.0006349086761474609,
+    "max": 0.010514974594116211
+  },
+  "raw_scheduling_times_s": [
+    0.009418249130249023,
+    0.003102540969848633,
+    0.0049016475677490234,
+    0.004524946212768555,
+    0.006649971008300781,
+    0.006280660629272461,
+    0.0006349086761474609,
+    0.010514974594116211,
+    0.01033782958984375,
+    0.0008275508880615234,
+    0.005094766616821289,
+    0.003720521926879883,
+    0.003623485565185547,
+    0.002058267593383789,
+    0.009084939956665039,
+    0.009038209915161133,
+    0.0099945068359375,
+    0.007628440856933594,
+    0.005167961120605469,
+    0.0008170604705810547,
+    0.0034928321838378906,
+    0.009688377380371094,
+    0.002902984619140625,
+    0.0036864280700683594,
+    0.005173683166503906,
+    0.00243377685546875,
+    0.002294778823852539,
+    0.0018129348754882812,
+    0.0028700828552246094
+  ],
+  "per_conflict": [
+    {
+      "conflict_version": 0,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 1,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot2"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 2,
+      "resolved": true,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 3,
+      "resolved": true,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 4,
+      "resolved": true,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "resolved_by_negotiation"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Benchmark procedure - Feature 6: Congestion handling
+# Benchmark procedure — Feature 6: Congestion handling
 
 Computing the F6 metrics from collected N=3 runs and their matched N=1 route
 baselines. Scenario routes, spawn coordinates and the collection procedure
@@ -70,7 +70,7 @@ for the N=1 route baselines:
 
 ```bash
 BENCHMARK=/home/eiu/rmf_ws/src/benchmark
-REPEAT=$BENCHMARK/data/simulation/scenarios/bottleneck/run_20261020_0838/repeat_1
+REPEAT=$BENCHMARK/data/simulation/scenarios/bottleneck/run_20261112_0846/repeat_1
 
 python3 $BENCHMARK/analyse/congestion_handling/analyze_congestion_handling.py \
   --bag "$REPEAT/bag" \
@@ -106,7 +106,7 @@ time proven to have been caused by another robot.
 
 ```bash
 python3 $BENCHMARK/analyse/summary/show_collection_summary.py \
-  --scenario "Bottleneck=data/simulation/scenarios/bottleneck/run_20261020_0838" \
+  --scenario "Bottleneck=data/simulation/scenarios/bottleneck/run_20261112_0846" \
   --scenario "Crossing=data/simulation/scenarios/crossing/run_<...>" \
   --only F6
 ```

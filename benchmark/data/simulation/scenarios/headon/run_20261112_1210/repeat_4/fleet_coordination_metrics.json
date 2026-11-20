@@ -1,0 +1,28 @@
+{
+  "scenario": "simulation/scenarios/headon/run_20261112_1210/repeat_4",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210/repeat_4/bag",
+  "analysis_version": 2,
+  "4b_method": "cmd_vel moving if |v| >= 0.005 m/s or |w| >= 0.05 rad/s, held at most 0.25 s; window [min award, max completed] over the repeat",
+  "4b_window_s": 107.327,
+  "4b_per_robot": {
+    "tb3_robot1": {
+      "t_moving_s": 86.5,
+      "u_pct": 80.59,
+      "n_cmd_vel": 1792
+    },
+    "tb3_robot2": {
+      "t_moving_s": 101.319,
+      "u_pct": 94.4,
+      "n_cmd_vel": 2062
+    },
+    "tb3_robot3": {
+      "t_moving_s": 73.1,
+      "u_pct": 68.11,
+      "n_cmd_vel": 1519
+    }
+  },
+  "4b_u_avg_pct": 81.03,
+  "n_tasks_completed": 3,
+  "throughput_tasks_per_min": 1.6771,
+  "4b_n_robots_scored": 3
+}

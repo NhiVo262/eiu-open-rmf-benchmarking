@@ -1,0 +1,189 @@
+{
+  "scenario": "bottleneck, N=3, CONFIG_01, repeat_3, hardware",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/bottleneck/run_20261116_1110/repeat_3/bag",
+  "analysis_version": 2,
+  "3a_n_negotiation": 18,
+  "3a_n_distinct_conflict_versions_noticed": 18,
+  "3a_n_conclusions": 18,
+  "3b_negotiation_latency_s": {
+    "n": 18,
+    "mean": 2.6090323395199246,
+    "stdev": 6.102599719414712,
+    "min": 0.0018029212951660156,
+    "max": 24.218384504318237
+  },
+  "3b_latency_resolved_s": {
+    "n": 10,
+    "mean": 0.00522003173828125,
+    "stdev": 0.00526724211864418,
+    "min": 0.0018029212951660156,
+    "max": 0.019937992095947266
+  },
+  "3b_latency_abandoned_s": {
+    "n": 8,
+    "mean": 5.863797724246979,
+    "stdev": 8.28563886655495,
+    "min": 0.9494552612304688,
+    "max": 24.218384504318237
+  },
+  "3b_n_resolved": 10,
+  "3b_n_abandoned": 8,
+  "3b_latency_refused_s": null,
+  "3b_latency_search_failed_s": {
+    "n": 8,
+    "mean": 5.863797724246979,
+    "stdev": 8.28563886655495,
+    "min": 0.9494552612304688,
+    "max": 24.218384504318237
+  },
+  "3b_n_refused": 0,
+  "3b_n_search_failed": 8,
+  "3b_n_refusal_messages": 0,
+  "3b_target": "below RMF's negotiation timeout, 15 s, fixed at rmf_traffic_ros2/schedule/Negotiation.cpp:216 and not overridden in this tree",
+  "per_negotiation": [
+    {
+      "conflict_version": 0,
+      "t_notice": 1794828046.9989617,
+      "t_conclusion": 1794828047.0188997,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.019937992095947266
+    },
+    {
+      "conflict_version": 1,
+      "t_notice": 1794828048.6093268,
+      "t_conclusion": 1794828072.8277113,
+      "resolved": false,
+      "refused": false,
+      "latency_s": 24.218384504318237
+    },
+    {
+      "conflict_version": 2,
+      "t_notice": 1794828072.879256,
+      "t_conclusion": 1794828073.9687037,
+      "resolved": false,
+      "refused": false,
+      "latency_s": 1.0894477367401123
+    },
+    {
+      "conflict_version": 3,
+      "t_notice": 1794828117.809045,
+      "t_conclusion": 1794828130.022251,
+      "resolved": false,
+      "refused": false,
+      "latency_s": 12.213205814361572
+    },
+    {
+      "conflict_version": 4,
+      "t_notice": 1794828130.2293987,
+      "t_conclusion": 1794828132.232087,
+      "resolved": false,
+      "refused": false,
+      "latency_s": 2.00268816947937
+    },
+    {
+      "conflict_version": 5,
+      "t_notice": 1794828133.0191026,
+      "t_conclusion": 1794828133.9685578,
+      "resolved": false,
+      "refused": false,
+      "latency_s": 0.9494552612304688
+    },
+    {
+      "conflict_version": 6,
+      "t_notice": 1794828134.7191002,
+      "t_conclusion": 1794828136.7203321,
+      "resolved": false,
+      "refused": false,
+      "latency_s": 2.0012319087982178
+    },
+    {
+      "conflict_version": 7,
+      "t_notice": 1794828136.9220843,
+      "t_conclusion": 1794828139.1492116,
+      "resolved": false,
+      "refused": false,
+      "latency_s": 2.2271273136138916
+    },
+    {
+      "conflict_version": 8,
+      "t_notice": 1794828139.329121,
+      "t_conclusion": 1794828141.5379622,
+      "resolved": false,
+      "refused": false,
+      "latency_s": 2.20884108543396
+    },
+    {
+      "conflict_version": 9,
+      "t_notice": 1794828141.7290072,
+      "t_conclusion": 1794828141.7314785,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.0024712085723876953
+    },
+    {
+      "conflict_version": 10,
+      "t_notice": 1794828141.9391127,
+      "t_conclusion": 1794828141.9438481,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.004735469818115234
+    },
+    {
+      "conflict_version": 11,
+      "t_notice": 1794828147.9290128,
+      "t_conclusion": 1794828147.9329667,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.0039539337158203125
+    },
+    {
+      "conflict_version": 12,
+      "t_notice": 1794828177.9391549,
+      "t_conclusion": 1794828177.9431922,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.004037380218505859
+    },
+    {
+      "conflict_version": 13,
+      "t_notice": 1794828178.189345,
+      "t_conclusion": 1794828178.1920547,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.0027098655700683594
+    },
+    {
+      "conflict_version": 14,
+      "t_notice": 1794828207.9892027,
+      "t_conclusion": 1794828207.993152,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.003949165344238281
+    },
+    {
+      "conflict_version": 15,
+      "t_notice": 1794828238.1190572,
+      "t_conclusion": 1794828238.1226504,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.0035932064056396484
+    },
+    {
+      "conflict_version": 16,
+      "t_notice": 1794828268.2693605,
+      "t_conclusion": 1794828268.2743697,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.005009174346923828
+    },
+    {
+      "conflict_version": 17,
+      "t_notice": 1794828298.4003792,
+      "t_conclusion": 1794828298.402182,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.0018029212951660156
+    }
+  ]
+}

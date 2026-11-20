@@ -236,8 +236,7 @@ getent group render
 ### Network configuration
 
 [scripts/cyclonedds_ros.xml](scripts/cyclonedds_ros.xml) is the DDS configuration, which
-the Compose file exports as `CYCLONEDDS_URI`. It selects the adapter by network address,
-and falls back to loopback when that network is absent.
+the Compose file exports as `CYCLONEDDS_URI`. 
 
 Set the address to the subnet of the fleet:
 
@@ -437,7 +436,7 @@ Run the following commands on existing JSON metrics, inside the container from
 
 ```bash
 python3 src/benchmark/analyse/summary/show_collection_summary.py \
-  --scenario "Crossing=src/benchmark/data/hardware/scenarios/crossing/run_20261018_0639"
+  --scenario "Crossing=src/benchmark/data/hardware/scenarios/crossing/run_20261116_1239"
 ```
 
 The output contains per-feature tables. Column labels distinguish pooled statistics

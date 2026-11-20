@@ -1,0 +1,61 @@
+{
+  "scenario": "headon, N=3, CONFIG_01, repeat_5, simulation",
+  "repeat_dir": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210/repeat_5",
+  "api_state_file": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210/api_state_attempt11.jsonl",
+  "method": "explicit task state from rmf_websocket (task_state_update); no inference, no W_RELEASE, no INDETERMINATE bucket",
+  "4a_n_submitted": 3,
+  "4a_n_completed": 3,
+  "4a_completed_pct": 100.0,
+  "4a_state_counts": {
+    "completed": 3
+  },
+  "4a_per_task": [
+    {
+      "task_id": "patrol.dispatch-33ecf7c4d3",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 164
+    },
+    {
+      "task_id": "patrol.dispatch-41abe69d3a",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 111
+    },
+    {
+      "task_id": "patrol.dispatch-c6fd66bed1",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 98
+    }
+  ]
+}

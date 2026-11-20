@@ -25,10 +25,15 @@ import statistics as st
 
 
 def latencies_ms(paths, first_only=False):
-    """Planning latencies in milliseconds, over every task or each batch's first task."""
+    """Planning latencies in milliseconds, over every task or each batch's first task.
+
+    Batch order is taken from the submission time, which every task carries. A
+    task whose bid solicitation went uncaptured has no latency and is skipped,
+    leaving the remaining tasks of its batch in place.
+    """
     out = []
     for f in paths:
-        tasks = sorted(json.load(open(f))['per_task'], key=lambda t: t['t_bid_notice'])
+        tasks = sorted(json.load(open(f))['per_task'], key=lambda t: t['t_submit'])
         for t in tasks[:1] if first_only else tasks:
             if t.get('planning_latency_s') is not None:
                 out.append(1000.0 * t['planning_latency_s'])

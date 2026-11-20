@@ -1,0 +1,721 @@
+[11:37:16] found a stale lock from pid 2775, taking over
+[11:37:17] ########## SIMULATION N=3 COLLECTION: scenarios=[Bottleneck,Crossing,Head-on,Shared Lane] ##########
+[11:37:17] Fleet config [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/simulation/fleet/multi_robot_config_sim.yaml].
+[11:37:17] Navigation graph [/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/world_tb3/nav_graphs/0.yaml].
+[11:37:17] [Bottleneck] already holds 5 of 5 repeats.
+[11:37:17] === [Crossing] -> /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137 with 0 repeat(s) present ===
+[11:37:17] [Crossing] repeat 1/5 (attempt 1): full teardown + bring-up
+[11:37:17] Tearing down
+[11:37:17] WARNING: navigation not confirmed stopped; see /home/eiu/rmf_ws/src/benchmark/.session/simulation/stop_robot_navigation.log
+[11:37:28] Teardown complete
+[11:37:31] waiting for /tb3_robot1/tf...
+[11:39:10] All 3 robots publish scan and tf.
+[11:39:15] Placed 3 robots on their route starts.
+[11:39:19] Seeded the initial pose of 3 robots from the navigation graph.
+[11:39:23] All 3 robots publish map -> odom.
+[11:39:25] Seed check for [tb3_robot1]: off by 0.202 m and 0.024 rad.
+[11:39:27] Seed check for [tb3_robot2]: off by 0.445 m and 0.101 rad.
+[11:39:29] Seed check for [tb3_robot3]: off by 0.288 m and 0.033 rad.
+[11:39:46] all 3 robots registered after 8x2s (fleet_adapter_attempt1.log)
+[11:39:59] [Crossing] repeat 1/5 (attempt 1): submitting
+[11:43:06] [Crossing] repeat 1/5 (attempt 1): run_benchmark_concurrent.py exited with code 0
+[11:43:29] [Crossing] repeat 1/5 (attempt 1): traffic-scheduling analyze exited 0
+[11:43:36] [Crossing] repeat 1/5 (attempt 1): task-planning analyze exited 0
+[11:43:36] [Crossing] repeat 1/5 (attempt 1): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 9.37 m, tb3_robot2 9.06 m, tb3_robot3 22.56 m
+tasks completed: 3 of 3
+resolved conflicts: 159
+furthest from any lane: tb3_robot1 0.25 m, tb3_robot2 0.29 m, tb3_robot3 0.37 m
+fleet state for tb3_robot1: 200 sample(s), gaps head 0.3 s, max 1.2 s, tail 0.7 s
+fleet state for tb3_robot2: 200 sample(s), gaps head 0.3 s, max 1.2 s, tail 0.7 s
+fleet state for tb3_robot3: 200 sample(s), gaps head 0.3 s, max 1.2 s, tail 0.7 s
+robot issues: tb3_robot2 {'navigation': 43}, tb3_robot3 {'navigation': 79}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[11:43:36] [Crossing] attempt id 1 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137, taking the next.
+[11:43:36] [Crossing] repeat 2/5 (attempt 2): full teardown + bring-up
+[11:43:36] Tearing down
+[11:43:37] Navigation stopped on 3 robots.
+[11:43:48] Teardown complete
+[11:43:51] waiting for /tb3_robot1/tf...
+[11:44:05] All 3 robots publish scan and tf.
+[11:44:11] Placed 3 robots on their route starts.
+[11:44:14] Seeded the initial pose of 3 robots from the navigation graph.
+[11:44:18] All 3 robots publish map -> odom.
+[11:44:20] Seed check for [tb3_robot1]: off by 0.192 m and 0.023 rad.
+[11:44:21] Seed check for [tb3_robot2]: off by 0.440 m and 0.102 rad.
+[11:44:23] Seed check for [tb3_robot3]: off by 0.261 m and 0.026 rad.
+[11:44:40] all 3 robots registered after 8x2s (fleet_adapter_attempt2.log)
+[11:44:53] [Crossing] repeat 2/5 (attempt 2): submitting
+[11:47:36] [Crossing] repeat 2/5 (attempt 2): run_benchmark_concurrent.py exited with code 0
+[11:47:58] [Crossing] repeat 2/5 (attempt 2): traffic-scheduling analyze exited 0
+[11:48:03] [Crossing] repeat 2/5 (attempt 2): task-planning analyze exited 0
+[11:48:03] [Crossing] repeat 2/5 (attempt 2): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 9.60 m, tb3_robot2 9.10 m, tb3_robot3 16.61 m
+tasks completed: 3 of 3
+resolved conflicts: 1
+furthest from any lane: tb3_robot1 0.23 m, tb3_robot2 0.27 m, tb3_robot3 0.25 m
+fleet state for tb3_robot1: 176 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+fleet state for tb3_robot2: 176 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+fleet state for tb3_robot3: 176 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+robot issues: none
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[11:48:03] [Crossing] attempt id 2 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137, taking the next.
+[11:48:03] [Crossing] repeat 3/5 (attempt 3): full teardown + bring-up
+[11:48:03] Tearing down
+[11:48:04] Navigation stopped on 3 robots.
+[11:48:15] Teardown complete
+[11:48:18] waiting for /tb3_robot1/tf...
+[11:48:33] All 3 robots publish scan and tf.
+[11:48:38] Placed 3 robots on their route starts.
+[11:48:41] Seeded the initial pose of 3 robots from the navigation graph.
+[11:48:45] All 3 robots publish map -> odom.
+[11:48:47] Seed check for [tb3_robot1]: off by 0.186 m and 0.026 rad.
+[11:48:49] Seed check for [tb3_robot2]: off by 0.430 m and 0.089 rad.
+[11:48:51] Seed check for [tb3_robot3]: off by 0.261 m and 0.027 rad.
+[11:49:08] all 3 robots registered after 8x2s (fleet_adapter_attempt3.log)
+[11:49:21] [Crossing] repeat 3/5 (attempt 3): submitting
+[11:54:27] [Crossing] repeat 3/5 (attempt 3): run_benchmark_concurrent.py exited with code 0
+[11:54:55] [Crossing] repeat 3/5 (attempt 3): traffic-scheduling analyze exited 0
+[11:55:06] [Crossing] repeat 3/5 (attempt 3): task-planning analyze exited 0
+[11:55:06] [Crossing] repeat 3/5 (attempt 3): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 10.32 m, tb3_robot2 3.47 m, tb3_robot3 4.51 m
+tasks completed: 1 of 3
+resolved conflicts: 2
+furthest from any lane: tb3_robot1 0.20 m, tb3_robot2 0.29 m, tb3_robot3 0.26 m
+fleet state for tb3_robot1: 319 sample(s), gaps head 0.4 s, max 1.1 s, tail 0.6 s
+fleet state for tb3_robot2: 319 sample(s), gaps head 0.4 s, max 1.1 s, tail 0.6 s
+fleet state for tb3_robot3: 319 sample(s), gaps head 0.4 s, max 1.1 s, tail 0.6 s
+robot issues: tb3_robot2 {'navigation': 297}, tb3_robot3 {'navigation': 29}
+
+NOT A VALID N=3 SAMPLE: 1 of 3 tasks completed, so the repeat has a makespan for some routes and none for others
+[11:55:06] [Crossing] repeat 3 (attempt 3): recorded but not an N=3 sample; kept as [not_n3_attempt_3] and not counted.
+[11:55:06] [Crossing] attempt id 3 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137, taking the next.
+[11:55:06] [Crossing] repeat 3/5 (attempt 4): full teardown + bring-up
+[11:55:06] Tearing down
+[11:55:07] Navigation stopped on 3 robots.
+[11:55:18] Teardown complete
+[11:55:21] waiting for /tb3_robot1/tf...
+[11:55:37] All 3 robots publish scan and tf.
+[11:55:42] Placed 3 robots on their route starts.
+[11:55:46] Seeded the initial pose of 3 robots from the navigation graph.
+[11:55:50] All 3 robots publish map -> odom.
+[11:55:52] Seed check for [tb3_robot1]: off by 0.196 m and 0.029 rad.
+[11:55:54] Seed check for [tb3_robot2]: off by 0.422 m and 0.098 rad.
+[11:55:56] Seed check for [tb3_robot3]: off by 0.255 m and 0.031 rad.
+[11:56:13] all 3 robots registered after 8x2s (fleet_adapter_attempt4.log)
+[11:56:26] [Crossing] repeat 3/5 (attempt 4): submitting
+[11:59:05] [Crossing] repeat 3/5 (attempt 4): run_benchmark_concurrent.py exited with code 0
+[11:59:28] [Crossing] repeat 3/5 (attempt 4): traffic-scheduling analyze exited 0
+[11:59:34] [Crossing] repeat 3/5 (attempt 4): task-planning analyze exited 0
+[11:59:34] [Crossing] repeat 3/5 (attempt 4): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 17.19 m, tb3_robot2 8.79 m, tb3_robot3 15.76 m
+tasks completed: 3 of 3
+resolved conflicts: 20
+furthest from any lane: tb3_robot1 0.27 m, tb3_robot2 0.52 m, tb3_robot3 0.29 m
+fleet state for tb3_robot1: 172 sample(s), gaps head 0.6 s, max 1.0 s, tail 0.4 s
+fleet state for tb3_robot2: 172 sample(s), gaps head 0.6 s, max 1.0 s, tail 0.4 s
+fleet state for tb3_robot3: 172 sample(s), gaps head 0.6 s, max 1.0 s, tail 0.4 s
+robot issues: tb3_robot3 {'navigation': 35}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[11:59:34] [Crossing] attempt id 4 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137, taking the next.
+[11:59:34] [Crossing] repeat 4/5 (attempt 5): full teardown + bring-up
+[11:59:34] Tearing down
+[11:59:34] Navigation stopped on 3 robots.
+[11:59:45] Teardown complete
+[11:59:48] waiting for /tb3_robot1/tf...
+[12:00:11] All 3 robots publish scan and tf.
+[12:00:16] Placed 3 robots on their route starts.
+[12:00:19] Seeded the initial pose of 3 robots from the navigation graph.
+[12:00:23] All 3 robots publish map -> odom.
+[12:00:25] Seed check for [tb3_robot1]: off by 0.180 m and 0.027 rad.
+[12:00:27] Seed check for [tb3_robot2]: off by 0.433 m and 0.096 rad.
+[12:00:28] Seed check for [tb3_robot3]: off by 0.280 m and 0.035 rad.
+[12:00:45] all 3 robots registered after 8x2s (fleet_adapter_attempt5.log)
+[12:00:58] [Crossing] repeat 4/5 (attempt 5): submitting
+[12:03:53] [Crossing] repeat 4/5 (attempt 5): run_benchmark_concurrent.py exited with code 0
+[12:04:16] [Crossing] repeat 4/5 (attempt 5): traffic-scheduling analyze exited 0
+[12:04:23] [Crossing] repeat 4/5 (attempt 5): task-planning analyze exited 0
+[12:04:23] [Crossing] repeat 4/5 (attempt 5): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 18.94 m, tb3_robot2 9.55 m, tb3_robot3 16.83 m
+tasks completed: 3 of 3
+resolved conflicts: 1
+furthest from any lane: tb3_robot1 0.22 m, tb3_robot2 0.37 m, tb3_robot3 0.25 m
+fleet state for tb3_robot1: 188 sample(s), gaps head 0.6 s, max 1.2 s, tail 0.4 s
+fleet state for tb3_robot2: 188 sample(s), gaps head 0.6 s, max 1.2 s, tail 0.4 s
+fleet state for tb3_robot3: 188 sample(s), gaps head 0.6 s, max 1.2 s, tail 0.4 s
+robot issues: tb3_robot3 {'navigation': 9}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[12:04:23] [Crossing] attempt id 5 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137, taking the next.
+[12:04:23] [Crossing] repeat 5/5 (attempt 6): full teardown + bring-up
+[12:04:23] Tearing down
+[12:04:24] Navigation stopped on 3 robots.
+[12:04:35] Teardown complete
+[12:04:38] waiting for /tb3_robot1/tf...
+[12:04:53] All 3 robots publish scan and tf.
+[12:04:59] Placed 3 robots on their route starts.
+[12:05:02] Seeded the initial pose of 3 robots from the navigation graph.
+[12:05:06] All 3 robots publish map -> odom.
+[12:05:08] Seed check for [tb3_robot1]: off by 0.204 m and 0.030 rad.
+[12:05:10] Seed check for [tb3_robot2]: off by 0.421 m and 0.101 rad.
+[12:05:11] Seed check for [tb3_robot3]: off by 0.282 m and 0.031 rad.
+[12:05:28] all 3 robots registered after 8x2s (fleet_adapter_attempt6.log)
+[12:05:41] [Crossing] repeat 5/5 (attempt 6): submitting
+[12:09:22] [Crossing] repeat 5/5 (attempt 6): run_benchmark_concurrent.py exited with code 0
+[12:09:47] [Crossing] repeat 5/5 (attempt 6): traffic-scheduling analyze exited 0
+[12:09:54] [Crossing] repeat 5/5 (attempt 6): task-planning analyze exited 0
+[12:09:54] [Crossing] repeat 5/5 (attempt 6): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 9.16 m, tb3_robot2 9.47 m, tb3_robot3 16.57 m
+tasks completed: 3 of 3
+resolved conflicts: 2
+furthest from any lane: tb3_robot1 0.30 m, tb3_robot2 0.28 m, tb3_robot3 0.22 m
+fleet state for tb3_robot1: 234 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+fleet state for tb3_robot2: 234 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+fleet state for tb3_robot3: 234 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+robot issues: none
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[12:09:54] [Crossing] 5/5 repeats completed after 6 attempt(s)
+merged 5 repeat dir(s) into 5 task entries -> /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137/repeats_summary.json
+[12:09:54] [Crossing] merge_repeat_metrics exited with code 0
+[12:09:54] Tearing down
+[12:09:55] Navigation stopped on 3 robots.
+[12:10:06] Teardown complete
+[12:10:06] === [Crossing] DONE: /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/crossing/run_20261112_1137 ===
+[12:10:06] === [Head-on] -> /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210 with 0 repeat(s) present ===
+[12:10:06] [Head-on] repeat 1/5 (attempt 1): full teardown + bring-up
+[12:10:06] Tearing down
+[12:10:06] WARNING: navigation not confirmed stopped; see /home/eiu/rmf_ws/src/benchmark/.session/simulation/stop_robot_navigation.log
+[12:10:17] Teardown complete
+[12:10:20] waiting for /tb3_robot1/tf...
+[12:10:36] All 3 robots publish scan and tf.
+[12:10:41] Placed 3 robots on their route starts.
+[12:10:45] Seeded the initial pose of 3 robots from the navigation graph.
+[12:10:49] All 3 robots publish map -> odom.
+[12:10:51] Seed check for [tb3_robot1]: off by 0.242 m and 0.030 rad.
+[12:10:52] Seed check for [tb3_robot2]: off by 0.080 m and 0.003 rad.
+[12:10:54] Seed check for [tb3_robot3]: off by 0.310 m and 0.000 rad.
+[12:11:11] all 3 robots registered after 8x2s (fleet_adapter_attempt1.log)
+[12:11:24] [Head-on] repeat 1/5 (attempt 1): submitting
+[12:13:43] [Head-on] repeat 1/5 (attempt 1): run_benchmark_concurrent.py exited with code 0
+[12:14:05] [Head-on] repeat 1/5 (attempt 1): traffic-scheduling analyze exited 0
+[12:14:10] [Head-on] repeat 1/5 (attempt 1): task-planning analyze exited 0
+[12:14:10] [Head-on] repeat 1/5 (attempt 1): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 7.66 m, tb3_robot2 17.69 m, tb3_robot3 11.78 m
+tasks completed: 3 of 3
+resolved conflicts: 4
+furthest from any lane: tb3_robot1 1.30 m, tb3_robot2 0.26 m, tb3_robot3 0.45 m
+fleet state for tb3_robot1: 152 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+fleet state for tb3_robot2: 152 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+fleet state for tb3_robot3: 152 sample(s), gaps head 0.7 s, max 1.0 s, tail 0.3 s
+robot issues: tb3_robot1 {'navigation': 62}, tb3_robot3 {'navigation': 1}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[12:14:10] [Head-on] attempt id 1 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[12:14:10] [Head-on] repeat 2/5 (attempt 2): full teardown + bring-up
+[12:14:10] Tearing down
+[12:14:11] Navigation stopped on 3 robots.
+[12:14:22] Teardown complete
+[12:14:25] waiting for /tb3_robot1/tf...
+[12:14:40] All 3 robots publish scan and tf.
+[12:14:45] Placed 3 robots on their route starts.
+[12:14:49] Seeded the initial pose of 3 robots from the navigation graph.
+[12:14:53] All 3 robots publish map -> odom.
+[12:14:55] Seed check for [tb3_robot1]: off by 0.196 m and 0.027 rad.
+[12:14:57] Seed check for [tb3_robot2]: off by 0.077 m and 0.000 rad.
+[12:14:59] Seed check for [tb3_robot3]: off by 0.317 m and 0.000 rad.
+[12:15:16] all 3 robots registered after 8x2s (fleet_adapter_attempt2.log)
+[12:15:29] [Head-on] repeat 2/5 (attempt 2): submitting
+[12:20:35] [Head-on] repeat 2/5 (attempt 2): run_benchmark_concurrent.py exited with code 0
+[12:21:02] [Head-on] repeat 2/5 (attempt 2): traffic-scheduling analyze exited 0
+[12:21:13] [Head-on] repeat 2/5 (attempt 2): task-planning analyze exited 0
+[12:21:13] [Head-on] repeat 2/5 (attempt 2): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 8.13 m, tb3_robot2 17.55 m, tb3_robot3 24.15 m
+tasks completed: 2 of 3
+resolved conflicts: 44
+furthest from any lane: tb3_robot1 1.58 m, tb3_robot2 0.36 m, tb3_robot3 0.50 m
+fleet state for tb3_robot1: 319 sample(s), gaps head 0.2 s, max 1.1 s, tail 0.8 s
+fleet state for tb3_robot2: 319 sample(s), gaps head 0.2 s, max 1.1 s, tail 0.8 s
+fleet state for tb3_robot3: 319 sample(s), gaps head 0.2 s, max 1.1 s, tail 0.8 s
+robot issues: tb3_robot1 {'navigation': 42}, tb3_robot3 {'navigation': 100}
+
+NOT A VALID N=3 SAMPLE: 2 of 3 tasks completed, so the repeat has a makespan for some routes and none for others
+[12:21:13] [Head-on] repeat 2 (attempt 2): recorded but not an N=3 sample; kept as [not_n3_attempt_2] and not counted.
+[12:21:13] [Head-on] attempt id 2 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[12:21:13] [Head-on] repeat 2/5 (attempt 3): full teardown + bring-up
+[12:21:13] Tearing down
+[12:21:14] Navigation stopped on 3 robots.
+[12:21:25] Teardown complete
+[12:21:28] waiting for /tb3_robot1/tf...
+[12:21:44] All 3 robots publish scan and tf.
+[12:21:49] Placed 3 robots on their route starts.
+[12:21:52] Seeded the initial pose of 3 robots from the navigation graph.
+[12:21:57] All 3 robots publish map -> odom.
+[12:21:58] Seed check for [tb3_robot1]: off by 0.237 m and 0.026 rad.
+[12:22:00] Seed check for [tb3_robot2]: off by 0.078 m and 0.002 rad.
+[12:22:02] Seed check for [tb3_robot3]: off by 0.292 m and 0.012 rad.
+[12:22:19] all 3 robots registered after 8x2s (fleet_adapter_attempt3.log)
+[12:22:32] [Head-on] repeat 2/5 (attempt 3): submitting
+[12:27:38] [Head-on] repeat 2/5 (attempt 3): run_benchmark_concurrent.py exited with code 0
+[12:28:07] [Head-on] repeat 2/5 (attempt 3): traffic-scheduling analyze exited 0
+[12:28:18] [Head-on] repeat 2/5 (attempt 3): task-planning analyze exited 0
+[12:28:18] [Head-on] repeat 2/5 (attempt 3): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 6.57 m, tb3_robot2 16.95 m, tb3_robot3 4.53 m
+tasks completed: 2 of 3
+resolved conflicts: 2
+furthest from any lane: tb3_robot1 1.38 m, tb3_robot2 0.39 m, tb3_robot3 0.69 m
+fleet state for tb3_robot1: 319 sample(s), gaps head 1.0 s, max 1.0 s, tail 0.0 s
+fleet state for tb3_robot2: 319 sample(s), gaps head 1.0 s, max 1.0 s, tail 0.0 s
+fleet state for tb3_robot3: 319 sample(s), gaps head 1.0 s, max 1.0 s, tail 0.0 s
+robot issues: tb3_robot2 {'navigation': 60}
+
+NOT A VALID N=3 SAMPLE: 2 of 3 tasks completed, so the repeat has a makespan for some routes and none for others
+[12:28:18] [Head-on] repeat 2 (attempt 3): recorded but not an N=3 sample; kept as [not_n3_attempt_3] and not counted.
+[12:28:18] [Head-on] attempt id 3 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[12:28:18] [Head-on] repeat 2/5 (attempt 4): full teardown + bring-up
+[12:28:18] Tearing down
+[12:28:19] Navigation stopped on 3 robots.
+[12:28:30] Teardown complete
+[12:28:33] waiting for /tb3_robot1/tf...
+[12:28:48] All 3 robots publish scan and tf.
+[12:28:53] Placed 3 robots on their route starts.
+[12:28:57] Seeded the initial pose of 3 robots from the navigation graph.
+[12:29:01] All 3 robots publish map -> odom.
+[12:29:02] Seed check for [tb3_robot1]: off by 0.238 m and 0.022 rad.
+[12:29:04] Seed check for [tb3_robot2]: off by 0.082 m and 0.002 rad.
+[12:29:06] Seed check for [tb3_robot3]: off by 0.322 m and 0.013 rad.
+[12:29:23] all 3 robots registered after 8x2s (fleet_adapter_attempt4.log)
+[12:29:36] [Head-on] repeat 2/5 (attempt 4): submitting
+[12:31:57] [Head-on] repeat 2/5 (attempt 4): run_benchmark_concurrent.py exited with code 0
+[12:32:19] [Head-on] repeat 2/5 (attempt 4): traffic-scheduling analyze exited 0
+[12:32:25] [Head-on] repeat 2/5 (attempt 4): task-planning analyze exited 0
+[12:32:25] [Head-on] repeat 2/5 (attempt 4): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 8.96 m, tb3_robot2 17.59 m, tb3_robot3 15.59 m
+tasks completed: 3 of 3
+resolved conflicts: 3
+furthest from any lane: tb3_robot1 0.78 m, tb3_robot2 0.33 m, tb3_robot3 1.54 m
+fleet state for tb3_robot1: 154 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+fleet state for tb3_robot2: 154 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+fleet state for tb3_robot3: 154 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+robot issues: tb3_robot1 {'navigation': 45}, tb3_robot3 {'navigation': 24}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[12:32:25] [Head-on] attempt id 4 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[12:32:25] [Head-on] repeat 3/5 (attempt 5): full teardown + bring-up
+[12:32:25] Tearing down
+[12:32:25] Navigation stopped on 3 robots.
+[12:32:37] Teardown complete
+[12:32:40] waiting for /tb3_robot1/tf...
+[12:32:54] All 3 robots publish scan and tf.
+[12:33:00] Placed 3 robots on their route starts.
+[12:33:03] Seeded the initial pose of 3 robots from the navigation graph.
+[12:33:07] All 3 robots publish map -> odom.
+[12:33:09] Seed check for [tb3_robot1]: off by 0.222 m and 0.032 rad.
+[12:33:11] Seed check for [tb3_robot2]: off by 0.082 m and 0.005 rad.
+[12:33:12] Seed check for [tb3_robot3]: off by 0.306 m and 0.002 rad.
+[12:33:30] all 3 robots registered after 8x2s (fleet_adapter_attempt5.log)
+[12:33:43] [Head-on] repeat 3/5 (attempt 5): submitting
+[12:38:48] [Head-on] repeat 3/5 (attempt 5): run_benchmark_concurrent.py exited with code 0
+[12:39:16] [Head-on] repeat 3/5 (attempt 5): traffic-scheduling analyze exited 0
+[12:39:25] [Head-on] repeat 3/5 (attempt 5): task-planning analyze exited 0
+[12:39:25] [Head-on] repeat 3/5 (attempt 5): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 10.18 m, tb3_robot2 19.74 m, tb3_robot3 5.75 m
+tasks completed: 1 of 3
+resolved conflicts: 3
+furthest from any lane: tb3_robot1 0.92 m, tb3_robot2 0.92 m, tb3_robot3 0.69 m
+fleet state for tb3_robot1: 318 sample(s), gaps head 0.4 s, max 1.0 s, tail 0.6 s
+fleet state for tb3_robot2: 318 sample(s), gaps head 0.4 s, max 1.0 s, tail 0.6 s
+fleet state for tb3_robot3: 318 sample(s), gaps head 0.4 s, max 1.0 s, tail 0.6 s
+robot issues: tb3_robot3 {'navigation': 72}
+
+NOT A VALID N=3 SAMPLE: 1 of 3 tasks completed, so the repeat has a makespan for some routes and none for others
+[12:39:26] [Head-on] repeat 3 (attempt 5): recorded but not an N=3 sample; kept as [not_n3_attempt_5] and not counted.
+[12:39:26] [Head-on] attempt id 5 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[12:39:26] [Head-on] repeat 3/5 (attempt 6): full teardown + bring-up
+[12:39:26] Tearing down
+[12:39:26] Navigation stopped on 3 robots.
+[12:39:37] Teardown complete
+[12:39:40] waiting for /tb3_robot1/tf...
+[12:40:10] All 3 robots publish scan and tf.
+[12:40:16] Placed 3 robots on their route starts.
+[12:40:18] Seeded the initial pose of 3 robots from the navigation graph.
+[12:40:22] All 3 robots publish map -> odom.
+[12:40:24] Seed check for [tb3_robot1]: off by 0.232 m and 0.042 rad.
+[12:40:26] Seed check for [tb3_robot2]: off by 0.070 m and 0.001 rad.
+[12:40:28] Seed check for [tb3_robot3]: off by 0.310 m and 0.001 rad.
+[12:40:43] all 3 robots registered after 7x2s (fleet_adapter_attempt6.log)
+[12:40:56] [Head-on] repeat 3/5 (attempt 6): submitting
+[12:46:02] [Head-on] repeat 3/5 (attempt 6): run_benchmark_concurrent.py exited with code 0
+[12:46:29] [Head-on] repeat 3/5 (attempt 6): traffic-scheduling analyze exited 0
+[12:46:39] [Head-on] repeat 3/5 (attempt 6): task-planning analyze exited 0
+[12:46:39] [Head-on] repeat 3/5 (attempt 6): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 18.25 m, tb3_robot2 17.90 m, tb3_robot3 9.73 m
+tasks completed: 1 of 3
+resolved conflicts: 6
+furthest from any lane: tb3_robot1 0.89 m, tb3_robot2 0.35 m, tb3_robot3 0.41 m
+fleet state for tb3_robot1: 319 sample(s), gaps head 1.0 s, max 1.0 s, tail 0.0 s
+fleet state for tb3_robot2: 319 sample(s), gaps head 1.0 s, max 1.0 s, tail 0.0 s
+fleet state for tb3_robot3: 319 sample(s), gaps head 1.0 s, max 1.0 s, tail 0.0 s
+robot issues: tb3_robot2 {'navigation': 64}
+
+NOT A VALID N=3 SAMPLE: 1 of 3 tasks completed, so the repeat has a makespan for some routes and none for others
+[12:46:40] [Head-on] repeat 3 (attempt 6): recorded but not an N=3 sample; kept as [not_n3_attempt_6] and not counted.
+[12:46:40] [Head-on] attempt id 6 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[12:46:40] [Head-on] repeat 3/5 (attempt 7): full teardown + bring-up
+[12:46:40] Tearing down
+[12:46:40] Navigation stopped on 3 robots.
+[12:46:51] Teardown complete
+[12:46:54] waiting for /tb3_robot1/tf...
+[12:47:09] All 3 robots publish scan and tf.
+[12:47:14] Placed 3 robots on their route starts.
+[12:47:17] Seeded the initial pose of 3 robots from the navigation graph.
+[12:47:21] All 3 robots publish map -> odom.
+[12:47:23] Seed check for [tb3_robot1]: off by 0.224 m and 0.028 rad.
+[12:47:25] Seed check for [tb3_robot2]: off by 0.096 m and 0.001 rad.
+[12:47:27] Seed check for [tb3_robot3]: off by 0.306 m and 0.001 rad.
+[12:47:44] all 3 robots registered after 8x2s (fleet_adapter_attempt7.log)
+[12:47:57] [Head-on] repeat 3/5 (attempt 7): submitting
+[12:53:02] [Head-on] repeat 3/5 (attempt 7): run_benchmark_concurrent.py exited with code 0
+[12:53:32] [Head-on] repeat 3/5 (attempt 7): traffic-scheduling analyze exited 0
+[12:53:44] [Head-on] repeat 3/5 (attempt 7): task-planning analyze exited 0
+[12:53:44] [Head-on] repeat 3/5 (attempt 7): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 5.45 m, tb3_robot2 17.21 m, tb3_robot3 22.84 m
+tasks completed: 3 of 3
+resolved conflicts: 7
+furthest from any lane: tb3_robot1 0.26 m, tb3_robot2 0.28 m, tb3_robot3 1.59 m
+fleet state for tb3_robot1: 318 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+fleet state for tb3_robot2: 318 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+fleet state for tb3_robot3: 318 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+robot issues: tb3_robot3 {'navigation': 32}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[12:53:44] [Head-on] attempt id 7 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[12:53:44] [Head-on] repeat 4/5 (attempt 8): full teardown + bring-up
+[12:53:44] Tearing down
+[12:53:45] Navigation stopped on 3 robots.
+[12:53:56] Teardown complete
+[12:53:59] waiting for /tb3_robot1/tf...
+[12:54:19] All 3 robots publish scan and tf.
+[12:54:24] Placed 3 robots on their route starts.
+[12:54:27] Seeded the initial pose of 3 robots from the navigation graph.
+[12:54:31] All 3 robots publish map -> odom.
+[12:54:33] Seed check for [tb3_robot1]: off by 0.222 m and 0.027 rad.
+[12:54:35] Seed check for [tb3_robot2]: off by 0.089 m and 0.002 rad.
+[12:54:36] Seed check for [tb3_robot3]: off by 0.306 m and 0.007 rad.
+[12:54:53] all 3 robots registered after 8x2s (fleet_adapter_attempt8.log)
+[12:55:06] [Head-on] repeat 4/5 (attempt 8): submitting
+[13:00:12] [Head-on] repeat 4/5 (attempt 8): run_benchmark_concurrent.py exited with code 0
+[13:00:40] [Head-on] repeat 4/5 (attempt 8): traffic-scheduling analyze exited 0
+[13:00:51] [Head-on] repeat 4/5 (attempt 8): task-planning analyze exited 0
+[13:00:51] [Head-on] repeat 4/5 (attempt 8): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 13.04 m, tb3_robot2 17.34 m, tb3_robot3 2.05 m
+tasks completed: 2 of 3
+resolved conflicts: 16
+furthest from any lane: tb3_robot1 2.06 m, tb3_robot2 0.24 m, tb3_robot3 0.50 m
+fleet state for tb3_robot1: 319 sample(s), gaps head 0.3 s, max 1.5 s, tail 0.7 s
+fleet state for tb3_robot2: 319 sample(s), gaps head 0.3 s, max 1.5 s, tail 0.7 s
+fleet state for tb3_robot3: 319 sample(s), gaps head 0.3 s, max 1.5 s, tail 0.7 s
+robot issues: tb3_robot1 {'navigation': 101}, tb3_robot3 {'navigation': 108}
+
+NOT A VALID N=3 SAMPLE: 2 of 3 tasks completed, so the repeat has a makespan for some routes and none for others
+[13:00:51] [Head-on] repeat 4 (attempt 8): recorded but not an N=3 sample; kept as [not_n3_attempt_8] and not counted.
+[13:00:51] [Head-on] attempt id 8 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[13:00:51] [Head-on] repeat 4/5 (attempt 9): full teardown + bring-up
+[13:00:51] Tearing down
+[13:00:52] Navigation stopped on 3 robots.
+[13:01:03] Teardown complete
+[13:01:06] waiting for /tb3_robot1/tf...
+[13:01:23] All 3 robots publish scan and tf.
+[13:01:28] Placed 3 robots on their route starts.
+[13:01:32] Seeded the initial pose of 3 robots from the navigation graph.
+[13:01:36] All 3 robots publish map -> odom.
+[13:01:38] Seed check for [tb3_robot1]: off by 0.228 m and 0.030 rad.
+[13:01:40] Seed check for [tb3_robot2]: off by 0.081 m and 0.005 rad.
+[13:01:42] Seed check for [tb3_robot3]: off by 0.289 m and 0.010 rad.
+[13:01:59] all 3 robots registered after 8x2s (fleet_adapter_attempt9.log)
+[13:02:12] [Head-on] repeat 4/5 (attempt 9): submitting
+[13:07:18] [Head-on] repeat 4/5 (attempt 9): run_benchmark_concurrent.py exited with code 0
+[13:07:45] [Head-on] repeat 4/5 (attempt 9): traffic-scheduling analyze exited 0
+[13:07:56] [Head-on] repeat 4/5 (attempt 9): task-planning analyze exited 0
+[13:07:56] [Head-on] repeat 4/5 (attempt 9): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 2.37 m, tb3_robot2 16.69 m, tb3_robot3 10.57 m
+tasks completed: 2 of 3
+resolved conflicts: 15
+furthest from any lane: tb3_robot1 1.00 m, tb3_robot2 0.41 m, tb3_robot3 0.65 m
+fleet state for tb3_robot1: 319 sample(s), gaps head 0.9 s, max 1.3 s, tail 0.1 s
+fleet state for tb3_robot2: 319 sample(s), gaps head 0.9 s, max 1.3 s, tail 0.1 s
+fleet state for tb3_robot3: 319 sample(s), gaps head 0.9 s, max 1.3 s, tail 0.1 s
+robot issues: tb3_robot1 {'navigation': 8}, tb3_robot3 {'navigation': 290}
+
+NOT A VALID N=3 SAMPLE: 2 of 3 tasks completed, so the repeat has a makespan for some routes and none for others
+[13:07:56] [Head-on] repeat 4 (attempt 9): recorded but not an N=3 sample; kept as [not_n3_attempt_9] and not counted.
+[13:07:56] [Head-on] attempt id 9 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[13:07:56] [Head-on] repeat 4/5 (attempt 10): full teardown + bring-up
+[13:07:56] Tearing down
+[13:07:56] Navigation stopped on 3 robots.
+[13:08:08] Teardown complete
+[13:08:11] waiting for /tb3_robot1/tf...
+[13:08:37] All 3 robots publish scan and tf.
+[13:08:43] Placed 3 robots on their route starts.
+[13:08:46] Seeded the initial pose of 3 robots from the navigation graph.
+[13:08:50] All 3 robots publish map -> odom.
+[13:08:51] Seed check for [tb3_robot1]: off by 0.231 m and 0.026 rad.
+[13:08:53] Seed check for [tb3_robot2]: off by 0.067 m and 0.005 rad.
+[13:08:55] Seed check for [tb3_robot3]: off by 0.304 m and 0.001 rad.
+[13:09:12] all 3 robots registered after 8x2s (fleet_adapter_attempt10.log)
+[13:09:25] [Head-on] repeat 4/5 (attempt 10): submitting
+[13:11:28] [Head-on] repeat 4/5 (attempt 10): run_benchmark_concurrent.py exited with code 0
+[13:11:50] [Head-on] repeat 4/5 (attempt 10): traffic-scheduling analyze exited 0
+[13:11:55] [Head-on] repeat 4/5 (attempt 10): task-planning analyze exited 0
+[13:11:55] [Head-on] repeat 4/5 (attempt 10): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 11.88 m, tb3_robot2 17.12 m, tb3_robot3 12.31 m
+tasks completed: 3 of 3
+resolved conflicts: 5
+furthest from any lane: tb3_robot1 1.03 m, tb3_robot2 0.28 m, tb3_robot3 0.46 m
+fleet state for tb3_robot1: 136 sample(s), gaps head 0.7 s, max 1.1 s, tail 0.3 s
+fleet state for tb3_robot2: 136 sample(s), gaps head 0.7 s, max 1.1 s, tail 0.3 s
+fleet state for tb3_robot3: 136 sample(s), gaps head 0.7 s, max 1.1 s, tail 0.3 s
+robot issues: tb3_robot1 {'navigation': 21}, tb3_robot2 {'navigation': 28}, tb3_robot3 {'navigation': 16}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[13:11:55] [Head-on] attempt id 10 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210, taking the next.
+[13:11:55] [Head-on] repeat 5/5 (attempt 11): full teardown + bring-up
+[13:11:55] Tearing down
+[13:11:56] Navigation stopped on 3 robots.
+[13:12:07] Teardown complete
+[13:12:10] waiting for /tb3_robot1/tf...
+[13:12:24] All 3 robots publish scan and tf.
+[13:12:30] Placed 3 robots on their route starts.
+[13:12:34] Seeded the initial pose of 3 robots from the navigation graph.
+[13:12:38] All 3 robots publish map -> odom.
+[13:12:40] Seed check for [tb3_robot1]: off by 0.231 m and 0.042 rad.
+[13:12:41] Seed check for [tb3_robot2]: off by 0.081 m and 0.004 rad.
+[13:12:43] Seed check for [tb3_robot3]: off by 0.307 m and 0.004 rad.
+[13:13:00] all 3 robots registered after 8x2s (fleet_adapter_attempt11.log)
+[13:13:13] [Head-on] repeat 5/5 (attempt 11): submitting
+[13:16:12] [Head-on] repeat 5/5 (attempt 11): run_benchmark_concurrent.py exited with code 0
+[13:16:35] [Head-on] repeat 5/5 (attempt 11): traffic-scheduling analyze exited 0
+[13:16:42] [Head-on] repeat 5/5 (attempt 11): task-planning analyze exited 0
+[13:16:42] [Head-on] repeat 5/5 (attempt 11): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 16.05 m, tb3_robot2 17.78 m, tb3_robot3 11.50 m
+tasks completed: 3 of 3
+resolved conflicts: 3
+furthest from any lane: tb3_robot1 2.56 m, tb3_robot2 0.27 m, tb3_robot3 0.41 m
+fleet state for tb3_robot1: 192 sample(s), gaps head 0.2 s, max 1.0 s, tail 0.8 s
+fleet state for tb3_robot2: 192 sample(s), gaps head 0.2 s, max 1.0 s, tail 0.8 s
+fleet state for tb3_robot3: 192 sample(s), gaps head 0.2 s, max 1.0 s, tail 0.8 s
+robot issues: tb3_robot1 {'navigation': 28}
+
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[13:16:42] [Head-on] 5/5 repeats completed after 11 attempt(s)
+merged 5 repeat dir(s) into 5 task entries -> /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210/repeats_summary.json
+[13:16:42] [Head-on] merge_repeat_metrics exited with code 0
+[13:16:42] Tearing down
+[13:16:43] Navigation stopped on 3 robots.
+[13:16:54] Teardown complete
+[13:16:54] === [Head-on] DONE: /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210 ===
+[13:16:54] === [Shared Lane] -> /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316 with 0 repeat(s) present ===
+[13:16:54] [Shared Lane] repeat 1/5 (attempt 1): full teardown + bring-up
+[13:16:54] Tearing down
+[13:16:55] WARNING: navigation not confirmed stopped; see /home/eiu/rmf_ws/src/benchmark/.session/simulation/stop_robot_navigation.log
+[13:17:06] Teardown complete
+[13:17:09] waiting for /tb3_robot1/tf...
+[13:17:24] All 3 robots publish scan and tf.
+[13:17:29] Placed 3 robots on their route starts.
+[13:17:34] Seeded the initial pose of 3 robots from the navigation graph.
+[13:17:38] All 3 robots publish map -> odom.
+[13:17:40] Seed check for [tb3_robot1]: off by 0.209 m and 0.031 rad.
+[13:17:42] Seed check for [tb3_robot2]: off by 0.220 m and 0.045 rad.
+[13:17:44] Seed check for [tb3_robot3]: off by 0.390 m and 0.102 rad.
+[13:18:01] all 3 robots registered after 8x2s (fleet_adapter_attempt1.log)
+[13:18:14] [Shared Lane] repeat 1/5 (attempt 1): submitting
+[13:20:12] [Shared Lane] repeat 1/5 (attempt 1): run_benchmark_concurrent.py exited with code 0
+[13:20:33] [Shared Lane] repeat 1/5 (attempt 1): traffic-scheduling analyze exited 0
+[13:20:37] [Shared Lane] repeat 1/5 (attempt 1): task-planning analyze exited 0
+[13:20:38] [Shared Lane] repeat 1/5 (attempt 1): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 10.98 m, tb3_robot2 10.31 m, tb3_robot3 10.35 m
+tasks completed: 3 of 3
+resolved conflicts: 0
+furthest from any lane: tb3_robot1 0.40 m, tb3_robot2 0.57 m, tb3_robot3 0.31 m
+fleet state for tb3_robot1: 131 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+fleet state for tb3_robot2: 131 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+fleet state for tb3_robot3: 131 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+robot issues: none
+
+NOTE: no negotiation concluded with the conflict resolved. The count ranged 1..97 across repeats of one scenario, so it reports when the capture saw a negotiation, not whether the fleet coordinated
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[13:20:38] [Shared Lane] attempt id 1 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316, taking the next.
+[13:20:38] [Shared Lane] repeat 2/5 (attempt 2): full teardown + bring-up
+[13:20:38] Tearing down
+[13:20:38] Navigation stopped on 3 robots.
+[13:20:49] Teardown complete
+[13:20:52] waiting for /tb3_robot1/tf...
+[13:21:08] All 3 robots publish scan and tf.
+[13:21:14] Placed 3 robots on their route starts.
+[13:21:17] Seeded the initial pose of 3 robots from the navigation graph.
+[13:21:21] All 3 robots publish map -> odom.
+[13:21:23] Seed check for [tb3_robot1]: off by 0.234 m and 0.033 rad.
+[13:21:25] Seed check for [tb3_robot2]: off by 0.183 m and 0.047 rad.
+[13:21:27] Seed check for [tb3_robot3]: off by 0.390 m and 0.108 rad.
+[13:21:44] all 3 robots registered after 8x2s (fleet_adapter_attempt2.log)
+[13:21:57] [Shared Lane] repeat 2/5 (attempt 2): submitting
+[13:24:26] [Shared Lane] repeat 2/5 (attempt 2): run_benchmark_concurrent.py exited with code 0
+[13:24:49] [Shared Lane] repeat 2/5 (attempt 2): traffic-scheduling analyze exited 0
+[13:24:55] [Shared Lane] repeat 2/5 (attempt 2): task-planning analyze exited 0
+[13:24:55] [Shared Lane] repeat 2/5 (attempt 2): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 13.32 m, tb3_robot2 11.91 m, tb3_robot3 14.63 m
+tasks completed: 3 of 3
+resolved conflicts: 0
+furthest from any lane: tb3_robot1 0.52 m, tb3_robot2 0.40 m, tb3_robot3 0.89 m
+fleet state for tb3_robot1: 162 sample(s), gaps head 0.5 s, max 1.0 s, tail 0.5 s
+fleet state for tb3_robot2: 162 sample(s), gaps head 0.5 s, max 1.0 s, tail 0.5 s
+fleet state for tb3_robot3: 162 sample(s), gaps head 0.5 s, max 1.0 s, tail 0.5 s
+robot issues: tb3_robot3 {'navigation': 11}
+
+NOTE: no negotiation concluded with the conflict resolved. The count ranged 1..97 across repeats of one scenario, so it reports when the capture saw a negotiation, not whether the fleet coordinated
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[13:24:55] [Shared Lane] attempt id 2 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316, taking the next.
+[13:24:55] [Shared Lane] repeat 3/5 (attempt 3): full teardown + bring-up
+[13:24:55] Tearing down
+[13:24:56] Navigation stopped on 3 robots.
+[13:25:07] Teardown complete
+[13:25:10] waiting for /tb3_robot1/tf...
+[13:25:25] All 3 robots publish scan and tf.
+[13:25:30] Placed 3 robots on their route starts.
+[13:25:33] Seeded the initial pose of 3 robots from the navigation graph.
+[13:25:38] All 3 robots publish map -> odom.
+[13:25:39] Seed check for [tb3_robot1]: off by 0.232 m and 0.030 rad.
+[13:25:41] Seed check for [tb3_robot2]: off by 0.230 m and 0.042 rad.
+[13:25:43] Seed check for [tb3_robot3]: off by 0.395 m and 0.098 rad.
+[13:26:00] all 3 robots registered after 8x2s (fleet_adapter_attempt3.log)
+[13:26:13] [Shared Lane] repeat 3/5 (attempt 3): submitting
+[13:28:10] [Shared Lane] repeat 3/5 (attempt 3): run_benchmark_concurrent.py exited with code 0
+[13:28:32] [Shared Lane] repeat 3/5 (attempt 3): traffic-scheduling analyze exited 0
+[13:28:37] [Shared Lane] repeat 3/5 (attempt 3): task-planning analyze exited 0
+[13:28:37] [Shared Lane] repeat 3/5 (attempt 3): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 12.66 m, tb3_robot2 9.86 m, tb3_robot3 10.70 m
+tasks completed: 3 of 3
+resolved conflicts: 0
+furthest from any lane: tb3_robot1 0.50 m, tb3_robot2 0.27 m, tb3_robot3 0.28 m
+fleet state for tb3_robot1: 130 sample(s), gaps head 0.4 s, max 1.0 s, tail 0.6 s
+fleet state for tb3_robot2: 130 sample(s), gaps head 0.4 s, max 1.0 s, tail 0.6 s
+fleet state for tb3_robot3: 130 sample(s), gaps head 0.4 s, max 1.0 s, tail 0.6 s
+robot issues: none
+
+NOTE: no negotiation concluded with the conflict resolved. The count ranged 1..97 across repeats of one scenario, so it reports when the capture saw a negotiation, not whether the fleet coordinated
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[13:28:37] [Shared Lane] attempt id 3 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316, taking the next.
+[13:28:37] [Shared Lane] repeat 4/5 (attempt 4): full teardown + bring-up
+[13:28:37] Tearing down
+[13:28:37] Navigation stopped on 3 robots.
+[13:28:49] Teardown complete
+[13:28:52] waiting for /tb3_robot1/tf...
+[13:29:07] All 3 robots publish scan and tf.
+[13:29:13] Placed 3 robots on their route starts.
+[13:29:17] Seeded the initial pose of 3 robots from the navigation graph.
+[13:29:22] All 3 robots publish map -> odom.
+[13:29:23] Seed check for [tb3_robot1]: off by 0.198 m and 0.036 rad.
+[13:29:25] Seed check for [tb3_robot2]: off by 0.180 m and 0.043 rad.
+[13:29:27] Seed check for [tb3_robot3]: off by 0.391 m and 0.109 rad.
+[13:29:44] all 3 robots registered after 8x2s (fleet_adapter_attempt4.log)
+[13:29:57] [Shared Lane] repeat 4/5 (attempt 4): submitting
+[13:32:08] [Shared Lane] repeat 4/5 (attempt 4): run_benchmark_concurrent.py exited with code 0
+[13:32:30] [Shared Lane] repeat 4/5 (attempt 4): traffic-scheduling analyze exited 0
+[13:32:36] [Shared Lane] repeat 4/5 (attempt 4): task-planning analyze exited 0
+[13:32:36] [Shared Lane] repeat 4/5 (attempt 4): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 12.93 m, tb3_robot2 9.50 m, tb3_robot3 10.92 m
+tasks completed: 3 of 3
+resolved conflicts: 0
+furthest from any lane: tb3_robot1 0.45 m, tb3_robot2 0.47 m, tb3_robot3 0.35 m
+fleet state for tb3_robot1: 144 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+fleet state for tb3_robot2: 144 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+fleet state for tb3_robot3: 144 sample(s), gaps head 0.9 s, max 1.0 s, tail 0.1 s
+robot issues: tb3_robot3 {'navigation': 13}
+
+NOTE: no negotiation concluded with the conflict resolved. The count ranged 1..97 across repeats of one scenario, so it reports when the capture saw a negotiation, not whether the fleet coordinated
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[13:32:36] [Shared Lane] attempt id 4 is already used in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316, taking the next.
+[13:32:36] [Shared Lane] repeat 5/5 (attempt 5): full teardown + bring-up
+[13:32:36] Tearing down
+[13:32:37] Navigation stopped on 3 robots.
+[13:32:48] Teardown complete
+[13:32:51] waiting for /tb3_robot1/tf...
+[13:33:07] All 3 robots publish scan and tf.
+[13:33:12] Placed 3 robots on their route starts.
+[13:33:15] Seeded the initial pose of 3 robots from the navigation graph.
+[13:33:20] All 3 robots publish map -> odom.
+[13:33:22] Seed check for [tb3_robot1]: off by 0.216 m and 0.034 rad.
+[13:33:24] Seed check for [tb3_robot2]: off by 0.195 m and 0.042 rad.
+[13:33:26] Seed check for [tb3_robot3]: off by 0.379 m and 0.099 rad.
+[13:33:43] all 3 robots registered after 8x2s (fleet_adapter_attempt5.log)
+[13:33:56] [Shared Lane] repeat 5/5 (attempt 5): submitting
+[13:36:04] [Shared Lane] repeat 5/5 (attempt 5): run_benchmark_concurrent.py exited with code 0
+[13:36:27] [Shared Lane] repeat 5/5 (attempt 5): traffic-scheduling analyze exited 0
+[13:36:33] [Shared Lane] repeat 5/5 (attempt 5): task-planning analyze exited 0
+[13:36:33] [Shared Lane] repeat 5/5 (attempt 5): outcome annotation exited 0
+tasks per robot: tb3_robot1 1, tb3_robot2 1, tb3_robot3 1
+robots the fleet used: 3 of 3
+path per robot: tb3_robot1 13.18 m, tb3_robot2 10.34 m, tb3_robot3 10.41 m
+tasks completed: 3 of 3
+resolved conflicts: 0
+furthest from any lane: tb3_robot1 0.54 m, tb3_robot2 0.44 m, tb3_robot3 0.26 m
+fleet state for tb3_robot1: 141 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+fleet state for tb3_robot2: 141 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+fleet state for tb3_robot3: 141 sample(s), gaps head 0.1 s, max 1.0 s, tail 0.9 s
+robot issues: none
+
+NOTE: no negotiation concluded with the conflict resolved. The count ranged 1..97 across repeats of one scenario, so it reports when the capture saw a negotiation, not whether the fleet coordinated
+VALID N=3 SAMPLE: 3 robot(s) carried a task, each of them moved, and every dispatched task completed.
+[13:36:33] [Shared Lane] 5/5 repeats completed after 5 attempt(s)
+merged 5 repeat dir(s) into 5 task entries -> /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316/repeats_summary.json
+[13:36:33] [Shared Lane] merge_repeat_metrics exited with code 0
+[13:36:33] Tearing down
+[13:36:34] Navigation stopped on 3 robots.
+[13:36:45] Teardown complete
+[13:36:45] === [Shared Lane] DONE: /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316 ===
+[13:36:45] ########## RUN COMPLETE [Bottleneck,Crossing,Head-on,Shared Lane] ##########

@@ -35,15 +35,24 @@ class ApiStateTail:
         if not self.path or not os.path.exists(self.path):
             return
         try:
-            with open(self.path) as f:
+            with open(self.path, 'rb') as f:
+                f.seek(0, os.SEEK_END)
+                if f.tell() < self._offset:   # the capture was replaced or truncated
+                    self._offset = 0
+                    self.status.clear()
                 f.seek(self._offset)
-                for line in f:
-                    if not line.endswith('\n'):      # a partially written record
+                while True:
+                    start = f.tell()
+                    line = f.readline()
+                    if not line:
                         break
-                    self._offset += len(line)
+                    if not line.endswith(b'\n'):     # a partially written record
+                        f.seek(start)
+                        break
+                    self._offset = f.tell()
                     try:
                         entry = json.loads(line)
-                    except ValueError:
+                    except (ValueError, UnicodeDecodeError):
                         continue
                     message = entry.get('msg')
                     if not isinstance(message, dict) or message.get('type') != 'task_state_update':
@@ -56,9 +65,22 @@ class ApiStateTail:
         except OSError:
             return
 
-    def is_terminal(self, task_id):
-        return self.status.get(task_id) in TERMINAL_TASK_STATUS
+    def get_status(self, task_id):
+        return self.status.get(task_id)
 
+    def is_terminal(self, task_id):
+        return self.get_status(task_id) in TERMINAL_TASK_STATUS
+
+    def get_outcome(self, task_id):
+        status = self.get_status(task_id)
+
+        if status == 'completed':
+            return 'completed'
+
+        if status in TERMINAL_TASK_STATUS:
+            return 'not_completed'
+
+        return 'unknown'
 
 class ConcurrentBenchRunner(Node):
     def __init__(self, robot_names, release_grace_period_s: float = 5.0):
@@ -231,26 +253,52 @@ def main():
                 'submit_wall_time': submit_wall_times[rid],
                 'response': resp, 'task_id': None,
             }
-            if resp is not None and resp.get('success', False):
-                task_id = resp.get('state', {}).get('booking', {}).get('id')
+            task_id = None
+            if isinstance(resp, dict) and resp.get('success') is True:
+                task_id = (resp.get('state') or {}).get('booking', {}).get('id')
+            if task_id:
                 task_entry['task_id'] = task_id
                 task_ids.append(task_id)
                 print(f'  route {places}: task_id={task_id}', flush=True)
             else:
-                print(f'  route {places}: dispatch request failed/no response', flush=True)
+                print(f'  route {places}: no accepted task id', flush=True)
             entry['tasks'].append(task_entry)
+
+        entry['requested_tasks'] = len(routes)
+        entry['accepted_tasks'] = len(task_ids)
+        entry['dispatch_complete'] = (len(task_ids) == len(routes)
+                                      and len(set(task_ids)) == len(task_ids))
 
         node.reset_distances()
         node.start_tracking_tasks(task_ids)
-        deadline = time.time() + args.fixed_wait
+        deadline = time.monotonic() + args.fixed_wait
         api_state = ApiStateTail(args.api_state)
-        while time.time() < deadline:
+        while time.monotonic() < deadline:
             rclpy.spin_once(node, timeout_sec=0.3)
             api_state.poll()
-            if all(node.task_released.get(tid) or api_state.is_terminal(tid)
-                   for tid in task_ids):
+            if (
+                len(task_ids) == len(routes)
+                and all(task_ids)
+                and all(
+                    api_state.is_terminal(tid) or node.task_released.get(tid, False)
+                    for tid in task_ids
+                )
+            ):
                 break
-        entry['fixed_wait_exceeded'] = time.time() >= deadline
+
+        for task in entry['tasks']:
+            task_id = task.get('task_id')
+
+            status = api_state.get_status(task_id) if task_id else None
+
+            task['terminal_status'] = status
+            task['task_outcome'] = (
+                api_state.get_outcome(task_id)
+                if task_id
+                else 'dispatch_failed'
+            )
+
+        entry['fixed_wait_exceeded'] = time.monotonic() >= deadline
 
         entry['completion_wall_time'] = time.time()
         entry['dispatch_status'] = {tid: node.dispatch_status.get(tid) for tid in task_ids}
@@ -262,16 +310,35 @@ def main():
             if robot:
                 released = node.task_released.get(tid, False)
                 robot_released[robot] = robot_released.get(robot, True) and released
-
         outcomes = {}
+
         for name, dist in node.total_distance.items():
-            if name in robot_released and not robot_released[name]:
-                outcomes[name] = 'timeout'
-            elif args.min_expected_distance_m is not None and dist < args.min_expected_distance_m:
-                outcomes[name] = 'short_distance'
-            else:
+            assigned_tasks = [
+                task for task in entry['tasks']
+                if task.get('task_id')
+                and node.task_seen_robot.get(task['task_id']) == name
+            ]
+
+            if not assigned_tasks:
+                outcomes[name] = 'unknown'
+
+            elif all(t['task_outcome'] == 'completed' for t in assigned_tasks):
                 outcomes[name] = 'completed'
+
+            elif any(t['task_outcome'] == 'not_completed' for t in assigned_tasks):
+                outcomes[name] = 'not_completed'
+
+            elif (
+                args.min_expected_distance_m is not None
+                and dist < args.min_expected_distance_m
+            ):
+                outcomes[name] = 'short_distance'
+
+            else:
+                outcomes[name] = 'unknown'
+
         entry['outcome'] = outcomes
+        entry['outcome_basis'] = 'RMF API terminal status'
 
         print(f'Repeat {i}: outcome={outcomes} total_distance_m={entry["total_distance_m"]}', flush=True)
         results.append(entry)

@@ -3,7 +3,9 @@
 import argparse
 import json
 import time
+from pathlib import Path
 
+import uvicorn
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 
 app = FastAPI()
@@ -27,11 +29,21 @@ async def sink(ws: WebSocket):
         _write({'_event': 'disconnected', '_peer': peer})
 
 
+
 def _write(obj):
     obj['_recv_wall'] = time.time()
-    with open(OUT['path'], 'a') as f:
-        f.write(json.dumps(obj, default=str) + '\n')
-        f.flush()
+
+    try:
+        with open(OUT['path'], 'a', encoding='utf-8') as f:
+            f.write(json.dumps(obj, default=str) + '\n')
+            f.flush()
+    except OSError:
+        import logging
+        logging.exception(
+            'Failed to write RMF API state to %s',
+            OUT['path']
+        )
+        raise
 
 
 if __name__ == '__main__':
@@ -42,8 +54,10 @@ if __name__ == '__main__':
     ap.add_argument('--port', type=int, default=8000,
                     help='Port named in RMF server_uri')
     args = ap.parse_args()
-    OUT['path'] = args.out
-    open(args.out, 'a').close()
+    output_path = Path(args.out).resolve()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open('a', encoding='utf-8'):
+        pass
+    OUT['path'] = str(output_path)
 
-    import uvicorn
     uvicorn.run(app, host=args.host, port=args.port, ws='wsproto', log_level='warning')

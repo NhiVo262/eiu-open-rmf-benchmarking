@@ -1,0 +1,263 @@
+{
+  "scenario": "Shared Lane, N=3, CONFIG_01, repeat 5",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316/attempt_5/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 0,
+  "2a_method": "schedule feasibility = (resolved + recovered) / classified conflicts; a conflict is recovered when, after an unresolved negotiation, a participant established a new itinerary within 5.0s (replan recovery). Null where no conflict was classified",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 100.0,
+  "2a_n_itineraries": 17,
+  "2a_n_itineraries_triggering_negotiation": 0,
+  "2a_n_conflicts_classified": 0,
+  "2a_n_task_infeasible": 0,
+  "2a_schedule_feasibility_pct": null,
+  "2a_conflict_outcome_counts": {},
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 3,
+    "mean": 0.004049380620320638,
+    "stdev": 0.0014011916959442013,
+    "min": 0.0026116371154785156,
+    "max": 0.005410909652709961
+  },
+  "raw_planner_compute_s": [
+    0.005410909652709961,
+    0.0026116371154785156,
+    0.0041255950927734375
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 17,
+    "mean": 0.006221813314101275,
+    "stdev": 0.0032686280137745817,
+    "min": 0.000213623046875,
+    "max": 0.009771585464477539
+  },
+  "2b_scheduling_time_s": {
+    "n": 17,
+    "mean": 0.006221813314101275,
+    "stdev": 0.0032686280137745817,
+    "min": 0.000213623046875,
+    "max": 0.009771585464477539
+  },
+  "raw_scheduling_times_s": [
+    0.005125999450683594,
+    0.006566286087036133,
+    0.0009369850158691406,
+    0.002406597137451172,
+    0.000213623046875,
+    0.0035486221313476562,
+    0.009771585464477539,
+    0.008208274841308594,
+    0.008113384246826172,
+    0.008787870407104492,
+    0.009030342102050781,
+    0.008676767349243164,
+    0.009472846984863281,
+    0.0014107227325439453,
+    0.007266521453857422,
+    0.008916378021240234,
+    0.007318019866943359
+  ],
+  "per_conflict": []
+}
+{
+  "scenario": "Shared Lane, N=3, CONFIG_01, repeat 5",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316/attempt_5/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "analysis_version": 2,
+  "api_state_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316/api_state_attempt5.jsonl",
+  "n_tasks": 3,
+  "n_tasks_completed": 3,
+  "n_tasks_censored": 0,
+  "n_makespan_unresolved": 0,
+  "makespan_resolution_rate_pct": 100.0,
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-4cf793e86a",
+      "t_bid_notice": 1794490437.1547787,
+      "t_bid_response": 1794490437.1601896,
+      "planning_latency_s": 0.005410909652709961,
+      "dispatch_id": 0,
+      "dispatch_success": true,
+      "t_award": 1794490442.1538594,
+      "t_submit": 1794490436.8914511,
+      "places": [
+        "wp_2",
+        "wp_7"
+      ],
+      "route_start_xy": [
+        18.647486653140287,
+        -6.031494200199116
+      ],
+      "robot": "tb3_robot1",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794490528.7041156,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794490528.7041156,
+      "queueing_s": 5.262408256530762,
+      "makespan_incl_transit_s": 91.81266450881958,
+      "t_arrival_at_route_start": 1794490442.2290666,
+      "t_end_physical": 1794490528.4320345,
+      "makespan_s": 86.47504901885986,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    },
+    {
+      "task_id": "patrol.dispatch-abc6fbe00d",
+      "t_bid_notice": 1794490442.3522866,
+      "t_bid_response": 1794490442.3548982,
+      "planning_latency_s": 0.0026116371154785156,
+      "dispatch_id": 1,
+      "dispatch_success": true,
+      "t_award": 1794490447.3524501,
+      "t_submit": 1794490436.891538,
+      "places": [
+        "wp_4",
+        "wp_5"
+      ],
+      "route_start_xy": [
+        23.647923297508665,
+        -4.8141352791084335
+      ],
+      "robot": "tb3_robot2",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794490535.1062543,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794490535.1062543,
+      "queueing_s": 10.460912227630615,
+      "makespan_incl_transit_s": 98.21471643447876,
+      "t_arrival_at_route_start": 1794490447.4288406,
+      "t_end_physical": 1794490535.028846,
+      "makespan_s": 87.67741370201111,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    },
+    {
+      "task_id": "patrol.dispatch-2abee9e2a4",
+      "t_bid_notice": 1794490447.5523393,
+      "t_bid_response": 1794490447.556465,
+      "planning_latency_s": 0.0041255950927734375,
+      "dispatch_id": 2,
+      "dispatch_success": true,
+      "t_award": 1794490452.5523863,
+      "t_submit": 1794490436.8915691,
+      "places": [
+        "wp_6",
+        "wp_3"
+      ],
+      "route_start_xy": [
+        28.56775935121708,
+        -5.012036729376512
+      ],
+      "robot": "tb3_robot3",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794490554.3053365,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794490554.3053365,
+      "queueing_s": 15.66081714630127,
+      "makespan_incl_transit_s": 117.41376733779907,
+      "t_arrival_at_route_start": 1794490452.628939,
+      "t_end_physical": 1794490554.028928,
+      "makespan_s": 101.67639756202698,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    }
+  ],
+  "per_robot": {
+    "tb3_robot1": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 86.47504901885986,
+        "stdev": 0.0,
+        "min": 86.47504901885986,
+        "max": 86.47504901885986
+      },
+      "observed_path_m": 13.176
+    },
+    "tb3_robot2": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 87.67741370201111,
+        "stdev": 0.0,
+        "min": 87.67741370201111,
+        "max": 87.67741370201111
+      },
+      "observed_path_m": 10.337
+    },
+    "tb3_robot3": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 101.67639756202698,
+        "stdev": 0.0,
+        "min": 101.67639756202698,
+        "max": 101.67639756202698
+      },
+      "observed_path_m": 10.409
+    }
+  },
+  "1a_task_dispatch_success_rate_pct": 100.0,
+  "1b_planning_latency_s": {
+    "n": 3,
+    "mean": 0.004049380620320638,
+    "stdev": 0.0014011916959442013,
+    "min": 0.0026116371154785156,
+    "max": 0.005410909652709961
+  },
+  "1c_makespan_s": {
+    "n": 3,
+    "mean": 91.94295342763265,
+    "stdev": 8.45082074391913,
+    "min": 86.47504901885986,
+    "max": 101.67639756202698
+  },
+  "1c_makespan_incl_transit_s": {
+    "n": 3,
+    "mean": 102.4803827603658,
+    "stdev": 13.322951940836926,
+    "min": 91.81266450881958,
+    "max": 117.41376733779907
+  },
+  "1c_queueing_s": {
+    "n": 3,
+    "mean": 10.461379210154215,
+    "stdev": 5.199204460614055,
+    "min": 5.262408256530762,
+    "max": 15.66081714630127
+  },
+  "1c_batch_makespan_s": 117.41388535499573,
+  "1c_batch_makespan_status": "complete",
+  "1c_batch_censored_lower_bound_s": null,
+  "1c_batch_makespan_detail": null,
+  "negotiation_message_counts": {
+    "/rmf_traffic/negotiation_notice": 0,
+    "/rmf_traffic/negotiation_proposal": 0,
+    "/rmf_traffic/negotiation_conclusion": 0,
+    "/rmf_traffic/negotiation_rejection": 0,
+    "/rmf_traffic/negotiation_forfeit": 0
+  },
+  "blockade_message_counts": {
+    "/rmf_traffic/blockade_set": 0,
+    "/rmf_traffic/blockade_ready": 0,
+    "/rmf_traffic/blockade_reached": 0,
+    "/rmf_traffic/blockade_release": 0
+  }
+}
+annotated 1 repeat entr(ies) in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/sharedlane/run_20261112_1316/attempt_5/repeats_summary.json

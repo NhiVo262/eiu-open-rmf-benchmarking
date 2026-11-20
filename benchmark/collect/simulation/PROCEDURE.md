@@ -22,7 +22,7 @@ Analysers, in `analyse/task_planning/`:
 |---|---|
 | `analyze_task_planning.py` | Computes the 1a, 1b and 1c metrics from one bag and its API state capture, makespan measured from arrival to completion |
 | `show_negotiation_resolved.py` | Resolved and abandoned negotiation counts |
-| `analyze_task_planning_all_runs.py` | Re-runs the analyser over every repeat of one or more collections, `--collection-dir data/<platform>/<scenarios|baselines>`, taking each repeat's API capture and robots from its existing metrics |
+| `analyze_task_planning_all_runs.py` | Re-runs the analyser over every repeat of one or more collections, `--collection-dir data/<platform>/<scenarios\|baselines>`, taking each repeat's API capture and robots from its existing metrics |
 
 Runners, in `collect/`:
 
@@ -60,4 +60,3 @@ skipped. The F1 tables in `RESULTS.md` §2 are computed from those files as
    docker exec open-rmf bash -c "/home/eiu/rmf_ws/src/benchmark/collect/simulation/run_simulation_scenarios.sh"
    ```
 3. Check `data/simulation/<collection>/<scenario>/run_<timestamp>_<suffix>/repeat_<n>/task_planning_metrics.json`.
-

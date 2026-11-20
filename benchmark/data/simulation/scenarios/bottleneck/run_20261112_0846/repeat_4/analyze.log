@@ -1,0 +1,1691 @@
+{
+  "scenario": "Bottleneck, N=3, CONFIG_01, repeat 4",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261112_0846/attempt_9/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "n_submit": 3,
+  "n_conflicts_detected": 109,
+  "2a_method": "schedule feasibility = (resolved + recovered) / classified conflicts; a conflict is recovered when, after an unresolved negotiation, a participant established a new itinerary within 5.0s (replan recovery). Null where no conflict was classified",
+  "2a_method_conflict_free": "conflict-free scheduling rate = itineraries that did not trigger a negotiation / all itineraries; an itinerary triggered one when its participant is in a negotiation_notice and it is that participant's most recent itinerary at or before the notice",
+  "2a_conflict_free_scheduling_pct": 51.785714285714285,
+  "2a_n_itineraries": 56,
+  "2a_n_itineraries_triggering_negotiation": 27,
+  "2a_n_conflicts_classified": 109,
+  "2a_n_task_infeasible": 1,
+  "2a_schedule_feasibility_pct": 35.77981651376147,
+  "2a_conflict_outcome_counts": {
+    "resolved_by_negotiation": 2,
+    "recovered_by_replan": 37,
+    "unrecovered": 70
+  },
+  "2b_method": "planner compute = bid_response - bid_notice (one per task, bounds rmf_task::TaskPlanner); schedule confirm = query_update_1 - itinerary_set (one per itinerary, contains no planning). 2b_scheduling_time_s is the schedule-confirm figure under its original key, kept so metrics files already written stay readable",
+  "2b_planner_compute_s": {
+    "n": 3,
+    "mean": 0.0021225611368815103,
+    "stdev": 0.0007550379630471151,
+    "min": 0.0013034343719482422,
+    "max": 0.002790689468383789
+  },
+  "raw_planner_compute_s": [
+    0.0022735595703125,
+    0.002790689468383789,
+    0.0013034343719482422
+  ],
+  "2b_schedule_confirm_s": {
+    "n": 56,
+    "mean": 0.005536624363490513,
+    "stdev": 0.00290514150555203,
+    "min": 0.000171661376953125,
+    "max": 0.010640382766723633
+  },
+  "2b_scheduling_time_s": {
+    "n": 56,
+    "mean": 0.005536624363490513,
+    "stdev": 0.00290514150555203,
+    "min": 0.000171661376953125,
+    "max": 0.010640382766723633
+  },
+  "raw_scheduling_times_s": [
+    0.0009169578552246094,
+    0.0071887969970703125,
+    0.005459308624267578,
+    0.000171661376953125,
+    0.0021581649780273438,
+    0.001955747604370117,
+    0.005796670913696289,
+    0.004535198211669922,
+    0.009692668914794922,
+    0.008895397186279297,
+    0.0060367584228515625,
+    0.0075838565826416016,
+    0.0023381710052490234,
+    0.0023124217987060547,
+    0.004069805145263672,
+    0.0037047863006591797,
+    0.002887248992919922,
+    0.004836082458496094,
+    0.004487037658691406,
+    0.00457310676574707,
+    0.004457712173461914,
+    0.0028777122497558594,
+    0.0019114017486572266,
+    0.01021885871887207,
+    0.0060884952545166016,
+    0.007916927337646484,
+    0.007349252700805664,
+    0.006842136383056641,
+    0.007419109344482422,
+    0.010169744491577148,
+    0.009706258773803711,
+    0.004670858383178711,
+    0.002210378646850586,
+    0.005114555358886719,
+    0.005646944046020508,
+    0.004741668701171875,
+    0.0023429393768310547,
+    0.0070416927337646484,
+    0.006521940231323242,
+    0.0065572261810302734,
+    0.009313821792602539,
+    0.0070607662200927734,
+    0.0047338008880615234,
+    0.004087209701538086,
+    0.0030875205993652344,
+    0.0010335445404052734,
+    0.009639978408813477,
+    0.0048754215240478516,
+    0.001329660415649414,
+    0.010640382766723633,
+    0.006939411163330078,
+    0.008022785186767578,
+    0.000553131103515625,
+    0.009968280792236328,
+    0.009678363800048828,
+    0.009681224822998047
+  ],
+  "per_conflict": [
+    {
+      "conflict_version": 0,
+      "resolved": true,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 1,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot2",
+        "itinerary_version": 136,
+        "delay_s": 0.0066
+      }
+    },
+    {
+      "conflict_version": 2,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 266,
+        "delay_s": 0.0045
+      }
+    },
+    {
+      "conflict_version": 3,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot2",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 286,
+        "delay_s": 4.1963
+      }
+    },
+    {
+      "conflict_version": 4,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 286,
+        "delay_s": 3.1955
+      }
+    },
+    {
+      "conflict_version": 5,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 286,
+        "delay_s": 2.9946
+      }
+    },
+    {
+      "conflict_version": 6,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3",
+        "tb3_robot2"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 286,
+        "delay_s": 2.8965
+      }
+    },
+    {
+      "conflict_version": 7,
+      "resolved": true,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot1"
+      ],
+      "outcome": "resolved_by_negotiation"
+    },
+    {
+      "conflict_version": 8,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 294,
+        "delay_s": 0.1436
+      }
+    },
+    {
+      "conflict_version": 9,
+      "resolved": false,
+      "participants": [
+        "tb3_robot2",
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 727,
+        "delay_s": 0.0106
+      }
+    },
+    {
+      "conflict_version": 10,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 735,
+        "delay_s": 1.1696
+      }
+    },
+    {
+      "conflict_version": 11,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 735,
+        "delay_s": 1.0695
+      }
+    },
+    {
+      "conflict_version": 12,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 735,
+        "delay_s": 0.9704
+      }
+    },
+    {
+      "conflict_version": 13,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 735,
+        "delay_s": 0.8702
+      }
+    },
+    {
+      "conflict_version": 14,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 735,
+        "delay_s": 0.7699
+      }
+    },
+    {
+      "conflict_version": 15,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 735,
+        "delay_s": 0.6692
+      }
+    },
+    {
+      "conflict_version": 16,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 735,
+        "delay_s": 0.57
+      }
+    },
+    {
+      "conflict_version": 17,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 300,
+        "delay_s": 0.0737
+      }
+    },
+    {
+      "conflict_version": 18,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 300,
+        "delay_s": 0.0236
+      }
+    },
+    {
+      "conflict_version": 19,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 20,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 21,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 22,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 23,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 24,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 25,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 26,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 27,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 28,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 29,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 30,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 31,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 32,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 33,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 34,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 35,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 36,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 349,
+        "delay_s": 1.5513
+      }
+    },
+    {
+      "conflict_version": 37,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 349,
+        "delay_s": 1.4519
+      }
+    },
+    {
+      "conflict_version": 38,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 844,
+        "delay_s": 0.3028
+      }
+    },
+    {
+      "conflict_version": 39,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 1.61
+      }
+    },
+    {
+      "conflict_version": 40,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 1.5793
+      }
+    },
+    {
+      "conflict_version": 41,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 1.4777
+      }
+    },
+    {
+      "conflict_version": 42,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 1.3694
+      }
+    },
+    {
+      "conflict_version": 43,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 1.2695
+      }
+    },
+    {
+      "conflict_version": 44,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 1.1685
+      }
+    },
+    {
+      "conflict_version": 45,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 1.0596
+      }
+    },
+    {
+      "conflict_version": 46,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 0.8491
+      }
+    },
+    {
+      "conflict_version": 47,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 0.6381
+      }
+    },
+    {
+      "conflict_version": 48,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 0.4196
+      }
+    },
+    {
+      "conflict_version": 49,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 351,
+        "delay_s": 0.1198
+      }
+    },
+    {
+      "conflict_version": 50,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 858,
+        "delay_s": 0.3997
+      }
+    },
+    {
+      "conflict_version": 51,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 466,
+        "delay_s": 0.0062
+      }
+    },
+    {
+      "conflict_version": 52,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 468,
+        "delay_s": 0.1999
+      }
+    },
+    {
+      "conflict_version": 53,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot3",
+        "itinerary_version": 468,
+        "delay_s": 0.1096
+      }
+    },
+    {
+      "conflict_version": 54,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 916,
+        "delay_s": 0.1248
+      }
+    },
+    {
+      "conflict_version": 55,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "recovered_by_replan",
+      "recovery": {
+        "participant": "tb3_robot1",
+        "itinerary_version": 916,
+        "delay_s": 0.0349
+      }
+    },
+    {
+      "conflict_version": 56,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 57,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 58,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 59,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 60,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 61,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 62,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 63,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 64,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 65,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 66,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 67,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 68,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 69,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 70,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 71,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 72,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 73,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 74,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 75,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 76,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 77,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 78,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 79,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 80,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 81,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 82,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 83,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 84,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 85,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 86,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 87,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 88,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 89,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 90,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 91,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 92,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 93,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 94,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 95,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 96,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 97,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 98,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 99,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 100,
+      "resolved": false,
+      "participants": [
+        "tb3_robot1",
+        "tb3_robot3"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 101,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 102,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 103,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 104,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 105,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 106,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 107,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    },
+    {
+      "conflict_version": 108,
+      "resolved": false,
+      "participants": [
+        "tb3_robot3",
+        "tb3_robot1"
+      ],
+      "outcome": "unrecovered",
+      "infeasible_task_ids": [
+        "patrol.dispatch-3d359a1b32"
+      ]
+    }
+  ]
+}
+{
+  "scenario": "Bottleneck, N=3, CONFIG_01, repeat 4",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261112_0846/attempt_9/bag",
+  "robots": [
+    "tb3_robot1",
+    "tb3_robot2",
+    "tb3_robot3"
+  ],
+  "analysis_version": 2,
+  "api_state_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261112_0846/api_state_attempt9.jsonl",
+  "n_tasks": 3,
+  "n_tasks_completed": 3,
+  "n_tasks_censored": 0,
+  "n_makespan_unresolved": 0,
+  "makespan_resolution_rate_pct": 100.0,
+  "per_task": [
+    {
+      "task_id": "patrol.dispatch-3d359a1b32",
+      "t_bid_notice": 1794476386.4278283,
+      "t_bid_response": 1794476386.4301019,
+      "planning_latency_s": 0.0022735595703125,
+      "dispatch_id": 0,
+      "dispatch_success": true,
+      "t_award": 1794476391.4274468,
+      "t_submit": 1794476386.4039204,
+      "places": [
+        "wp_2",
+        "wp_5"
+      ],
+      "route_start_xy": [
+        18.647486653140287,
+        -6.031494200199116
+      ],
+      "robot": "tb3_robot1",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794476649.958931,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794476649.958931,
+      "queueing_s": 5.023526430130005,
+      "makespan_incl_transit_s": 263.5550105571747,
+      "t_arrival_at_route_start": 1794476391.4864855,
+      "t_end_physical": 1794476649.8864865,
+      "makespan_s": 258.4724454879761,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    },
+    {
+      "task_id": "patrol.dispatch-4d2ee203bf",
+      "t_bid_notice": 1794476391.6273596,
+      "t_bid_response": 1794476391.6301503,
+      "planning_latency_s": 0.002790689468383789,
+      "dispatch_id": 1,
+      "dispatch_success": true,
+      "t_award": 1794476396.6273546,
+      "t_submit": 1794476386.403979,
+      "places": [
+        "wp_3",
+        "wp_4"
+      ],
+      "route_start_xy": [
+        18.586686207580414,
+        -7.702956449065112
+      ],
+      "robot": "tb3_robot2",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794476580.1543467,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794476580.1543467,
+      "queueing_s": 10.22337555885315,
+      "makespan_incl_transit_s": 193.75036764144897,
+      "t_arrival_at_route_start": 1794476396.686398,
+      "t_end_physical": 1794476579.6864061,
+      "makespan_s": 183.46794867515564,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    },
+    {
+      "task_id": "patrol.dispatch-907436ece9",
+      "t_bid_notice": 1794476396.8273842,
+      "t_bid_response": 1794476396.8286877,
+      "planning_latency_s": 0.0013034343719482422,
+      "dispatch_id": 2,
+      "dispatch_success": true,
+      "t_award": 1794476401.8274453,
+      "t_submit": 1794476386.4040055,
+      "places": [
+        "wp_4",
+        "wp_3"
+      ],
+      "route_start_xy": [
+        23.647923297508665,
+        -4.8141352791084335
+      ],
+      "robot": "tb3_robot3",
+      "reassigned": false,
+      "task_status": "completed",
+      "t_completed": 1794476529.6927645,
+      "completed": true,
+      "censored": false,
+      "t_last_observed_api": 1794476529.6927645,
+      "queueing_s": 15.423439741134644,
+      "makespan_incl_transit_s": 143.2887589931488,
+      "t_arrival_at_route_start": 1794476401.886458,
+      "t_end_physical": 1794476529.6865246,
+      "makespan_s": 127.80630660057068,
+      "censored_lower_bound_s": null,
+      "makespan_unresolved_reason": null
+    }
+  ],
+  "per_robot": {
+    "tb3_robot1": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 258.4724454879761,
+        "stdev": 0.0,
+        "min": 258.4724454879761,
+        "max": 258.4724454879761
+      },
+      "observed_path_m": 16.181
+    },
+    "tb3_robot2": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 183.46794867515564,
+        "stdev": 0.0,
+        "min": 183.46794867515564,
+        "max": 183.46794867515564
+      },
+      "observed_path_m": 8.557
+    },
+    "tb3_robot3": {
+      "n_tasks": 1,
+      "makespan_s": {
+        "n": 1,
+        "mean": 127.80630660057068,
+        "stdev": 0.0,
+        "min": 127.80630660057068,
+        "max": 127.80630660057068
+      },
+      "observed_path_m": 23.823
+    }
+  },
+  "1a_task_dispatch_success_rate_pct": 100.0,
+  "1b_planning_latency_s": {
+    "n": 3,
+    "mean": 0.0021225611368815103,
+    "stdev": 0.0007550379630471151,
+    "min": 0.0013034343719482422,
+    "max": 0.002790689468383789
+  },
+  "1c_makespan_s": {
+    "n": 3,
+    "mean": 189.91556692123413,
+    "stdev": 65.57124978770081,
+    "min": 127.80630660057068,
+    "max": 258.4724454879761
+  },
+  "1c_makespan_incl_transit_s": {
+    "n": 3,
+    "mean": 200.19804573059082,
+    "stdev": 60.391822549673805,
+    "min": 143.2887589931488,
+    "max": 263.5550105571747
+  },
+  "1c_queueing_s": {
+    "n": 3,
+    "mean": 10.223447243372599,
+    "stdev": 5.199956655872899,
+    "min": 5.023526430130005,
+    "max": 15.423439741134644
+  },
+  "1c_batch_makespan_s": 263.5550105571747,
+  "1c_batch_makespan_status": "complete",
+  "1c_batch_censored_lower_bound_s": null,
+  "1c_batch_makespan_detail": null,
+  "negotiation_message_counts": {
+    "/rmf_traffic/negotiation_notice": 109,
+    "/rmf_traffic/negotiation_proposal": 334,
+    "/rmf_traffic/negotiation_conclusion": 109,
+    "/rmf_traffic/negotiation_rejection": 137,
+    "/rmf_traffic/negotiation_forfeit": 63
+  },
+  "blockade_message_counts": {
+    "/rmf_traffic/blockade_set": 0,
+    "/rmf_traffic/blockade_ready": 0,
+    "/rmf_traffic/blockade_reached": 0,
+    "/rmf_traffic/blockade_release": 0
+  }
+}
+annotated 1 repeat entr(ies) in /home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261112_0846/attempt_9/repeats_summary.json

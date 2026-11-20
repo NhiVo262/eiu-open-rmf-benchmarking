@@ -48,6 +48,51 @@ def load_waypoints(nav_graph_path):
                 coords[name] = (x, y)
     return coords
 
+def enumerate_tasks(task_api_requests, task_api_responses, bid_notice):
+    """One entry per submitted task: the id RMF assigned, the route submitted, submit time.
+
+    Each dispatcher reply names the assigned id and carries the request_id of the
+    submission it answers, so id and route are paired by key rather than by arrival
+    order. Bid solicitations are not used to enumerate tasks: one that the capture
+    misses would drop its task and shift every later route label. A bag holding no
+    replies falls back to them, which name the id but not the route.
+    """
+    submit_by_request_id = {}
+    for t, msg in sorted(task_api_requests, key=lambda x: x[0]):
+        try:
+            places = json.loads(msg.json_msg)['request']['description']['places']
+        except (json.JSONDecodeError, KeyError, TypeError):
+            places = None
+        submit_by_request_id.setdefault(getattr(msg, 'request_id', '') or '', (t, places))
+
+    tasks = []
+    seen = set()
+    for t, msg in sorted(task_api_responses, key=lambda x: x[0]):
+        try:
+            state = json.loads(msg.json_msg)['state']
+            task_id = state['booking']['id']
+        except (json.JSONDecodeError, KeyError, TypeError):
+            continue
+        if task_id in seen:
+            continue
+        seen.add(task_id)
+        t_submit, places = submit_by_request_id.get(
+            getattr(msg, 'request_id', '') or '', (t, None))
+        if places is None:
+            detail = state.get('detail')
+            places = detail.get('places') if isinstance(detail, dict) else None
+        tasks.append({'task_id': task_id, 't_submit': t_submit, 'places': places})
+    if tasks:
+        return tasks
+
+    for t, msg in sorted(bid_notice, key=lambda x: x[0]):
+        if msg.task_id in seen:
+            continue
+        seen.add(msg.task_id)
+        tasks.append({'task_id': msg.task_id, 't_submit': t, 'places': None})
+    return tasks
+
+
 TERMINAL = ('completed', 'error', 'canceled', 'killed', 'failed')
 
 
@@ -278,21 +323,25 @@ def main():
     dispatch_request = records.get('/rmf_task/dispatch_request', [])
     dispatch_ack = records.get('/rmf_task/dispatch_ack', [])
     task_api_requests = records.get('/task_api_requests', [])
+    task_api_responses = records.get('/task_api_responses', [])
     fleet_states = records.get('/fleet_states', [])
 
-    # Order tasks by bid_notice bag time (== submission order)
-    bid_notice_sorted = sorted(bid_notice, key=lambda x: x[0])
-    tasks = [{'task_id': msg.task_id, 't_bid_notice': t} for t, msg in bid_notice_sorted]
+    tasks = enumerate_tasks(task_api_requests, task_api_responses, bid_notice)
 
-    # 1b: match bid_response by task_id
+    # 1b: match bid_notice and bid_response by task_id
+    bid_notice_by_id = {}
+    for t, msg in sorted(bid_notice, key=lambda x: x[0]):
+        bid_notice_by_id.setdefault(msg.task_id, t)
     bid_response_by_id = {}
     for t, msg in bid_response:
         bid_response_by_id.setdefault(msg.task_id, t)
     for task in tasks:
+        task['t_bid_notice'] = bid_notice_by_id.get(task['task_id'])
         task['t_bid_response'] = bid_response_by_id.get(task['task_id'])
         task['planning_latency_s'] = (
             task['t_bid_response'] - task['t_bid_notice']
-            if task['t_bid_response'] is not None else None
+            if task['t_bid_response'] is not None
+            and task['t_bid_notice'] is not None else None
         )
 
     dispatch_id_by_task = {}
@@ -311,16 +360,7 @@ def main():
     for task in tasks:
         task['t_award'] = t_award_by_task.get(task['task_id'])
 
-    api_req_sorted = sorted(task_api_requests, key=lambda x: x[0])
-    for i, task in enumerate(tasks):
-        task['t_submit'] = api_req_sorted[i][0] if i < len(api_req_sorted) else task['t_bid_notice']
-        task['places'] = None
-        if i < len(api_req_sorted):
-            try:
-                payload = json.loads(api_req_sorted[i][1].json_msg)
-                task['places'] = payload['request']['description']['places']
-            except (json.JSONDecodeError, KeyError, TypeError):
-                pass
+    for task in tasks:
         task['route_start_xy'] = (
             waypoints.get(task['places'][0]) if task['places'] else None
         )

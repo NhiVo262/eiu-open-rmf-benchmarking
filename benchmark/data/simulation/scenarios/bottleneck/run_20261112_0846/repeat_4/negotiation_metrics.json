@@ -1,0 +1,917 @@
+{
+  "scenario": "bottleneck, N=3, CONFIG_01, repeat_4, simulation",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261112_0846/repeat_4/bag",
+  "analysis_version": 2,
+  "3a_n_negotiation": 109,
+  "3a_n_distinct_conflict_versions_noticed": 109,
+  "3a_n_conclusions": 109,
+  "3b_negotiation_latency_s": {
+    "n": 109,
+    "mean": 0.001025657041357198,
+    "stdev": 0.0035801007573450123,
+    "min": -2.0265579223632812e-05,
+    "max": 0.03667473793029785
+  },
+  "3b_latency_resolved_s": {
+    "n": 2,
+    "mean": 0.02159285545349121,
+    "stdev": 0.021329002744817076,
+    "min": 0.00651097297668457,
+    "max": 0.03667473793029785
+  },
+  "3b_latency_abandoned_s": {
+    "n": 107,
+    "mean": 0.0006412234261771229,
+    "stdev": 0.0007979337155060476,
+    "min": -2.0265579223632812e-05,
+    "max": 0.0052449703216552734
+  },
+  "3b_n_resolved": 2,
+  "3b_n_abandoned": 107,
+  "3b_latency_refused_s": {
+    "n": 107,
+    "mean": 0.0006412234261771229,
+    "stdev": 0.0007979337155060476,
+    "min": -2.0265579223632812e-05,
+    "max": 0.0052449703216552734
+  },
+  "3b_latency_search_failed_s": null,
+  "3b_n_refused": 107,
+  "3b_n_search_failed": 0,
+  "3b_n_refusal_messages": 107,
+  "3b_target": "below RMF's negotiation timeout, 15 s, fixed at rmf_traffic_ros2/schedule/Negotiation.cpp:216 and not overridden in this tree",
+  "per_negotiation": [
+    {
+      "conflict_version": 0,
+      "t_notice": 1794476392.7074354,
+      "t_conclusion": 1794476392.74411,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.03667473793029785
+    },
+    {
+      "conflict_version": 1,
+      "t_notice": 1794476523.0984006,
+      "t_conclusion": 1794476523.0985706,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00016999244689941406
+    },
+    {
+      "conflict_version": 2,
+      "t_notice": 1794476523.108479,
+      "t_conclusion": 1794476523.109056,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005769729614257812
+    },
+    {
+      "conflict_version": 3,
+      "t_notice": 1794476525.4980905,
+      "t_conclusion": 1794476525.4986029,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005123615264892578
+    },
+    {
+      "conflict_version": 4,
+      "t_notice": 1794476526.499427,
+      "t_conclusion": 1794476526.4994128,
+      "resolved": false,
+      "refused": true,
+      "latency_s": -1.430511474609375e-05
+    },
+    {
+      "conflict_version": 5,
+      "t_notice": 1794476526.6980398,
+      "t_conclusion": 1794476526.7003317,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0022919178009033203
+    },
+    {
+      "conflict_version": 6,
+      "t_notice": 1794476526.7980506,
+      "t_conclusion": 1794476526.798428,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00037741661071777344
+    },
+    {
+      "conflict_version": 7,
+      "t_notice": 1794476551.0481603,
+      "t_conclusion": 1794476551.0546713,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.00651097297668457
+    },
+    {
+      "conflict_version": 8,
+      "t_notice": 1794476559.7977424,
+      "t_conclusion": 1794476559.7979932,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00025081634521484375
+    },
+    {
+      "conflict_version": 9,
+      "t_notice": 1794476559.9485593,
+      "t_conclusion": 1794476559.9493022,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0007429122924804688
+    },
+    {
+      "conflict_version": 10,
+      "t_notice": 1794476560.0483596,
+      "t_conclusion": 1794476560.049259,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0008993148803710938
+    },
+    {
+      "conflict_version": 11,
+      "t_notice": 1794476560.1490915,
+      "t_conclusion": 1794476560.1494014,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00030994415283203125
+    },
+    {
+      "conflict_version": 12,
+      "t_notice": 1794476560.248076,
+      "t_conclusion": 1794476560.2484534,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00037741661071777344
+    },
+    {
+      "conflict_version": 13,
+      "t_notice": 1794476560.3479984,
+      "t_conclusion": 1794476560.3486905,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0006921291351318359
+    },
+    {
+      "conflict_version": 14,
+      "t_notice": 1794476560.4484227,
+      "t_conclusion": 1794476560.4490151,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005924701690673828
+    },
+    {
+      "conflict_version": 15,
+      "t_notice": 1794476560.5487394,
+      "t_conclusion": 1794476560.5496275,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0008881092071533203
+    },
+    {
+      "conflict_version": 16,
+      "t_notice": 1794476560.6489205,
+      "t_conclusion": 1794476560.6489105,
+      "resolved": false,
+      "refused": true,
+      "latency_s": -1.0013580322265625e-05
+    },
+    {
+      "conflict_version": 17,
+      "t_notice": 1794476589.848473,
+      "t_conclusion": 1794476589.8490305,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005574226379394531
+    },
+    {
+      "conflict_version": 18,
+      "t_notice": 1794476589.8989909,
+      "t_conclusion": 1794476589.899061,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 7.009506225585938e-05
+    },
+    {
+      "conflict_version": 19,
+      "t_notice": 1794476589.928067,
+      "t_conclusion": 1794476589.9287522,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0006852149963378906
+    },
+    {
+      "conflict_version": 20,
+      "t_notice": 1794476589.9980633,
+      "t_conclusion": 1794476589.9986777,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0006144046783447266
+    },
+    {
+      "conflict_version": 21,
+      "t_notice": 1794476590.1077888,
+      "t_conclusion": 1794476590.1088178,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0010290145874023438
+    },
+    {
+      "conflict_version": 22,
+      "t_notice": 1794476590.2079406,
+      "t_conclusion": 1794476590.208839,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0008983612060546875
+    },
+    {
+      "conflict_version": 23,
+      "t_notice": 1794476590.3081386,
+      "t_conclusion": 1794476590.3087306,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005919933319091797
+    },
+    {
+      "conflict_version": 24,
+      "t_notice": 1794476590.4184945,
+      "t_conclusion": 1794476590.4190364,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005419254302978516
+    },
+    {
+      "conflict_version": 25,
+      "t_notice": 1794476590.5181434,
+      "t_conclusion": 1794476590.5185115,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0003681182861328125
+    },
+    {
+      "conflict_version": 26,
+      "t_notice": 1794476590.628283,
+      "t_conclusion": 1794476590.6291144,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0008313655853271484
+    },
+    {
+      "conflict_version": 27,
+      "t_notice": 1794476590.7381372,
+      "t_conclusion": 1794476590.7388687,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0007314682006835938
+    },
+    {
+      "conflict_version": 28,
+      "t_notice": 1794476590.8379831,
+      "t_conclusion": 1794476590.8385675,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005843639373779297
+    },
+    {
+      "conflict_version": 29,
+      "t_notice": 1794476590.9387045,
+      "t_conclusion": 1794476590.9392192,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005147457122802734
+    },
+    {
+      "conflict_version": 30,
+      "t_notice": 1794476591.0480788,
+      "t_conclusion": 1794476591.0485296,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0004508495330810547
+    },
+    {
+      "conflict_version": 31,
+      "t_notice": 1794476591.2289627,
+      "t_conclusion": 1794476591.2292612,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00029850006103515625
+    },
+    {
+      "conflict_version": 32,
+      "t_notice": 1794476591.3579102,
+      "t_conclusion": 1794476591.3589957,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.001085519790649414
+    },
+    {
+      "conflict_version": 33,
+      "t_notice": 1794476591.4583004,
+      "t_conclusion": 1794476591.4587307,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0004303455352783203
+    },
+    {
+      "conflict_version": 34,
+      "t_notice": 1794476591.5580778,
+      "t_conclusion": 1794476591.5586412,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005633831024169922
+    },
+    {
+      "conflict_version": 35,
+      "t_notice": 1794476591.7280061,
+      "t_conclusion": 1794476591.728481,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0004749298095703125
+    },
+    {
+      "conflict_version": 36,
+      "t_notice": 1794476596.4584816,
+      "t_conclusion": 1794476596.4591384,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0006568431854248047
+    },
+    {
+      "conflict_version": 37,
+      "t_notice": 1794476596.5579474,
+      "t_conclusion": 1794476596.5585413,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005939006805419922
+    },
+    {
+      "conflict_version": 38,
+      "t_notice": 1794476598.0179892,
+      "t_conclusion": 1794476598.0183208,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00033164024353027344
+    },
+    {
+      "conflict_version": 39,
+      "t_notice": 1794476598.6179183,
+      "t_conclusion": 1794476598.6184373,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005190372467041016
+    },
+    {
+      "conflict_version": 40,
+      "t_notice": 1794476598.6492167,
+      "t_conclusion": 1794476598.649208,
+      "resolved": false,
+      "refused": true,
+      "latency_s": -8.58306884765625e-06
+    },
+    {
+      "conflict_version": 41,
+      "t_notice": 1794476598.7505744,
+      "t_conclusion": 1794476598.7507668,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00019240379333496094
+    },
+    {
+      "conflict_version": 42,
+      "t_notice": 1794476598.8582091,
+      "t_conclusion": 1794476598.8590808,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0008716583251953125
+    },
+    {
+      "conflict_version": 43,
+      "t_notice": 1794476598.9581296,
+      "t_conclusion": 1794476598.958993,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0008633136749267578
+    },
+    {
+      "conflict_version": 44,
+      "t_notice": 1794476599.0588374,
+      "t_conclusion": 1794476599.059931,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0010936260223388672
+    },
+    {
+      "conflict_version": 45,
+      "t_notice": 1794476599.168055,
+      "t_conclusion": 1794476599.168829,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0007739067077636719
+    },
+    {
+      "conflict_version": 46,
+      "t_notice": 1794476599.3782368,
+      "t_conclusion": 1794476599.379329,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0010921955108642578
+    },
+    {
+      "conflict_version": 47,
+      "t_notice": 1794476599.5890067,
+      "t_conclusion": 1794476599.590392,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0013854503631591797
+    },
+    {
+      "conflict_version": 48,
+      "t_notice": 1794476599.8080013,
+      "t_conclusion": 1794476599.808905,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0009036064147949219
+    },
+    {
+      "conflict_version": 49,
+      "t_notice": 1794476600.1080036,
+      "t_conclusion": 1794476600.108675,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00067138671875
+    },
+    {
+      "conflict_version": 50,
+      "t_notice": 1794476600.2399411,
+      "t_conclusion": 1794476600.2408805,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0009393692016601562
+    },
+    {
+      "conflict_version": 51,
+      "t_notice": 1794476619.9078934,
+      "t_conclusion": 1794476619.9082112,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0003178119659423828
+    },
+    {
+      "conflict_version": 52,
+      "t_notice": 1794476619.917879,
+      "t_conclusion": 1794476619.9180396,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00016045570373535156
+    },
+    {
+      "conflict_version": 53,
+      "t_notice": 1794476620.0080712,
+      "t_conclusion": 1794476620.008342,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.000270843505859375
+    },
+    {
+      "conflict_version": 54,
+      "t_notice": 1794476620.1280096,
+      "t_conclusion": 1794476620.128162,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00015234947204589844
+    },
+    {
+      "conflict_version": 55,
+      "t_notice": 1794476620.2178767,
+      "t_conclusion": 1794476620.2181103,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00023365020751953125
+    },
+    {
+      "conflict_version": 56,
+      "t_notice": 1794476620.3179288,
+      "t_conclusion": 1794476620.3180819,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00015306472778320312
+    },
+    {
+      "conflict_version": 57,
+      "t_notice": 1794476620.4279704,
+      "t_conclusion": 1794476620.4281688,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0001983642578125
+    },
+    {
+      "conflict_version": 58,
+      "t_notice": 1794476620.5280545,
+      "t_conclusion": 1794476620.5282755,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00022101402282714844
+    },
+    {
+      "conflict_version": 59,
+      "t_notice": 1794476620.6380947,
+      "t_conclusion": 1794476620.638402,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00030732154846191406
+    },
+    {
+      "conflict_version": 60,
+      "t_notice": 1794476620.8679585,
+      "t_conclusion": 1794476620.868178,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0002193450927734375
+    },
+    {
+      "conflict_version": 61,
+      "t_notice": 1794476620.948554,
+      "t_conclusion": 1794476620.9488833,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0003292560577392578
+    },
+    {
+      "conflict_version": 62,
+      "t_notice": 1794476621.0879178,
+      "t_conclusion": 1794476621.088155,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0002372264862060547
+    },
+    {
+      "conflict_version": 63,
+      "t_notice": 1794476621.1584141,
+      "t_conclusion": 1794476621.1586568,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00024271011352539062
+    },
+    {
+      "conflict_version": 64,
+      "t_notice": 1794476621.2590377,
+      "t_conclusion": 1794476621.25903,
+      "resolved": false,
+      "refused": true,
+      "latency_s": -7.62939453125e-06
+    },
+    {
+      "conflict_version": 65,
+      "t_notice": 1794476621.3683624,
+      "t_conclusion": 1794476621.3686373,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00027489662170410156
+    },
+    {
+      "conflict_version": 66,
+      "t_notice": 1794476621.4690013,
+      "t_conclusion": 1794476621.4702215,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0012202262878417969
+    },
+    {
+      "conflict_version": 67,
+      "t_notice": 1794476621.5696113,
+      "t_conclusion": 1794476621.570141,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0005297660827636719
+    },
+    {
+      "conflict_version": 68,
+      "t_notice": 1794476621.682527,
+      "t_conclusion": 1794476621.683748,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0012209415435791016
+    },
+    {
+      "conflict_version": 69,
+      "t_notice": 1794476621.7799633,
+      "t_conclusion": 1794476621.7802813,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0003180503845214844
+    },
+    {
+      "conflict_version": 70,
+      "t_notice": 1794476621.9024215,
+      "t_conclusion": 1794476621.9052176,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.002796173095703125
+    },
+    {
+      "conflict_version": 71,
+      "t_notice": 1794476622.1195614,
+      "t_conclusion": 1794476622.1237206,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.004159212112426758
+    },
+    {
+      "conflict_version": 72,
+      "t_notice": 1794476622.2118504,
+      "t_conclusion": 1794476622.215262,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.003411531448364258
+    },
+    {
+      "conflict_version": 73,
+      "t_notice": 1794476622.9667141,
+      "t_conclusion": 1794476622.9695964,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.002882242202758789
+    },
+    {
+      "conflict_version": 74,
+      "t_notice": 1794476623.5290244,
+      "t_conclusion": 1794476623.529107,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 8.273124694824219e-05
+    },
+    {
+      "conflict_version": 75,
+      "t_notice": 1794476623.5891168,
+      "t_conclusion": 1794476623.5894191,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00030231475830078125
+    },
+    {
+      "conflict_version": 76,
+      "t_notice": 1794476623.618442,
+      "t_conclusion": 1794476623.619066,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0006239414215087891
+    },
+    {
+      "conflict_version": 77,
+      "t_notice": 1794476624.0398788,
+      "t_conclusion": 1794476624.0398586,
+      "resolved": false,
+      "refused": true,
+      "latency_s": -2.0265579223632812e-05
+    },
+    {
+      "conflict_version": 78,
+      "t_notice": 1794476624.1396668,
+      "t_conclusion": 1794476624.141008,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.001341104507446289
+    },
+    {
+      "conflict_version": 79,
+      "t_notice": 1794476624.4391317,
+      "t_conclusion": 1794476624.4391239,
+      "resolved": false,
+      "refused": true,
+      "latency_s": -7.867813110351562e-06
+    },
+    {
+      "conflict_version": 80,
+      "t_notice": 1794476624.6491938,
+      "t_conclusion": 1794476624.6494763,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00028252601623535156
+    },
+    {
+      "conflict_version": 81,
+      "t_notice": 1794476624.7593462,
+      "t_conclusion": 1794476624.7645912,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0052449703216552734
+    },
+    {
+      "conflict_version": 82,
+      "t_notice": 1794476625.3617232,
+      "t_conclusion": 1794476625.3618171,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 9.393692016601562e-05
+    },
+    {
+      "conflict_version": 83,
+      "t_notice": 1794476625.3881836,
+      "t_conclusion": 1794476625.388733,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00054931640625
+    },
+    {
+      "conflict_version": 84,
+      "t_notice": 1794476625.68812,
+      "t_conclusion": 1794476625.6887522,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0006322860717773438
+    },
+    {
+      "conflict_version": 85,
+      "t_notice": 1794476625.78891,
+      "t_conclusion": 1794476625.7891464,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00023651123046875
+    },
+    {
+      "conflict_version": 86,
+      "t_notice": 1794476626.5183575,
+      "t_conclusion": 1794476626.5187113,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00035381317138671875
+    },
+    {
+      "conflict_version": 87,
+      "t_notice": 1794476626.6280556,
+      "t_conclusion": 1794476626.6282454,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00018978118896484375
+    },
+    {
+      "conflict_version": 88,
+      "t_notice": 1794476626.7279913,
+      "t_conclusion": 1794476626.728286,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00029468536376953125
+    },
+    {
+      "conflict_version": 89,
+      "t_notice": 1794476626.8286157,
+      "t_conclusion": 1794476626.8288774,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0002617835998535156
+    },
+    {
+      "conflict_version": 90,
+      "t_notice": 1794476626.8289523,
+      "t_conclusion": 1794476626.8290772,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00012493133544921875
+    },
+    {
+      "conflict_version": 91,
+      "t_notice": 1794476626.9381385,
+      "t_conclusion": 1794476626.9384801,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00034165382385253906
+    },
+    {
+      "conflict_version": 92,
+      "t_notice": 1794476627.0380092,
+      "t_conclusion": 1794476627.0384126,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00040340423583984375
+    },
+    {
+      "conflict_version": 93,
+      "t_notice": 1794476627.2680142,
+      "t_conclusion": 1794476627.2681818,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00016760826110839844
+    },
+    {
+      "conflict_version": 94,
+      "t_notice": 1794476627.368099,
+      "t_conclusion": 1794476627.3682597,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00016069412231445312
+    },
+    {
+      "conflict_version": 95,
+      "t_notice": 1794476627.5679522,
+      "t_conclusion": 1794476627.568717,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0007648468017578125
+    },
+    {
+      "conflict_version": 96,
+      "t_notice": 1794476627.768083,
+      "t_conclusion": 1794476627.7682724,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00018930435180664062
+    },
+    {
+      "conflict_version": 97,
+      "t_notice": 1794476627.8781714,
+      "t_conclusion": 1794476627.8784866,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0003151893615722656
+    },
+    {
+      "conflict_version": 98,
+      "t_notice": 1794476627.9784796,
+      "t_conclusion": 1794476627.9788022,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00032258033752441406
+    },
+    {
+      "conflict_version": 99,
+      "t_notice": 1794476628.0780594,
+      "t_conclusion": 1794476628.078239,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00017952919006347656
+    },
+    {
+      "conflict_version": 100,
+      "t_notice": 1794476628.2878628,
+      "t_conclusion": 1794476628.288112,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0002491474151611328
+    },
+    {
+      "conflict_version": 101,
+      "t_notice": 1794476628.3979385,
+      "t_conclusion": 1794476628.3981047,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00016617774963378906
+    },
+    {
+      "conflict_version": 102,
+      "t_notice": 1794476628.50887,
+      "t_conclusion": 1794476628.5100663,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0011963844299316406
+    },
+    {
+      "conflict_version": 103,
+      "t_notice": 1794476628.6182415,
+      "t_conclusion": 1794476628.6185465,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00030493736267089844
+    },
+    {
+      "conflict_version": 104,
+      "t_notice": 1794476628.7183242,
+      "t_conclusion": 1794476628.719115,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0007908344268798828
+    },
+    {
+      "conflict_version": 105,
+      "t_notice": 1794476628.8182812,
+      "t_conclusion": 1794476628.8190086,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0007274150848388672
+    },
+    {
+      "conflict_version": 106,
+      "t_notice": 1794476628.928187,
+      "t_conclusion": 1794476628.9284701,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00028324127197265625
+    },
+    {
+      "conflict_version": 107,
+      "t_notice": 1794476629.0180933,
+      "t_conclusion": 1794476629.018351,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.00025773048400878906
+    },
+    {
+      "conflict_version": 108,
+      "t_notice": 1794476629.54823,
+      "t_conclusion": 1794476629.5487256,
+      "resolved": false,
+      "refused": true,
+      "latency_s": 0.0004956722259521484
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/sharedlane/run_20261117_0659/attempt_2: no external tracker, so coverage, gap and travelled distance are not measured
+dispatched by RMF: tb3_robot1, tb3_robot2, tb3_robot3
+robot         coverage   max gap  travelled  min soc verdict
+------------------------------------------------------------
+tb3_robot1           -         -          -     0.96 ok
+tb3_robot2           -         -          -     0.55 ok
+tb3_robot3           -         -          -     0.93 ok
+
+robot           max amcl sd  against reference
+----------------------------------------------
+tb3_robot1            0.61m  within
+tb3_robot2            0.76m  within
+tb3_robot3            0.59m  within
+A robot above the reference reported an unusually wide pose spread. This is a property of the run, not of the recording, so it is reported and never discards the repeat.
+
+recorded stream             messages      rate   delivered  head gap   max gap  tail gap
+----------------------------------------------------------------------------------------
+/fleet_states                   1419     9.92Hz       99.2%    1.200s    0.103s    0.000s
+/tb3_robot1/scan                1435    10.03Hz      100.3%    1.178s    0.143s    0.083s
+/tb3_robot1/tf                  5799    40.55Hz       96.6%    1.180s    0.075s    0.026s
+/tb3_robot2/scan                1283     8.97Hz       89.7%    1.250s    0.221s    0.004s
+/tb3_robot2/tf                  5771    40.36Hz       96.1%    1.179s    0.208s    0.023s
+/tb3_robot3/scan                1402     9.80Hz       98.0%    1.250s    0.154s    0.007s
+/tb3_robot3/tf                  5792    40.50Hz       96.4%    1.154s    0.088s    0.055s
+
+KEEP: every dispatched robot stayed above the recharge threshold and every recorded stream arrived; it was not tracked

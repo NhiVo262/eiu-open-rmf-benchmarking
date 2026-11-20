@@ -64,7 +64,6 @@ def main():
     for robot, verdict in verdicts:
         if verdict == 'ok':
             continue
-        # stdout is the caller's list; one line per robot, "<robot> <verdict>".
         print('%s %s' % (robot, verdict))
         if verdict == 'robot':
             sys.stderr.write(

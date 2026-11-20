@@ -1,0 +1,65 @@
+{
+  "scenario": "headon, N=3, CONFIG_01, repeat_1, simulation",
+  "bag_path": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/headon/run_20261112_1210/repeat_1/bag",
+  "analysis_version": 2,
+  "3a_n_negotiation": 4,
+  "3a_n_distinct_conflict_versions_noticed": 4,
+  "3a_n_conclusions": 4,
+  "3b_negotiation_latency_s": {
+    "n": 4,
+    "mean": 0.07746785879135132,
+    "stdev": 0.13490712413299566,
+    "min": 0.00914144515991211,
+    "max": 0.27982330322265625
+  },
+  "3b_latency_resolved_s": {
+    "n": 4,
+    "mean": 0.07746785879135132,
+    "stdev": 0.13490712413299566,
+    "min": 0.00914144515991211,
+    "max": 0.27982330322265625
+  },
+  "3b_latency_abandoned_s": null,
+  "3b_n_resolved": 4,
+  "3b_n_abandoned": 0,
+  "3b_latency_refused_s": null,
+  "3b_latency_search_failed_s": null,
+  "3b_n_refused": 0,
+  "3b_n_search_failed": 0,
+  "3b_n_refusal_messages": 0,
+  "3b_target": "below RMF's negotiation timeout, 15 s, fixed at rmf_traffic_ros2/schedule/Negotiation.cpp:216 and not overridden in this tree",
+  "per_negotiation": [
+    {
+      "conflict_version": 0,
+      "t_notice": 1794485495.6661768,
+      "t_conclusion": 1794485495.946,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.27982330322265625
+    },
+    {
+      "conflict_version": 1,
+      "t_notice": 1794485500.976044,
+      "t_conclusion": 1794485500.9855804,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.009536504745483398
+    },
+    {
+      "conflict_version": 2,
+      "t_notice": 1794485501.1660092,
+      "t_conclusion": 1794485501.1773794,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.011370182037353516
+    },
+    {
+      "conflict_version": 3,
+      "t_notice": 1794485502.6761131,
+      "t_conclusion": 1794485502.6852546,
+      "resolved": true,
+      "refused": false,
+      "latency_s": 0.00914144515991211
+    }
+  ]
+}

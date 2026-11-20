@@ -1,0 +1,18 @@
+/home/eiu/rmf_ws/src/benchmark/data/simulation/baselines/bottleneck_r2/run_20261112_1348/attempt_2: 819 samples over 89.7 s (9.1 Hz)
+dispatched by RMF: tb3_robot1
+robot         coverage   max gap  travelled  min soc verdict
+------------------------------------------------------------
+tb3_robot1     100.00%      0.1s     11.26m        - ok
+
+robot           max amcl sd  against reference
+----------------------------------------------
+tb3_robot1            0.85m  within
+A robot above the reference reported an unusually wide pose spread. This is a property of the run, not of the recording, so it is reported and never discards the repeat.
+
+recorded stream             messages      rate   delivered  head gap   max gap  tail gap
+----------------------------------------------------------------------------------------
+/fleet_states                    884     9.93Hz       99.3%    0.606s    0.105s    0.095s
+/tb3_robot1/scan                 885     9.94Hz       99.4%    0.549s    0.147s    0.056s
+/tb3_robot1/tf                  7084    79.59Hz      189.5%    0.468s    0.027s    0.015s
+
+KEEP: every dispatched robot is tracked, moved, and stayed above the recharge threshold

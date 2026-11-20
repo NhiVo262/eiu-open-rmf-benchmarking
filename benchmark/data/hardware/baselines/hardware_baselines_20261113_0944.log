@@ -1,0 +1,45 @@
+[INFO] [1794563082.347705527] [hardware_baseline_collector]: collection: starting hardware N=1 baselines; routes=sharedlane_r3 robot=tb3_robot3
+[INFO] [1794563082.350120664] [hardware_baseline_collector]: preflight: minimum battery soc=0.50
+[INFO] [1794563082.401486917] [hardware_baseline_collector]: configuration: single-robot fleet config ready; robot=tb3_robot3 source=/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/config/hardware/fleet/multi_robot_config_hw.yaml
+[INFO] [1794563082.404079508] [hardware_baseline_collector]: configuration: fleet_config=/home/eiu/rmf_ws/src/benchmark/.session/hardware/fleet_config_tb3_robot3.yaml
+[INFO] [1794563082.406716514] [hardware_baseline_collector]: configuration: nav_graph=/home/eiu/rmf_ws/install/tb3_fleet/share/tb3_fleet/maps/world_tb3/nav_graphs/0.yaml
+[INFO] [1794563082.418459554] [hardware_baseline_collector]: collection: route started; route=sharedlane_r3 waypoints=wp_6,wp_3 start=wp_6 repeats=3/5 output=/home/eiu/rmf_ws/src/benchmark/data/hardware/baselines/sharedlane_r3/run_20261113_0825
+[INFO] [1794563082.424383917] [hardware_baseline_collector]: collection: starting repeat; route=sharedlane_r3 repeat=4/5 attempt=1
+[INFO] [1794563082.427107537] [hardware_baseline_collector]: lifecycle: stopping workstation processes
+[INFO] [1794563083.113174394] [hardware_baseline_collector]: navigation: stop command completed for robot=tb3_robot3
+[INFO] [1794563095.195448478] [hardware_baseline_collector]: zenoh: topic holder ready; robot=tb3_robot3
+[INFO] [1794563097.691889321] [hardware_baseline_collector]: preflight: required topics available; robot=tb3_robot3 topics=scan,tf
+[INFO] [1794563098.255359453] [hardware_baseline_collector]: preflight: NavigateToPose action available; robot=tb3_robot3
+[INFO] [1794563099.056360958] [hardware_baseline_collector]: operator: robot placement required; robot=tb3_robot3 repeat=4
+[INFO] [1794563099.059063731] [hardware_baseline_collector]: operator: place robot at waypoint=wp_6 map_x=28.5678 map_y=-5.0120 yaw=3.1014 rad; heading_toward=wp_4
+[INFO] [1794563099.061564505] [hardware_baseline_collector]: operator: press ENTER to publish the initial pose
+[INFO] [1794563125.044861051] [hardware_baseline_collector]: localization: initial pose published; robot=tb3_robot3 source=navigation_graph
+[INFO] [1794563126.307085491] [hardware_baseline_collector]: localization: map->odom transform available; robot=tb3_robot3
+[INFO] [1794563127.965058299] [hardware_baseline_collector]: localization: initial pose check; robot=tb3_robot3 xy_error=0.004 m yaw_error=0.011 rad amcl_yaw=3.091 rad seed_yaw=3.1014 rad
+[INFO] [1794563129.977459541] [hardware_baseline_collector]: preflight: battery state; robot=tb3_robot3 soc=0.683
+[INFO] [1794563139.007593569] [hardware_baseline_collector]: fleet: robot registered; fleet=tb3_fleet robot=tb3_robot3 elapsed=8s
+[INFO] [1794563149.014976445] [hardware_baseline_collector]: task: submitting route; waypoints=wp_6,wp_3 repeat=4
+[INFO] [1794563227.762157499] [hardware_baseline_collector]: task: benchmark runner finished; exit_code=0
+[INFO] [1794563243.565830592] [hardware_baseline_collector]: analysis: task planning finished; repeat=4 exit_code=0
+[INFO] [1794563243.594840661] [hardware_baseline_collector]: analysis: outcome annotation finished; repeat=4 exit_code=0
+[INFO] [1794563243.598519623] [hardware_baseline_collector]: collection: starting repeat; route=sharedlane_r3 repeat=5/5 attempt=2
+[INFO] [1794563243.600982005] [hardware_baseline_collector]: lifecycle: stopping workstation processes
+[INFO] [1794563244.099666246] [hardware_baseline_collector]: navigation: stop command completed for robot=tb3_robot3
+[INFO] [1794563255.485402784] [hardware_baseline_collector]: preflight: required topics available; robot=tb3_robot3 topics=scan,tf
+[INFO] [1794563255.957513112] [hardware_baseline_collector]: preflight: NavigateToPose action available; robot=tb3_robot3
+[INFO] [1794563256.629767188] [hardware_baseline_collector]: operator: robot placement required; robot=tb3_robot3 repeat=5
+[INFO] [1794563256.631788562] [hardware_baseline_collector]: operator: place robot at waypoint=wp_6 map_x=28.5678 map_y=-5.0120 yaw=3.1014 rad; heading_toward=wp_4
+[INFO] [1794563256.633819818] [hardware_baseline_collector]: operator: press ENTER to publish the initial pose
+[INFO] [1794563291.893559214] [hardware_baseline_collector]: localization: initial pose published; robot=tb3_robot3 source=navigation_graph
+[INFO] [1794563293.194884494] [hardware_baseline_collector]: localization: map->odom transform available; robot=tb3_robot3
+[INFO] [1794563294.690027597] [hardware_baseline_collector]: localization: initial pose check; robot=tb3_robot3 xy_error=0.023 m yaw_error=0.014 rad amcl_yaw=3.115 rad seed_yaw=3.1014 rad
+[INFO] [1794563296.159561815] [hardware_baseline_collector]: preflight: battery state; robot=tb3_robot3 soc=0.650
+[INFO] [1794563305.180969032] [hardware_baseline_collector]: fleet: robot registered; fleet=tb3_fleet robot=tb3_robot3 elapsed=8s
+[INFO] [1794563315.186770884] [hardware_baseline_collector]: task: submitting route; waypoints=wp_6,wp_3 repeat=5
+[INFO] [1794563422.267183298] [hardware_baseline_collector]: task: benchmark runner finished; exit_code=0
+[INFO] [1794563438.131476487] [hardware_baseline_collector]: analysis: task planning finished; repeat=5 exit_code=0
+[INFO] [1794563438.161120708] [hardware_baseline_collector]: analysis: outcome annotation finished; repeat=5 exit_code=0
+[INFO] [1794563438.164985313] [hardware_baseline_collector]: collection: route finished; route=sharedlane_r3 repeats=5/5 attempts=2
+[INFO] [1794563438.167234681] [hardware_baseline_collector]: lifecycle: stopping workstation processes
+[INFO] [1794563438.660708227] [hardware_baseline_collector]: navigation: stop command completed for robot=tb3_robot3
+[INFO] [1794563447.709715067] [hardware_baseline_collector]: collection: finished hardware N=1 baselines; routes=sharedlane_r3

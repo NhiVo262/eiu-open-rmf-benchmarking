@@ -1,0 +1,42 @@
+{
+  "scenario": "hardware/scenarios/bottleneck/run_20261116_1110/repeat_4",
+  "bag": "/home/eiu/rmf_ws/src/benchmark/data/hardware/scenarios/bottleneck/run_20261116_1110/repeat_4/bag",
+  "analysis_version": 2,
+  "6_method": "stationary while assigned: no motion command on cmd_vel within each task's [award, completed]; episodes of at least 0.3 s; attribution to traffic by comparing a route against the same route run alone",
+  "6a_time_blocked_per_robot_s": {
+    "tb3_robot1": 6.27,
+    "tb3_robot2": 47.199,
+    "tb3_robot3": 31.104
+  },
+  "6a_per_robot": {
+    "tb3_robot1": {
+      "route": "wp_2->wp_5",
+      "task_id": "patrol.dispatch-7cfc0259d5",
+      "window_s": 143.585,
+      "time_blocked_s": 6.27,
+      "n_episodes": 2,
+      "longest_episode_s": 5.519
+    },
+    "tb3_robot2": {
+      "route": "wp_3->wp_4",
+      "task_id": "patrol.dispatch-585f346100",
+      "window_s": 128.674,
+      "time_blocked_s": 47.199,
+      "n_episodes": 2,
+      "longest_episode_s": 46.799
+    },
+    "tb3_robot3": {
+      "route": "wp_4->wp_3",
+      "task_id": "patrol.dispatch-62ea922c05",
+      "window_s": 281.673,
+      "time_blocked_s": 31.104,
+      "n_episodes": 6,
+      "longest_episode_s": 12.15
+    }
+  },
+  "n_robots_scored": 3,
+  "6b_mean_per_episode_s": 8.457,
+  "6b_mean_per_episode_s_min_1s": 13.737,
+  "n_episodes_total": 10,
+  "n_episodes_total_min_1s": 6
+}

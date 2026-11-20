@@ -29,6 +29,10 @@ rmf_fleet:
     delivery: False
   finishing_request: "nothing"
   responsive_wait: True
+  # Radius within which RMF treats the robot as standing on a waypoint. The RMF default
+  # of 1e-3 is below the Nav2 xy_goal_tolerance of 0.25, so a robot parked on a waypoint
+  # is never recognised as being on it and the next task opens with a move back onto it.
+  max_merge_waypoint_distance: 0.25
   robots:
     tb3_robot1:
       charger: "wp_1"

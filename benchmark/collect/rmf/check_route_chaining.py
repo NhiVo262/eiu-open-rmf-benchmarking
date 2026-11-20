@@ -36,8 +36,10 @@ def load_graph(path):
         if a is None or b is None:
             continue
         d = math.dist(coords[a], coords[b])
-        adjacency[a][b] = min(adjacency[a].get(b, d), d)
-        adjacency[b][a] = min(adjacency[b].get(a, d), d)
+        adjacency[a][b] = min(
+            adjacency[a].get(b, float('inf')),
+            d
+        )
     return coords, adjacency
 
 
@@ -204,11 +206,16 @@ def main():
 
     if degenerate:
         print()
-        print('Degenerate for a %d-robot fleet -- RMF will leave robots parked:'
-              % args.robots)
+        print(
+            'Potential route-chaining bias for a %d-robot fleet:'
+            % args.robots
+        )
         for name, k in dict.fromkeys(degenerate):
-            print('  %-12s uses %d robot(s); change an endpoint so no route ends '
-                  'where another starts' % (name, k))
+            print(
+                '  %-12s greedy chain count: %d; '
+                'verify actual RMF assignments'
+                % (name, k)
+            )
         return 1
     return 0
 

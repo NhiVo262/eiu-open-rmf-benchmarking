@@ -1,4 +1,4 @@
-# Benchmark procedure - Feature 3: Negotiation
+# Benchmark procedure — Feature 3: Negotiation
 
 Computing the F3 metrics from the collected N=3 runs. Scenario routes, spawn
 coordinates and the collection procedure itself are in

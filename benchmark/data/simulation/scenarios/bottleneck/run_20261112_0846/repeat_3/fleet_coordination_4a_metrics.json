@@ -1,0 +1,54 @@
+{
+  "scenario": "bottleneck, N=3, CONFIG_01, repeat_3, simulation",
+  "repeat_dir": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261112_0846/repeat_3",
+  "api_state_file": "/home/eiu/rmf_ws/src/benchmark/data/simulation/scenarios/bottleneck/run_20261112_0846/api_state_attempt7.jsonl",
+  "method": "explicit task state from rmf_websocket (task_state_update); no inference, no W_RELEASE, no INDETERMINATE bucket",
+  "4a_n_submitted": 3,
+  "4a_n_completed": 3,
+  "4a_completed_pct": 100.0,
+  "4a_state_counts": {
+    "completed": 3
+  },
+  "4a_per_task": [
+    {
+      "task_id": "patrol.dispatch-111a14140d",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 51
+    },
+    {
+      "task_id": "patrol.dispatch-42982c8758",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 111
+    },
+    {
+      "task_id": "patrol.dispatch-686dca59cb",
+      "final_status": "completed",
+      "classified": "completed",
+      "transitions": [
+        "queued",
+        "standby",
+        "underway",
+        "standby",
+        "underway",
+        "completed"
+      ],
+      "n_updates": 57
+    }
+  ]
+}
